@@ -1,0 +1,125 @@
+:root {
+  --brand: #A8321C;
+  --bg: #FFFFFF;
+  --text: #000000;
+  --text-muted: #666666;
+  --font-serif: "Times New Roman", Times, Baskerville, Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-serif);
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+  /* Scales smoothly from mobile to desktop */
+  font-size: clamp(1.125rem, 1.5vw + 0.8rem, 1.5rem);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Typography & Links */
+a {
+  color: var(--brand);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+a:hover, a:focus {
+  color: var(--text);
+  text-decoration-color: var(--text);
+  outline: none;
+}
+
+/* Header Styles */
+.site-header {
+  padding-top: 15vh;
+  padding-bottom: 4rem;
+}
+
+.entity-statement {
+  font-size: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 3rem 0;
+  max-width: 30ch;
+}
+
+.consultation {
+  margin: 0;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Project List Styles */
+.site-main {
+  padding-bottom: 10vh;
+}
+
+.project-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-list li {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.project-list .note {
+  display: inline-block;
+  font-size: 0.75em;
+  color: var(--text-muted);
+  margin-left: 0.5rem;
+  font-style: italic;
+}
+
+/* Footer */
+.site-footer {
+  padding-bottom: 4rem;
+  font-size: 0.8em;
+  color: var(--text-muted);
+}
+
+.site-footer hr {
+  border: none;
+  border-top: 1px solid var(--text);
+  margin-bottom: 2rem;
+  opacity: 0.2;
+}
+
+/* Motion: Subtle Fades */
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Breakpoints */
+@media (min-width: 768px) {
+  .site-header {
+    padding-top: 20vh;
+  }
+  
+  .project-list li {
+    margin-bottom: 1rem;
+  }
+}
