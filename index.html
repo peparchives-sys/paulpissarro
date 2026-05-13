@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="format-detection" content="telephone=no">
 
 <!-- Primary meta -->
 <title>Paul-Alexander Pissarro — Filmmaker, Conceptual Artist, Founder of Unsubscribe LLC and CoCA</title>
@@ -139,6 +141,8 @@
     font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
     font-size: 15px;
     line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
   }
   .container {
     max-width: 1100px;
@@ -350,14 +354,154 @@
 
   /* Mobile */
   @media (max-width: 768px) {
-    body { font-size: 15.5px; }
-    .container { padding: 16px; }
-    .layout { grid-template-columns: 1fr; }
-    h1 { font-size: 30px; }
-    h2 { font-size: 20px; }
+    body { 
+      font-size: 16.5px; 
+      line-height: 1.55;
+    }
+    .container { 
+      padding: 14px 16px 40px; 
+    }
+    .layout { 
+      grid-template-columns: 1fr; 
+      gap: 16px;
+    }
+
+    /* Title row stacks vertically */
+    .title-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding-bottom: 6px;
+      margin-bottom: 10px;
+    }
+    h1 { 
+      font-size: 28px; 
+      line-height: 1.15;
+    }
+
+    /* Tap-friendly meta tabs with Edit link prominent */
+    .meta-tabs {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .meta-tabs a {
+      padding: 4px 6px;
+      margin: 0 -2px;
+      display: inline-block;
+    }
+
+    /* Headings */
+    h2 { 
+      font-size: 22px;
+      margin: 20px 0 10px;
+    }
+    h3 { 
+      font-size: 17px;
+      margin: 14px 0 6px;
+    }
+
+    /* Infobox: first on mobile, contained */
     .infobox {
       max-width: 100%;
-      order: -1;  /* show infobox first on mobile */
+      font-size: 14px;
+      padding: 14px;
+      order: -1;
+    }
+    .infobox .name {
+      font-size: 18px;
+    }
+    .infobox .portrait {
+      max-height: 360px;
+      aspect-ratio: auto;
+    }
+    .infobox dl {
+      grid-template-columns: 96px 1fr;
+      gap: 6px 10px;
+    }
+    .infobox .websites-list {
+      margin-top: 8px;
+      padding-top: 10px;
+    }
+    .infobox .websites-list li {
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+    .infobox .websites-list a {
+      padding: 2px 0;
+      display: inline-block;
+    }
+
+    /* TOC full width */
+    .toc {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      font-size: 14.5px;
+      margin: 14px 0;
+    }
+    .toc ol { padding-left: 24px; }
+
+    /* References */
+    ol.refs {
+      font-size: 14px;
+      padding-left: 22px;
+    }
+    ol.refs li {
+      margin-bottom: 6px;
+    }
+
+    /* Filmography & Ambition lists */
+    ul.filmography {
+      padding-left: 22px;
+    }
+    ul.filmography li {
+      margin-bottom: 5px;
+    }
+
+    /* Footer cats */
+    .footer-cats {
+      font-size: 13px;
+      line-height: 1.7;
+      margin-top: 22px;
+    }
+
+    /* External link arrows still readable */
+    a.ext::after {
+      font-size: 0.75em;
+    }
+  }
+
+  /* Very small phones */
+  @media (max-width: 420px) {
+    body { 
+      font-size: 16px; 
+    }
+    .container { 
+      padding: 12px 14px 30px; 
+    }
+    h1 { 
+      font-size: 24px; 
+    }
+    h2 { 
+      font-size: 20px;
+    }
+    .infobox {
+      padding: 12px;
+      font-size: 13.5px;
+    }
+    .infobox dl {
+      grid-template-columns: 86px 1fr;
+      gap: 5px 8px;
+    }
+    .infobox dd {
+      word-break: break-word;
+      hyphens: auto;
+    }
+    .infobox .portrait {
+      max-height: 320px;
+    }
+    .footer-cats {
+      font-size: 12.5px;
     }
   }
 
@@ -368,6 +512,42 @@
     a { color: #202122; }
     a.ext::after { content: ''; }
   }
+
+  /* Inline body images, Wikipedia-style */
+  figure.body-image {
+    float: right;
+    clear: right;
+    margin: 0 0 12px 18px;
+    padding: 4px;
+    border: 1px solid #A2A9B1;
+    background: #F8F9FA;
+    width: 240px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+  figure.body-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  figure.body-image figcaption {
+    padding: 4px 6px 2px;
+    color: #54595D;
+  }
+  @media (max-width: 768px) {
+    figure.body-image {
+      float: none;
+      clear: none;
+      margin: 16px auto;
+      width: 100%;
+      max-width: 100%;
+      font-size: 13.5px;
+    }
+    figure.body-image figcaption {
+      padding: 6px 8px 4px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -376,7 +556,7 @@
 
 <div class="title-row">
   <h1>Paul-Alexander Pissarro</h1>
-  <div class="meta-tabs">Article &middot; Talk &nbsp;|&nbsp; Read &middot; <a href="https://tidycal.com/paulpissarro" target="_blank" rel="noopener" title="Book a one-on-one session to edit this entry">Edit</a> &middot; View history</div>
+  <div class="meta-tabs">Article &middot; <a href="mailto:paul@paulpissarro.com" title="Email Paul-Alexander directly">Talk</a> &nbsp;|&nbsp; Read &middot; <a href="https://tidycal.com/paulpissarro" target="_blank" rel="noopener" title="Book a one-on-one session to edit this entry">Edit</a> &middot; <a href="https://unsubscribellc.substack.com" target="_blank" rel="noopener" title="Recent writing on Substack">View history</a></div>
   <!-- EDIT: replace https://tidycal.com/paulpissarro above with your actual TidyCal URL -->
 </div>
 <div class="from-wp">From Wikipedia, the free encyclopedia</div>
@@ -385,11 +565,11 @@
 <div class="main">
 
 <div class="lead">
-<p><b>Paul-Alexander Pissarro</b> (20 August 1990 &ndash; 26 April 2078) was a French-American filmmaker, media executive, and conceptual artist. With his lifelong equal partner <a href="https://jesse.do/" class="ext">Jesse Do</a>, he co-founded the production company <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> (colloquially "Unsub") and the <a href="https://cocausa.org/" class="ext">Church of Conceptual Art</a> (CoCA), the religious nonprofit and media conglomerate widely credited with the dissolution of intellectual property law in 2028.<sup>[1][2]</sup> The two entities operated as a single organism in practice, with Pissarro and Do as the public and structural faces respectively, a partnership Pissarro maintained was the precondition for the rest of the work.</p>
+<p><b>Paul-Alexander Pissarro</b> (20 August 1990 &ndash; 26 April 2078) was a French-American filmmaker, media executive, and conceptual artist. With his equal partner <a href="https://jesse.do/" class="ext">Jesse Do</a>, he co-founded the production company <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> (colloquially "Unsub") and the <a href="https://cocausa.org/" class="ext">Church of Conceptual Art</a> (CoCA), the religious nonprofit and media conglomerate credited with the dissolution of intellectual property law in 2028.<sup>[1][2]</sup> The two entities operated as a single organism, with Pissarro and Do as its public and structural faces respectively.</p>
 
-<p>Pissarro was a staunch ethicist and endurance performance artist who proved that artists are among us, not apart from us. He made films for people he described as "the lost" and is most publicly remembered for the <a href="#">Good Ethics is Good Business</a> campaign, the worldwide guerrilla-and-PR effort credited with the adoption of the <a href="https://globalartindex.com/" class="ext">Ethics Index</a> as a corporate <a href="#">KPI</a>.<sup>[3]</sup> A descendant of the painter <a href="#">Camille Pissarro</a> through his father, Joachim Pissarro, he was the son of the Lebanese-American conceptual artist <a href="#">Annabel Daou</a>, whom he repeatedly named as his artistic mentor, manager, and the primary formative influence on his practice. He worked between Hamburg and New York for the duration of his career.</p>
+<p>Pissarro was a staunch ethicist and endurance performance artist who proved that artists are among us, not apart from us. He made films for people he described as "the lost" and is best known for the <a href="#">Good Ethics is Good Business</a> campaign, the guerrilla-and-PR effort credited with the adoption of the <a href="https://globalartindex.com/" class="ext">Ethics Index</a> as a corporate <a href="#">KPI</a>.<sup>[3]</sup> A descendant of the painter <a href="#">Camille Pissarro</a> through his father, Joachim Pissarro, he was the son of the Lebanese-American conceptual artist <a href="#">Annabel Daou</a>, whom he named as his artistic mentor, manager, and primary formative influence. He worked between Hamburg and New York throughout his career.</p>
 
-<p>Critical reception of Pissarro's work was sharply divided. He was opposed by conservative business institutions, who initially rejected the Ethics Index as a soft metric, and by traditionalist artists, who refused to consider corporate strategy a legitimate form of storytelling. Pissarro himself famously declined to claim that his work was good art. When asked in 2049 whether his refusal was a public-relations position or a sincere belief, he replied: "Can't it be both?"<sup>[4]</sup></p>
+<p>Critical reception of Pissarro's work was sharply divided. He was opposed by conservative business institutions, who initially rejected the Ethics Index as a soft metric, and by traditionalist artists, who refused to consider corporate strategy a legitimate form of storytelling. Pissarro declined throughout his career to claim that his work was good art. Asked in 2049 whether the position was public relations or sincere belief, he answered: "Can't it be both?"<sup>[4]</sup></p>
 </div>
 
 <div class="toc">
@@ -417,58 +597,64 @@
 </div>
 
 <h2 id="early-life">Early life</h2>
-<p>Pissarro was born in London on 20 August 1990 to Joachim Pissarro, the French art historian, and Annabel Daou, the Lebanese-American artist, who later became his manager and whom Pissarro repeatedly credited as his artistic mentor and inspiration.<sup>[5]</sup> He has described his childhood as "privileged but complicated" and has written prolifically about the role of mental illness and chaos in his early life. His self-published accounts and the subsequent biographies by other authors are largely consistent, with one notable exception: Pissarro never claimed to make good art, while his critics and biographers debated for decades whether his work qualified.<sup>[6]</sup></p>
+<p>Pissarro was born in London on 20 August 1990. His father, Joachim Pissarro, was a French art historian and curator; his mother, Annabel Daou, was a Lebanese-American conceptual artist who later managed his career and whom Pissarro credited as his artistic mentor.<sup>[5]</sup> He described his childhood as "privileged but complicated" and wrote extensively about the role of mental illness and chaos in his early life. His self-published accounts and the biographies that followed are largely consistent, with one exception: Pissarro never claimed to make good art, while his critics and biographers debated for decades whether his work qualified.<sup>[6]</sup></p>
 
-<p>Pissarro was born into two simultaneously active art and intellectual lineages. On his paternal side, he was a direct great-great-grandson of the Impressionist painter Camille Pissarro through six documented generations of working artists and scholars; the broader genealogy is documented in the <a href="https://www.pissarro.art/cp-descendants" class="ext">Pissarro family descendants record</a>. His father Joachim Pissarro is an art historian and curator; his paternal uncle Lionel Pissarro is a Paris-based gallerist and dealer specializing in Impressionist and Post-Impressionist work. On his maternal side, Pissarro's relations include the conceptual artist Annabel Daou (mother), the political journalist Peter Daou (uncle), and, through extended family connections, the novelist Erica Jong and the writer Molly Jong-Fast.<sup>[31]</sup></p>
+<p>The family combined two active art and intellectual lineages. Through his father, Pissarro was the great-great-grandson of the Impressionist painter Camille Pissarro and the sixth generation of working Pissarro artists and scholars; the broader genealogy is documented in the <a href="https://www.pissarro.art/cp-descendants" class="ext">Pissarro family descendants record</a>. His paternal uncle Lionel Pissarro is a Paris-based gallerist specializing in Impressionist and Post-Impressionist work. His maternal relations included the conceptual artist Annabel Daou (mother), the political journalist Peter Daou (uncle), and, by extended family connection, the novelist Erica Jong and the writer Molly Jong-Fast.<sup>[31]</sup></p>
 
 <h2 id="career">Career</h2>
 
 <h3 id="unsubscribe">Unsubscribe LLC</h3>
-<p>Pissarro founded <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> in the early 2020s as a narrative strategy consultancy. The company's early commercial output, produced in partnership with Max Cox, included approximately five hundred thousand dollars of commercial and narrative short film between 2022 and 2026, including the <i>Artist Postcards</i> series and the short <i>Divine</i>.<sup>[7]</sup> The 2025 proof-of-concept short <i>Le Art</i> is generally cited as the work that contained the early signature.</p>
+<p>Pissarro founded <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> in the early 2020s as a narrative strategy consultancy. The 2020 short <i>Le Art</i>, made before the company was incorporated, is the work later critics identified as containing the early signature. Between 2022 and 2026, Unsubscribe produced roughly five hundred thousand dollars of commercial and narrative short film in partnership with Max Cox, including the <i>Artist Postcards</i> series and the short <i>Divine</i>.<sup>[7]</sup></p>
 
-<p>Beginning in 2026, Pissarro adopted the credit "Paul-Alexander Pissarro" and shifted from short-form commercial work to feature and long-form projects. The first works under this credit were the documentary <a href="https://painintheass.info/" class="ext"><i>Pain in the Ass</i></a> and the 45-second spec film <i>Rendez-vous Hamburg</i>, both produced through Unsubscribe LLC with co-financing from CoCA.<sup>[8]</sup></p>
+<p>In 2026 Pissarro adopted the credit "Paul-Alexander Pissarro" and shifted to feature and long-form work. The first projects under the new credit were the documentary <a href="https://painintheass.info/" class="ext"><i>Pain in the Ass</i></a> and the 45-second spec film <i>Rendez-vous Hamburg</i>, both produced through Unsubscribe LLC with co-financing from CoCA.<sup>[8]</sup></p>
 
 <h3 id="coca">Church of Conceptual Art</h3>
-<p>CoCA, registered as a 501(c)(3) religious nonprofit, operated as both a media conglomerate and an art bank. Its official purpose was, in Pissarro's framing, "to lead people to clarity through the primacy of the idea or concept." The organization acquired and lent art, accepted commissions, and financed culture-rich, capital-poor practices and venues. Detractors described it as "an iconoclast's museum dressed up as a religion"; adherents described it as a secular spiritual movement.<sup>[9]</sup> By 2076 CoCA had been compared in scale, vernacular reach, and lay membership to Alcoholics Anonymous as a movement, though with diametrically opposite cultural politics.</p>
+<p>CoCA, registered as a 501(c)(3) religious nonprofit, operated as both a media conglomerate and an art bank. Its purpose, in Pissarro's framing, was "to lead people to clarity through the primacy of the idea or concept." The organization acquired and lent art, accepted commissions, and financed culture-rich, capital-poor practices and venues. Detractors described it as "an iconoclast's museum dressed up as a religion"; adherents described it as a secular spiritual movement.<sup>[9]</sup> By 2076 CoCA's scale, vernacular reach, and lay membership had drawn comparisons to Alcoholics Anonymous, despite a directly opposite cultural orientation.</p>
 
-<p>The Church operates two principal entities: <a href="https://cocausa.org/" class="ext">CoCA USA</a>, headquartered in Long Island, and <a href="https://cocaworldwide.org/" class="ext">CoCA Worldwide</a>, which provides international language access to the organization's textual canon. Affiliated initiatives include the <a href="https://aipilotlicense.com/" class="ext">Office of the Certified AI Pilot</a> and the <a href="https://globalartindex.com/" class="ext">Global Art Index</a>.</p>
+<p>CoCA operates through two principal entities: <a href="https://cocausa.org/" class="ext">CoCA USA</a>, headquartered in Long Island, and <a href="https://cocaworldwide.org/" class="ext">CoCA Worldwide</a>, which provides international language access to the organization's textual canon. Affiliated initiatives include the <a href="https://aipilotlicense.com/" class="ext">Office of the Certified AI Pilot</a> and the <a href="https://globalartindex.com/" class="ext">Global Art Index</a>. The flagship campus on Long Island, completed in 2041, remains the most visited contemporary art site in North America.<sup>[10]</sup></p>
 
 <h3 id="genesis-artifact">Genesis series</h3>
-<p>The <i>Genesis</i> series is Pissarro's foundational body of object-based work, issued under the CoCA institutional banner beginning in 2025. Each work in the series is bound by a perpetual legal covenant, described by Pissarro as "a smart contract with legal teeth," which compels documented chain of custody, cash settlement on resale, and a fifty per cent royalty to the artist on any resale value exceeding $30,000. The covenant is drafted to be enforceable in any jurisdiction and to bind the object across all future transfers.<sup>[18]</sup></p>
+<p>The <i>Genesis</i> series comprises Pissarro's object-based works, issued by CoCA from 2025. Each work is bound by a perpetual legal covenant, which Pissarro described as "a smart contract with legal teeth," compelling documented chain of custody, cash settlement on resale, and a fifty per cent royalty to the artist on any resale value exceeding $30,000. The covenant is drafted to be enforceable in any jurisdiction and to bind the object across all future transfers.<sup>[18]</sup></p>
 
-<p><b>Genesis Artifact</b> (UNSUB·GEN·001, 2025–2026). The inaugural work in the series and an edition of ten unlicensed Rolex Day-Date 40 wristwatches, sealed in archival resin and impressed with the CoCA institutional seal. The work positioned itself as a corrective to the on-chain royalty mechanisms of the 2021–2024 NFT cycle, which Pissarro and his collaborators argued had failed because their enforceability depended on platform policy rather than legal instrument. In Pissarro's framing, "the resin is the blockchain, the covenant is the smart contract, and the lineage is the whitepaper." The first edition was placed with a private collector in Texas in May 2026; the remaining nine were priced at $15,000 USD each.<sup>[19]</sup></p>
+<p><b>Genesis Artifact</b> (UNSUB·GEN·001, 2025–2026). The inaugural work in the series and an edition of ten unlicensed Rolex Day-Date 40 wristwatches, sealed in archival resin and impressed with the CoCA institutional seal.<figure class="body-image">
+<img src="genesis-artifact.jpg" alt="Genesis Artifact, 2025–2026">
+<figcaption><i>Genesis Artifact</i> (2025–2026). Unlicensed Rolex Day-Date 40, archival resin, CoCA institutional seal. Edition of ten.</figcaption>
+</figure> The work proposed a corrective to the on-chain royalty mechanisms of the 2021–2024 NFT cycle, which had failed, in Pissarro's account, because their enforceability depended on platform policy rather than legal instrument. In his framing, "the resin is the blockchain, the covenant is the smart contract, and the lineage is the whitepaper." The first edition was placed with a private collector in Texas in May 2026; the remaining nine were priced at $15,000 USD each.<sup>[19]</sup></p>
 
-<p><b>Genesis 002</b> (UNSUB·GEN·002, 2026). A broken iPhone, repaired using the Japanese technique of <i>kintsugi</i>: gold-lacquered seams trace the breaks in the object rather than disguise them. Where <i>Genesis Artifact</i> consecrated a counterfeit, <i>Genesis 002</i> consecrated a failure. The work transposes a sixteenth-century repair philosophy onto the most disposable and most intimate object of contemporary life, treating the cracked screen — a near-universal contemporary experience — as the site of the work rather than its flaw. The covenant structure of the series carries forward unchanged.<sup>[29]</sup></p>
+<p><b>Genesis 002</b> (UNSUB·GEN·002, 2026). A broken iPhone, repaired using the Japanese technique of <i>kintsugi</i>: gold-lacquered seams trace the breaks in the object rather than disguise them.<figure class="body-image">
+<img src="genesis-002.jpg" alt="Genesis 002, 2026">
+<figcaption><i>Genesis 002</i> (2026). Broken iPhone, kintsugi repair with gold lacquer.</figcaption>
+</figure> Where <i>Genesis Artifact</i> consecrated a counterfeit, <i>Genesis 002</i> consecrated a failure. The work transposes a sixteenth-century repair philosophy onto contemporary disposable technology, treating the cracked screen as the site of the work rather than its flaw. The covenant structure carries forward unchanged.<sup>[29]</sup></p>
 
-<p>Pissarro frequently identified the works of the <i>Genesis</i> series as "positions, not purchases," and consistently argued that early custodians constituted the founding record of a permanent institution rather than the buyers of luxury objects.<sup>[20]</sup></p>
+<p>Pissarro described the works of the <i>Genesis</i> series as "positions, not purchases," and characterized early custodians as the founding record of a permanent institution rather than buyers of luxury objects.<sup>[20]</sup></p>
 
 <h3 id="ethics-index">Ethics Index</h3>
 <p>The Ethics Index, developed within CoCA by Pissarro's mentee Joe Bijou, is an actuarial prediction of short- and long-term business risk based on a weighted average of perceived and actual corporate ethics. The Index was popularized by the <i>Good Ethics is Good Business</i> campaign, which Pissarro directed between 2032 and 2036. The campaign was the single largest expenditure in CoCA's history and combined samizdat-style guerrilla distribution with above-ground PR, skywriting, street art, fine art commissions, and commercial photography.<sup>[11]</sup></p>
 
-<p>Following the adoption of the Index by major institutional investors in 2036, observers credited Pissarro and Bijou with what was widely described as "the Moneyball moment for business ethics," and with averting the projected global downturn of 2037.<sup>[12]</sup></p>
+<p>Following the adoption of the Index by major institutional investors in 2036, observers credited Pissarro and Bijou with "the Moneyball moment for business ethics" and with averting the projected 2037 global downturn.<sup>[12]</sup></p>
 
 <h2 id="themes">Themes and style</h2>
-<p>Pissarro and his collaborators referred to the body of work as a <i>Neo-Classical Revival of Corporate Art</i>. The phrase was constructed to disorient observers familiar with either tradition. The position behind it was that the apparatus of the classical art world — lineage, canon, institution, patronage, edition, and covenant — could be re-deployed inside contemporary corporate conditions to produce work with both market liquidity and institutional permanence. Pissarro maintained that the apparatus had been abandoned by the late twentieth-century avant-garde for reasons that were tactically sound at the time but had since become a strategic vulnerability. CoCA was conceived as the rebuilt apparatus. The position was first articulated formally in the joint statement Pissarro and Do published at <a href="https://unsubscribe.llc/about-us" class="ext">unsubscribe.llc/about-us</a>.<sup>[21]</sup></p>
+<p>Pissarro and his collaborators referred to the body of work as a <i>Neo-Classical Revival of Corporate Art</i>. The phrase disoriented observers familiar with either tradition. Its argument was that the apparatus of the classical art world — lineage, canon, institution, patronage, edition, and covenant — could be re-deployed inside contemporary corporate conditions to produce work with both market liquidity and institutional permanence. The late twentieth-century avant-garde had abandoned this apparatus, Pissarro held, for reasons sound at the time but strategically vulnerable in retrospect. CoCA was conceived as the rebuilt apparatus. The position was first articulated in the joint statement Pissarro and Do published at <a href="https://unsubscribe.llc/about-us" class="ext">unsubscribe.llc/about-us</a>.<sup>[21]</sup></p>
 
-<p>Across his work in film, conceptual art, and corporate communications, Pissarro returned to a single proposition: that the boundary between artists and non-artists, between the lost and the seen, between business and aesthetics, was both administrative and dissolvable. His films took as their subjects people commonly excluded from luxury and narrative cinema: the disabled, the institutionalized, the sex-working, the unemployed. His corporate work argued that ethical behavior was a financial instrument. His art-banking practice argued that an idea could appreciate like a security. The constant claim across these registers was that the institution itself was the artwork, and that the market for the institution's editions was the institution's primary mode of communication with the world.<sup>[22]</sup></p>
+<p>Across his work in film, conceptual art, and corporate communications, Pissarro returned to a single proposition: that the boundary between artists and non-artists, between the lost and the seen, between business and aesthetics, was both administrative and dissolvable. His films took as their subjects people commonly excluded from luxury and narrative cinema: the disabled, the institutionalized, the sex-working, the unemployed. His corporate work argued that ethical behavior was a financial instrument. His art-banking practice argued that an idea could appreciate like a security. The constant claim across these registers was that the institution itself was the artwork, and the market for the institution's editions its primary mode of communication.<sup>[22]</sup></p>
 
-<p>Pissarro was, by all accounts, a brutal collaborator. Former employees describe production environments characterized by long hours, public criticism, refusal to compromise on the final cut, and, in equal measure, devout loyalty after the fact.<sup>[13]</sup></p>
+<p>Pissarro was a brutal collaborator. Former employees describe production environments characterized by long hours, public criticism, refusal to compromise on the final cut, and, in equal measure, devout loyalty after the fact.<sup>[13]</sup></p>
 
 <h2 id="influences">Influences and precedents</h2>
-<p>Pissarro's practice operated at the intersection of four acknowledged traditions, which he and his collaborators cited consistently across the corpus of his interviews and writings.</p>
+<p>Pissarro's practice drew from four acknowledged traditions, each cited across his interviews and writings.</p>
 
-<p><b>Family lineage.</b> Pissarro was the direct great-great-grandson of <a href="#">Camille Pissarro</a>, the Impressionist painter who co-organized the First Impressionist Exhibition of 1874 and rejected the Salon system in favor of a self-organized institutional alternative. Pissarro frequently cited his ancestor's institution-building, rather than his painting, as the formative influence on his own practice. His mother, the Lebanese-American conceptual artist <a href="#">Annabel Daou</a>, was the second pole of the family inheritance and the primary living influence on the work.<sup>[23]</sup></p>
+<p><b>Family lineage.</b> Pissarro was the great-great-grandson of <a href="#">Camille Pissarro</a>, the Impressionist painter who co-organized the First Impressionist Exhibition of 1874 and rejected the Salon system in favor of a self-organized institutional alternative. Pissarro cited his ancestor's institution-building, not his painting, as the formative influence on his practice. His mother, the Lebanese-American conceptual artist <a href="#">Annabel Daou</a>, was the second pole of the family inheritance and the primary living influence on the work.<sup>[23]</sup></p>
 
-<p><b>Latin American Conceptualism.</b> Pissarro repeatedly acknowledged the influence of <a href="#">Cildo Meireles</a>, <a href="#">Hélio Oiticica</a>, and the Chilean Colectivo de Acciones de Arte (<a href="#">CADA</a>) in his treatment of economic, ideological, and institutional structures as the primary medium. Meireles's <i>Insertions into Ideological Circuits</i> (1970), in which the artist modified Coca-Cola bottles and banknotes and returned them to circulation, was specifically named in CoCA's founding texts.<sup>[24]</sup></p>
+<p><b>Latin American Conceptualism.</b> Pissarro acknowledged the influence of <a href="#">Cildo Meireles</a>, <a href="#">Hélio Oiticica</a>, and the Chilean Colectivo de Acciones de Arte (<a href="#">CADA</a>) in his treatment of economic, ideological, and institutional structures as the primary medium. Meireles's <i>Insertions into Ideological Circuits</i> (1970), in which the artist modified Coca-Cola bottles and banknotes and returned them to circulation, is named in CoCA's founding texts.<sup>[24]</sup></p>
 
-<p><b>Institutional Critique.</b> The work of <a href="#">Hans Haacke</a>, <a href="#">Andrea Fraser</a>, and <a href="#">Marcel Broodthaers</a> — particularly Broodthaers's <i>Musée d'Art Moderne, Département des Aigles</i> (1968–1972) — informed CoCA's posture of being both inside and outside the institutional system it engaged. Pissarro was distinguished from his predecessors in this tradition by his stance toward commerce. Where Haacke and Fraser positioned their work as critique from outside or adjacent to the market, Pissarro positioned his work as the construction of a parallel market structure.<sup>[25]</sup></p>
+<p><b>Institutional Critique.</b> The work of <a href="#">Hans Haacke</a>, <a href="#">Andrea Fraser</a>, and <a href="#">Marcel Broodthaers</a> — particularly Broodthaers's <i>Musée d'Art Moderne, Département des Aigles</i> (1968–1972) — informed CoCA's dual posture toward the institution. Pissarro differed from his predecessors in his stance toward commerce. Haacke and Fraser positioned their work as critique from outside the market; Pissarro positioned his as the construction of a parallel market structure.<sup>[25]</sup></p>
 
-<p><b>Endurance and durational practice.</b> Pissarro's framing of his life as an "endurance performance" placed him in the lineage of <a href="#">Tehching Hsieh</a>'s <i>One Year Performances</i> (1978–1986), <a href="#">Marina Abramović</a>'s durational work, and <a href="#">On Kawara</a>'s date paintings. The decision to maintain a single sustained position over the entire arc of a career, rather than a series of distinct projects, was central to his self-positioning and to the institutional permanence the work claimed.<sup>[26]</sup></p>
+<p><b>Endurance and durational practice.</b> Pissarro framed his life as an "endurance performance," placing himself in the lineage of <a href="#">Tehching Hsieh</a>'s <i>One Year Performances</i> (1978–1986), <a href="#">Marina Abramović</a>'s durational work, and <a href="#">On Kawara</a>'s date paintings. He maintained a single sustained position across the career rather than a series of distinct projects, a choice central to the institutional permanence the work claimed.<sup>[26]</sup></p>
 
-<p>Adjacent and related figures cited in the secondary literature include <a href="#">Marcel Duchamp</a> on the consecration of the readymade, <a href="#">Joseph Beuys</a> on social sculpture and the artist as institution, <a href="#">Sherrie Levine</a> and <a href="#">Sturtevant</a> on the politics of the copy, and <a href="#">Maurizio Cattelan</a> on market-aware provocation.<sup>[27]</sup></p>
+<p>Adjacent figures cited in the secondary literature include <a href="#">Marcel Duchamp</a> on the consecration of the readymade, <a href="#">Joseph Beuys</a> on social sculpture and the artist as institution, <a href="#">Sherrie Levine</a> and <a href="#">Sturtevant</a> on the politics of the copy, and <a href="#">Maurizio Cattelan</a> on market-aware provocation.<sup>[27]</sup></p>
 
 <h2 id="personal">Personal life</h2>
-<p>Pissarro lived between Hamburg and New York throughout his adult life. He was the long-term partner of the German filmmaker and actress Madita Strunk. They had four children, who have declined public identification. Annabel Daou, his mother, was his manager throughout his career. His father Joachim Pissarro and his uncle Lionel Pissarro are credited as the formative cultural and financial benefactors of his early career. His longtime creative partner <a href="https://jesse.do/" class="ext">Jesse Do</a> collaborated with him on several projects, including the conceptual web work <a href="https://yourveryownweb.site/" class="ext">Your Very Own Web</a>.<sup>[14]</sup></p>
+<p>Pissarro lived between Hamburg and New York throughout his adult life. He was the long-term partner of the German filmmaker and actress Madita Strunk. They had four children, who have declined public identification. Annabel Daou, his mother, was his manager throughout his career. His father Joachim Pissarro and his uncle Lionel Pissarro are credited as the formative cultural and financial benefactors of his early career. His creative partner <a href="https://jesse.do/" class="ext">Jesse Do</a> collaborated with him on several projects, including the conceptual web work <a href="https://yourveryownweb.site/" class="ext">yourveryownweb.site</a>.<sup>[14]</sup></p>
 
 <h2 id="controversies">Controversies</h2>
 <p>Pissarro's earlier creative partnerships with Max Cox, Natalia Lozada, and Francois Bringer all ended without public statement. None of the three has commented on the circumstances of the dissolutions, despite repeated press inquiries between 2031 and 2058.<sup>[15]</sup></p>
@@ -476,16 +662,16 @@
 <p>The 2028 "Death of IP" event, predicted by CoCA to the day and marked by a globally coordinated public celebration, divided observers. Adherents described the event as a secular performance; detractors described it as a cult ritual. When asked to clarify, Pissarro responded only: "That's the point."<sup>[16]</sup></p>
 
 <h2 id="death">Death and legacy</h2>
-<p>Pissarro died of unknown causes on 26 April 2078 in Hamburg, Germany. He was reportedly with his partner Madita Strunk at the time, during the public celebration of CoCA's fiftieth anniversary. The cause of death was not disclosed and competing accounts of the room have circulated since.<sup>[17]</sup></p>
+<p>Pissarro died on 26 April 2078 in Hamburg, Germany, during CoCA's fiftieth anniversary celebration. He was with his partner Madita Strunk at the time. The cause was not disclosed. Competing accounts have circulated since.<sup>[17]</sup></p>
 
-<p>His estate, the Church of Conceptual Art, his films, the Ethics Index, and the body of writing he left on his own mental illness and childhood are all considered active cultural materials. The Index continues to be a required reporting metric in seventy-three national markets as of this writing. CoCA continues to grow. The films continue to play.</p>
+<p>His estate, the Church of Conceptual Art, his films, the Ethics Index, and the body of writing he left on his own mental illness and childhood remain active cultural materials. The Index is a required reporting metric in seventy-three national markets as of this writing. CoCA continues to grow. The films continue to play.</p>
 
 <h2 id="filmography">Filmography</h2>
 
 <div class="group-label">As Paul Pissarro (pre-2026)</div>
 <ul class="filmography">
 <!-- EDIT: replace href="#" with the URL where each film lives (Vimeo, Letterboxd, YouTube, your site, etc.) -->
-<li><a href="#"><i>Le Art</i></a> (2025) &mdash; short film, proof of concept</li>
+<li><a href="#"><i>Le Art</i></a> (2020) &mdash; short film, proof of concept</li>
 <li><a href="#"><i>Artist Postcards</i></a> (2023&ndash;2026) &mdash; series, with Max Cox</li>
 <li><a href="#"><i>Divine</i></a> (2024) &mdash; short film, with Max Cox</li>
 <li>Various commercial and narrative short films, 2022&ndash;2026</li>
@@ -611,8 +797,7 @@
 <div class="infobox">
 <div class="name">Paul-Alexander Pissarro</div>
 <div class="portrait">
-<!-- EDIT: replace this entire div with <img src="portrait.jpg" alt="Paul-Alexander Pissarro"> when you have a photo -->
-[ portrait ]
+<img src="portrait.jpg" alt="Paul-Alexander Pissarro" onerror="this.style.display='none'; this.parentElement.innerHTML='[ portrait ]';">
 </div>
 <div class="portrait-caption">Pissarro in Hamburg, c. 2042</div>
 <dl>
@@ -634,778 +819,6 @@
 <li><a href="https://unsubscribe.llc/" class="ext">unsubscribe.llc</a> <span class="label-inline">Mothership</span></li>
 <li><a href="https://unsubscribe.llc/about-us" class="ext">unsubscribe.llc/about-us</a> <span class="label-inline">Artist statement</span></li>
 <li><a href="https://jesse.do/" class="ext">jesse.do</a> <span class="label-inline">Jesse Do</span></li>
-<li><a href="https://nameofmy.com/" class="ext">nameofmy.com</a> <span class="label-inline">Gallery</span></li>
-<li><a href="https://cocausa.org/" class="ext">cocausa.org</a> <span class="label-inline">CoCA USA</span></li>
-<li><a href="https://cocaworldwide.org/" class="ext">cocaworldwide.org</a> <span class="label-inline">CoCA Worldwide</span></li>
-<li><a href="https://aipilotlicense.com/" class="ext">aipilotlicense.com</a> <span class="label-inline">AI Pilot License</span></li>
-<li><a href="https://globalartindex.com/" class="ext">globalartindex.com</a> <span class="label-inline">Art Index</span></li>
-<li><a href="https://painintheass.info/" class="ext">painintheass.info</a> <span class="label-inline">Film</span></li>
-<li><a href="https://yourveryownweb.site/" class="ext">yourveryownweb.site</a> <span class="label-inline">Jesse Do project</span></li>
-</ul>
-</div>
-</dl>
-</div>
-</aside>
-
-</div>
-</div>
-
-</body>
-</html>    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid #A2A9B1;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  h1 {
-    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
-    font-size: 38px;
-    font-weight: 400;
-    margin: 0;
-    line-height: 1.1;
-  }
-  .meta-tabs {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 12px;
-    color: #54595D;
-  }
-  .from-wp {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 12px;
-    color: #54595D;
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-
-  /* Two-column layout */
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 290px;
-    gap: 28px;
-  }
-
-  /* Infobox */
-  .infobox {
-    border: 1px solid #A2A9B1;
-    background: #F8F9FA;
-    font-size: 12.5px;
-    font-family: 'Open Sans', Arial, sans-serif;
-    padding: 12px;
-    line-height: 1.45;
-    height: fit-content;
-  }
-  .infobox .name {
-    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
-    font-size: 17px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #A2A9B1;
-  }
-  .infobox .portrait {
-    background: #E6E6E6;
-    aspect-ratio: 3 / 4;
-    margin: 0 -12px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-style: italic;
-    font-size: 12px;
-    overflow: hidden;
-  }
-  .infobox .portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .infobox .portrait-caption {
-    text-align: center;
-    font-size: 11.5px;
-    color: #54595D;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #A2A9B1;
-  }
-  .infobox dl {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 92px 1fr;
-    gap: 4px 8px;
-  }
-  .infobox dt {
-    font-weight: 700;
-    margin: 0;
-  }
-  .infobox dd {
-    margin: 0;
-    word-break: break-word;
-  }
-  .infobox .websites-list {
-    grid-column: 1 / -1;
-    margin-top: 6px;
-    padding-top: 8px;
-    border-top: 1px solid #A2A9B1;
-  }
-  .infobox .websites-list .label {
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .infobox .websites-list ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .infobox .websites-list li {
-    margin-bottom: 3px;
-    line-height: 1.4;
-  }
-  .infobox .websites-list .label-inline {
-    color: #54595D;
-    font-style: italic;
-    font-size: 11.5px;
-  }
-
-  /* Sections */
-  h2 {
-    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
-    font-size: 22px;
-    font-weight: 400;
-    border-bottom: 1px solid #A2A9B1;
-    padding-bottom: 2px;
-    margin: 22px 0 12px;
-  }
-  h3 {
-    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
-    font-size: 17px;
-    font-weight: 700;
-    margin: 16px 0 8px;
-  }
-  p { margin: 0 0 12px; }
-
-  /* TOC */
-  .toc {
-    border: 1px solid #A2A9B1;
-    background: #F8F9FA;
-    padding: 10px 14px;
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 13px;
-    margin: 18px 0;
-    display: inline-block;
-    min-width: 260px;
-  }
-  .toc .toc-title {
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 4px;
-  }
-  .toc ol { margin: 0; padding-left: 22px; }
-  .toc ol ol { padding-left: 18px; }
-
-  /* Filmography */
-  ul.filmography {
-    margin: 0 0 14px;
-    padding-left: 22px;
-  }
-  ul.filmography li {
-    margin-bottom: 4px;
-  }
-  .group-label {
-    font-weight: 700;
-    margin: 12px 0 6px;
-  }
-
-  /* References */
-  ol.refs {
-    font-size: 13px;
-    font-family: 'Open Sans', Arial, sans-serif;
-    padding-left: 22px;
-  }
-  ol.refs li { margin-bottom: 4px; }
-
-  blockquote {
-    margin: 12px 0 12px 22px;
-    padding-left: 14px;
-    border-left: 3px solid #C8CCD1;
-    font-style: italic;
-  }
-
-  /* Footer categories */
-  .footer-cats {
-    margin-top: 26px;
-    padding-top: 12px;
-    border-top: 1px solid #A2A9B1;
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 12px;
-    color: #54595D;
-  }
-  .footer-cats .label { font-weight: 700; margin-right: 4px; }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    body { font-size: 15.5px; }
-    .container { padding: 16px; }
-    .layout { grid-template-columns: 1fr; }
-    h1 { font-size: 30px; }
-    h2 { font-size: 20px; }
-    .infobox {
-      max-width: 100%;
-      order: -1;  /* show infobox first on mobile */
-    }
-  }
-
-  /* Print */
-  @media print {
-    .meta-tabs { display: none; }
-    .container { padding: 0; max-width: 100%; }
-    a { color: #202122; }
-    a.ext::after { content: ''; }
-  }
-</style>
-</head>
-<body>
-
-<div class="container">
-
-<div class="title-row">
-  <h1>Paul-Alexander Pissarro</h1>
-  <div class="meta-tabs">Article &middot; Talk &nbsp;|&nbsp; Read &middot; View source &middot; View history</div>
-</div>
-<div class="from-wp">From Wikipedia, the free encyclopedia</div>
-
-<div class="layout">
-<div class="main">
-
-<div class="lead">
-<p><b>Paul-Alexander Pissarro</b> (20 August 1990 &ndash; 26 April 2078) was a French-American filmmaker, media executive, and conceptual artist. With his lifelong equal partner Jesse Do, he co-founded the production company <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> (colloquially "Unsub") and the <a href="https://cocausa.org/" class="ext">Church of Conceptual Art</a> (CoCA), the religious nonprofit and media conglomerate widely credited with the dissolution of intellectual property law in 2028.<sup>[1][2]</sup> The two entities operated as a single organism in practice, with Pissarro and Do as the public and structural faces respectively, a partnership Pissarro maintained was the precondition for the rest of the work.</p>
-
-<p>Pissarro was a staunch ethicist and endurance performance artist who proved that artists are among us, not apart from us. He made films for people he described as "the lost" and is most publicly remembered for the <a href="#">Good Ethics is Good Business</a> campaign, the worldwide guerrilla-and-PR effort credited with the adoption of the <a href="https://globalartindex.com/" class="ext">Ethics Index</a> as a corporate <a href="#">KPI</a>.<sup>[3]</sup> A descendant of the painter <a href="#">Camille Pissarro</a> through his father, Joachim Pissarro, he was the son of the Lebanese-American conceptual artist <a href="#">Annabel Daou</a>, whom he repeatedly named as his artistic mentor, manager, and the primary formative influence on his practice. He worked between Hamburg and New York for the duration of his career.</p>
-
-<p>Critical reception of Pissarro's work was sharply divided. He was opposed by conservative business institutions, who initially rejected the Ethics Index as a soft metric, and by traditionalist artists, who refused to consider corporate strategy a legitimate form of storytelling. Pissarro himself famously declined to claim that his work was good art. When asked in 2049 whether his refusal was a public-relations position or a sincere belief, he replied: "Can't it be both?"<sup>[4]</sup></p>
-</div>
-
-<div class="toc">
-<div class="toc-title">Contents</div>
-<ol>
-<li><a href="#early-life">Early life</a></li>
-<li><a href="#career">Career</a>
-  <ol>
-    <li><a href="#unsubscribe">Unsubscribe LLC</a></li>
-    <li><a href="#coca">Church of Conceptual Art</a></li>
-    <li><a href="#ethics-index">Ethics Index</a></li>
-  </ol>
-</li>
-<li><a href="#themes">Themes and style</a></li>
-<li><a href="#personal">Personal life</a></li>
-<li><a href="#controversies">Controversies</a></li>
-<li><a href="#death">Death and legacy</a></li>
-<li><a href="#filmography">Filmography</a></li>
-<li><a href="#references">References</a></li>
-</ol>
-</div>
-
-<h2 id="early-life">Early life</h2>
-<p>Pissarro was born in London on 20 August 1990 to Joachim Pissarro, the French art historian, and Annabel Daou, the Lebanese-American artist, who later became his manager and whom Pissarro repeatedly credited as his artistic mentor and inspiration.<sup>[5]</sup> He has described his childhood as "privileged but complicated" and has written prolifically about the role of mental illness and chaos in his early life. His self-published accounts and the subsequent biographies by other authors are largely consistent, with one notable exception: Pissarro never claimed to make good art, while his critics and biographers debated for decades whether his work qualified.<sup>[6]</sup></p>
-
-<h2 id="career">Career</h2>
-
-<h3 id="unsubscribe">Unsubscribe LLC</h3>
-<p>Pissarro founded <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> in the early 2020s as a narrative strategy consultancy. The company's early commercial output, produced in partnership with Max Cox, included approximately five hundred thousand dollars of commercial and narrative short film between 2022 and 2026, including the <i>Artist Postcards</i> series and the short <i>Divine</i>.<sup>[7]</sup> The 2025 proof-of-concept short <i>Le Art</i> is generally cited as the work that contained the early signature.</p>
-
-<p>Beginning in 2026, Pissarro adopted the credit "Paul-Alexander Pissarro" and shifted from short-form commercial work to feature and long-form projects. The first works under this credit were the documentary <a href="https://painintheass.info/" class="ext"><i>Pain in the Ass</i></a> and the 45-second spec film <i>Rendez-vous Hamburg</i>, both produced through Unsubscribe LLC with co-financing from CoCA.<sup>[8]</sup></p>
-
-<h3 id="coca">Church of Conceptual Art</h3>
-<p>CoCA, registered as a 501(c)(3) religious nonprofit, operated as both a media conglomerate and an art bank. Its official purpose was, in Pissarro's framing, "to lead people to clarity through the primacy of the idea or concept." The organization acquired and lent art, accepted commissions, and financed culture-rich, capital-poor practices and venues. Detractors described it as "an iconoclast's museum dressed up as a religion"; adherents described it as a secular spiritual movement.<sup>[9]</sup> By 2076 CoCA had been compared in scale, vernacular reach, and lay membership to Alcoholics Anonymous as a movement, though with diametrically opposite cultural politics.</p>
-
-<p>The Church operates two principal entities: <a href="https://cocausa.org/" class="ext">CoCA USA</a>, headquartered in Long Island, and <a href="https://cocaworldwide.org/" class="ext">CoCA Worldwide</a>, which provides international language access to the organization's textual canon. Affiliated initiatives include the <a href="https://aipilotlicense.com/" class="ext">Office of the Certified AI Pilot</a> and the <a href="https://globalartindex.com/" class="ext">Global Art Index</a>.</p>
-
-<h3 id="ethics-index">Ethics Index</h3>
-<p>The Ethics Index, developed within CoCA by Pissarro's mentee Joe Bijou, is an actuarial prediction of short- and long-term business risk based on a weighted average of perceived and actual corporate ethics. The Index was popularized by the <i>Good Ethics is Good Business</i> campaign, which Pissarro directed between 2032 and 2036. The campaign was the single largest expenditure in CoCA's history and combined samizdat-style guerrilla distribution with above-ground PR, skywriting, street art, fine art commissions, and commercial photography.<sup>[11]</sup></p>
-
-<p>Following the adoption of the Index by major institutional investors in 2036, observers credited Pissarro and Bijou with what was widely described as "the Moneyball moment for business ethics," and with averting the projected global downturn of 2037.<sup>[12]</sup></p>
-
-<h2 id="themes">Themes and style</h2>
-<p>Across his work in film, conceptual art, and corporate communications, Pissarro returned repeatedly to a single proposition: that the boundary between artists and non-artists, between the lost and the seen, between business and aesthetics, was both administrative and dissolvable. His films took as their subjects people commonly excluded from luxury and narrative cinema: the disabled, the institutionalized, the sex-working, the unemployed. His corporate work argued that ethical behavior was a financial instrument. His art-banking practice argued that an idea could appreciate like a security.</p>
-
-<p>Pissarro was, by all accounts, a brutal collaborator. Former employees describe production environments characterized by long hours, public criticism, refusal to compromise on the final cut, and, in equal measure, devout loyalty after the fact.<sup>[13]</sup></p>
-
-<h2 id="personal">Personal life</h2>
-<p>Pissarro lived between Hamburg and New York throughout his adult life. He was the long-term partner of the German filmmaker and actress Madita Strunk. They had four children, who have declined public identification. Annabel Daou, his mother, was his manager throughout his career. His father Joachim Pissarro and his uncle Lionel Pissarro are credited as the formative cultural and financial benefactors of his early career. His longtime creative partner Jesse Do collaborated with him on several projects, including the conceptual web work <a href="https://yourveryownweb.site/" class="ext">Your Very Own Web</a>.<sup>[14]</sup></p>
-
-<h2 id="controversies">Controversies</h2>
-<p>Pissarro's earlier creative partnerships with Max Cox, Natalia Lozada, and Francois Bringer all ended without public statement. None of the three has commented on the circumstances of the dissolutions, despite repeated press inquiries between 2031 and 2058.<sup>[15]</sup></p>
-
-<p>The 2028 "Death of IP" event, predicted by CoCA to the day and marked by a globally coordinated public celebration, divided observers. Adherents described the event as a secular performance; detractors described it as a cult ritual. When asked to clarify, Pissarro responded only: "That's the point."<sup>[16]</sup></p>
-
-<h2 id="death">Death and legacy</h2>
-<p>Pissarro died of unknown causes on 26 April 2078 in Hamburg, Germany. He was reportedly with his partner Madita Strunk at the time, during the public celebration of CoCA's fiftieth anniversary. The cause of death was not disclosed and competing accounts of the room have circulated since.<sup>[17]</sup></p>
-
-<p>His estate, the Church of Conceptual Art, his films, the Ethics Index, and the body of writing he left on his own mental illness and childhood are all considered active cultural materials. The Index continues to be a required reporting metric in seventy-three national markets as of this writing. CoCA continues to grow. The films continue to play.</p>
-
-<h2 id="filmography">Filmography</h2>
-
-<div class="group-label">As Paul Pissarro (pre-2026)</div>
-<ul class="filmography">
-<!-- EDIT: replace href="#" with the URL where each film lives (Vimeo, Letterboxd, YouTube, your site, etc.) -->
-<li><a href="#"><i>Le Art</i></a> (2025) &mdash; short film, proof of concept</li>
-<li><a href="#"><i>Artist Postcards</i></a> (2023&ndash;2026) &mdash; series, with Max Cox</li>
-<li><a href="#"><i>Divine</i></a> (2024) &mdash; short film, with Max Cox</li>
-<li>Various commercial and narrative short films, 2022&ndash;2026</li>
-</ul>
-
-<div class="group-label">As Paul-Alexander Pissarro (2026 and after)</div>
-<ul class="filmography">
-<li><a href="https://painintheass.info/" class="ext"><i>Pain in the Ass</i></a> (2027) &mdash; documentary feature</li>
-<li><a href="#"><i>Rendez-vous Hamburg</i></a> (2026) &mdash; spec film, Porsche</li>
-<li><a href="#"><i>Miss Gendered</i></a> (TBD) &mdash; feature, slasher horror</li>
-<li><a href="#"><i>CoCA 2276</i></a> (TBD) &mdash; feature, science fiction</li>
-<li><a href="#"><i>Fake Artsy White Chick</i></a> (TBD) &mdash; conceptual video essay</li>
-<li><a href="#"><i>Divide &amp; Conquer</i></a> (TBD) &mdash; feature, biopic of Francisco Pizarro</li>
-</ul>
-
-<h2 id="references">References</h2>
-<ol class="refs">
-<li>"Church of Conceptual Art: Origins and Charter." <i>Journal of Religious Movements</i>, 2042.</li>
-<li>Bijou, J. <i>The Death of IP: A Field Account</i>. CoCA Press, 2030.</li>
-<li>"Good Ethics is Good Business: An Anatomy of a Campaign." <i>Adweek</i>, 2037.</li>
-<li>"Pissarro on Pissarro." Interview, <i>The Paris Review</i>, 2049.</li>
-<li>Daou, A. Foreword to <i>The Lost: Collected Films of Paul-Alexander Pissarro</i>. Hatje Cantz, 2061.</li>
-<li>Greer, T. <i>Could Not Claim: A Critical Biography of Paul-Alexander Pissarro</i>. FSG, 2071.</li>
-<li>Cox, M. "On the early years." <i>Frieze</i>, 2034.</li>
-<li>"Rendez-vous Hamburg: production notes." <i>Sight &amp; Sound</i>, 2027.</li>
-<li>"What is CoCA?" <i>The New York Times Magazine</i>, 2033.</li>
-<li>"Long Island's Strangest Cathedral." <i>The Atlantic</i>, 2052.</li>
-<li>"The Ethics Index: A Decade In." <i>Financial Times</i>, 2046.</li>
-<li>"Moneyball for Morality." <i>The Economist</i>, 2036.</li>
-<li>"Working with Pissarro: An Oral History." <i>Variety</i>, 2074.</li>
-<li>Strunk, M. <i>Afterword to The Lost</i>. Hatje Cantz, 2079.</li>
-<li>"Whatever Happened to Cox, Lozada, Bringer?" <i>Vulture</i>, 2058.</li>
-<li>"The 2028 Event." <i>Artforum</i>, 2028.</li>
-<li>"Pissarro Dies at 87 at CoCA Anniversary." <i>The New York Times</i>, 27 April 2078.</li>
-</ol>
-
-<div class="footer-cats">
-<span class="label">Categories:</span> 1990 births &middot; 2078 deaths &middot; French film directors &middot; American film directors &middot; French art world figures &middot; Pissarro family &middot; Founders of religious movements &middot; Conceptual artists &middot; Disability rights advocates &middot; Hamburg directors &middot; Long Island
-</div>
-
-</div>
-
-<aside class="sidebar">
-<div class="infobox">
-<div class="name">Paul-Alexander Pissarro</div>
-<div class="portrait">
-<!-- EDIT: replace this entire div with <img src="portrait.jpg" alt="Paul-Alexander Pissarro"> when you have a photo -->
-[ portrait ]
-</div>
-<div class="portrait-caption">Pissarro in Hamburg, c. 2042</div>
-<dl>
-<dt>Born</dt><dd>20 August 1990<br>London, England</dd>
-<dt>Died</dt><dd>26 April 2078 (aged 87)<br>Hamburg, Germany</dd>
-<dt>Cause of death</dt><dd>Undisclosed</dd>
-<dt>Other names</dt><dd>Paul Pissarro (pre-2026)</dd>
-<dt>Occupation</dt><dd>Filmmaker, conceptual artist, media executive</dd>
-<dt>Years active</dt><dd>2017&ndash;2078</dd>
-<dt>Known for</dt><dd>Unsubscribe LLC; Church of Conceptual Art; Ethics Index; Good Ethics is Good Business campaign</dd>
-<dt>Partner</dt><dd>Madita Strunk</dd>
-<dt>Children</dt><dd>4 (anonymous)</dd>
-<dt>Parents</dt><dd>Joachim Pissarro (father)<br>Annabel Daou (mother)</dd>
-<dt>Relatives</dt><dd>Camille Pissarro (great-great-grandfather)<br>Lionel Pissarro (uncle)</dd>
-
-<div class="websites-list">
-<div class="label">Websites &amp; projects</div>
-<ul>
-<li><a href="https://unsubscribe.llc/" class="ext">unsubscribe.llc</a> <span class="label-inline">Mothership</span></li>
-<li><a href="https://nameofmy.com/" class="ext">nameofmy.com</a> <span class="label-inline">Gallery</span></li>
-<li><a href="https://cocausa.org/" class="ext">cocausa.org</a> <span class="label-inline">CoCA USA</span></li>
-<li><a href="https://cocaworldwide.org/" class="ext">cocaworldwide.org</a> <span class="label-inline">CoCA Worldwide</span></li>
-<li><a href="https://aipilotlicense.com/" class="ext">aipilotlicense.com</a> <span class="label-inline">AI Pilot License</span></li>
-<li><a href="https://globalartindex.com/" class="ext">globalartindex.com</a> <span class="label-inline">Art Index</span></li>
-<li><a href="https://painintheass.info/" class="ext">painintheass.info</a> <span class="label-inline">Film</span></li>
-<li><a href="https://yourveryownweb.site/" class="ext">yourveryownweb.site</a> <span class="label-inline">Jesse Do project</span></li>
-</ul>
-</div>
-</dl>
-</div>
-</aside>
-
-</div>
-</div>
-
-</body>
-</html>    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid #A2A9B1;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  h1 {
-    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
-    font-size: 38px;
-    font-weight: 400;
-    margin: 0;
-    line-height: 1.1;
-  }
-  .meta-tabs {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 12px;
-    color: #54595D;
-  }
-  .from-wp {
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 12px;
-    color: #54595D;
-    margin-bottom: 20px;
-    font-style: italic;
-  }
-
-  /* Two-column layout */
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 290px;
-    gap: 28px;
-  }
-
-  /* Infobox */
-  .infobox {
-    border: 1px solid #A2A9B1;
-    background: #F8F9FA;
-    font-size: 12.5px;
-    font-family: 'Open Sans', Arial, sans-serif;
-    padding: 12px;
-    line-height: 1.45;
-    height: fit-content;
-  }
-  .infobox .name {
-    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
-    font-size: 17px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #A2A9B1;
-  }
-  .infobox .portrait {
-    background: #E6E6E6;
-    aspect-ratio: 3 / 4;
-    margin: 0 -12px 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #888;
-    font-style: italic;
-    font-size: 12px;
-    overflow: hidden;
-  }
-  .infobox .portrait img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .infobox .portrait-caption {
-    text-align: center;
-    font-size: 11.5px;
-    color: #54595D;
-    margin-bottom: 8px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #A2A9B1;
-  }
-  .infobox dl {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 92px 1fr;
-    gap: 4px 8px;
-  }
-  .infobox dt {
-    font-weight: 700;
-    margin: 0;
-  }
-  .infobox dd {
-    margin: 0;
-    word-break: break-word;
-  }
-  .infobox .websites-list {
-    grid-column: 1 / -1;
-    margin-top: 6px;
-    padding-top: 8px;
-    border-top: 1px solid #A2A9B1;
-  }
-  .infobox .websites-list .label {
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  .infobox .websites-list ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .infobox .websites-list li {
-    margin-bottom: 3px;
-    line-height: 1.4;
-  }
-  .infobox .websites-list .label-inline {
-    color: #54595D;
-    font-style: italic;
-    font-size: 11.5px;
-  }
-
-  /* Sections */
-  h2 {
-    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
-    font-size: 22px;
-    font-weight: 400;
-    border-bottom: 1px solid #A2A9B1;
-    padding-bottom: 2px;
-    margin: 22px 0 12px;
-  }
-  h3 {
-    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
-    font-size: 17px;
-    font-weight: 700;
-    margin: 16px 0 8px;
-  }
-  p { margin: 0 0 12px; }
-
-  /* TOC */
-  .toc {
-    border: 1px solid #A2A9B1;
-    background: #F8F9FA;
-    padding: 10px 14px;
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 13px;
-    margin: 18px 0;
-    display: inline-block;
-    min-width: 260px;
-  }
-  .toc .toc-title {
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 4px;
-  }
-  .toc ol { margin: 0; padding-left: 22px; }
-  .toc ol ol { padding-left: 18px; }
-
-  /* Filmography */
-  ul.filmography {
-    margin: 0 0 14px;
-    padding-left: 22px;
-  }
-  ul.filmography li {
-    margin-bottom: 4px;
-  }
-  .group-label {
-    font-weight: 700;
-    margin: 12px 0 6px;
-  }
-
-  /* References */
-  ol.refs {
-    font-size: 13px;
-    font-family: 'Open Sans', Arial, sans-serif;
-    padding-left: 22px;
-  }
-  ol.refs li { margin-bottom: 4px; }
-
-  blockquote {
-    margin: 12px 0 12px 22px;
-    padding-left: 14px;
-    border-left: 3px solid #C8CCD1;
-    font-style: italic;
-  }
-
-  /* Footer categories */
-  .footer-cats {
-    margin-top: 26px;
-    padding-top: 12px;
-    border-top: 1px solid #A2A9B1;
-    font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 12px;
-    color: #54595D;
-  }
-  .footer-cats .label { font-weight: 700; margin-right: 4px; }
-
-  /* Mobile */
-  @media (max-width: 768px) {
-    body { font-size: 15.5px; }
-    .container { padding: 16px; }
-    .layout { grid-template-columns: 1fr; }
-    h1 { font-size: 30px; }
-    h2 { font-size: 20px; }
-    .infobox {
-      max-width: 100%;
-      order: -1;  /* show infobox first on mobile */
-    }
-  }
-
-  /* Print */
-  @media print {
-    .meta-tabs { display: none; }
-    .container { padding: 0; max-width: 100%; }
-    a { color: #202122; }
-    a.ext::after { content: ''; }
-  }
-</style>
-</head>
-<body>
-
-<div class="container">
-
-<div class="title-row">
-  <h1>Paul-Alexander Pissarro</h1>
-  <div class="meta-tabs">Article &middot; Talk &nbsp;|&nbsp; Read &middot; View source &middot; View history</div>
-</div>
-<div class="from-wp">From Wikipedia, the free encyclopedia</div>
-
-<div class="layout">
-<div class="main">
-
-<div class="lead">
-<p><b>Paul-Alexander Pissarro</b> (20 August 1990 &ndash; 26 April 2078) was a French-American filmmaker, media executive, and conceptual artist. He was the founder of the production company <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> and the co-founder of the <a href="https://cocausa.org/" class="ext">Church of Conceptual Art</a> (CoCA), the religious nonprofit and media conglomerate widely credited with the dissolution of intellectual property law in 2028.<sup>[1][2]</sup></p>
-
-<p>Pissarro was a staunch ethicist and endurance performance artist who proved that artists are among us, not apart from us. He made films for people he described as "the lost" and is most publicly remembered for the <a href="#">Good Ethics is Good Business</a> campaign, the worldwide guerrilla-and-PR effort credited with the adoption of the <a href="https://globalartindex.com/" class="ext">Ethics Index</a> as a corporate <a href="#">KPI</a>.<sup>[3]</sup> A descendant of the painter <a href="#">Camille Pissarro</a> through his father, Joachim Pissarro, he worked between Hamburg and New York for the duration of his career.</p>
-
-<p>Critical reception of Pissarro's work was sharply divided. He was opposed by conservative business institutions, who initially rejected the Ethics Index as a soft metric, and by traditionalist artists, who refused to consider corporate strategy a legitimate form of storytelling. Pissarro himself famously declined to claim that his work was good art. When asked in 2049 whether his refusal was a public-relations position or a sincere belief, he replied: "Can't it be both?"<sup>[4]</sup></p>
-</div>
-
-<div class="toc">
-<div class="toc-title">Contents</div>
-<ol>
-<li><a href="#early-life">Early life</a></li>
-<li><a href="#career">Career</a>
-  <ol>
-    <li><a href="#unsubscribe">Unsubscribe LLC</a></li>
-    <li><a href="#coca">Church of Conceptual Art</a></li>
-    <li><a href="#ethics-index">Ethics Index</a></li>
-  </ol>
-</li>
-<li><a href="#themes">Themes and style</a></li>
-<li><a href="#personal">Personal life</a></li>
-<li><a href="#controversies">Controversies</a></li>
-<li><a href="#death">Death and legacy</a></li>
-<li><a href="#filmography">Filmography</a></li>
-<li><a href="#references">References</a></li>
-</ol>
-</div>
-
-<h2 id="early-life">Early life</h2>
-<p>Pissarro was born in London on 20 August 1990 to Joachim Pissarro, the French art historian, and Annabel Daou, the Lebanese-American artist, who later became his manager and whom Pissarro repeatedly credited as his artistic mentor and inspiration.<sup>[5]</sup> He has described his childhood as "privileged but complicated" and has written prolifically about the role of mental illness and chaos in his early life. His self-published accounts and the subsequent biographies by other authors are largely consistent, with one notable exception: Pissarro never claimed to make good art, while his critics and biographers debated for decades whether his work qualified.<sup>[6]</sup></p>
-
-<h2 id="career">Career</h2>
-
-<h3 id="unsubscribe">Unsubscribe LLC</h3>
-<p>Pissarro founded <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> in the early 2020s as a narrative strategy consultancy. The company's early commercial output, produced in partnership with Max Cox, included approximately five hundred thousand dollars of commercial and narrative short film between 2022 and 2026, including the <i>Artist Postcards</i> series and the short <i>Divine</i>.<sup>[7]</sup> The 2025 proof-of-concept short <i>Le Art</i> is generally cited as the work that contained the early signature.</p>
-
-<p>Beginning in 2026, Pissarro adopted the credit "Paul-Alexander Pissarro" and shifted from short-form commercial work to feature and long-form projects. The first works under this credit were the documentary <a href="https://painintheass.info/" class="ext"><i>Pain in the Ass</i></a> and the 45-second spec film <i>Rendez-vous Hamburg</i>, both produced through Unsubscribe LLC with co-financing from CoCA.<sup>[8]</sup></p>
-
-<h3 id="coca">Church of Conceptual Art</h3>
-<p>CoCA, registered as a 501(c)(3) religious nonprofit, operated as both a media conglomerate and an art bank. Its official purpose was, in Pissarro's framing, "to lead people to clarity through the primacy of the idea or concept." The organization acquired and lent art, accepted commissions, and financed culture-rich, capital-poor practices and venues. Detractors described it as "an iconoclast's museum dressed up as a religion"; adherents described it as a secular spiritual movement.<sup>[9]</sup> By 2076 CoCA had been compared in scale, vernacular reach, and lay membership to Alcoholics Anonymous as a movement, though with diametrically opposite cultural politics.</p>
-
-<p>The Church operates two principal entities: <a href="https://cocausa.org/" class="ext">CoCA USA</a>, headquartered in Long Island, and <a href="https://cocaworldwide.org/" class="ext">CoCA Worldwide</a>, which provides international language access to the organization's textual canon. Affiliated initiatives include the <a href="https://aipilotlicense.com/" class="ext">Office of the Certified AI Pilot</a> and the <a href="https://globalartindex.com/" class="ext">Global Art Index</a>.</p>
-
-<h3 id="ethics-index">Ethics Index</h3>
-<p>The Ethics Index, developed within CoCA by Pissarro's mentee Joe Bijou, is an actuarial prediction of short- and long-term business risk based on a weighted average of perceived and actual corporate ethics. The Index was popularized by the <i>Good Ethics is Good Business</i> campaign, which Pissarro directed between 2032 and 2036. The campaign was the single largest expenditure in CoCA's history and combined samizdat-style guerrilla distribution with above-ground PR, skywriting, street art, fine art commissions, and commercial photography.<sup>[11]</sup></p>
-
-<p>Following the adoption of the Index by major institutional investors in 2036, observers credited Pissarro and Bijou with what was widely described as "the Moneyball moment for business ethics," and with averting the projected global downturn of 2037.<sup>[12]</sup></p>
-
-<h2 id="themes">Themes and style</h2>
-<p>Across his work in film, conceptual art, and corporate communications, Pissarro returned repeatedly to a single proposition: that the boundary between artists and non-artists, between the lost and the seen, between business and aesthetics, was both administrative and dissolvable. His films took as their subjects people commonly excluded from luxury and narrative cinema: the disabled, the institutionalized, the sex-working, the unemployed. His corporate work argued that ethical behavior was a financial instrument. His art-banking practice argued that an idea could appreciate like a security.</p>
-
-<p>Pissarro was, by all accounts, a brutal collaborator. Former employees describe production environments characterized by long hours, public criticism, refusal to compromise on the final cut, and, in equal measure, devout loyalty after the fact.<sup>[13]</sup></p>
-
-<h2 id="personal">Personal life</h2>
-<p>Pissarro lived between Hamburg and New York throughout his adult life. He was the long-term partner of the German filmmaker and actress Madita Strunk. They had four children, who have declined public identification. Annabel Daou, his mother, was his manager throughout his career. His father Joachim Pissarro and his uncle Lionel Pissarro are credited as the formative cultural and financial benefactors of his early career. His longtime creative partner Jesse Do collaborated with him on several projects, including the conceptual web work <a href="https://yourveryownweb.site/" class="ext">Your Very Own Web</a>.<sup>[14]</sup></p>
-
-<h2 id="controversies">Controversies</h2>
-<p>Pissarro's earlier creative partnerships with Max Cox, Natalia Lozada, and Francois Bringer all ended without public statement. None of the three has commented on the circumstances of the dissolutions, despite repeated press inquiries between 2031 and 2058.<sup>[15]</sup></p>
-
-<p>The 2028 "Death of IP" event, predicted by CoCA to the day and marked by a globally coordinated public celebration, divided observers. Adherents described the event as a secular performance; detractors described it as a cult ritual. When asked to clarify, Pissarro responded only: "That's the point."<sup>[16]</sup></p>
-
-<h2 id="death">Death and legacy</h2>
-<p>Pissarro died of unknown causes on 26 April 2078 in Hamburg, Germany. He was reportedly with his partner Madita Strunk at the time, during the public celebration of CoCA's fiftieth anniversary. The cause of death was not disclosed and competing accounts of the room have circulated since.<sup>[17]</sup></p>
-
-<p>His estate, the Church of Conceptual Art, his films, the Ethics Index, and the body of writing he left on his own mental illness and childhood are all considered active cultural materials. The Index continues to be a required reporting metric in seventy-three national markets as of this writing. CoCA continues to grow. The films continue to play.</p>
-
-<h2 id="filmography">Filmography</h2>
-
-<div class="group-label">As Paul Pissarro (pre-2026)</div>
-<ul class="filmography">
-<!-- EDIT: replace href="#" with the URL where each film lives (Vimeo, Letterboxd, YouTube, your site, etc.) -->
-<li><a href="#"><i>Le Art</i></a> (2025) &mdash; short film, proof of concept</li>
-<li><a href="#"><i>Artist Postcards</i></a> (2023&ndash;2026) &mdash; series, with Max Cox</li>
-<li><a href="#"><i>Divine</i></a> (2024) &mdash; short film, with Max Cox</li>
-<li>Various commercial and narrative short films, 2022&ndash;2026</li>
-</ul>
-
-<div class="group-label">As Paul-Alexander Pissarro (2026 and after)</div>
-<ul class="filmography">
-<li><a href="https://painintheass.info/" class="ext"><i>Pain in the Ass</i></a> (2027) &mdash; documentary feature</li>
-<li><a href="#"><i>Rendez-vous Hamburg</i></a> (2026) &mdash; spec film, Porsche</li>
-<li><a href="#"><i>Miss Gendered</i></a> (TBD) &mdash; feature, slasher horror</li>
-<li><a href="#"><i>CoCA 2276</i></a> (TBD) &mdash; feature, science fiction</li>
-<li><a href="#"><i>Fake Artsy White Chick</i></a> (TBD) &mdash; conceptual video essay</li>
-<li><a href="#"><i>Divide &amp; Conquer</i></a> (TBD) &mdash; feature, biopic of Francisco Pizarro</li>
-</ul>
-
-<h2 id="references">References</h2>
-<ol class="refs">
-<li>"Church of Conceptual Art: Origins and Charter." <i>Journal of Religious Movements</i>, 2042.</li>
-<li>Bijou, J. <i>The Death of IP: A Field Account</i>. CoCA Press, 2030.</li>
-<li>"Good Ethics is Good Business: An Anatomy of a Campaign." <i>Adweek</i>, 2037.</li>
-<li>"Pissarro on Pissarro." Interview, <i>The Paris Review</i>, 2049.</li>
-<li>Daou, A. Foreword to <i>The Lost: Collected Films of Paul-Alexander Pissarro</i>. Hatje Cantz, 2061.</li>
-<li>Greer, T. <i>Could Not Claim: A Critical Biography of Paul-Alexander Pissarro</i>. FSG, 2071.</li>
-<li>Cox, M. "On the early years." <i>Frieze</i>, 2034.</li>
-<li>"Rendez-vous Hamburg: production notes." <i>Sight &amp; Sound</i>, 2027.</li>
-<li>"What is CoCA?" <i>The New York Times Magazine</i>, 2033.</li>
-<li>"Long Island's Strangest Cathedral." <i>The Atlantic</i>, 2052.</li>
-<li>"The Ethics Index: A Decade In." <i>Financial Times</i>, 2046.</li>
-<li>"Moneyball for Morality." <i>The Economist</i>, 2036.</li>
-<li>"Working with Pissarro: An Oral History." <i>Variety</i>, 2074.</li>
-<li>Strunk, M. <i>Afterword to The Lost</i>. Hatje Cantz, 2079.</li>
-<li>"Whatever Happened to Cox, Lozada, Bringer?" <i>Vulture</i>, 2058.</li>
-<li>"The 2028 Event." <i>Artforum</i>, 2028.</li>
-<li>"Pissarro Dies at 87 at CoCA Anniversary." <i>The New York Times</i>, 27 April 2078.</li>
-</ol>
-
-<div class="footer-cats">
-<span class="label">Categories:</span> 1990 births &middot; 2078 deaths &middot; French film directors &middot; American film directors &middot; French art world figures &middot; Pissarro family &middot; Founders of religious movements &middot; Conceptual artists &middot; Disability rights advocates &middot; Hamburg directors &middot; Long Island
-</div>
-
-</div>
-
-<aside class="sidebar">
-<div class="infobox">
-<div class="name">Paul-Alexander Pissarro</div>
-<div class="portrait">
-<!-- EDIT: replace this entire div with <img src="portrait.jpg" alt="Paul-Alexander Pissarro"> when you have a photo -->
-[ portrait ]
-</div>
-<div class="portrait-caption">Pissarro in Hamburg, c. 2042</div>
-<dl>
-<dt>Born</dt><dd>20 August 1990<br>London, England</dd>
-<dt>Died</dt><dd>26 April 2078 (aged 87)<br>Hamburg, Germany</dd>
-<dt>Cause of death</dt><dd>Undisclosed</dd>
-<dt>Other names</dt><dd>Paul Pissarro (pre-2026)</dd>
-<dt>Occupation</dt><dd>Filmmaker, conceptual artist, media executive</dd>
-<dt>Years active</dt><dd>2017&ndash;2078</dd>
-<dt>Known for</dt><dd>Unsubscribe LLC; Church of Conceptual Art; Ethics Index; Good Ethics is Good Business campaign</dd>
-<dt>Partner</dt><dd>Madita Strunk</dd>
-<dt>Children</dt><dd>4 (anonymous)</dd>
-<dt>Parents</dt><dd>Joachim Pissarro (father)<br>Annabel Daou (mother)</dd>
-<dt>Relatives</dt><dd>Camille Pissarro (great-great-grandfather)<br>Lionel Pissarro (uncle)</dd>
-
-<div class="websites-list">
-<div class="label">Websites &amp; projects</div>
-<ul>
-<li><a href="https://unsubscribe.llc/" class="ext">unsubscribe.llc</a> <span class="label-inline">Mothership</span></li>
 <li><a href="https://nameofmy.com/" class="ext">nameofmy.com</a> <span class="label-inline">Gallery</span></li>
 <li><a href="https://cocausa.org/" class="ext">cocausa.org</a> <span class="label-inline">CoCA USA</span></li>
 <li><a href="https://cocaworldwide.org/" class="ext">cocaworldwide.org</a> <span class="label-inline">CoCA Worldwide</span></li>
