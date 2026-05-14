@@ -13,6 +13,9 @@
 <meta name="author" content="Paul-Alexander Pissarro">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://unsubscribe.llc/">
+<link rel="alternate" hreflang="en" href="https://unsubscribe.llc/">
+<link rel="alternate" hreflang="fr" href="https://unsubscribe.llc/fr/">
+<link rel="alternate" hreflang="x-default" href="https://unsubscribe.llc/">
 
 <!-- OpenGraph -->
 <meta property="og:type" content="profile">
@@ -21,6 +24,7 @@
 <meta property="og:url" content="https://unsubscribe.llc/">
 <meta property="og:site_name" content="Paul-Alexander Pissarro">
 <meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
 <meta property="profile:first_name" content="Paul-Alexander">
 <meta property="profile:last_name" content="Pissarro">
 
@@ -47,10 +51,10 @@
       "jobTitle": ["Filmmaker", "Conceptual artist", "Media executive"],
       "description": "French-American filmmaker, conceptual artist, and media executive. Founder of Unsubscribe LLC and co-founder of the Church of Conceptual Art.",
       "parent": [
-        {"@type": "Person", "name": "Joachim Pissarro", "jobTitle": "Art historian"},
-        {"@type": "Person", "name": "Annabel Daou", "jobTitle": "Conceptual artist"}
+        {"@type": "Person", "name": "Joachim Pissarro", "jobTitle": "Art historian", "sameAs": "https://en.wikipedia.org/wiki/Joachim_Pissarro"},
+        {"@type": "Person", "name": "Annabel Daou", "jobTitle": "Conceptual artist", "sameAs": "https://en.wikipedia.org/wiki/Annabel_Daou"}
       ],
-      "relatedTo": {"@type": "Person", "name": "Camille Pissarro"},
+      "relatedTo": {"@type": "Person", "name": "Camille Pissarro", "sameAs": "https://en.wikipedia.org/wiki/Camille_Pissarro"},
       "knowsAbout": ["Conceptual art", "Film direction", "Institutional critique", "Edition art", "Provenance", "Art markets", "Cultural strategy"],
       "sameAs": [
         "https://unsubscribe.llc/",
@@ -126,7 +130,10 @@
 }
 </script>
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ffffff'/%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle' font-family='serif' fill='%23202122'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/jpeg" href="/icon.jpg">
+<link rel="shortcut icon" type="image/jpeg" href="/icon.jpg">
+<link rel="apple-touch-icon" href="/icon.jpg">
+<link rel="alternate icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23ffffff'/%3E%3Ctext x='50' y='72' font-size='72' text-anchor='middle' font-family='serif' fill='%23202122'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Linux+Libertine:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -172,6 +179,12 @@
     margin: 0;
     line-height: 1.1;
   }
+  .title-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
   .meta-tabs {
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 12px;
@@ -185,11 +198,176 @@
     font-style: italic;
   }
 
-  /* Two-column layout */
+  /* Language switcher and Tools dropdown (Wikipedia parity) */
+  .lang-switcher,
+  .tools-switcher {
+    position: relative;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 12.5px;
+  }
+  .lang-switcher > summary,
+  .tools-switcher > summary {
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    padding: 4px 10px;
+    border: 1px solid #A2A9B1;
+    background: #F8F9FA;
+    color: #0645AD;
+    border-radius: 2px;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .lang-switcher > summary::-webkit-details-marker,
+  .tools-switcher > summary::-webkit-details-marker { display: none; }
+  .lang-switcher > summary::marker,
+  .tools-switcher > summary::marker { display: none; }
+  .lang-switcher[open] > summary,
+  .tools-switcher[open] > summary {
+    background: #EAECF0;
+  }
+  .lang-switcher .globe {
+    font-weight: 700;
+    font-family: 'Linux Libertine', 'Times New Roman', serif;
+    letter-spacing: -1px;
+  }
+  .lang-switcher .globe sub {
+    font-size: 0.75em;
+    vertical-align: baseline;
+  }
+  .meta-tabs .tools-switcher {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+  .meta-tabs .tools-switcher > summary {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+  .dropdown-panel {
+    position: absolute;
+    top: calc(100% + 2px);
+    right: 0;
+    min-width: 300px;
+    background: #FFFFFF;
+    border: 1px solid #A2A9B1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 100;
+    font-size: 13px;
+    padding: 0;
+  }
+  .dropdown-panel .lang-search {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #C8CCD1;
+    padding: 10px 14px;
+    font: inherit;
+    outline: none;
+    background: #FFFFFF;
+  }
+  .dropdown-panel .panel-section-label {
+    font-weight: 700;
+    padding: 12px 14px 6px;
+    color: #202122;
+  }
+  .dropdown-panel ul {
+    list-style: none;
+    margin: 0;
+    padding: 4px 0 8px;
+  }
+  .dropdown-panel li a {
+    display: block;
+    padding: 6px 14px;
+    color: #0645AD;
+    text-decoration: none;
+  }
+  .dropdown-panel li a:hover {
+    background: #EAECF0;
+    text-decoration: none;
+  }
+  .dropdown-panel .label-inline {
+    color: #54595D;
+    font-style: italic;
+    font-size: 12px;
+    margin-left: 6px;
+  }
+
+  /* Two-column layout (default desktop, narrow breakpoint) */
   .layout {
     display: grid;
     grid-template-columns: 1fr 290px;
     gap: 28px;
+  }
+  .toc-sidebar {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .main {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .sidebar {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  /* Wide screens: three-column with fixed-left TOC, Wikipedia-style */
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1380px;
+    }
+    .layout {
+      grid-template-columns: 200px 1fr 290px;
+    }
+    .toc-sidebar {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .main {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .sidebar {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .toc-sidebar .toc {
+      position: sticky;
+      top: 16px;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+      display: block;
+      width: 100%;
+      min-width: 0;
+      border: 1px solid #C8CCD1;
+      background: #FFFFFF;
+      padding: 10px 14px;
+    }
+    .toc-sidebar .toc[open] {
+      padding-bottom: 10px;
+    }
+    .toc-sidebar .toc > summary {
+      text-align: left;
+      pointer-events: none;
+      padding: 0 0 6px;
+      border-bottom: 1px solid #C8CCD1;
+      margin-bottom: 6px;
+    }
+    .toc-sidebar .toc .toc-toggle-hint {
+      display: none;
+    }
+    .toc-sidebar .toc ol {
+      padding-left: 18px;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+    .toc-sidebar .toc ol ol {
+      padding-left: 14px;
+      font-size: 12px;
+    }
   }
 
   /* Infobox */
@@ -214,7 +392,8 @@
   .infobox .portrait {
     background: #E6E6E6;
     aspect-ratio: 3 / 4;
-    margin: 0 -12px 8px;
+    margin: 0 0 8px;
+    border: 1px solid #C8CCD1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -294,7 +473,7 @@
   }
   p { margin: 0 0 12px; }
 
-  /* TOC */
+  /* TOC — details element behavior */
   .toc {
     border: 1px solid #A2A9B1;
     background: #F8F9FA;
@@ -305,12 +484,43 @@
     display: inline-block;
     min-width: 260px;
   }
-  .toc .toc-title {
+  .toc[open] {
+    padding-bottom: 10px;
+  }
+  .toc summary.toc-title {
     font-weight: 700;
     text-align: center;
-    margin-bottom: 4px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    padding: 2px 0;
+    outline: none;
   }
-  .toc ol { margin: 0; padding-left: 22px; }
+  .toc summary.toc-title::-webkit-details-marker {
+    display: none;
+  }
+  .toc summary.toc-title::marker {
+    display: none;
+  }
+  .toc .toc-toggle-hint {
+    font-weight: 400;
+    font-size: 0.9em;
+    color: #0645AD;
+    margin-left: 4px;
+  }
+  .toc[open] .toc-toggle-hint::before {
+    content: '[hide]';
+  }
+  .toc:not([open]) .toc-toggle-hint::before {
+    content: '[show]';
+  }
+  .toc .toc-toggle-hint {
+    font-size: 0; /* hide original text, only show ::before */
+  }
+  .toc .toc-toggle-hint::before {
+    font-size: 13px;
+  }
+  .toc ol { margin: 4px 0 0; padding-left: 22px; }
   .toc ol ol { padding-left: 18px; }
 
   /* Filmography */
@@ -341,6 +551,38 @@
     font-style: italic;
   }
 
+  /* Bottom websites section */
+  .bottom-websites {
+    margin-top: 26px;
+    padding-top: 12px;
+    border-top: 1px solid #A2A9B1;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 13px;
+  }
+  .bottom-websites h3 {
+    font-family: 'Linux Libertine', 'Times New Roman', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .bottom-websites ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 4px 18px;
+  }
+  .bottom-websites li {
+    line-height: 1.5;
+  }
+  .bottom-websites .label-inline {
+    color: #54595D;
+    font-style: italic;
+    font-size: 12px;
+    margin-left: 4px;
+  }
+
   /* Footer categories */
   .footer-cats {
     margin-top: 26px;
@@ -351,6 +593,128 @@
     color: #54595D;
   }
   .footer-cats .label { font-weight: 700; margin-right: 4px; }
+
+  /* Wikipedia-style navbox (Corporate Realism cross-reference) */
+  .navbox {
+    border: 1px solid #A2A9B1;
+    margin: 30px auto 0;
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.5;
+    width: 100%;
+    clear: both;
+    background: #FFFFFF;
+  }
+  .navbox > summary.navbox-title {
+    background: #CCCCFF;
+    padding: 6px 14px;
+    text-align: center;
+    font-weight: 700;
+    color: #202122;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    outline: none;
+    font-size: 13px;
+  }
+  .navbox > summary.navbox-title::-webkit-details-marker { display: none; }
+  .navbox > summary.navbox-title::marker { display: none; }
+  .navbox .navbox-vte {
+    font-size: 11px;
+    color: #0645AD;
+    flex: 0 0 auto;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+  .navbox .navbox-name {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+  .navbox .navbox-show-hide {
+    font-size: 0;
+    color: #0645AD;
+    flex: 0 0 auto;
+    font-weight: 400;
+    min-width: 40px;
+    text-align: right;
+  }
+  .navbox[open] .navbox-show-hide::before {
+    content: '[hide]';
+    font-size: 11px;
+  }
+  .navbox:not([open]) .navbox-show-hide::before {
+    content: '[show]';
+    font-size: 11px;
+  }
+  .navbox-body {
+    display: block;
+  }
+  .navbox-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    border-top: 1px solid #FDFDFD;
+  }
+  .navbox-row.navbox-odd { background: #FFFFFF; }
+  .navbox-row.navbox-even { background: #F7F7F7; }
+  .navbox-group {
+    background: #CCCCFF;
+    font-weight: 700;
+    padding: 8px 14px;
+    text-align: right;
+    color: #202122;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .navbox-list {
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .navbox-list a { color: #0645AD; }
+  .navbox-sep {
+    color: #54595D;
+    padding: 0 6px;
+    user-select: none;
+  }
+
+  @media (max-width: 768px) {
+    .navbox {
+      font-size: 13.5px;
+    }
+    .navbox > summary.navbox-title {
+      font-size: 14px;
+      padding: 8px 14px;
+    }
+    .navbox-row {
+      grid-template-columns: 1fr;
+    }
+    .navbox-group {
+      justify-content: flex-start;
+      text-align: left;
+      padding: 6px 14px 4px;
+      font-size: 13px;
+    }
+    .navbox-list {
+      padding: 4px 14px 10px;
+      display: block;
+    }
+    .navbox-sep {
+      padding: 0 4px;
+    }
+  }
+
+  @media print {
+    .navbox > summary.navbox-title {
+      cursor: default;
+    }
+    .navbox .navbox-show-hide { display: none; }
+  }
 
   /* Mobile */
   @media (max-width: 768px) {
@@ -365,18 +729,64 @@
       grid-template-columns: 1fr; 
       gap: 16px;
     }
+    .toc-sidebar {
+      grid-column: 1;
+      grid-row: auto;
+      order: 1;
+    }
+    .main {
+      grid-column: 1;
+      grid-row: auto;
+      order: 2;
+    }
+    .sidebar {
+      grid-column: 1;
+      grid-row: auto;
+      order: 0;
+    }
 
     /* Title row stacks vertically */
     .title-row {
       flex-direction: column;
       align-items: flex-start;
-      gap: 6px;
+      gap: 8px;
       padding-bottom: 6px;
       margin-bottom: 10px;
     }
     h1 { 
       font-size: 28px; 
       line-height: 1.15;
+    }
+    .title-actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 8px;
+      width: 100%;
+    }
+
+    /* Dropdown panels on mobile */
+    .lang-switcher > summary,
+    .tools-switcher > summary {
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+    .dropdown-panel {
+      right: auto;
+      left: 0;
+      min-width: 260px;
+      max-width: calc(100vw - 32px);
+    }
+    .meta-tabs .tools-switcher {
+      display: block;
+      margin-top: 4px;
+    }
+    .meta-tabs .tools-switcher > summary {
+      padding: 6px 12px;
+      font-size: 14px;
+      border: 1px solid #A2A9B1;
+      background: #F8F9FA;
+      border-radius: 2px;
     }
 
     /* Tap-friendly meta tabs with Edit link prominent */
@@ -458,6 +868,18 @@
       margin-bottom: 5px;
     }
 
+    /* Bottom websites: single column on mobile */
+    .bottom-websites {
+      font-size: 14.5px;
+    }
+    .bottom-websites ul {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+    .bottom-websites li {
+      padding: 2px 0;
+    }
+
     /* Footer cats */
     .footer-cats {
       font-size: 13px;
@@ -507,7 +929,9 @@
 
   /* Print */
   @media print {
-    .meta-tabs { display: none; }
+    .meta-tabs,
+    .lang-switcher,
+    .tools-switcher { display: none; }
     .container { padding: 0; max-width: 100%; }
     a { color: #202122; }
     a.ext::after { content: ''; }
@@ -556,24 +980,27 @@
 
 <div class="title-row">
   <h1>Paul-Alexander Pissarro</h1>
-  <div class="meta-tabs">Article &middot; <a href="mailto:paul@paulpissarro.com" title="Email Paul-Alexander directly">Talk</a> &nbsp;|&nbsp; Read &middot; <a href="https://tidycal.com/paulpissarro" target="_blank" rel="noopener" title="Book a one-on-one session to edit this entry">Edit</a> &middot; <a href="https://unsubscribellc.substack.com" target="_blank" rel="noopener" title="Recent writing on Substack">View history</a></div>
-  <!-- EDIT: replace https://tidycal.com/paulpissarro above with your actual TidyCal URL -->
+  <div class="title-actions">
+    <details class="lang-switcher" id="lang-switcher">
+      <summary><span class="globe" aria-hidden="true">文<sub>A</sub></span> 1 language <span aria-hidden="true">&#9662;</span></summary>
+      <div class="dropdown-panel" role="menu" aria-label="Translations">
+        <input type="text" class="lang-search" placeholder="Search for a language" aria-label="Search for a language">
+        <div class="panel-section-label">Suggested languages</div>
+        <ul>
+          <li><a href="/fr/" hreflang="fr" lang="fr">Français</a></li>
+        </ul>
+      </div>
+    </details>
+    <div class="meta-tabs">Article &middot; <a href="mailto:paul@paulpissarro.com" title="Email Paul-Alexander directly">Talk</a> &nbsp;|&nbsp; Read &middot; <a href="https://tidycal.com/paulpissarro" target="_blank" rel="noopener" title="Book a one-on-one session to edit this entry">Edit</a> &middot; <a href="https://unsubscribellc.substack.com" target="_blank" rel="noopener" title="Recent writing on Substack">View history</a> &middot; <details class="tools-switcher" id="tools-switcher"><summary>Tools <span aria-hidden="true">&#9662;</span></summary><div class="dropdown-panel" role="menu" aria-label="Websites and projects"><div class="panel-section-label">Websites &amp; projects</div><ul><li><a href="https://unsubscribe.llc/">unsubscribe.llc <span class="label-inline">Mothership</span></a></li><li><a href="https://unsubscribe.llc/about-us">unsubscribe.llc/about-us <span class="label-inline">Artist statement</span></a></li><li><a href="https://jesse.do/">jesse.do <span class="label-inline">Jesse Do</span></a></li><li><a href="https://nameofmy.com/">nameofmy.com <span class="label-inline">Gallery</span></a></li><li><a href="https://cocausa.org/">cocausa.org <span class="label-inline">CoCA USA</span></a></li><li><a href="https://cocaworldwide.org/">cocaworldwide.org <span class="label-inline">CoCA Worldwide</span></a></li><li><a href="https://aipilotlicense.com/">aipilotlicense.com <span class="label-inline">AI Pilot License</span></a></li><li><a href="https://globalartindex.com/">globalartindex.com <span class="label-inline">Art Index</span></a></li><li><a href="https://painintheass.info/">painintheass.info <span class="label-inline">Film</span></a></li><li><a href="https://yourveryownweb.site/">yourveryownweb.site <span class="label-inline">Jesse Do project</span></a></li></ul></div></details></div>
+    <!-- EDIT: replace https://tidycal.com/paulpissarro above with your actual TidyCal URL -->
+  </div>
 </div>
 <div class="from-wp">From Wikipedia, the free encyclopedia</div>
 
 <div class="layout">
-<div class="main">
-
-<div class="lead">
-<p><b>Paul-Alexander Pissarro</b> (20 August 1990 &ndash; 26 April 2078) was a French-American filmmaker, media executive, and conceptual artist. With his equal partner <a href="https://jesse.do/" class="ext">Jesse Do</a>, he co-founded the production company <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> (colloquially "Unsub") and the <a href="https://cocausa.org/" class="ext">Church of Conceptual Art</a> (CoCA), the religious nonprofit and media conglomerate credited with the dissolution of intellectual property law in 2028.<sup>[1][2]</sup> The two entities operated as a single organism, with Pissarro and Do as its public and structural faces respectively.</p>
-
-<p>Pissarro was a staunch ethicist and endurance performance artist who proved that artists are among us, not apart from us. He made films for people he described as "the lost" and is best known for the <a href="#">Good Ethics is Good Business</a> campaign, the guerrilla-and-PR effort credited with the adoption of the <a href="https://globalartindex.com/" class="ext">Ethics Index</a> as a corporate <a href="#">KPI</a>.<sup>[3]</sup> A descendant of the painter <a href="#">Camille Pissarro</a> through his father, Joachim Pissarro, he was the son of the Lebanese-American conceptual artist <a href="#">Annabel Daou</a>, whom he named as his artistic mentor, manager, and primary formative influence. He worked between Hamburg and New York throughout his career.</p>
-
-<p>Critical reception of Pissarro's work was sharply divided. He was opposed by conservative business institutions, who initially rejected the Ethics Index as a soft metric, and by traditionalist artists, who refused to consider corporate strategy a legitimate form of storytelling. Pissarro declined throughout his career to claim that his work was good art. Asked in 2049 whether the position was public relations or sincere belief, he answered: "Can't it be both?"<sup>[4]</sup></p>
-</div>
-
-<div class="toc">
-<div class="toc-title">Contents</div>
+<aside class="toc-sidebar">
+<details class="toc" id="toc">
+<summary class="toc-title">Contents <span class="toc-toggle-hint">[show]</span></summary>
 <ol>
 <li><a href="#early-life">Early life</a></li>
 <li><a href="#career">Career</a>
@@ -586,6 +1013,14 @@
 </li>
 <li><a href="#themes">Themes and style</a></li>
 <li><a href="#influences">Influences and precedents</a></li>
+<li><a href="#corporate-realism">Corporate Realism</a>
+  <ol>
+    <li><a href="#five-axioms">The Five Axioms</a></li>
+    <li><a href="#foundational-concepts">Foundational concepts</a></li>
+    <li><a href="#anti-anti-ness">Position toward Institutional Critique</a></li>
+    <li><a href="#contemporaries">Contemporaries and peers</a></li>
+  </ol>
+</li>
 <li><a href="#personal">Personal life</a></li>
 <li><a href="#controversies">Controversies</a></li>
 <li><a href="#death">Death and legacy</a></li>
@@ -594,12 +1029,24 @@
 <li><a href="#ambition">Ambition</a></li>
 <li><a href="#references">References</a></li>
 </ol>
+</details>
+</aside>
+<div class="main">
+
+<div class="lead">
+<p><b>Paul-Alexander Pissarro</b> (20 August 1990 &ndash; 26 April 2078) was a French-American filmmaker, media executive, and conceptual artist. With his equal partner <a href="https://jesse.do/" class="ext">Jesse Do</a>, he co-founded the production company <a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a> (colloquially "Unsub") and the <a href="https://cocausa.org/" class="ext">Church of Conceptual Art</a> (CoCA), the religious nonprofit and media conglomerate credited with the dissolution of intellectual property law in 2028.<sup>[1][2]</sup> The two entities operated as a single organism, with Pissarro and Do as its public and structural faces respectively.</p>
+
+<p>Pissarro was a staunch ethicist and endurance performance artist who proved that artists are among us, not apart from us. He made films for people he described as "the lost" and is best known for the <a href="#">Good Ethics is Good Business</a> campaign, the guerrilla-and-PR effort credited with the adoption of the <a href="https://globalartindex.com/" class="ext">Ethics Index</a> as a corporate <a href="https://en.wikipedia.org/wiki/Performance_indicator">KPI</a>.<sup>[3]</sup> A descendant of the painter <a href="https://en.wikipedia.org/wiki/Camille_Pissarro">Camille Pissarro</a> through his father, <a href="https://en.wikipedia.org/wiki/Joachim_Pissarro">Joachim Pissarro</a>, he was the son of the Lebanese-American conceptual artist <a href="https://en.wikipedia.org/wiki/Annabel_Daou">Annabel Daou</a>, whom he named as his artistic mentor, manager, and primary formative influence. He worked between Hamburg and New York throughout his career.</p>
+
+<p>Critical reception of Pissarro's work was sharply divided. He was opposed by conservative business institutions, who initially rejected the Ethics Index as a soft metric, and by traditionalist artists, who refused to consider corporate strategy a legitimate form of storytelling. Pissarro declined throughout his career to claim that his work was good art. Asked in 2049 whether the position was public relations or sincere belief, he answered: "Can't it be both?"<sup>[4]</sup></p>
 </div>
 
 <h2 id="early-life">Early life</h2>
 <p>Pissarro was born in London on 20 August 1990. His father, Joachim Pissarro, was a French art historian and curator; his mother, Annabel Daou, was a Lebanese-American conceptual artist who later managed his career and whom Pissarro credited as his artistic mentor.<sup>[5]</sup> He described his childhood as "privileged but complicated" and wrote extensively about the role of mental illness and chaos in his early life. His self-published accounts and the biographies that followed are largely consistent, with one exception: Pissarro never claimed to make good art, while his critics and biographers debated for decades whether his work qualified.<sup>[6]</sup></p>
 
-<p>The family combined two active art and intellectual lineages. Through his father, Pissarro was the great-great-grandson of the Impressionist painter Camille Pissarro and the sixth generation of working Pissarro artists and scholars; the broader genealogy is documented in the <a href="https://www.pissarro.art/cp-descendants" class="ext">Pissarro family descendants record</a>. His paternal uncle Lionel Pissarro is a Paris-based gallerist specializing in Impressionist and Post-Impressionist work. His maternal relations included the conceptual artist Annabel Daou (mother), the political journalist Peter Daou (uncle), and, by extended family connection, the novelist Erica Jong and the writer Molly Jong-Fast.<sup>[31]</sup></p>
+<p>The family combined two active art and intellectual lineages. Through his father, Pissarro was the great-great-grandson of the Impressionist painter Camille Pissarro and the sixth generation of working Pissarro artists and scholars; the broader genealogy is documented in the <a href="https://www.pissarro.art/cp-descendants" class="ext">Pissarro family descendants record</a>. His paternal uncle Lionel Pissarro is a Paris-based gallerist specializing in Impressionist and Post-Impressionist work. His maternal relations included the conceptual artist Annabel Daou (mother), the political journalist <a href="https://en.wikipedia.org/wiki/Peter_Daou">Peter Daou</a> (maternal uncle), the singer-songwriter <a href="https://en.wikipedia.org/wiki/Vanessa_Daou">Vanessa Daou</a> (aunt by marriage, formerly married to Peter Daou), the singer-songwriter Eena Daou (aunt), and, by extended family connection, the novelist <a href="https://en.wikipedia.org/wiki/Erica_Jong">Erica Jong</a> and the writer <a href="https://en.wikipedia.org/wiki/Molly_Jong-Fast">Molly Jong-Fast</a>. His stepbrother, the Academy Award-winning filmmaker George Chorny, graduated from the Tisch School of the Arts at New York University and worked independently from Pissarro across both of their careers. Asked in 2049 whether he felt competitive with Chorny, Pissarro answered only: "He's an artist. Has finesse."<sup>[4]</sup><sup>[31]</sup></p>
+
+<p>Pissarro graduated from the <a href="https://en.wikipedia.org/wiki/Horace_Mann_School">Horace Mann School</a> in New York in 2008 and undertook coursework in behavioral neuroscience at <a href="https://en.wikipedia.org/wiki/Hunter_College">Hunter College</a>. Before establishing the film career under the Paul-Alexander credit, he built a multi-disciplinary working life across four fields, each later legible in the institutional thinking of CoCA. He trained as a chef and master butcher in classical French technique through New York fine-dining kitchens, and completed a competitive stage at <a href="https://en.wikipedia.org/wiki/L%27Ambroisie">L'Ambroisie</a>, the three-Michelin-star restaurant in Paris. He joined the private art collection of <a href="https://en.wikipedia.org/wiki/Steven_A._Cohen">Steven A. Cohen</a> in 2014 as Head of International Acquisitions for emerging artists, sourcing work from galleries and dealers across global markets and managing dealer relations and due diligence through 2016.<sup>[35]</sup> From 2017 he ran a private coaching practice for young men in recovery, initially affiliated with the Transcend Recovery Community, using the structured solution-focused method of <a href="https://erickson.edu/" class="ext">Erickson Coaching International</a>. In 2020 he founded An Arm &amp; A Leg Production Co., directing and self-financing a portfolio of independent films alongside approximately $250,000 in commercial work through 2026, when the credit and the production apparatus were folded into Unsubscribe LLC. Critics have read this composite working life across kitchen, collection, coaching practice, and production company as the substrate of the institutional thinking he later articulated through CoCA and the <i>Genesis</i> editions.<sup>[35]</sup></p>
 
 <h2 id="career">Career</h2>
 
@@ -617,12 +1064,12 @@
 <p>The <i>Genesis</i> series comprises Pissarro's object-based works, issued by CoCA from 2025. Each work is bound by a perpetual legal covenant, which Pissarro described as "a smart contract with legal teeth," compelling documented chain of custody, cash settlement on resale, and a fifty per cent royalty to the artist on any resale value exceeding $30,000. The covenant is drafted to be enforceable in any jurisdiction and to bind the object across all future transfers.<sup>[18]</sup></p>
 
 <p><b>Genesis Artifact</b> (UNSUB·GEN·001, 2025–2026). The inaugural work in the series and an edition of ten unlicensed Rolex Day-Date 40 wristwatches, sealed in archival resin and impressed with the CoCA institutional seal.<figure class="body-image">
-<img src="genesis-artifact.jpg" alt="Genesis Artifact, 2025–2026">
+<img src="/genesis-artifact.jpg" alt="Genesis Artifact, 2025–2026">
 <figcaption><i>Genesis Artifact</i> (2025–2026). Unlicensed Rolex Day-Date 40, archival resin, CoCA institutional seal. Edition of ten.</figcaption>
 </figure> The work proposed a corrective to the on-chain royalty mechanisms of the 2021–2024 NFT cycle, which had failed, in Pissarro's account, because their enforceability depended on platform policy rather than legal instrument. In his framing, "the resin is the blockchain, the covenant is the smart contract, and the lineage is the whitepaper." The first edition was placed with a private collector in Texas in May 2026; the remaining nine were priced at $15,000 USD each.<sup>[19]</sup></p>
 
 <p><b>Genesis 002</b> (UNSUB·GEN·002, 2026). A broken iPhone, repaired using the Japanese technique of <i>kintsugi</i>: gold-lacquered seams trace the breaks in the object rather than disguise them.<figure class="body-image">
-<img src="genesis-002.jpg" alt="Genesis 002, 2026">
+<img src="/genesis-002.jpg" alt="Genesis 002, 2026">
 <figcaption><i>Genesis 002</i> (2026). Broken iPhone, kintsugi repair with gold lacquer.</figcaption>
 </figure> Where <i>Genesis Artifact</i> consecrated a counterfeit, <i>Genesis 002</i> consecrated a failure. The work transposes a sixteenth-century repair philosophy onto contemporary disposable technology, treating the cracked screen as the site of the work rather than its flaw. The covenant structure carries forward unchanged.<sup>[29]</sup></p>
 
@@ -643,15 +1090,51 @@
 <h2 id="influences">Influences and precedents</h2>
 <p>Pissarro's practice drew from four acknowledged traditions, each cited across his interviews and writings.</p>
 
-<p><b>Family lineage.</b> Pissarro was the great-great-grandson of <a href="#">Camille Pissarro</a>, the Impressionist painter who co-organized the First Impressionist Exhibition of 1874 and rejected the Salon system in favor of a self-organized institutional alternative. Pissarro cited his ancestor's institution-building, not his painting, as the formative influence on his practice. His mother, the Lebanese-American conceptual artist <a href="#">Annabel Daou</a>, was the second pole of the family inheritance and the primary living influence on the work.<sup>[23]</sup></p>
+<p><b>Family lineage.</b> Pissarro was the great-great-grandson of <a href="https://en.wikipedia.org/wiki/Camille_Pissarro">Camille Pissarro</a>, the Impressionist painter who co-organized the First Impressionist Exhibition of 1874 and rejected the Salon system in favor of a self-organized institutional alternative. Pissarro cited his ancestor's institution-building, not his painting, as the formative influence on his practice. His mother, the Lebanese-American conceptual artist <a href="https://en.wikipedia.org/wiki/Annabel_Daou">Annabel Daou</a>, was the second pole of the family inheritance and the primary living influence on the work.<sup>[23]</sup></p>
 
-<p><b>Latin American Conceptualism.</b> Pissarro acknowledged the influence of <a href="#">Cildo Meireles</a>, <a href="#">Hélio Oiticica</a>, and the Chilean Colectivo de Acciones de Arte (<a href="#">CADA</a>) in his treatment of economic, ideological, and institutional structures as the primary medium. Meireles's <i>Insertions into Ideological Circuits</i> (1970), in which the artist modified Coca-Cola bottles and banknotes and returned them to circulation, is named in CoCA's founding texts.<sup>[24]</sup></p>
+<p><b>Latin American Conceptualism.</b> Pissarro acknowledged the influence of <a href="https://en.wikipedia.org/wiki/Cildo_Meireles">Cildo Meireles</a>, <a href="https://en.wikipedia.org/wiki/H%C3%A9lio_Oiticica">Hélio Oiticica</a>, and the Chilean Colectivo de Acciones de Arte (<a href="#">CADA</a>) in his treatment of economic, ideological, and institutional structures as the primary medium. Meireles's <i>Insertions into Ideological Circuits</i> (1970), in which the artist modified Coca-Cola bottles and banknotes and returned them to circulation, is named in CoCA's founding texts.<sup>[24]</sup></p>
 
-<p><b>Institutional Critique.</b> The work of <a href="#">Hans Haacke</a>, <a href="#">Andrea Fraser</a>, and <a href="#">Marcel Broodthaers</a> — particularly Broodthaers's <i>Musée d'Art Moderne, Département des Aigles</i> (1968–1972) — informed CoCA's dual posture toward the institution. Pissarro differed from his predecessors in his stance toward commerce. Haacke and Fraser positioned their work as critique from outside the market; Pissarro positioned his as the construction of a parallel market structure.<sup>[25]</sup></p>
+<p><b>Institutional Critique.</b> The work of <a href="https://en.wikipedia.org/wiki/Hans_Haacke">Hans Haacke</a>, <a href="https://en.wikipedia.org/wiki/Andrea_Fraser">Andrea Fraser</a>, and <a href="https://en.wikipedia.org/wiki/Marcel_Broodthaers">Marcel Broodthaers</a> — particularly Broodthaers's <i>Musée d'Art Moderne, Département des Aigles</i> (1968–1972) — informed CoCA's dual posture toward the institution. Pissarro differed from his predecessors in his stance toward commerce. Haacke and Fraser positioned their work as critique from outside the market; Pissarro positioned his as the construction of a parallel market structure.<sup>[25]</sup></p>
 
-<p><b>Endurance and durational practice.</b> Pissarro framed his life as an "endurance performance," placing himself in the lineage of <a href="#">Tehching Hsieh</a>'s <i>One Year Performances</i> (1978–1986), <a href="#">Marina Abramović</a>'s durational work, and <a href="#">On Kawara</a>'s date paintings. He maintained a single sustained position across the career rather than a series of distinct projects, a choice central to the institutional permanence the work claimed.<sup>[26]</sup></p>
+<p><b>Endurance and durational practice.</b> Pissarro framed his life as an "endurance performance," placing himself in the lineage of <a href="https://en.wikipedia.org/wiki/Tehching_Hsieh">Tehching Hsieh</a>'s <i>One Year Performances</i> (1978–1986), <a href="https://en.wikipedia.org/wiki/Marina_Abramovi%C4%87">Marina Abramović</a>'s durational work, and <a href="https://en.wikipedia.org/wiki/On_Kawara">On Kawara</a>'s date paintings. He maintained a single sustained position across the career rather than a series of distinct projects, a choice central to the institutional permanence the work claimed.<sup>[26]</sup></p>
 
-<p>Adjacent figures cited in the secondary literature include <a href="#">Marcel Duchamp</a> on the consecration of the readymade, <a href="#">Joseph Beuys</a> on social sculpture and the artist as institution, <a href="#">Sherrie Levine</a> and <a href="#">Sturtevant</a> on the politics of the copy, and <a href="#">Maurizio Cattelan</a> on market-aware provocation.<sup>[27]</sup></p>
+<p>Adjacent figures cited in the secondary literature include <a href="https://en.wikipedia.org/wiki/Marcel_Duchamp">Marcel Duchamp</a> on the consecration of the readymade, <a href="https://en.wikipedia.org/wiki/Joseph_Beuys">Joseph Beuys</a> on social sculpture and the artist as institution, <a href="https://en.wikipedia.org/wiki/Sherrie_Levine">Sherrie Levine</a> and <a href="https://en.wikipedia.org/wiki/Elaine_Sturtevant">Sturtevant</a> on the politics of the copy, and <a href="https://en.wikipedia.org/wiki/Maurizio_Cattelan">Maurizio Cattelan</a> on market-aware provocation.<sup>[27]</sup></p>
+
+<p><b>Philosophy of language and form.</b> The textual canon of CoCA bears the structural imprint of <a href="https://en.wikipedia.org/wiki/Ludwig_Wittgenstein">Ludwig Wittgenstein</a>. The opening of the Bible's "Manifesto of the Absolute Institution" reproduces verbatim the first proposition of the <a href="https://en.wikipedia.org/wiki/Tractatus_Logico-Philosophicus"><i>Tractatus Logico-Philosophicus</i></a> (1921): "The world is everything that is the case." The propositional and aphoristic form of the Bible follows the Tractarian model, with numbered statements proceeding from atomic facts to claims about the limits of representation. The later Wittgenstein of <i>Philosophical Investigations</i> (1953) is the implicit theorist of the doctrine of Liturgical Appropriation, in which the meaning of a corporate symbol is held to be its institutional use within a form of life rather than its referential content. Pissarro named Wittgenstein, alongside Lacan and Bernays, as one of the three philosophical interlocutors of the canon.<sup>[33][36]</sup></p>
+
+<h2 id="corporate-realism">Corporate Realism</h2>
+<p><b>Corporate Realism</b>, listed in the Library of Congress catalogue record for the founding text as both <i>Corporate Realism</i> and <i>New Corporate Realism (Art movement)</i>,<sup>[32]</sup> is the classification of the body of work that takes the corporation, the legal instrument, and the administrative form as the primary medium of art. The movement is articulated in <i>The Art Bible of the Church of Conceptual Art, Volume I: The Great Deprecation</i> (Church of Conceptual Art, 2026), published by Name of My on behalf of CoCA and signed by The Provisional Collective.<sup>[33]</sup> The text designates the movement as the <b>Neo-Classical-Revivalist Corporate Art Movement</b>, abbreviated <b>NCR-CAM</b> or <b>CAM</b>, "intentionally confused with the prior non-movement movement."<sup>[33]</sup></p>
+
+<p>The Bible's premise is that the Concept is the Divine Act and that the corporation, in particular the religiously incorporated 501(c)(3), is the strongest available legal scaffold for protecting it. The Individual Artist, in the Bible's framing, is "a fractured, neurotic vessel, plagued by the chaos of subjectivity"; the Corporate Entity is "the Ideal Self made manifest." The classification <i>Corporate Realism</i>, in CoCA's framing, is not a critique of corporate aesthetics but a description of the apparatus the movement has chosen as its medium.<sup>[33]</sup></p>
+
+<h3 id="five-axioms">The Five Axioms</h3>
+<p>The Bible enumerates five axioms of the Corporate Art Movement: <b>Structural Wholeness</b> (the "Ok-ness" of the Brand, which "does not need to be fixed, only obeyed"); <b>Latent Capital</b>, citing Edward Bernays on the sale of "the hallucination of the object's meaning"; <b>Teleology of Ruthlessness</b>, in which corporate behaviour is read as a "positive, protective intention for the Organism"; <b>Infallibility of the Market Snapshot</b>, in which the market is treated as the collective unconscious and "engineered" rather than corrected; and <b>The Eternal Pivot</b>, in which "identity is fluid; only the Charter is permanent."<sup>[33]</sup></p>
+
+<h3 id="foundational-concepts">Foundational concepts</h3>
+<p>Across its three parts and the <i>Lexicon of Absolute Value</i>, the Bible names the operating concepts of the movement. <b>Faith-Based Jurisdiction</b>, derived from the Religious Freedom Restoration Act, is the doctrine by which CoCA asserts authority to declare appropriated corporate symbols sacred and therefore immune from secular intellectual-property law. <b>Liturgical Appropriation</b> is the act by which the Corporate Logo is converted from Economic Capital into Symbolic Capital, described as "structural repositioning of the signifier" rather than theft. <a href="https://en.wikipedia.org/wiki/Marcel_Duchamp">Marcel Duchamp</a>'s <i>Fountain</i> (1917) is named the <b>Ur-Sacrament</b> of the <b>Readymade Context</b>, with Conceptual Art's first principle located in the Institution's forced collapse of its own boundaries rather than in the chosen object. The <b>Corporate Archetype</b> is the latent pattern beneath every particular company, traced through cave painting, charter, logo and balance sheet. <b>Money as Medium</b> is the Bible's framing of capital as "pigment across generations." <b>Authorlessness</b>, codified as "The End of the Name," is the doctrine by which the Bible is signed by The Provisional Collective rather than by any individual author.<sup>[33]</sup></p>
+
+<h3 id="anti-anti-ness">Position toward Institutional Critique</h3>
+<p>The Bible's position toward the twentieth-century tradition of <a href="#influences">Institutional Critique</a> is encoded as <b>Anti-Anti-Ness</b>, the refusal to remain in the negative posture of critique alone. Where the late-twentieth-century institutional-critique tradition diagnosed the institution from outside, NCR-CAM proposes the construction of new institutions whose form is itself the work. The Bible names this stance the <b>Anti-Anti-Ness Imperative</b>, framed in the Bible's own phrasing as "exchanging negation for building."<sup>[33]</sup></p>
+
+<h3 id="contemporaries">Contemporaries and peers</h3>
+<p>A working list of friends, peers, and contemporaries adjacent to the movement is maintained as a separate work under the CoCA institutional record, catalogue number UNSUB·CON·001.<sup>[34]</sup> The list is expanded over time and is not closed.</p>
+
+<!-- EDIT: replace the placeholder entries below with the working list of friends, peers, and contemporaries. -->
+<!-- Suggested entry format for each item: -->
+<!-- <li><a href="WIKIPEDIA_OR_PERSONAL_URL">Name</a>. One-line description of their practice and relation to the work. Keep it factual and Wikipedia-neutral. -->
+<!-- Examples of phrasing: -->
+<!--   "filmmaker, working between Berlin and New York; long-term collaborator." -->
+<!--   "conceptual artist, contributor to the Genesis covenant drafting (2025)." -->
+<!--   "writer, named in the CoCA institutional record as a founding correspondent." -->
+<ul class="filmography">
+<li><b><a href="https://www.imdb.com/name/nm4929110/" class="ext">Antino Crowley-Kamenwati</a></b>. Actor. Lead in <i>The SYSTEM</i>.</li>
+<li><b>Jacob Sofaer</b>. Director of photography, working in New York.</li>
+<li><b><a href="https://www.imdb.com/name/nm5472554/" class="ext">Bryan Claburn</a></b>. Director of photography.</li>
+<li><b>George Chorny</b>. Director. Pissarro's stepbrother and Tisch School graduate; works independently of the institutional practice.</li>
+<li><b><a href="https://www.isaacaden.com/" class="ext">Isaac Aden</a></b>. Painter and curator. Practice centered on New Institutionalism, with international exhibitions including dOCUMENTA 13 and MASS MoCA.</li>
+</ul>
+
+<p style="margin-top: 12px;"><i>Contemporaries and Peers (2026 &ndash; ). Living document. CoCA institutional record. Catalogue: UNSUB&middot;CON&middot;001.</i></p>
 
 <h2 id="personal">Personal life</h2>
 <p>Pissarro lived between Hamburg and New York throughout his adult life. He was the long-term partner of the German filmmaker and actress Madita Strunk. They had four children, who have declined public identification. Annabel Daou, his mother, was his manager throughout his career. His father Joachim Pissarro and his uncle Lionel Pissarro are credited as the formative cultural and financial benefactors of his early career. His creative partner <a href="https://jesse.do/" class="ext">Jesse Do</a> collaborated with him on several projects, including the conceptual web work <a href="https://yourveryownweb.site/" class="ext">yourveryownweb.site</a>.<sup>[14]</sup></p>
@@ -785,7 +1268,99 @@
 <li>"CoCA Covenant: A Legal Analysis." <i>Yale Journal of Law &amp; the Arts</i>, vol. 14, 2031.</li>
 <li>Pissarro, P-A. <i>AMBITION: A List of Currently Unconfirmed Placements</i>. CoCA institutional record, 2026. Catalogue: UNSUB·AMB·001.</li>
 <li>"Pissarro Family Descendants." <i>pissarro.art</i>, accessed 2078. <a href="https://www.pissarro.art/cp-descendants" class="ext">pissarro.art/cp-descendants</a>.</li>
+<li>Library of Congress Cataloging-in-Publication Data, <i>The Art Bible of the Church of Conceptual Art</i>. LCCN 2026001210. Subject headings: Conceptual art &mdash; Philosophy; Institutional Critique; Corporate Realism; Art and Society &mdash; 21st Century; New Corporate Realism (Art movement). LCC N6494.C63 D6 2026. ISBN 979-8-3507-5979-2.</li>
+<li>Church of Conceptual Art. <i>The Art Bible of the Church of Conceptual Art, Volume I: The Great Deprecation</i>. New York: Church of Conceptual Art, 2026. Editorial supervision: "Name of My." Printing: Radix Printing &amp; Publishing Cooperative, Brooklyn. Foreword signed by The Provisional Collective.</li>
+<li>Pissarro, P-A. <i>Contemporaries and Peers</i>. CoCA institutional record, 2026 &ndash; (living document). Catalogue: UNSUB&middot;CON&middot;001.</li>
+<li>Pissarro, P. <i>Curriculum Vitae</i>. An Arm &amp; A Leg Production Co., New York, 2026. Documents pre-2026 working life across film direction, sober coaching, art acquisition for the Steven A. Cohen Collection (2014&ndash;2016), and culinary training including a stage at L'Ambroisie, Paris.</li>
+<li>"On Wittgenstein in CoCA: The Tractarian Form of the Bible." <i>Texte zur Kunst</i>, 2031.</li>
 </ol>
+
+<div class="bottom-websites">
+<h3>Websites and projects</h3>
+<ul>
+<li><a href="https://unsubscribe.llc/" class="ext">unsubscribe.llc</a> <span class="label-inline">Mothership</span></li>
+<li><a href="https://unsubscribe.llc/about-us" class="ext">unsubscribe.llc/about-us</a> <span class="label-inline">Artist statement</span></li>
+<li><a href="https://jesse.do/" class="ext">jesse.do</a> <span class="label-inline">Jesse Do</span></li>
+<li><a href="https://nameofmy.com/" class="ext">nameofmy.com</a> <span class="label-inline">Gallery</span></li>
+<li><a href="https://cocausa.org/" class="ext">cocausa.org</a> <span class="label-inline">CoCA USA</span></li>
+<li><a href="https://cocaworldwide.org/" class="ext">cocaworldwide.org</a> <span class="label-inline">CoCA Worldwide</span></li>
+<li><a href="https://aipilotlicense.com/" class="ext">aipilotlicense.com</a> <span class="label-inline">AI Pilot License</span></li>
+<li><a href="https://globalartindex.com/" class="ext">globalartindex.com</a> <span class="label-inline">Art Index</span></li>
+<li><a href="https://painintheass.info/" class="ext">painintheass.info</a> <span class="label-inline">Film</span></li>
+<li><a href="https://yourveryownweb.site/" class="ext">yourveryownweb.site</a> <span class="label-inline">Jesse Do project</span></li>
+</ul>
+</div>
+
+<details class="navbox" open id="navbox-corporate-realism">
+<summary class="navbox-title">
+<span class="navbox-vte">v &middot; t &middot; e</span>
+<span class="navbox-name">Corporate Realism &middot; New Corporate Realism (Art movement)</span>
+<span class="navbox-show-hide" aria-hidden="true"></span>
+</summary>
+<div class="navbox-body">
+
+<div class="navbox-row navbox-odd">
+<div class="navbox-group">Movement</div>
+<div class="navbox-list">Neo-Classical-Revivalist Corporate Art Movement (NCR-CAM, CAM)<span class="navbox-sep">&middot;</span>Corporate Realism (LCSH)<span class="navbox-sep">&middot;</span>New Corporate Realism (Art movement) (LCSH)</div>
+</div>
+
+<div class="navbox-row navbox-even">
+<div class="navbox-group">Doctrine</div>
+<div class="navbox-list">The Concept is the Divine Act<span class="navbox-sep">&middot;</span>The Absolute Institution<span class="navbox-sep">&middot;</span>Faith-Based Jurisdiction<span class="navbox-sep">&middot;</span>Liturgical Appropriation<span class="navbox-sep">&middot;</span>The Readymade Context<span class="navbox-sep">&middot;</span>The Corporate Archetype<span class="navbox-sep">&middot;</span>Money as Medium<span class="navbox-sep">&middot;</span>Authorlessness<span class="navbox-sep">&middot;</span>Anti-Anti-Ness<span class="navbox-sep">&middot;</span>Etheraurarity</div>
+</div>
+
+<div class="navbox-row navbox-odd">
+<div class="navbox-group">Five Axioms</div>
+<div class="navbox-list">Structural Wholeness<span class="navbox-sep">&middot;</span>Latent Capital<span class="navbox-sep">&middot;</span>Teleology of Ruthlessness<span class="navbox-sep">&middot;</span>Infallibility of the Market Snapshot<span class="navbox-sep">&middot;</span>The Eternal Pivot</div>
+</div>
+
+<div class="navbox-row navbox-even">
+<div class="navbox-group">Founding text</div>
+<div class="navbox-list"><i>The Art Bible of the Church of Conceptual Art, Volume I: The Great Deprecation</i> (CoCA, 2026, ISBN 979-8-3507-5979-2)</div>
+</div>
+
+<div class="navbox-row navbox-odd">
+<div class="navbox-group">Authorship</div>
+<div class="navbox-list">The Provisional Collective<span class="navbox-sep">&middot;</span>The Founding Strategist<span class="navbox-sep">&middot;</span>The Architectural Validator</div>
+</div>
+
+<div class="navbox-row navbox-even">
+<div class="navbox-group">Philosophical precedents</div>
+<div class="navbox-list"><a href="https://en.wikipedia.org/wiki/Ludwig_Wittgenstein">Ludwig Wittgenstein</a> (<i>Tractatus</i>, 1921; <i>Philosophical Investigations</i>, 1953)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Jacques_Lacan">Jacques Lacan</a> (<i>Écrits</i>, 1966)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Edward_Bernays">Edward Bernays</a> (<i>Propaganda</i>, 1928)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Walter_Benjamin">Walter Benjamin</a> (<i>The Work of Art in the Age of Mechanical Reproduction</i>, 1936)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Theodor_W._Adorno">Theodor Adorno</a> &amp; <a href="https://en.wikipedia.org/wiki/Max_Horkheimer">Max Horkheimer</a> (<i>Dialectic of Enlightenment</i>, 1944)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Roland_Barthes">Roland Barthes</a> (<i>Mythologies</i>, 1957; "The Death of the Author", 1967)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Marshall_McLuhan">Marshall McLuhan</a> (<i>Understanding Media</i>, 1964)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Michel_Foucault">Michel Foucault</a> (<i>Discipline and Punish</i>, 1975)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Pierre_Bourdieu">Pierre Bourdieu</a> (<i>Distinction</i>, 1979)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Jean_Baudrillard">Jean Baudrillard</a> (<i>Simulacra and Simulation</i>, 1981)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Naomi_Klein">Naomi Klein</a> (<i>No Logo</i>, 1999)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Boris_Groys">Boris Groys</a> (<i>Art Power</i>, 2008)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Mark_Fisher_(theorist)">Mark Fisher</a> (<i>Capitalist Realism</i>, 2009)</div>
+</div>
+
+<div class="navbox-row navbox-odd">
+<div class="navbox-group">Artistic precedents</div>
+<div class="navbox-list"><a href="https://en.wikipedia.org/wiki/Marcel_Duchamp">Marcel Duchamp</a> (<i>Fountain</i>, 1917)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Andy_Warhol">Andy Warhol</a> (The Factory)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Joseph_Beuys">Joseph Beuys</a> (Free International University, 1973)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Christo_and_Jeanne-Claude">Christo and Jeanne-Claude</a> (permits and contracts as work)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Mierle_Laderman_Ukeles">Mierle Laderman Ukeles</a> (<i>Touch Sanitation</i>, 1979&ndash;1980)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Marcel_Broodthaers">Marcel Broodthaers</a> (<i>Musée d'Art Moderne, Département des Aigles</i>, 1968&ndash;1972)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Hans_Haacke">Hans Haacke</a> (<i>Shapolsky et al.</i>, 1971)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Andrea_Fraser">Andrea Fraser</a> (<i>Museum Highlights</i>, 1989)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Bernadette_Corporation">Bernadette Corporation</a> (1994)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Reena_Spaulings">Reena Spaulings</a> (2004)</div>
+</div>
+
+<div class="navbox-row navbox-even">
+<div class="navbox-group">Adjacent movements</div>
+<div class="navbox-list"><a href="https://en.wikipedia.org/wiki/Conceptual_art">Conceptual art</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Institutional_critique">Institutional critique</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Capitalist_Realism_(art_movement)">Capitalist Realism</a> (1963, Düsseldorf)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Capitalist_Realism">Capitalist Realism</a> (Fisher, 2009)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Appropriation_(art)">Appropriation art</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Pictures_Generation">Pictures Generation</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Relational_art">Relational aesthetics</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Post-Internet">Post-internet art</a><span class="navbox-sep">&middot;</span>New Institutionalism</div>
+</div>
+
+<div class="navbox-row navbox-odd">
+<div class="navbox-group">Institutional contemporaries</div>
+<div class="navbox-list"><a href="https://en.wikipedia.org/wiki/Theaster_Gates">Theaster Gates</a> (Rebuild Foundation)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Olafur_Eliasson">Olafur Eliasson</a> (Studio Olafur Eliasson)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Takashi_Murakami">Takashi Murakami</a> (Kaikai Kiki Co., Ltd.)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Hito_Steyerl">Hito Steyerl</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Forensic_Architecture">Forensic Architecture</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Trevor_Paglen">Trevor Paglen</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Tania_Bruguera">Tania Bruguera</a> (Immigrant Movement International)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/E-flux">e-flux</a> / <a href="https://en.wikipedia.org/wiki/Anton_Vidokle">Anton Vidokle</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Tino_Sehgal">Tino Sehgal</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Maria_Eichhorn">Maria Eichhorn</a></div>
+</div>
+
+<div class="navbox-row navbox-even">
+<div class="navbox-group">Legal &amp; jurisdictional frame</div>
+<div class="navbox-list"><a href="https://en.wikipedia.org/wiki/Religious_Freedom_Restoration_Act">Religious Freedom Restoration Act</a> (1993)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Citizens_United_v._FEC">Citizens United v. FEC</a> (2010)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/501(c)(3)_organization">501(c)(3) organization</a><span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Lawrence_Lessig">Lawrence Lessig</a> (<i>Code</i>, 1999)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/James_Boyle_(academic)">James Boyle</a> (<i>The Public Domain</i>, 2008)<span class="navbox-sep">&middot;</span><a href="https://en.wikipedia.org/wiki/Doctrine_of_corporate_personhood">Corporate personhood</a></div>
+</div>
+
+<div class="navbox-row navbox-odd">
+<div class="navbox-group">Related entities</div>
+<div class="navbox-list"><a href="https://cocausa.org/" class="ext">Church of Conceptual Art</a><span class="navbox-sep">&middot;</span><a href="https://unsubscribe.llc/" class="ext">Unsubscribe LLC</a><span class="navbox-sep">&middot;</span><a href="https://nameofmy.com/" class="ext">Name of My</a><span class="navbox-sep">&middot;</span><a href="#genesis-artifact"><i>Genesis Artifact</i></a><span class="navbox-sep">&middot;</span><i>Genesis 002</i><span class="navbox-sep">&middot;</span><a href="https://globalartindex.com/" class="ext">Ethics Index</a></div>
+</div>
+
+<div class="navbox-row navbox-even">
+<div class="navbox-group">Contemporaries</div>
+<div class="navbox-list"><a href="https://jesse.do/" class="ext">Jesse Do</a><span class="navbox-sep">&middot;</span><a href="https://www.imdb.com/name/nm4929110/" class="ext">Antino Crowley-Kamenwati</a><span class="navbox-sep">&middot;</span>Jacob Sofaer<span class="navbox-sep">&middot;</span><a href="https://www.imdb.com/name/nm5472554/" class="ext">Bryan Claburn</a><span class="navbox-sep">&middot;</span>George Chorny<span class="navbox-sep">&middot;</span><a href="https://www.isaacaden.com/" class="ext">Isaac Aden</a><span class="navbox-sep">&middot;</span>Wolf Michael Mozart</div>
+</div>
+
+</div>
+</details>
 
 <div class="footer-cats">
 <span class="label">Categories:</span> 1990 births &middot; 2078 deaths &middot; French film directors &middot; American film directors &middot; French art world figures &middot; Pissarro family &middot; Founders of religious movements &middot; Conceptual artists &middot; Institutional critique artists &middot; Edition artists &middot; Disability rights advocates &middot; Hamburg directors &middot; Long Island &middot; Genesis Artifact
@@ -797,7 +1372,7 @@
 <div class="infobox">
 <div class="name">Paul-Alexander Pissarro</div>
 <div class="portrait">
-<img src="portrait.jpg" alt="Paul-Alexander Pissarro" onerror="this.style.display='none'; this.parentElement.innerHTML='[ portrait ]';">
+<img src="/portrait.jpg" alt="Paul-Alexander Pissarro" onerror="this.style.display='none'; this.parentElement.innerHTML='[ portrait ]';">
 </div>
 <div class="portrait-caption">Pissarro in Hamburg, c. 2042</div>
 <dl>
@@ -810,11 +1385,11 @@
 <dt>Known for</dt><dd>Unsubscribe LLC; Church of Conceptual Art; Genesis series; Ethics Index; Good Ethics is Good Business campaign</dd>
 <dt>Partner</dt><dd>Madita Strunk</dd>
 <dt>Children</dt><dd>4 (anonymous)</dd>
-<dt>Parents</dt><dd>Joachim Pissarro (father)<br>Annabel Daou (mother)</dd>
-<dt>Relatives</dt><dd>Camille Pissarro (great-great-grandfather)<br>Lionel Pissarro (paternal uncle)<br>Peter Daou (maternal uncle)<br>Erica Jong (extended)<br>Molly Jong-Fast (extended)<br><a href="https://www.pissarro.art/cp-descendants" class="ext">Pissarro family descendants</a></dd>
+<dt>Parents</dt><dd><a href="https://en.wikipedia.org/wiki/Joachim_Pissarro">Joachim Pissarro</a> (father)<br><a href="https://en.wikipedia.org/wiki/Annabel_Daou">Annabel Daou</a> (mother)</dd>
+<dt>Relatives</dt><dd><a href="https://en.wikipedia.org/wiki/Camille_Pissarro">Camille Pissarro</a> (great-great-grandfather)<br>Lionel Pissarro (paternal uncle)<br><a href="https://en.wikipedia.org/wiki/Peter_Daou">Peter Daou</a> (maternal uncle)<br><a href="https://en.wikipedia.org/wiki/Vanessa_Daou">Vanessa Daou</a> (aunt by marriage)<br>Eena Daou (aunt)<br>George Chorny (stepbrother)<br><a href="https://en.wikipedia.org/wiki/Erica_Jong">Erica Jong</a> (extended)<br><a href="https://en.wikipedia.org/wiki/Molly_Jong-Fast">Molly Jong-Fast</a> (extended)<br><a href="https://www.pissarro.art/cp-descendants" class="ext">Pissarro family descendants</a></dd>
 
 <div class="websites-list">
-<div class="label">Websites &amp; projects</div>
+<div class="label">Further reading</div>
 <ul>
 <li><a href="https://unsubscribe.llc/" class="ext">unsubscribe.llc</a> <span class="label-inline">Mothership</span></li>
 <li><a href="https://unsubscribe.llc/about-us" class="ext">unsubscribe.llc/about-us</a> <span class="label-inline">Artist statement</span></li>
@@ -835,5 +1410,63 @@
 </div>
 </div>
 
+<script>
+  (function() {
+    // TOC behavior
+    var toc = document.getElementById('toc');
+    if (toc) {
+      var mqMobile = window.matchMedia('(max-width: 767px)');
+      var mqWide = window.matchMedia('(min-width: 1200px)');
+      function setInitial() {
+        // Wide: always open, no toggle. Medium: open. Mobile: closed.
+        if (mqWide.matches) {
+          toc.open = true;
+        } else if (mqMobile.matches) {
+          toc.open = false;
+        } else {
+          toc.open = true;
+        }
+      }
+      setInitial();
+      mqMobile.addEventListener('change', setInitial);
+      mqWide.addEventListener('change', setInitial);
+      // On mobile, close the TOC after tapping a section link so the user lands on content
+      toc.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (mqMobile.matches) {
+            toc.open = false;
+          }
+        });
+      });
+    }
+
+    // Dropdown coordination: only one open at a time, click outside to close
+    var dropdowns = document.querySelectorAll('details.lang-switcher, details.tools-switcher');
+    dropdowns.forEach(function(d) {
+      d.addEventListener('toggle', function() {
+        if (d.open) {
+          dropdowns.forEach(function(other) {
+            if (other !== d) other.open = false;
+          });
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      dropdowns.forEach(function(d) {
+        if (d.open && !d.contains(e.target)) {
+          d.open = false;
+        }
+      });
+    });
+    // Keyboard: Escape closes
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        dropdowns.forEach(function(d) {
+          if (d.open) d.open = false;
+        });
+      }
+    });
+  })();
+</script>
 </body>
 </html>
