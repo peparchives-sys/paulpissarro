@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paul-Alexander Pissarro — Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F8F4EE;
+    --warm-white: #FDFAF6;
+    --ink: #1C1814;
+    --brown: #6B4F3A;
+    --gold: #C9A96E;
+    --rust: #A85C38;
+    --light: #EDE5D8;
+    --mid: #8C7B6B;
+    --sage: #7A8C6E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--light);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  header nav a {
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    color: var(--brown);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--warm-white);
+    padding: 110px 48px 90px;
+    text-align: center;
+    border-bottom: 1px solid var(--light);
+  }
+
+  .hero-eyebrow {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 32px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.22;
+    color: var(--ink);
+    max-width: 780px;
+    margin: 0 auto 32px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--brown);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--mid);
+    max-width: 540px;
+    margin: 0 auto 56px;
+    line-height: 1.85;
+    font-style: italic;
+  }
+
+  .btn {
+    display: inline-block;
+    background: var(--brown);
+    color: #fff;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    padding: 17px 44px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn:hover { background: var(--rust); transform: translateY(-2px); }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--brown);
+    color: var(--brown);
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    padding: 14px 36px;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { background: var(--brown); color: #fff; }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 90px 48px 70px;
+    text-align: center;
+  }
+
+  .pull-quote blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--brown);
+    margin-bottom: 20px;
+  }
+
+  .pull-quote p {
+    font-size: 15px;
+    color: var(--mid);
+    font-style: italic;
+  }
+
+  /* SECTION WRAPPER */
+  .section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  .section-wide {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 48px;
+  }
+
+  .eyebrow {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 400;
+    line-height: 1.28;
+    margin-bottom: 36px;
+  }
+
+  p + p { margin-top: 20px; }
+
+  strong { color: var(--brown); }
+
+  /* WHO THIS IS FOR */
+  .for-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+  }
+
+  .for-card {
+    background: var(--warm-white);
+    border: 1px solid var(--light);
+    border-top: 3px solid var(--sage);
+    padding: 36px 28px;
+  }
+
+  .for-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .for-card p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--mid);
+    margin-top: 0;
+  }
+
+  /* ABOUT */
+  .about-section {
+    background: var(--ink);
+    padding: 100px 48px;
+  }
+
+  .about-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .about-inner .eyebrow { color: var(--gold); }
+
+  .about-inner .section-title { color: var(--warm-white); }
+
+  .about-inner p {
+    color: rgba(255,255,255,0.72);
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  .about-inner strong { color: var(--gold); }
+
+  .credentials {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .cred-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 18px 24px;
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid var(--gold);
+  }
+
+  .cred-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--warm-white);
+    font-weight: 500;
+  }
+
+  .cred-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* OFFERINGS */
+  .offer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .offer-item {
+    background: var(--warm-white);
+    border: 1px solid var(--light);
+    border-left: 3px solid transparent;
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    align-items: start;
+    transition: border-left-color 0.2s;
+  }
+
+  .offer-item:hover { border-left-color: var(--rust); }
+
+  .offer-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+
+  .offer-item p {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.75;
+    margin-top: 0;
+    max-width: 500px;
+  }
+
+  .offer-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--brown);
+    white-space: nowrap;
+    text-align: right;
+    padding-top: 4px;
+  }
+
+  .offer-price small {
+    display: block;
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: var(--mid);
+    font-style: italic;
+  }
+
+  /* LETTER SECTION */
+  .letter {
+    background: var(--warm-white);
+    border: 1px solid var(--light);
+    padding: 64px 56px;
+    max-width: 720px;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.9;
+    color: var(--brown);
+    position: relative;
+  }
+
+  .letter::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 100px;
+    color: var(--light);
+    position: absolute;
+    top: 20px;
+    left: 32px;
+    line-height: 1;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--cream);
+    padding: 100px 48px;
+    text-align: center;
+    border-top: 1px solid var(--light);
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+
+  .cta-section p {
+    color: var(--mid);
+    font-style: italic;
+    max-width: 460px;
+    margin: 0 auto 48px;
+  }
+
+  .btn-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-note {
+    margin-top: 28px;
+    font-size: 14px;
+    color: var(--mid);
+  }
+
+  .cta-note a { color: var(--brown); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 36px 48px;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.04em;
+  }
+
+  footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  /* DIVIDER */
+  .rule {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 48px;
+    border: none;
+    border-top: 1px solid var(--light);
+  }
+
+  /* FADE */
+  .fade { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade.in { opacity: 1; transform: none; }
+
+  @media (max-width: 620px) {
+    header { padding: 16px 24px; }
+    .hero { padding: 72px 24px 60px; }
+    .section, .section-wide { padding: 60px 24px; }
+    .about-section { padding: 60px 24px; }
+    .cta-section { padding: 60px 24px; }
+    .letter { padding: 48px 28px; }
+    .offer-item { grid-template-columns: 1fr; padding: 28px 24px; }
+    .offer-price { text-align: left; }
+  }
+
+  /* POPUP */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(28,24,20,0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  .popup-overlay.active { display: flex; }
+
+  .popup-box {
+    background: var(--warm-white);
+    max-width: 480px;
+    width: 100%;
+    padding: 56px 48px;
+    position: relative;
+    text-align: center;
+    animation: popIn 0.3s ease;
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.95) translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: var(--mid);
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+
+  .popup-close:hover { color: var(--ink); }
+
+  .popup-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+
+  .popup-box p {
+    font-size: 15px;
+    color: var(--mid);
+    font-style: italic;
+    margin-bottom: 32px;
+    line-height: 1.75;
+  }
+
+  .popup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .popup-form input[type="email"] {
+    width: 100%;
+    padding: 15px 18px;
+    border: 1px solid var(--light);
+    background: var(--cream);
+    font-family: 'Lora', serif;
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .popup-form input[type="email"]:focus { border-color: var(--brown); }
+
+  .popup-form input[type="email"]::placeholder { color: var(--mid); font-style: italic; }
+
+  .popup-form button {
+    width: 100%;
+    padding: 16px;
+    background: var(--brown);
+    color: #fff;
+    border: none;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .popup-form button:hover { background: var(--rust); }
+
+  .popup-success {
+    display: none;
+    padding: 16px;
+    background: rgba(122,140,110,0.12);
+    border: 1px solid var(--sage);
+    color: var(--sage);
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  .popup-success.show { display: block; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://paulpissarro.com" class="logo">Paul-Alexander Pissarro</a>
+  <nav><a href="https://tidycal.com/pissarropaul">Book a free call</a></nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-eyebrow">Personal Coaching</span>
+  <h1>Something in you is ready<br>to <em>change for good.</em></h1>
+  <p class="hero-sub">I work with people who are tired of circling the same thing. People who are ready — even if ready is the wrong word — to go somewhere new.</p>
+  <a href="https://tidycal.com/pissarropaul" class="btn">Book a free thirty-minute call</a>
+</section>
+
+<!-- PULL QUOTE -->
+<div class="pull-quote fade">
+  <blockquote>"The work is not about fixing you. You are not broken. The work is about helping you hear yourself more clearly."</blockquote>
+  <p>— Paul-Alexander Pissarro</p>
+</div>
+
+<hr class="rule">
+
+<!-- WHO THIS IS FOR -->
+<section class="section-wide fade">
+  <span class="eyebrow">Who this is for</span>
+  <h2 class="section-title" style="text-align:center; max-width:600px; margin-left:auto; margin-right:auto;">You don't need to have it figured out.<br>You just need to be honest.</h2>
+  <div class="for-grid">
+    <div class="for-card">
+      <h3>The creative in transition</h3>
+      <p>You are building something, or trying to, and the internal friction is heavier than any external obstacle. You need a thinking partner who has been there and won't pretend otherwise.</p>
+    </div>
+    <div class="for-card">
+      <h3>The person in recovery</h3>
+      <p>Sobriety opened space. Now you are figuring out who you are without the thing that used to organize your life. That is real and complicated work. I have done it. I know what it actually takes.</p>
+    </div>
+    <div class="for-card">
+      <h3>The young adult finding direction</h3>
+      <p>The map does not match the territory. The people around you are more confused than they let on. You need a conversation that treats you like the adult you are trying to become.</p>
+    </div>
+    <div class="for-card">
+      <h3>Anyone ready for deep change</h3>
+      <p>You have tried other things. You are not sure this will be different. Maybe it won't. But something made you read this far, and that is worth one conversation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section fade">
+  <div class="about-inner">
+    <span class="eyebrow">About Paul-Alexander</span>
+    <h2 class="section-title">A winding path<br>is still a path.</h2>
+    <p>I am <strong>Paul-Alexander Pissarro</strong>, a coach and creative based in Hamburg, Germany. I am French-American, the great-great-grandson of <strong>Camille Pissarro</strong>, and I have spent most of my adult life figuring out what it means to build something honest from a complicated inheritance.</p>
+    <p>I have been a chef. A filmmaker. A conceptual artist. A person in recovery. A student of <strong>Buddhist practice</strong> for over a decade. I have lost things that mattered deeply and rebuilt from wherever I happened to land. None of it followed a plan and I would not trade any of it.</p>
+    <p>What I bring to a session is not a system. It is the accumulated honesty of someone who has had to tell himself the truth in hard moments, and learned to help others do the same. I work with people at turning points — in their creative lives, in their relationship with sobriety, in the quiet places where the real questions live.</p>
+
+    <div class="credentials">
+      <div class="cred-item">
+        <div>
+          <div class="cred-title">Erickson Coaching International — Trained Coach</div>
+          <div class="cred-desc">ICF-accredited methodology. Solution-focused, whole-person coaching grounded in decades of global practice.</div>
+        </div>
+      </div>
+      <div class="cred-item">
+        <div>
+          <div class="cred-title">CCAR — Certified Addiction Recovery Coach (In Progress)</div>
+          <div class="cred-desc">Connecticut Community for Addiction Recovery. Specialized training in recovery coaching, peer support, and the particular terrain of life after addiction.</div>
+        </div>
+      </div>
+      <div class="cred-item">
+        <div>
+          <div class="cred-title">CAIP — Certified AI Pilot</div>
+          <div class="cred-desc">Practical AI literacy and integration for creative professionals navigating a rapidly changing landscape.</div>
+        </div>
+      </div>
+      <div class="cred-item">
+        <div>
+          <div class="cred-title">Buddhist Practice — SGI</div>
+          <div class="cred-desc">Over a decade of daily Nichiren Buddhist practice through Soka Gakkai International. A foundation of clarity, compassion, and honest self-examination.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="section fade">
+  <div class="letter">
+    <p>I want to be honest with you about what coaching with me is and is not.</p>
+    <p>It is not therapy. If you need therapy, please find a good therapist. I will help you look.</p>
+    <p>It is not a program with a fixed outcome and a timeline and a certificate at the end. I do not know exactly where we are going. That is the point.</p>
+    <p>What it is: a conversation between two people. One of them has been through some things and is willing to say so. The other is you, willing to show up honestly for thirty minutes and see what happens.</p>
+    <p>Most of the time, that is enough to change something.</p>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section class="section-wide fade">
+  <span class="eyebrow">Working together</span>
+  <h2 class="section-title">Sessions, not programs.</h2>
+  <p style="max-width:600px; color:var(--mid); font-style:italic;">Every engagement starts with a free twenty-minute conversation. From there, we figure out what you actually need.</p>
+  <div class="offer-list">
+    <div class="offer-item">
+      <div>
+        <h3>Creative Direction &amp; Life Coaching</h3>
+        <p>For artists, founders, and people in the middle of something they can't quite name. We work on clarity, direction, and the patterns that are costing you more than you realize.</p>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div>
+        <h3>Recovery &amp; Life Transition Coaching</h3>
+        <p>For people in sobriety or early recovery who are building a life, not just maintaining one. Grounded in lived experience and CCAR-trained peer support methodology. This is not clinical. It is human.</p>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div>
+        <h3>AI Literacy &amp; Creative Integration</h3>
+        <p>One-on-one sessions for creative professionals who need to understand how AI fits into their work and life — practically, without the panic or the hype.</p>
+      </div>
+    </div>
+    <div class="offer-item">
+      <div>
+        <h3>Team AI Literacy Workshop</h3>
+        <p>Half-day or full-day sessions for companies and teams, co-facilitated with Jesse Do, engineer. Culture and creativity from Paul. Technical grounding from Jesse. Your team leaves with real tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section fade">
+  <h2>The first conversation<br>is always free.</h2>
+  <p>Thirty minutes. No agenda. No pressure. Just an honest conversation about where you are and whether this makes sense.</p>
+  <div class="btn-row">
+    <a href="https://tidycal.com/pissarropaul" class="btn">Book your intro call</a>
+    <button onclick="openPopup()" class="btn-outline" style="cursor:pointer; font-family:'Lora',serif;">Stay in touch</button>
+  </div>
+  <p class="cta-note">Sessions delivered over Zoom or phone, worldwide.</p>
+</section>
+
+<footer>
+  <p>Paul-Alexander Pissarro &nbsp;&mdash;&nbsp; <a href="https://paulpissarro.com">paulpissarro.com</a> &nbsp;&mdash;&nbsp; </p>
+</footer>
+
+
+
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popup" onclick="closePopupOutside(event)">
+  <div class="popup-box" role="dialog" aria-modal="true">
+    <button class="popup-close" onclick="closePopup()" aria-label="Close">&times;</button>
+    <h3>Stay in the loop.</h3>
+    <p>Leave your email and Paul will be in touch personally. No newsletters, no noise — just a real conversation when the time is right.</p>
+    <form class="popup-form" onsubmit="submitEmail(event)">
+      <input type="email" id="popup-email" placeholder="Your email address" required autocomplete="email">
+      <button type="submit">Send my email to Paul</button>
+    </form>
+    <div class="popup-success" id="popup-success">Thank you. Paul will be in touch.</div>
+  </div>
+</div>
+
+<script>
+  // Intersection observer for fade-ins
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+
+  // Popup
+  function openPopup() {
+    document.getElementById('popup').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup() {
+    document.getElementById('popup').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function closePopupOutside(e) {
+    if (e.target === document.getElementById('popup')) closePopup();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+  async function submitEmail(e) {
+    e.preventDefault();
+    const email = document.getElementById('popup-email').value;
+    
+    // Send to paul@paulpissarro.com via mailto fallback
+    // Also attempt a fetch to a form handler if available
+    try {
+      await fetch('https://formsubmit.co/paul@paulpissarro.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: email, _subject: 'New coaching enquiry from paulpissarro.com/coaching', _captcha: 'false' })
+      });
+    } catch(err) {
+      // Fallback: open mailto
+      window.location.href = 'mailto:paul@paulpissarro.com?subject=Coaching%20enquiry&body=My%20email%20is%20' + encodeURIComponent(email);
+    }
+
+    document.querySelector('.popup-form').style.display = 'none';
+    document.getElementById('popup-success').classList.add('show');
+    setTimeout(closePopup, 3000);
+  }
+
+  // Show popup after 45 seconds if not dismissed
+  setTimeout(() => {
+    if (!sessionStorage.getItem('popupSeen')) {
+      openPopup();
+      sessionStorage.setItem('popupSeen', '1');
+    }
+  }, 45000);
+</script>
+
+</body>
+</html>
