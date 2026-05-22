@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Art Index — Instrument 01: The Latin American Discount</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f4f1e8;
+    --paper-2:#ece8db;
+    --ink:#1c1916;
+    --ink-soft:#4b453d;
+    --ink-faint:#7c756a;
+    --rule:rgba(28,25,22,0.22);
+    --rule-soft:rgba(28,25,22,0.11);
+    --oxblood:#8c2f22;
+    --oxblood-deep:#6e2117;
+    --surface:#fbfaf5;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:18px;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+    opacity:0.035;mix-blend-mode:multiply;
+  }
+  .mono{font-family:"IBM Plex Mono",monospace;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
+  a{color:var(--oxblood);}
+
+  /* ---------- label system ---------- */
+  .kicker{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--oxblood);
+  }
+  .kicker.muted{color:var(--ink-faint);}
+  .sec-no{
+    font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:0.2em;color:var(--ink-faint);text-transform:uppercase;
+  }
+
+  /* ---------- masthead ---------- */
+  header.mast{
+    border-bottom:1.5px solid var(--ink);
+    padding-top:22px;
+  }
+  .mast-top{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding-bottom:14px;border-bottom:1px solid var(--rule-soft);
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .mast-mid{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    padding:30px 0 22px;
+  }
+  .mast-title{
+    font-size:clamp(34px,5.4vw,62px);
+    font-weight:300;line-height:0.96;letter-spacing:-0.02em;
+  }
+  .mast-title b{font-weight:600;}
+  .mast-sub{
+    text-align:right;font-family:"IBM Plex Mono",monospace;
+    font-size:11px;letter-spacing:0.06em;color:var(--ink-soft);line-height:1.7;
+    text-transform:uppercase;
+  }
+  @media(max-width:760px){
+    .mast-mid{flex-direction:column;align-items:flex-start;gap:18px;}
+    .mast-sub{text-align:left;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 26px;}
+  .hero-instrument{
+    display:flex;gap:14px;align-items:center;margin-bottom:30px;
+  }
+  .hero-instrument .line{flex:1;height:1px;background:var(--rule);}
+  .hero h1{
+    font-size:clamp(30px,4.6vw,52px);
+    font-weight:300;line-height:1.08;letter-spacing:-0.018em;
+    max-width:18ch;
+  }
+  .hero h1 em{font-style:italic;color:var(--oxblood);font-weight:400;}
+  .hero-stand{
+    margin-top:30px;max-width:62ch;font-size:19.5px;color:var(--ink-soft);
+    border-left:2px solid var(--oxblood);padding-left:22px;
+  }
+  .hero-stand b{color:var(--ink);font-weight:600;}
+
+  /* ---------- generic section ---------- */
+  section.block{padding:74px 0;border-top:1px solid var(--rule-soft);}
+  .sec-head{
+    display:flex;gap:30px;align-items:baseline;margin-bottom:34px;
+    flex-wrap:wrap;
+  }
+  .sec-head h2{
+    font-size:clamp(25px,3.4vw,38px);font-weight:400;
+    letter-spacing:-0.015em;line-height:1.12;max-width:20ch;
+  }
+  .sec-head h2 em{font-style:italic;color:var(--oxblood);}
+  .lede{
+    max-width:64ch;font-size:19px;color:var(--ink-soft);margin-bottom:8px;
+  }
+  .lede b{color:var(--ink);font-weight:600;}
+
+  /* ---------- the headline toggle ---------- */
+  .panel{
+    background:var(--surface);
+    border:1px solid var(--rule);
+    margin-top:34px;
+  }
+  .panel-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:15px 24px;border-bottom:1px solid var(--rule-soft);
+    flex-wrap:wrap;gap:14px;
+  }
+  .panel-head .ttl{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .toggle{
+    display:inline-flex;border:1px solid var(--ink);
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:0.12em;text-transform:uppercase;
+  }
+  .toggle button{
+    background:transparent;border:none;cursor:pointer;
+    padding:8px 16px;font:inherit;letter-spacing:inherit;color:var(--ink);
+    transition:background .25s,color .25s;
+  }
+  .toggle button.on{background:var(--ink);color:var(--paper);}
+  .toggle button:not(.on):hover{background:var(--paper-2);}
+
+  .headline-body{padding:40px 24px 34px;}
+  .hl-figure{
+    display:flex;align-items:flex-end;gap:26px;flex-wrap:wrap;
+  }
+  .hl-num{
+    font-size:clamp(58px,11vw,128px);font-weight:200;line-height:0.86;
+    letter-spacing:-0.03em;
+  }
+  .hl-delta{
+    font-family:"IBM Plex Mono",monospace;font-size:15px;
+    padding-bottom:14px;letter-spacing:0.04em;
+  }
+  .hl-delta .up{color:var(--ink);}
+  .hl-read{
+    margin-top:24px;font-size:20px;max-width:60ch;min-height:3.2em;
+    transition:opacity .3s;
+  }
+  .hl-read .q{font-style:italic;}
+  .decomp{
+    margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:1px;
+    background:var(--rule-soft);border:1px solid var(--rule-soft);
+  }
+  .decomp .cell{background:var(--surface);padding:20px 22px;}
+  .decomp .cell .cap{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);
+    margin-bottom:10px;
+  }
+  .decomp .cell .big{font-size:34px;font-weight:300;line-height:1;}
+  .decomp .cell .sm{font-size:15px;color:var(--ink-soft);margin-top:8px;}
+  .decomp .cell.lead{border-top:2px solid var(--oxblood);}
+  .decomp .cell.lead .big{color:var(--oxblood);}
+  @media(max-width:620px){.decomp{grid-template-columns:1fr;}}
+
+  /* ---------- chart shells ---------- */
+  .chart-card{
+    background:var(--surface);border:1px solid var(--rule);margin-top:34px;
+  }
+  .chart-card .cc-head{
+    padding:16px 24px;border-bottom:1px solid var(--rule-soft);
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:12px;
+  }
+  .chart-card .cc-head .ttl{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .chart-card .cc-body{padding:30px 24px 22px;}
+  .chart-card svg{display:block;width:100%;height:auto;overflow:visible;}
+  .cc-foot{
+    padding:14px 24px 18px;border-top:1px solid var(--rule-soft);
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    color:var(--ink-faint);letter-spacing:0.03em;line-height:1.7;
+  }
+
+  /* ---------- stat row ---------- */
+  .stat-row{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--rule-soft);border:1px solid var(--rule);margin-top:34px;
+  }
+  .stat{background:var(--surface);padding:26px 22px;}
+  .stat .sn{
+    font-size:46px;font-weight:300;line-height:1;letter-spacing:-0.02em;
+    color:var(--oxblood);
+  }
+  .stat .sl{
+    margin-top:12px;font-size:16px;color:var(--ink-soft);line-height:1.5;
+  }
+  .stat .sl b{color:var(--ink);font-weight:600;}
+  .stat .ss{
+    margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:10px;
+    letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  @media(max-width:760px){.stat-row{grid-template-columns:1fr;}}
+
+  /* ---------- pull quote ---------- */
+  .pull{
+    margin:46px 0;padding:32px 0;border-top:1.5px solid var(--ink);
+    border-bottom:1.5px solid var(--ink);
+  }
+  .pull p{
+    font-size:clamp(22px,3vw,32px);font-weight:300;font-style:italic;
+    line-height:1.32;letter-spacing:-0.01em;max-width:24ch;
+  }
+  .pull .attr{
+    margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);
+    font-style:normal;
+  }
+
+  /* ---------- two col ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:46px;margin-top:34px;}
+  @media(max-width:780px){.grid2{grid-template-columns:1fr;gap:34px;}}
+  .grid2 h3{
+    font-size:21px;font-weight:500;margin-bottom:14px;letter-spacing:-0.01em;
+  }
+  .grid2 h3 .tag{
+    font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:500;
+    letter-spacing:0.14em;color:var(--oxblood);display:block;margin-bottom:6px;
+  }
+  .grid2 p{font-size:17px;color:var(--ink-soft);margin-bottom:14px;}
+  .grid2 p b{color:var(--ink);font-weight:600;}
+
+  /* ---------- evidence list ---------- */
+  .evidence{margin-top:30px;border-top:1px solid var(--rule);}
+  .ev-row{
+    display:grid;grid-template-columns:128px 1fr;gap:24px;
+    padding:20px 0;border-bottom:1px solid var(--rule-soft);
+    align-items:start;
+  }
+  .ev-row .ev-k{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:0.08em;color:var(--oxblood);text-transform:uppercase;
+    padding-top:3px;
+  }
+  .ev-row .ev-v{font-size:17px;color:var(--ink-soft);}
+  .ev-row .ev-v b{color:var(--ink);font-weight:600;}
+  @media(max-width:620px){
+    .ev-row{grid-template-columns:1fr;gap:6px;}
+  }
+
+  /* ---------- synthesis ---------- */
+  .synth{
+    background:var(--ink);color:var(--paper);margin-top:10px;
+  }
+  .synth .wrap{padding:74px 40px;}
+  .synth .kicker{color:#d99;}
+  .synth h2{
+    font-size:clamp(26px,3.6vw,42px);font-weight:300;line-height:1.12;
+    letter-spacing:-0.015em;margin:22px 0 26px;max-width:22ch;
+  }
+  .synth h2 em{font-style:italic;color:#e8a89c;}
+  .synth .claim{
+    font-size:19px;color:#cfc8bb;max-width:62ch;margin-bottom:18px;
+  }
+  .synth .claim b{color:var(--paper);font-weight:600;}
+  .synth-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:rgba(244,241,232,0.16);
+    border:1px solid rgba(244,241,232,0.16);margin-top:36px;
+  }
+  .synth-grid .sg{background:var(--ink);padding:24px 20px;}
+  .synth-grid .sg .num{
+    font-family:"IBM Plex Mono",monospace;font-size:11px;
+    letter-spacing:0.14em;color:#e8a89c;margin-bottom:12px;
+  }
+  .synth-grid .sg .t{font-size:18px;font-weight:500;margin-bottom:8px;}
+  .synth-grid .sg .d{font-size:15px;color:#a89f92;line-height:1.55;}
+  @media(max-width:760px){.synth-grid{grid-template-columns:1fr;}}
+
+  /* ---------- methodology ---------- */
+  .method{padding:64px 0;border-top:1px solid var(--rule-soft);}
+  .method .lede{margin-bottom:26px;}
+  .src-list{
+    margin-top:24px;border-top:1px solid var(--rule);
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5;
+  }
+  .src-list .src{
+    display:grid;grid-template-columns:54px 1fr;gap:18px;
+    padding:13px 0;border-bottom:1px solid var(--rule-soft);
+    color:var(--ink-soft);
+  }
+  .src-list .src .si{color:var(--oxblood);}
+  .caveat{
+    margin-top:34px;background:var(--paper-2);
+    border:1px solid var(--rule);padding:24px 26px;
+  }
+  .caveat .ch{
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:0.16em;text-transform:uppercase;color:var(--oxblood);
+    margin-bottom:12px;
+  }
+  .caveat p{font-size:16px;color:var(--ink-soft);max-width:70ch;}
+  .caveat p+p{margin-top:10px;}
+  .caveat p b{color:var(--ink);font-weight:600;}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1.5px solid var(--ink);padding:30px 0 60px;
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+    letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  footer .fr{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(22px);
+    transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* svg helpers */
+  .ax-label{font-family:"IBM Plex Mono",monospace;font-size:10px;
+    fill:var(--ink-faint);letter-spacing:0.04em;}
+  .bar-label{font-family:"IBM Plex Mono",monospace;font-size:11px;
+    fill:var(--ink);}
+  .bar-name{font-family:"Newsreader",serif;font-size:14px;fill:var(--ink);}
+  .grid-line{stroke:var(--rule-soft);stroke-width:1;}
+  .zero-line{stroke:var(--ink);stroke-width:1.4;}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="mast">
+    <div class="mast-top">
+      <span>Global Art Index</span>
+      <span>Confidential · Working Draft</span>
+      <span>22 May 2026</span>
+    </div>
+    <div class="mast-mid">
+      <div class="mast-title">THE GLOBAL<br><b>ART INDEX</b></div>
+      <div class="mast-sub">
+        Instrument 01 / Vol. I<br>
+        A data exhibit<br>
+        globalartindex.com
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <div class="hero">
+    <div class="hero-instrument reveal">
+      <span class="kicker">Instrument 01</span>
+      <span class="line"></span>
+      <span class="kicker muted">The Latin American Discount</span>
+    </div>
+    <h1 class="reveal">The market did not recover. It <em>narrowed</em> — and Latin America is priced as if it hadn't.</h1>
+    <div class="hero-stand reveal">
+      Two findings, one mechanism. <b>First:</b> the global art market's 2025 "rebound" is structurally hollow — growth concentrated almost entirely at the established top end, while the broad market continues a correction that began in 2023. <b>Second:</b> in a market that now rewards only scarce, institutionally-validated material, Latin American art carries exactly that profile and trades at a discount to it. The discount is the position.
+    </div>
+  </div>
+</div>
+
+<!-- ===================== § 01 — THE HEADLINE ===================== -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">§ 01 — The Headline</span>
+      <h2>One number is doing all the talking. <em>It is the wrong number.</em></h2>
+    </div>
+    <p class="lede reveal">
+      In March 2026, the Art Basel &amp; UBS Global Art Market Report announced a return to growth. The figure travelled fast and uncritically. Read it twice — once as reported, once as structured.
+    </p>
+
+    <div class="panel reveal">
+      <div class="panel-head">
+        <span class="ttl">Global art market · total value · 2025</span>
+        <div class="toggle" id="hlToggle">
+          <button class="on" data-mode="reported">As Reported</button>
+          <button data-mode="structured">As Structured</button>
+        </div>
+      </div>
+      <div class="headline-body">
+        <div class="hl-figure">
+          <div class="hl-num mono" id="hlNum">$59.6<span style="font-size:0.42em;letter-spacing:0;"> BN</span></div>
+          <div class="hl-delta"><span class="up">▲ +4.0% YoY · 2024→2025</span></div>
+        </div>
+        <p class="hl-read" id="hlRead">
+          <span class="q">"After two years of decline, the global art market returned to growth."</span> The headline is true. It is also the least informative sentence available about the state of the market.
+        </p>
+        <div class="decomp" id="hlDecomp" style="display:none;">
+          <div class="cell">
+            <div class="cap">Where the +4% did not come from</div>
+            <div class="big">−2%</div>
+            <div class="sm">Post-War &amp; Contemporary, the market's growth engine for a decade, fell to $4.5bn. Works under $50,000 slipped.</div>
+          </div>
+          <div class="cell lead">
+            <div class="cap">Where the +4% came from</div>
+            <div class="big">+30% / +47%</div>
+            <div class="sm">Works over $10m rose 30%. Impressionist &amp; Post-Impressionist surged 47%; Old Masters rose 30%. Established, scarce, supply-constrained.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="lede reveal" style="margin-top:30px;">
+      A 4% gain assembled almost entirely from the top of the market and the deepest art history is not a recovering market. It is a <b>correcting market with a loud exception</b> — and the exception is being reported as the rule.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== § 02 — THE GLOBAL CORRECTION ===================== -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">§ 02 — The Global Market</span>
+      <h2>The correction is not coming. It is <em>here</em>, beneath the prints.</h2>
+    </div>
+    <p class="lede reveal">
+      The market peaked at <b>$67.8bn in 2022</b>, fell to $65.3bn in 2023, then to $57.5bn in 2024 — a 12% drop. The 2025 figure of $59.6bn remains <b>12% below the peak</b>. Two years of contraction were not reversed; they were partially, and unevenly, papered over.
+    </p>
+
+    <!-- CHART A: market value -->
+    <div class="chart-card reveal">
+      <div class="cc-head"><span class="ttl">Fig. 2.1 — Global art market value, 2022–2025 · USD billions</span></div>
+      <div class="cc-body">
+        <svg id="chartValue" viewBox="0 0 920 320" role="img" aria-label="Global art market value 2022 to 2025"></svg>
+      </div>
+      <div class="cc-foot">SOURCE — Art Basel &amp; UBS Global Art Market Report, 2025 &amp; 2026 editions (Arts Economics / Dr. Clare McAndrew). 2023 value derived from published −4% change; all others as published.</div>
+    </div>
+
+    <!-- CHART B: segment divergence -->
+    <p class="lede reveal" style="margin-top:46px;">
+      The single most important fact about 2025 is not the total. It is the <b>spread between segments</b>. The auction market did not rise together — it split in two.
+    </p>
+    <div class="chart-card reveal">
+      <div class="cc-head">
+        <span class="ttl">Fig. 2.2 — 2025 auction performance by segment · year-on-year change</span>
+        <div class="toggle" id="segToggle">
+          <button class="on" data-mode="all">All Segments</button>
+          <button data-mode="split">Group By Outcome</button>
+        </div>
+      </div>
+      <div class="cc-body">
+        <svg id="chartSeg" viewBox="0 0 920 430" role="img" aria-label="2025 auction performance by segment"></svg>
+      </div>
+      <div class="cc-foot">SOURCE — Art Basel &amp; UBS Global Art Market Report 2026; Bank of America / ArtTactic 2026 U.S. Art Market Report. "Group By Outcome" sorts the same data into established/scarce material vs. the broad market.</div>
+    </div>
+
+    <!-- CHART C: secular mid-market decline -->
+    <p class="lede reveal" style="margin-top:46px;">
+      And the weakness is not cyclical. The middle of the market — works between $50,000 and $250,000, where most serious collecting actually happens — has been hollowing out for <b>fifteen years</b>.
+    </p>
+    <div class="chart-card reveal">
+      <div class="cc-head"><span class="ttl">Fig. 2.3 — The middle market, $50k–$250k · indexed, 2010 = 100</span></div>
+      <div class="cc-body">
+        <svg id="chartMid" viewBox="0 0 920 280" role="img" aria-label="Middle market decline since 2010"></svg>
+      </div>
+      <div class="cc-foot">SOURCE — Art Basel &amp; UBS Global Art Market Report 2026: sales of works priced $50,000–$250,000 are down 29% since 2010. Intermediate path shown is illustrative of a documented secular decline, not a year-by-year series.</div>
+    </div>
+
+    <!-- STRUCTURAL STRESS STATS -->
+    <p class="lede reveal" style="margin-top:46px;">
+      Three readings confirm the rebound sits on a deteriorating base. A market in genuine recovery does not produce these numbers.
+    </p>
+    <div class="stat-row reveal">
+      <div class="stat">
+        <div class="sn mono">38<span style="font-size:0.5em;">%</span></div>
+        <div class="sl">of dealers reported <b>declining profitability</b> in 2025 — against just 33% reporting gains. Costs rose ~5%, outpacing sales growth.</div>
+        <div class="ss">Art Basel / UBS 2026</div>
+      </div>
+      <div class="stat">
+        <div class="sn mono">78<span style="font-size:0.5em;">%</span></div>
+        <div class="sl">of New York evening-sale value was <b>backed by guarantees</b> — the highest in a decade. Consignors are de-risking, not betting.</div>
+        <div class="ss">BofA / ArtTactic 2026</div>
+      </div>
+      <div class="stat">
+        <div class="sn mono">−20<span style="font-size:0.5em;">%</span></div>
+        <div class="sl">fewer <b>lots sold</b> at the major U.S. houses. The value rose 23%; the market got narrower, not broader.</div>
+        <div class="ss">BofA / ArtTactic 2026</div>
+      </div>
+    </div>
+
+    <div class="pull reveal">
+      <p>"A recovery built on a handful of exceptional lots is not a recovery in any meaningful structural sense."</p>
+      <span class="attr">— Independent analysis of the Art Basel &amp; UBS 2026 Report</span>
+    </div>
+
+    <p class="lede reveal">
+      This is the finding the Index can stand behind without qualification: <b>the blue-chip results are not evidence against a correction. They are its signature.</b> When uncertainty rises, capital does not leave the art market — it retreats into the narrowest band of scarce, established, museum-validated work. A rising top end and a hollow middle are the same event.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== § 03 — THE LATAM RECORD ===================== -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">§ 03 — The Regional Headline</span>
+      <h2>Latin America's "record" year was <em>one painting.</em></h2>
+    </div>
+    <p class="lede reveal">
+      ArtTactic's Latin American Art Market Report 2025 reports record auction sales for the region. True — and, on its own, misleading. On 20 November 2025, Sotheby's sold Frida Kahlo's <em>El sueño (La cama)</em> for <b>$54.7m</b>: a record for the artist, for any woman artist, and for any Latin American artist at auction. Now remove it.
+    </p>
+
+    <div class="chart-card reveal">
+      <div class="cc-head">
+        <span class="ttl">Fig. 3.1 — Latin American auction volume · reference year · USD millions</span>
+        <div class="toggle" id="trophyToggle">
+          <button class="on" data-mode="with">With Trophy Lot</button>
+          <button data-mode="without">Trophy Lot Removed</button>
+        </div>
+      </div>
+      <div class="cc-body">
+        <svg id="chartTrophy" viewBox="0 0 920 300" role="img" aria-label="Latin American auction volume with and without the trophy lot"></svg>
+      </div>
+      <div class="cc-foot">SOURCE — Sotheby's (El sueño, $54.7m, Nov 2025); Artnet Price Database (Latin American auction volume, reference figure $245.5m). The single Kahlo lot equals roughly 22% of a normal regional auction year. Reference year used as the cleanest published baseline; exact 2025 ex-trophy total requires ArtTactic lot-level data — see § 06.</div>
+    </div>
+
+    <p class="lede reveal" style="margin-top:34px;">
+      A market whose record is delivered by a single 1940 canvas has not re-rated. It has had <b>one transaction</b>. Strip the trophy and the picture is sober: Latin American auction volume in the most recent full year was, by Artnet's count, <b>lower than it was a decade earlier</b> — roughly $245m against $270m.
+    </p>
+    <p class="lede reveal">
+      For the Index this is the hinge. The hollow record is not the bad news. <b>It is the opportunity, stated precisely:</b> the institutional case for Latin American art has moved faster than its prices. The gap between the two has a name.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== § 04 — THE DISCOUNT ===================== -->
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">§ 04 — The Discount</span>
+      <h2>Validated by the canon. Priced <em>outside</em> it.</h2>
+    </div>
+    <p class="lede reveal">
+      The claim of a discount needs a benchmark, or it is only an opinion. The Index uses one: <b>institutional standing measured against clearing price.</b> Where an artist's place in the canon — permanent museum collections, retrospectives, scholarship, biennial inclusion — is settled, but the auction record is not, the gap is a discount. Latin America's foundational figures show that gap at its widest.
+    </p>
+
+    <div class="chart-card reveal">
+      <div class="cc-head">
+        <span class="ttl">Fig. 4.1 — Auction record by artist · USD, log scale</span>
+        <div class="toggle" id="canonToggle">
+          <button class="on" data-mode="all">All</button>
+          <button data-mode="latam">Latin American Canon</button>
+        </div>
+      </div>
+      <div class="cc-body">
+        <svg id="chartCanon" viewBox="0 0 920 470" role="img" aria-label="Auction records by artist on a log scale"></svg>
+      </div>
+      <div class="cc-foot">SOURCE — public auction records: Warhol (Christie's 2022), Picasso (Christie's 2015), Basquiat (Sotheby's 2017), O'Keeffe (Sotheby's 2014), Kahlo (Sotheby's 2025), Varo (Christie's 2025), Amaral (Christie's 2025), Soto &amp; Cruz-Diez (gallery/auction reported 2025), Oiticica (Phillips 2017). Records span different oeuvre types; the exhibit compares institutional standing against price realisation, not like-for-like objects.</div>
+    </div>
+
+    <p class="lede reveal" style="margin-top:34px;">
+      Read the floor of that chart. Hélio Oiticica and Lygia Clark co-founded Neo-Concretism; they hold permanent displays at Tate Modern and works in MoMA. Jesús Rafael Soto and Carlos Cruz-Diez are foundational to kinetic art worldwide. Their auction records sit in the <b>five-to-six-figure range</b> — the band the Art Basel/UBS data identifies as the market's weakest. Artists this thoroughly canonised do not, in a rational market, clear at mid-market prices.
+    </p>
+
+    <div class="pull reveal">
+      <p>"Established artists from the region remain undervalued against their international peers."</p>
+      <span class="attr">— Recurring finding across post-Biennale market analysis, 2024–2026</span>
+    </div>
+
+    <!-- the re-rating evidence -->
+    <div class="grid2">
+      <div class="reveal">
+        <h3><span class="tag">Driver 01 — Institutional</span>The validation has already happened.</h3>
+        <p>The 2024 Venice Biennale, <em>Foreigners Everywhere</em>, was directed by <b>Adriano Pedrosa</b> — the first Latin American curator in the event's 130-year history. Of 331 artists, more than 80 held Latin American links: <b>~24% of the show, against ~11% in 2022</b>.</p>
+        <p>Anna Maria Maiolino took the <b>Golden Lion for Lifetime Achievement</b>. Museums are actively reassessing Neo-Concretism and kinetic art; Hauser &amp; Wirth, Lisson, and David Zwirner now carry South American abstraction. Validation is not pending. It is on the record.</p>
+      </div>
+      <div class="reveal">
+        <h3><span class="tag">Driver 02 — Demand</span>The buyers are already moving.</h3>
+        <p>Against a softening global market, dealer sales in South America rose — driven by a <b>21% year-on-year increase by Brazilian galleries</b> in 2025 (Art Basel/UBS).</p>
+        <p>And the forward signal is the strongest in the world: <b>72% of collectors in Brazil</b> intend to buy in the next twelve months — the highest purchase intention of any market surveyed. The Surrealist re-rating, much of it Mexico-based women artists, saw the category's global market share rise from 9.3% to 16.8% between 2018 and 2024.</p>
+      </div>
+    </div>
+
+    <div class="evidence reveal">
+      <div class="ev-row">
+        <div class="ev-k">Re-rating · live</div>
+        <div class="ev-v"><b>Olga de Amaral, <em>Pueblo H</em></b> — $3.12m at Christie's New York, November 2025, roughly five times its high estimate. A Colombian fibre artist clearing multiples of estimate is the discount closing in real time.</div>
+      </div>
+      <div class="ev-row">
+        <div class="ev-k">Re-rating · live</div>
+        <div class="ev-v"><b>Remedios Varo, <em>Revelation</em></b> — $6.2m record at Christie's New York, May 2025. New highs also recorded for Soto and Cruz-Diez within the same cycle.</div>
+      </div>
+      <div class="ev-row">
+        <div class="ev-k">The gap</div>
+        <div class="ev-v"><b>Kahlo's $54.7m record</b> remains below the inflation-adjusted O'Keeffe (~$61m) and a fraction of male peers of comparable global fame — Warhol at $195m, Picasso at $179m. The most recognised woman artist on earth set her record at roughly one-quarter of theirs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== § 05 — SYNTHESIS ===================== -->
+<div class="synth">
+  <div class="wrap">
+    <span class="kicker reveal">§ 05 — The Claim</span>
+    <h2 class="reveal">The correction and the discount are <em>the same market logic</em>, read twice.</h2>
+    <p class="claim reveal">
+      The global market has spent three years teaching collectors a single lesson: in conditions of uncertainty, the only reliable store of value is art that is <b>scarce, established, and institutionally validated</b>. That is precisely why the top end rose while the middle fell.
+    </p>
+    <p class="claim reveal">
+      Latin American art now satisfies every term of that definition — a deep, coherent twentieth-century art history; settled museum standing; an accelerating institutional cycle from Venice outward — <b>and it is still priced in the band the market has abandoned</b>. That is not a contradiction. It is a mispricing, and mispricings are directional.
+    </p>
+    <div class="synth-grid">
+      <div class="sg reveal">
+        <div class="num">FINDING 01</div>
+        <div class="t">The recovery is hollow.</div>
+        <div class="d">2025's +4% is top-end and Old-Master driven. The broad market and dealer base are still correcting. Defensible without caveat.</div>
+      </div>
+      <div class="sg reveal">
+        <div class="num">FINDING 02</div>
+        <div class="t">The record is hollow.</div>
+        <div class="d">Latin America's "record" is one Kahlo lot. Ex-trophy, regional volume is flat to a decade ago. The re-rating has not yet reached prices.</div>
+      </div>
+      <div class="sg reveal">
+        <div class="num">FINDING 03</div>
+        <div class="t">The discount is the position.</div>
+        <div class="d">Canon-grade material, mid-market clearing prices, institutional momentum. The market's own flight-to-quality logic points here next.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== § 06 — METHODOLOGY ===================== -->
+<section class="method">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-no">§ 06 — Method, Sources &amp; What This Exhibit Cannot Yet Claim</span>
+    </div>
+    <p class="lede reveal">
+      Every figure in this instrument is drawn from a named, published source. Nothing here is modelled or proprietary. The Index's standing depends on a reader being able to check it — so this is where the checking starts.
+    </p>
+
+    <div class="src-list reveal">
+      <div class="src"><span class="si">S1</span><span>Art Basel &amp; UBS Global Art Market Report 2025 &amp; 2026 — Arts Economics, Dr. Clare McAndrew. Global value, segment performance, dealer profitability, mid-market decline, guarantees.</span></div>
+      <div class="src"><span class="si">S2</span><span>ArtTactic — Latin American Art Market Report 2025; The Art Market 2025: A Year in Review. Regional record-year context; segmentation referenced but not yet held.</span></div>
+      <div class="src"><span class="si">S3</span><span>Bank of America / ArtTactic — 2026 U.S. Art Market Report. U.S. auction value, lots sold, evening-sale guarantee share, women artists.</span></div>
+      <div class="src"><span class="si">S4</span><span>Sotheby's, Christie's, Phillips — individual lot results: Kahlo, Amaral, Varo, Soto, Cruz-Diez, Oiticica, and the international comparables.</span></div>
+      <div class="src"><span class="si">S5</span><span>Artnet Price Database / Artnet News — Latin American auction volume series; Venice Biennale 2024 artist analysis.</span></div>
+    </div>
+
+    <div class="caveat reveal">
+      <div class="ch">⚠ The Firewall — Stated Limits of This Exhibit</div>
+      <p><b>This is an argued exhibit, not a closed proof.</b> A global correction cannot be "proven" as a forecast — the defensible claim, and the one made here, is structural: the 2025 rebound is narrow and top-heavy, sitting on a base that is still contracting. That claim is fully sourced.</p>
+      <p>The Latin American discount is presented against an explicit benchmark — <b>institutional standing versus clearing price</b> — and supported with named comparables. It is a strong argument, not a single statistic. A rigorous, defensible discount <em>figure</em> requires the metrics beneath the headline totals: sell-through rate, median price with trophy lots stripped out, mid-tier volume, bought-in rate, and market breadth — how many artists actually transact. <b>ArtTactic holds that segmentation. The Index does not yet.</b> Acquiring it is the necessary next step before this exhibit's central number is published as fact.</p>
+      <p>One deliberate omission: certain regional market-share figures circulating in secondary coverage could not be reconciled across sources and were excluded rather than published unverified.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fr">
+      <span>Global Art Index — Instrument 01</span>
+      <span>Confidential · Working Draft · 22 May 2026</span>
+      <span>This document does not leave the room.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var ink="#1c1916", ink2="#7c756a", ox="#8c2f22", soft="#bdb6a6", surf="#fbfaf5";
+
+  /* ---------- scroll reveal ---------- */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+  },{threshold:0.12});
+  document.querySelectorAll(".reveal").forEach(function(el,i){
+    el.style.transitionDelay=(Math.min(i,3)*0.06)+"s";
+    io.observe(el);
+  });
+
+  function svgEl(tag,attrs){
+    var e=document.createElementNS("http://www.w3.org/2000/svg",tag);
+    for(var k in attrs){ e.setAttribute(k,attrs[k]); }
+    return e;
+  }
+  function clear(s){ while(s.firstChild) s.removeChild(s.firstChild); }
+  // run a draw fn once when its chart scrolls into view
+  function onView(el,fn){
+    var done=false;
+    var o=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting && !done){ done=true; fn(); o.disconnect(); } });
+    },{threshold:0.25});
+    o.observe(el);
+  }
+
+  /* ============ § 01 — HEADLINE TOGGLE ============ */
+  var hlT=document.getElementById("hlToggle"),
+      hlNum=document.getElementById("hlNum"),
+      hlRead=document.getElementById("hlRead"),
+      hlDec=document.getElementById("hlDecomp");
+  hlT.addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    hlT.querySelectorAll("button").forEach(function(x){x.classList.remove("on");});
+    b.classList.add("on");
+    var mode=b.dataset.mode;
+    hlRead.style.opacity=0;
+    setTimeout(function(){
+      if(mode==="structured"){
+        hlNum.innerHTML='+4.0<span style="font-size:0.42em;letter-spacing:0;"> %</span>';
+        hlRead.innerHTML='Decomposed, the gain inverts its own meaning. Growth was delivered by the scarcest, most established material — and resisted by the segments where the broad market actually lives.';
+        hlDec.style.display="grid";
+      }else{
+        hlNum.innerHTML='$59.6<span style="font-size:0.42em;letter-spacing:0;"> BN</span>';
+        hlRead.innerHTML='<span class="q">"After two years of decline, the global art market returned to growth."</span> The headline is true. It is also the least informative sentence available about the state of the market.';
+        hlDec.style.display="none";
+      }
+      hlRead.style.opacity=1;
+    },180);
+  });
+
+  /* ============ FIG 2.1 — MARKET VALUE BARS ============ */
+  function drawValue(){
+    var s=document.getElementById("chartValue"); clear(s);
+    var W=920,H=320, padL=64,padR=24,padT=24,padB=58;
+    var data=[
+      {y:"2022",v:67.8,note:"PEAK",derived:false},
+      {y:"2023",v:65.3,note:"−4%",derived:true},
+      {y:"2024",v:57.5,note:"−12%",derived:false},
+      {y:"2025",v:59.6,note:"+4%",derived:false}
+    ];
+    var max=72, plotH=H-padT-padB, plotW=W-padL-padR;
+    // gridlines
+    [0,20,40,60].forEach(function(g){
+      var yy=padT+plotH-(g/max)*plotH;
+      s.appendChild(svgEl("line",{x1:padL,y1:yy,x2:W-padR,y2:yy,class:"grid-line"}));
+      var t=svgEl("text",{x:padL-12,y:yy+3,class:"ax-label","text-anchor":"end"});
+      t.textContent="$"+g; s.appendChild(t);
+    });
+    var bw=plotW/data.length, innerW=bw*0.46;
+    data.forEach(function(d,i){
+      var cx=padL+bw*i+bw/2;
+      var bh=(d.v/max)*plotH;
+      var x=cx-innerW/2, y0=padT+plotH;
+      var r=svgEl("rect",{x:x,y:y0,width:innerW,height:0,
+        fill:(d.y==="2025"?ox:ink),opacity:(d.derived?0.4:1)});
+      if(d.derived){ r.setAttribute("fill","none"); r.setAttribute("stroke",ink);
+        r.setAttribute("stroke-width","1.4"); r.setAttribute("stroke-dasharray","4 3"); }
+      s.appendChild(r);
+      r.animate([{height:"0px",y:y0+"px"},{height:bh+"px",y:(y0-bh)+"px"}],
+        {duration:900,delay:i*110,easing:"cubic-bezier(.2,.7,.2,1)",fill:"forwards"});
+      // value label
+      var vl=svgEl("text",{x:cx,y:y0-bh-12,class:"bar-label","text-anchor":"middle"});
+      vl.textContent="$"+d.v.toFixed(1)+"bn"; vl.style.opacity=0; s.appendChild(vl);
+      vl.animate([{opacity:0},{opacity:1}],{duration:400,delay:i*110+700,fill:"forwards"});
+      // note
+      var nt=svgEl("text",{x:cx,y:y0-bh-30,class:"ax-label","text-anchor":"middle",
+        fill:(d.note==="PEAK"?ink2:(d.v<60&&d.note[0]==="−"?ox:ink2))});
+      nt.textContent=d.note; nt.style.opacity=0; s.appendChild(nt);
+      nt.animate([{opacity:0},{opacity:1}],{duration:400,delay:i*110+820,fill:"forwards"});
+      // year
+      var yl=svgEl("text",{x:cx,y:H-padB+26,class:"bar-name","text-anchor":"middle"});
+      yl.textContent=d.y; s.appendChild(yl);
+    });
+    // peak reference line
+    var py=padT+plotH-(67.8/max)*plotH;
+    var pl=svgEl("line",{x1:padL,y1:py,x2:W-padR,y2:py,stroke:ink2,
+      "stroke-width":1,"stroke-dasharray":"2 4"}); s.appendChild(pl);
+    var baseline=svgEl("line",{x1:padL,y1:padT+plotH,x2:W-padR,y2:padT+plotH,class:"zero-line"});
+    s.appendChild(baseline);
+    var cap=svgEl("text",{x:W-padR,y:py-7,class:"ax-label","text-anchor":"end",fill:ink2});
+    cap.textContent="2022 PEAK — 2025 STILL 12% BELOW"; s.appendChild(cap);
+  }
+  onView(document.getElementById("chartValue"),drawValue);
+
+  /* ============ FIG 2.2 — SEGMENT DIVERGENCE ============ */
+  var segData=[
+    {n:"Impressionist & Post-Impressionist",v:47,grp:"top"},
+    {n:"Works over $10m",v:30,grp:"top"},
+    {n:"Old Masters",v:30,grp:"top"},
+    {n:"Works over $1m",v:21,grp:"top"},
+    {n:"Post-War & Contemporary",v:-2,grp:"broad"},
+    {n:"Works under $50k",v:-2,grp:"broad"}
+  ];
+  function drawSeg(mode){
+    var s=document.getElementById("chartSeg"); clear(s);
+    var W=920,H=430, padL=250,padR=70,padT=20,padB=44;
+    var rows=segData.slice();
+    if(mode==="split"){
+      rows.sort(function(a,b){ return (a.grp===b.grp)?(b.v-a.v):(a.grp==="top"?-1:1); });
+    }
+    var min=-10,max=50, plotW=W-padL-padR, plotH=H-padT-padB;
+    function X(v){ return padL+((v-min)/(max-min))*plotW; }
+    // gridlines
+    [-10,0,10,20,30,40,50].forEach(function(g){
+      var xx=X(g);
+      s.appendChild(svgEl("line",{x1:xx,y1:padT,x2:xx,y2:padT+plotH,
+        class:(g===0?"zero-line":"grid-line")}));
+      var t=svgEl("text",{x:xx,y:H-padB+22,class:"ax-label","text-anchor":"middle"});
+      t.textContent=(g>0?"+":"")+g+"%"; s.appendChild(t);
+    });
+    var rh=plotH/rows.length, bh=rh*0.5;
+    rows.forEach(function(d,i){
+      var cy=padT+rh*i+rh/2;
+      var zero=X(0), end=X(d.v);
+      var x=Math.min(zero,end), w=Math.abs(end-zero);
+      var positive=d.v>=0;
+      var col;
+      if(mode==="split"){ col=(d.grp==="top")?ink:ox; }
+      else { col=positive?ink:ox; }
+      var r=svgEl("rect",{x:zero,y:cy-bh/2,width:0,height:bh,fill:col});
+      s.appendChild(r);
+      r.animate([{width:"0px",x:zero+"px"},{width:w+"px",x:x+"px"}],
+        {duration:780,delay:i*90,easing:"cubic-bezier(.2,.7,.2,1)",fill:"forwards"});
+      // name
+      var nm=svgEl("text",{x:padL-16,y:cy+4,class:"bar-name","text-anchor":"end"});
+      nm.textContent=d.n; s.appendChild(nm);
+      // value
+      var vx=positive?end+10:end-10;
+      var vl=svgEl("text",{x:vx,y:cy+4,class:"bar-label",
+        "text-anchor":positive?"start":"end",fill:col});
+      vl.textContent=(d.v>0?"+":"")+d.v+"%"; vl.style.opacity=0; s.appendChild(vl);
+      vl.animate([{opacity:0},{opacity:1}],{duration:380,delay:i*90+560,fill:"forwards"});
+    });
+    // group brackets when split
+    if(mode==="split"){
+      var topCount=rows.filter(function(r){return r.grp==="top";}).length;
+      var lbl1=svgEl("text",{x:padL-16,y:padT+12,class:"ax-label",
+        "text-anchor":"end",fill:ink,"font-weight":"500"});
+      lbl1.textContent="↑ SCARCE / ESTABLISHED"; s.appendChild(lbl1);
+      var lbl2=svgEl("text",{x:padL-16,y:padT+rh*topCount+20,class:"ax-label",
+        "text-anchor":"end",fill:ox,"font-weight":"500"});
+      lbl2.textContent="↓ BROAD MARKET"; s.appendChild(lbl2);
+    }
+  }
+  var segT=document.getElementById("segToggle");
+  segT.addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    segT.querySelectorAll("button").forEach(function(x){x.classList.remove("on");});
+    b.classList.add("on"); drawSeg(b.dataset.mode);
+  });
+  onView(document.getElementById("chartSeg"),function(){ drawSeg("all"); });
+
+  /* ============ FIG 2.3 — MIDDLE MARKET SLOPE ============ */
+  function drawMid(){
+    var s=document.getElementById("chartMid"); clear(s);
+    var W=920,H=280,padL=58,padR=120,padT=26,padB=46;
+    var pts=[
+      {x:2010,y:100},{x:2013,y:96},{x:2016,y:91},
+      {x:2019,y:85},{x:2022,y:78},{x:2025,y:71}
+    ];
+    var plotW=W-padL-padR, plotH=H-padT-padB;
+    var minY=60,maxY=108;
+    function X(yr){ return padL+((yr-2010)/(2025-2010))*plotW; }
+    function Y(v){ return padT+plotH-((v-minY)/(maxY-minY))*plotH; }
+    [60,70,80,90,100].forEach(function(g){
+      var yy=Y(g);
+      s.appendChild(svgEl("line",{x1:padL,y1:yy,x2:W-padR,y2:yy,class:"grid-line"}));
+      var t=svgEl("text",{x:padL-12,y:yy+3,class:"ax-label","text-anchor":"end"});
+      t.textContent=g; s.appendChild(t);
+    });
+    [2010,2015,2020,2025].forEach(function(yr){
+      var t=svgEl("text",{x:X(yr),y:H-padB+24,class:"ax-label","text-anchor":"middle"});
+      t.textContent=yr; s.appendChild(t);
+    });
+    // area
+    var dArea="M"+X(2010)+","+Y(60);
+    pts.forEach(function(p){ dArea+=" L"+X(p.x)+","+Y(p.y); });
+    dArea+=" L"+X(2025)+","+Y(60)+" Z";
+    var area=svgEl("path",{d:dArea,fill:ox,opacity:0.07}); s.appendChild(area);
+    // line
+    var dLine="M"+X(pts[0].x)+","+Y(pts[0].y);
+    pts.forEach(function(p,i){ if(i>0) dLine+=" L"+X(p.x)+","+Y(p.y); });
+    var line=svgEl("path",{d:dLine,fill:"none",stroke:ox,"stroke-width":2.4,
+      "stroke-linejoin":"round","stroke-linecap":"round"});
+    s.appendChild(line);
+    var len=line.getTotalLength();
+    line.setAttribute("stroke-dasharray",len);
+    line.setAttribute("stroke-dashoffset",len);
+    line.animate([{strokeDashoffset:len},{strokeDashoffset:0}],
+      {duration:1500,easing:"cubic-bezier(.4,.1,.3,1)",fill:"forwards"});
+    pts.forEach(function(p,i){
+      var c=svgEl("circle",{cx:X(p.x),cy:Y(p.y),r:0,fill:surf,stroke:ox,"stroke-width":2});
+      s.appendChild(c);
+      c.animate([{r:0},{r:4.5}],{duration:300,delay:300+i*200,fill:"forwards"});
+    });
+    // endpoint labels
+    var e1=svgEl("text",{x:X(2010)+8,y:Y(100)-12,class:"bar-label",fill:ink2});
+    e1.textContent="2010 = 100"; s.appendChild(e1);
+    var e2=svgEl("text",{x:X(2025)+12,y:Y(71)+2,class:"bar-label",fill:ox,"font-weight":"600"});
+    e2.textContent="71"; e2.style.opacity=0; s.appendChild(e2);
+    e2.animate([{opacity:0},{opacity:1}],{duration:400,delay:1600,fill:"forwards"});
+    var e3=svgEl("text",{x:X(2025)+12,y:Y(71)+20,class:"ax-label",fill:ox});
+    e3.textContent="−29% SINCE 2010"; e3.style.opacity=0; s.appendChild(e3);
+    e3.animate([{opacity:0},{opacity:1}],{duration:400,delay:1750,fill:"forwards"});
+    s.appendChild(svgEl("line",{x1:padL,y1:padT+plotH,x2:W-padR,y2:padT+plotH,class:"zero-line"}));
+  }
+  onView(document.getElementById("chartMid"),drawMid);
+
+  /* ============ FIG 3.1 — STRIP THE TROPHY ============ */
+  var trophyMode="with";
+  function drawTrophy(mode){
+    var s=document.getElementById("chartTrophy"); clear(s);
+    var W=920,H=300,padL=64,padR=130,padT=28,padB=52;
+    var base=245.5, trophy=54.7;
+    var withV=base, withoutV=base-trophy; // 190.8
+    var max=260, plotH=H-padT-padB, plotW=W-padL-padR;
+    [0,50,100,150,200,250].forEach(function(g){
+      var yy=padT+plotH-(g/max)*plotH;
+      s.appendChild(svgEl("line",{x1:padL,y1:yy,x2:W-padR,y2:yy,class:"grid-line"}));
+      var t=svgEl("text",{x:padL-12,y:yy+3,class:"ax-label","text-anchor":"end"});
+      t.textContent="$"+g; s.appendChild(t);
+    });
+    var bx=padL+plotW*0.30, bw=plotW*0.30;
+    function Y(v){ return padT+plotH-(v/max)*plotH; }
+    var y0=padT+plotH;
+    if(mode==="with"){
+      // base portion
+      var hbase=(withoutV/max)*plotH;
+      var rb=svgEl("rect",{x:bx,y:y0-hbase,width:bw,height:hbase,fill:ink});
+      s.appendChild(rb);
+      // trophy portion on top
+      var htr=(trophy/max)*plotH;
+      var rt=svgEl("rect",{x:bx,y:y0-hbase-htr,width:bw,height:htr,fill:ox});
+      s.appendChild(rt);
+      rt.animate([{height:"0px",y:(y0-hbase)+"px"},{height:htr+"px",y:(y0-hbase-htr)+"px"}],
+        {duration:700,easing:"cubic-bezier(.2,.7,.2,1)",fill:"forwards"});
+      // total label
+      var tl=svgEl("text",{x:bx+bw/2,y:Y(withV)-14,class:"bar-label","text-anchor":"middle"});
+      tl.textContent="$245.5m — RECORD"; s.appendChild(tl);
+      // trophy callout
+      var tc=svgEl("text",{x:bx+bw+16,y:Y(withoutV+trophy/2),class:"bar-label",fill:ox});
+      tc.textContent="◀ ONE LOT: KAHLO $54.7m"; s.appendChild(tc);
+      var tc2=svgEl("text",{x:bx+bw+16,y:Y(withoutV+trophy/2)+18,class:"ax-label",fill:ox});
+      tc2.textContent="≈ 22% OF THE YEAR"; s.appendChild(tc2);
+    }else{
+      var hb=(withoutV/max)*plotH;
+      var rb2=svgEl("rect",{x:bx,y:y0,width:bw,height:0,fill:ink});
+      s.appendChild(rb2);
+      rb2.animate([{height:"0px",y:y0+"px"},{height:hb+"px",y:(y0-hb)+"px"}],
+        {duration:700,easing:"cubic-bezier(.2,.7,.2,1)",fill:"forwards"});
+      var tl2=svgEl("text",{x:bx+bw/2,y:Y(withoutV)-14,class:"bar-label","text-anchor":"middle"});
+      tl2.textContent="$190.8m — EX-TROPHY"; s.appendChild(tl2);
+      // ghost of the record
+      var gh=svgEl("rect",{x:bx,y:Y(withV),width:bw,height:(withV-withoutV)/max*plotH,
+        fill:"none",stroke:ox,"stroke-width":1.3,"stroke-dasharray":"4 3"});
+      s.appendChild(gh);
+      var dc=svgEl("text",{x:bx+bw+16,y:Y(withV-trophy/2),class:"ax-label",fill:ox});
+      dc.textContent="◀ THE \"RECORD\""; s.appendChild(dc);
+      // decade reference line
+      var refY=Y(270);
+      var rl=svgEl("line",{x1:padL,y1:refY,x2:W-padR,y2:refY,stroke:ink2,
+        "stroke-width":1,"stroke-dasharray":"2 4"}); s.appendChild(rl);
+      var rt2=svgEl("text",{x:W-padR,y:refY-7,class:"ax-label","text-anchor":"end",fill:ink2});
+      rt2.textContent="≈ $270m — VOLUME A DECADE AGO"; s.appendChild(rt2);
+    }
+    var lab=svgEl("text",{x:bx+bw/2,y:H-padB+26,class:"bar-name","text-anchor":"middle"});
+    lab.textContent=(mode==="with"?"As reported":"Trophy lot removed"); s.appendChild(lab);
+    s.appendChild(svgEl("line",{x1:padL,y1:y0,x2:W-padR,y2:y0,class:"zero-line"}));
+  }
+  var trT=document.getElementById("trophyToggle");
+  trT.addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    trT.querySelectorAll("button").forEach(function(x){x.classList.remove("on");});
+    b.classList.add("on"); trophyMode=b.dataset.mode; drawTrophy(trophyMode);
+  });
+  onView(document.getElementById("chartTrophy"),function(){ drawTrophy("with"); });
+
+  /* ============ FIG 4.1 — CANON vs CLEARING PRICE (LOG) ============ */
+  var canonData=[
+    {n:"Andy Warhol",v:195000000,grp:"intl"},
+    {n:"Pablo Picasso",v:179400000,grp:"intl"},
+    {n:"Jean-Michel Basquiat",v:110500000,grp:"intl"},
+    {n:"Frida Kahlo",v:54700000,grp:"latam"},
+    {n:"Georgia O'Keeffe",v:44400000,grp:"intl"},
+    {n:"Remedios Varo",v:6200000,grp:"latam"},
+    {n:"Olga de Amaral",v:3120000,grp:"latam"},
+    {n:"J. R. Soto",v:758000,grp:"latam"},
+    {n:"Hélio Oiticica",v:615000,grp:"latam"},
+    {n:"Carlos Cruz-Diez",v:518000,grp:"latam"}
+  ];
+  function fmt(v){
+    if(v>=1e6) return "$"+(v/1e6).toFixed(v>=1e7?0:1)+"m";
+    return "$"+Math.round(v/1e3)+"k";
+  }
+  function drawCanon(mode){
+    var s=document.getElementById("chartCanon"); clear(s);
+    var W=920,H=470,padL=210,padR=86,padT=42,padB=46;
+    var rows=canonData.filter(function(d){
+      return mode==="all" || d.grp==="latam";
+    });
+    var plotW=W-padL-padR, plotH=H-padT-padB;
+    var logMin=Math.log10(300000), logMax=Math.log10(300000000);
+    function X(v){ return padL+((Math.log10(v)-logMin)/(logMax-logMin))*plotW; }
+    [1e6,1e7,1e8].forEach(function(g){
+      var xx=X(g);
+      s.appendChild(svgEl("line",{x1:xx,y1:padT,x2:xx,y2:padT+plotH,class:"grid-line"}));
+      var t=svgEl("text",{x:xx,y:H-padB+22,class:"ax-label","text-anchor":"middle"});
+      t.textContent=(g===1e6?"$1m":g===1e7?"$10m":"$100m"); s.appendChild(t);
+    });
+    var rh=plotH/rows.length, bh=rh*0.46;
+    rows.forEach(function(d,i){
+      var cy=padT+rh*i+rh/2;
+      var col=(d.grp==="latam")?ox:ink;
+      var end=X(d.v), start=padL;
+      var r=svgEl("rect",{x:start,y:cy-bh/2,width:0,height:bh,fill:col,
+        opacity:(d.grp==="intl"?0.32:1)});
+      s.appendChild(r);
+      r.animate([{width:"0px"},{width:(end-start)+"px"}],
+        {duration:820,delay:i*80,easing:"cubic-bezier(.2,.7,.2,1)",fill:"forwards"});
+      var nm=svgEl("text",{x:padL-16,y:cy+4,class:"bar-name","text-anchor":"end",
+        fill:(d.grp==="latam"?ink:ink2)});
+      nm.textContent=d.n; s.appendChild(nm);
+      var vl=svgEl("text",{x:end+10,y:cy+4,class:"bar-label",fill:col,
+        opacity:(d.grp==="intl"?0.6:1)});
+      vl.textContent=fmt(d.v); vl.style.opacity=0; s.appendChild(vl);
+      vl.animate([{opacity:0},{opacity:(d.grp==="intl"?0.6:1)}],
+        {duration:380,delay:i*80+620,fill:"forwards"});
+    });
+    // legend
+    var lg=svgEl("text",{x:padL,y:24,class:"ax-label"});
+    if(mode==="all"){
+      lg.innerHTML='';
+      var sw1=svgEl("rect",{x:padL,y:14,width:11,height:11,fill:ox});
+      var t1=svgEl("text",{x:padL+18,y:24,class:"ax-label",fill:ink});
+      t1.textContent="LATIN AMERICAN CANON";
+      var sw2=svgEl("rect",{x:padL+220,y:14,width:11,height:11,fill:ink,opacity:0.32});
+      var t2=svgEl("text",{x:padL+238,y:24,class:"ax-label",fill:ink2});
+      t2.textContent="INTERNATIONAL CANON (REFERENCE)";
+      s.appendChild(sw1);s.appendChild(t1);s.appendChild(sw2);s.appendChild(t2);
+    }else{
+      var t3=svgEl("text",{x:padL,y:24,class:"ax-label",fill:ox});
+      t3.textContent="FOUNDATIONAL · MUSEUM-VALIDATED · CLEARING FROM SIX FIGURES";
+      s.appendChild(t3);
+    }
+    s.appendChild(svgEl("line",{x1:padL,y1:padT,x2:padL,y2:padT+plotH,class:"zero-line"}));
+  }
+  var cnT=document.getElementById("canonToggle");
+  cnT.addEventListener("click",function(e){
+    var b=e.target.closest("button"); if(!b) return;
+    cnT.querySelectorAll("button").forEach(function(x){x.classList.remove("on");});
+    b.classList.add("on"); drawCanon(b.dataset.mode);
+  });
+  onView(document.getElementById("chartCanon"),function(){ drawCanon("all"); });
+
+  /* redraw charts responsively (debounced) */
+  var rt;
+  window.addEventListener("resize",function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){
+      drawValue();
+      drawSeg(segT.querySelector("button.on").dataset.mode);
+      drawMid();
+      drawTrophy(trophyMode);
+      drawCanon(cnT.querySelector("button.on").dataset.mode);
+    },220);
+  });
+})();
+</script>
+</body>
+</html>
