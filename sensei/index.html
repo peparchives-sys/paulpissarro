@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f4f1ea">
+<meta name="color-scheme" content="light only">
+<meta name="format-detection" content="telephone=no">
+
+<title>Sensei — A Chronicle of Guidance</title>
+<meta name="description" content="A living compendium of the guidance of Daisaku Ikeda, cross-referenced through Josei Toda, Tsunesaburo Makiguchi, and Nichiren, with an accessible summary of the Lotus Sutra.">
+<meta name="author" content="Paul-Alexander Pissarro">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://paulpissarro.com/sensei">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sensei — A Chronicle of Guidance">
+<meta property="og:description" content="A living compendium of the guidance of Daisaku Ikeda, cross-referenced through Toda, Makiguchi, and Nichiren.">
+<meta property="og:url" content="https://paulpissarro.com/sensei">
+<meta name="twitter:card" content="summary">
+
+<style>
+  /* ---- Type ---- */
+  @font-face {
+    font-family: 'Linux Libertine';
+    src: local('Linux Libertine O'), local('Linux Libertine');
+    font-display: swap;
+  }
+
+  :root {
+    color-scheme: light;
+    --paper: #f4f1ea;
+    --paper-deep: #ece7db;
+    --ink: #1c1a17;
+    --ink-soft: #4a463e;
+    --ink-faint: #837c6e;
+    --rule: #d4ccbb;
+    --accent: #6b1d1d;
+    --gold: #9a7b3f;
+    --serif: 'Linux Libertine', 'Hoefler Text', 'Georgia', serif;
+    --sans: 'Open Sans', 'Helvetica Neue', -apple-system, sans-serif;
+    --measure: 38rem;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    background-color: #f4f1ea;
+  }
+
+  body {
+    background-color: #f4f1ea;
+    background-color: var(--paper);
+    background-image:
+      radial-gradient(circle at 18% 12%, rgba(154,123,63,0.05), transparent 38%),
+      radial-gradient(circle at 82% 78%, rgba(107,29,29,0.04), transparent 42%);
+    color: #1c1a17;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.66;
+    letter-spacing: 0.003em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    padding: 0 1.5rem;
+  }
+
+  .wrap {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 5.5rem 1.5rem 7rem;
+    background-color: #f4f1ea;
+    min-height: 100vh;
+    color: #1c1a17;
+  }
+
+  /* ---- Masthead ---- */
+  .masthead {
+    text-align: center;
+    margin-bottom: 4.5rem;
+  }
+
+  .masthead .mark {
+    font-family: var(--sans);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1.6rem;
+  }
+
+  .masthead h1 {
+    font-weight: 400;
+    font-size: 3.4rem;
+    line-height: 1.04;
+    letter-spacing: 0.01em;
+  }
+
+  .masthead .cjk {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--accent);
+    letter-spacing: 0.32em;
+    margin-top: 1rem;
+    margin-left: 0.32em;
+  }
+
+  .masthead .sub {
+    font-style: italic;
+    font-size: 1.06rem;
+    color: var(--ink-soft);
+    margin-top: 1.5rem;
+  }
+
+  .rule {
+    border: 0;
+    height: 1px;
+    background: var(--rule);
+    margin: 3.4rem 0;
+  }
+
+  .rule-ornament {
+    border: 0;
+    height: auto;
+    text-align: center;
+    margin: 3.4rem 0;
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 0.6em;
+  }
+  .rule-ornament::before { content: "\2767"; }
+
+  /* ---- Sections ---- */
+  section { margin-bottom: 1rem; }
+
+  h2 {
+    font-weight: 400;
+    font-size: 1.9rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.4rem;
+  }
+
+  .kicker {
+    font-family: var(--sans);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 1.16rem;
+    margin: 2.2rem 0 0.5rem;
+  }
+
+  p { margin-bottom: 1.15rem; }
+
+  p .lead-cap::first-letter { font-size: 1em; }
+
+  .intro p:first-of-type::first-letter {
+    font-size: 3.4rem;
+    line-height: 0.82;
+    float: left;
+    padding: 0.16rem 0.6rem 0 0;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  em { font-style: italic; }
+  strong { font-weight: 600; }
+
+  .term {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(107,29,29,0.28);
+    transition: border-color 0.18s ease, background-color 0.18s ease;
+  }
+  a:hover {
+    border-bottom-color: var(--accent);
+    background-color: rgba(107,29,29,0.05);
+  }
+
+  /* ---- Quote (the chronicle entries) ---- */
+  .chronicle-entry {
+    margin: 2.6rem 0;
+    padding-left: 1.7rem;
+    border-left: 2px solid var(--gold);
+  }
+
+  blockquote {
+    font-size: 1.42rem;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .attribution {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-style: normal;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .attribution .name {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+  .attribution .source { font-style: italic; }
+
+  .footnotes {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px dotted var(--rule);
+  }
+  .footnotes .fn-label {
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 0.45rem;
+  }
+  .footnotes p { margin-bottom: 0.5rem; }
+  .footnotes sup { color: var(--accent); font-weight: 700; }
+
+  /* ---- Lineage row ---- */
+  .lineage {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin: 1.5rem 0 0.5rem;
+    text-align: center;
+  }
+  .lineage span { white-space: nowrap; }
+  .lineage .arrow { color: var(--gold); margin: 0 0.7rem; }
+  .lineage .who { font-weight: 600; color: var(--ink); }
+  .lineage .yr { color: var(--ink-faint); }
+
+  /* ---- Callout / dedication ---- */
+  .dedication {
+    text-align: center;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-faint);
+    line-height: 1.7;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .colophon {
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    margin-top: 1.4rem;
+    line-height: 1.8;
+  }
+  .colophon a { color: var(--ink-soft); border-bottom-color: var(--rule); }
+
+  /* ---- Status note ---- */
+  .status {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 1rem 1.2rem;
+    margin: 2.4rem 0;
+  }
+  .status strong { color: var(--ink); }
+
+  /* ---- Table of contents ---- */
+  .toc {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    margin: 0 auto 1rem;
+    text-align: center;
+    color: var(--ink-faint);
+  }
+  .toc a {
+    border-bottom: none;
+    color: var(--ink-soft);
+    margin: 0 0.55rem;
+    white-space: nowrap;
+    line-height: 2.1;
+  }
+  .toc a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    body { font-size: 18px; padding: 0; }
+    .wrap { padding: 3.6rem 1.1rem 4.5rem; }
+    .masthead h1 { font-size: 2.5rem; }
+    .masthead .cjk { font-size: 1.2rem; }
+    blockquote { font-size: 1.22rem; }
+    h2 { font-size: 1.6rem; }
+    .chronicle-entry { padding-left: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="mark">A Chronicle of Guidance</div>
+    <h1>Sensei
+      <span class="cjk" lang="ja">先生</span>
+    </h1>
+    <div class="sub">The guidance of Daisaku Ikeda, read back through Toda, Makiguchi, and Nichiren.</div>
+  </header>
+
+  <nav class="toc">
+    <a href="#why">Why this page</a>
+    <a href="#lotus">The Lotus Sutra, plainly</a>
+    <a href="#chronicle">The chronicle</a>
+    <a href="#lineage">The lineage</a>
+  </nav>
+
+  <hr class="rule-ornament">
+
+  <section id="why" class="intro">
+    <div class="kicker">Why this page exists</div>
+    <h2>A living document</h2>
+    <p>This is a compendium of guidance &mdash; a chronicle, kept and added to over time, of what <strong>Daisaku Ikeda</strong> taught, and of the teachers who stood behind him: <strong>Josei Toda</strong>, <strong>Tsunesaburo Makiguchi</strong>, and, at the source, the thirteenth-century Japanese priest <strong>Nichiren</strong>.</p>
+    <p>It is built on one rule. Every quotation here is a real quotation, taken from a published source and cited. Nothing is paraphrased into someone's mouth. Where a line of Ikeda's rests on something Toda said, or Makiguchi wrote, or Nichiren established, the footnote follows it down to that root. The page is meant to grow until the chronicle is deep enough to answer almost any question with Sensei's own words, and only his own words.</p>
+    <div class="status">
+      <strong>First edition.</strong> This page begins small and grows. What appears below is verified and sourced; the chronicle will be extended entry by entry. It is not finished, and by design it never will be &mdash; a living document is never closed.
+    </div>
+  </section>
+
+  <hr class="rule-ornament">
+
+  <section id="lotus">
+    <div class="kicker">First, the ground it all stands on</div>
+    <h2>The Lotus Sutra, plainly</h2>
+
+    <p>Nearly everything on this page traces back to a single Buddhist text: the <em>Lotus Sutra</em>. It is roughly two thousand years old, was first written in Sanskrit, and runs to twenty-eight chapters. People cite it constantly and explain it rarely. Here is what it actually says, without the incense.</p>
+
+    <h3>The one claim that matters</h3>
+    <p>Earlier Buddhist teaching, in broad strokes, sorted people into tiers. Some could reach enlightenment; some could only get partway; the fully awakened state of a Buddha was treated as something rare, reserved, and far off. The Lotus Sutra walks in and says: no. <strong>Every single living being, without exception, already has the capacity for Buddhahood &mdash; full enlightenment &mdash; right now.</strong> Not after countless lifetimes of climbing. Not for monks only. Not for men only. Everyone, as they are.</p>
+    <p>That is the whole revolution. The sutra calls it the <span class="term">One Vehicle</span>: the idea that the many separate paths people were sold are really one path, open to all, leading to the same place.</p>
+
+    <h3>The second claim: the Buddha never left</h3>
+    <p>Halfway through, the text does something stranger. The historical Buddha &mdash; the man who lived and died in India &mdash; reveals that his lifespan is, in effect, unbounded: that the awakened life is not a person who came and went but a reality always present and available. Put plainly: enlightenment is not a locked room someone once stood in. It is a fact about life itself, here, continuously.</p>
+
+    <h3>What you are supposed to do about it</h3>
+    <p>The sutra does not ask for retreat from the world. It asks the opposite. The people it most exalts are the ones who carry the teaching <em>into</em> ordinary life and ordinary society, who keep going under pressure, who treat every person they meet as someone already carrying that same hidden Buddhahood. The work is not to escape the world. The work is to wake up inside it, and to help others do the same.</p>
+
+    <h3>Why Nichiren built everything on it</h3>
+    <p>Twelve centuries later, in Japan, <a href="#lineage">Nichiren</a> concluded that this sutra was the heart of all Buddhism, and that its promise had to be made <em>practical</em> &mdash; available to a farmer, a fisherman, anyone, without scholarship or privilege. He taught that one could connect to the entire truth of the Lotus Sutra through a single devotional phrase, <span class="term" lang="ja">Nam-myoho-renge-kyo</span>, understood as the <strong>Mystic Law</strong>: the fundamental law of life that the sutra points to. Chanting it is the act of tuning a life to that law.</p>
+    <p>So when this page later quotes Ikeda on human dignity, on the worth of one person, on never writing anyone off &mdash; that is not motivational language. It is the Lotus Sutra's one claim, restated for the present: everyone, already, without exception.</p>
+  </section>
+
+  <hr class="rule-ornament">
+
+  <section id="chronicle">
+    <div class="kicker">The chronicle</div>
+    <h2>In Sensei's words</h2>
+    <p>What follows is the chronicle proper: verified quotations of Daisaku Ikeda, each footnoted, where relevant, down through the teachers behind him. It begins with one entry. It will not stay that way.</p>
+
+    <div class="chronicle-entry">
+      <blockquote>Focusing on the individual, creating a ripple effect through dialogue and encouragement that spreads from one person to another, is the formula for the eternal expansion of <span lang="ja">kosen-rufu</span>.</blockquote>
+      <div class="attribution">
+        <span class="name">Daisaku Ikeda</span><br>
+        <span class="source">The Wisdom for Creating Happiness and Peace</span>, Part 3: Kosen-rufu and World Peace, ch.&nbsp;23.12, &ldquo;The Tradition of the Soka Gakkai.&rdquo;<br>
+        From a speech at a Tokyo No.&nbsp;2 Area chapter leaders meeting, Tokyo, 11&nbsp;October&nbsp;1987.
+      </div>
+      <div class="footnotes">
+        <span class="fn-label">Footnotes &mdash; the line traced to its roots</span>
+        <p><sup>1</sup> <strong>On <span lang="ja">kosen-rufu</span>.</strong> The term is Nichiren's. Written with four characters meaning, in turn, &ldquo;widely,&rdquo; &ldquo;declare,&rdquo; &ldquo;flow,&rdquo; and &ldquo;spread,&rdquo; it names the wide flow of the Lotus Sutra's teaching into society &mdash; and its application there. Nichiren used the term pointedly: enlightenment was not a private inner virtue but something inseparable from the peace of the world. <span class="source">See Nichiren, on the spread of the Law, and the entry on the lineage below.</span></p>
+        <p><sup>2</sup> <strong>On &ldquo;one person.&rdquo;</strong> Ikeda grounds the quotation in Nichiren directly: &ldquo;The popular proverb says that &lsquo;one is the mother of ten thousand&rsquo;&rdquo; (<span class="source">The Writings of Nichiren Daishonin</span>, vol.&nbsp;1, p.&nbsp;131), and &ldquo;One drop of the great ocean contains within it the waters of all the various rivers that flow into the ocean&rdquo; (<span class="source">ibid.</span>, p.&nbsp;146). The single individual is not small. The single individual is the source.</p>
+        <p><sup>3</sup> <strong>On the mentor lineage.</strong> The &ldquo;tradition&rdquo; named in the source title is the inheritance running Makiguchi&nbsp;&rarr;&nbsp;Toda&nbsp;&rarr;&nbsp;Ikeda: the practice of valuing one person at a time, ahead of any large gathering or fine speech. Makiguchi gave his life under wartime imprisonment rather than recant; Toda rebuilt from that; Ikeda carried it outward. The quotation is that inheritance, stated as method.</p>
+      </div>
+    </div>
+
+    <div class="status">
+      <strong>The chronicle continues.</strong> Further verified entries &mdash; on human revolution, on the mentor&ndash;disciple relationship, on the dignity of life, on peace &mdash; will be added here, each held to the same standard: real, sourced, footnoted to the root.
+    </div>
+  </section>
+
+  <hr class="rule-ornament">
+
+  <section id="lineage">
+    <div class="kicker">The lineage</div>
+    <h2>Four names, one thread</h2>
+    <p>Every quotation in the chronicle is read against the line of teachers it descends from. The thread runs in one direction, and the page always footnotes back along it.</p>
+
+    <div class="lineage">
+      <span class="who">Nichiren</span><span class="yr">&nbsp;1222&ndash;1282</span>
+      <span class="arrow">&rarr;</span>
+      <span class="who">Makiguchi</span><span class="yr">&nbsp;1871&ndash;1944</span>
+      <span class="arrow">&rarr;</span>
+      <span class="who">Toda</span><span class="yr">&nbsp;1900&ndash;1958</span>
+      <span class="arrow">&rarr;</span>
+      <span class="who">Ikeda</span><span class="yr">&nbsp;1928&ndash;2023</span>
+    </div>
+
+    <h3>Nichiren <span style="font-weight:400;color:var(--ink-faint);">&mdash; the root</span></h3>
+    <p>Thirteenth-century Japanese Buddhist priest. Held that the Lotus Sutra was the complete and final teaching, and that its promise &mdash; Buddhahood for everyone, now &mdash; had to be made usable by ordinary people through the practice of <span class="term" lang="ja">Nam-myoho-renge-kyo</span>. He was exiled twice and nearly executed for saying so. Everything below descends from him.</p>
+
+    <h3>Tsunesaburo Makiguchi <span style="font-weight:400;color:var(--ink-faint);">&mdash; the first president</span></h3>
+    <p>Educator, geographer, and philosopher. Built a theory of <em>value creation</em> &mdash; that the purpose of education, and of a life, is the creation of value, and that value's truest name is happiness. In 1930 he founded the organization that would become the Soka Gakkai. Imprisoned as a &ldquo;thought criminal&rdquo; by Japan's wartime government for refusing the state religion, he died in prison in 1944 without recanting.</p>
+
+    <h3>Josei Toda <span style="font-weight:400;color:var(--ink-faint);">&mdash; the second president</span></h3>
+    <p>Makiguchi's disciple, imprisoned alongside him. He survived prison, walked out, and rebuilt the organization from almost nothing into a movement of hundreds of thousands. Toda gave the practice its modern shape and its momentum.</p>
+
+    <h3>Daisaku Ikeda <span style="font-weight:400;color:var(--ink-faint);">&mdash; the third president, &ldquo;Sensei&rdquo;</span></h3>
+    <p>Toda's disciple. Took the movement global, founding the Soka Gakkai International in 1975, and devoted his life to peace, education, and dialogue across cultures. A Buddhist philosopher, author, and poet. It is his guidance this page chronicles &mdash; and the honorific &ldquo;Sensei,&rdquo; teacher, is the one his students use for him.</p>
+  </section>
+
+  <div class="dedication">
+    This page was inspired by mentor and friend Gregg Wolpert.<br>
+    It is a living document and a chronicle of Sensei's guidance.
+  </div>
+
+  <div class="colophon">
+    Part of <a href="https://paulpissarro.com/">paulpissarro.com</a><br>
+    Quotations are reproduced from published sources and cited in full. Buddhist terms follow Soka Gakkai usage.
+  </div>
+
+</div>
+</body>
+</html>
