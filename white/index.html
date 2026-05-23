@@ -14,15 +14,9 @@
     font-family: "Times New Roman", Times, serif;
     -webkit-text-size-adjust: 100%;
   }
-  body {
-    padding: 22px 18px 60px;
-  }
-  .frame {
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  body { padding: 22px 18px 60px; }
+  .frame { max-width: 600px; margin: 0 auto; }
 
-  /* ---- header ---- */
   h1 {
     font-size: 40px;
     font-weight: normal;
@@ -36,34 +30,17 @@
     text-transform: uppercase;
     margin: 7px 0 0;
   }
-  .rule {
-    border: none;
-    border-top: 1px solid #000;
-    margin: 16px 0;
-  }
+  .rule { border: none; border-top: 1px solid #000; margin: 16px 0; }
   .counter {
     font-size: 12.5px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
-  .instruction {
-    font-size: 17px;
-    margin: 16px 0 22px;
-    line-height: 1.45;
-  }
+  .instruction { font-size: 17px; margin: 16px 0 22px; line-height: 1.45; }
 
-  /* ---- the institution ---- */
-  .unit-name {
-    font-size: 33px;
-    line-height: 1.12;
-    margin: 0;
-  }
-  .unit-desc {
-    font-size: 14.5px;
-    margin: 6px 0 0;
-  }
+  .unit-name { font-size: 33px; line-height: 1.12; margin: 0; }
+  .unit-desc { font-size: 14.5px; margin: 6px 0 0; }
 
-  /* ---- the instrument ---- */
   .instrument { margin: 30px 0 0; }
 
   input[type=range] {
@@ -78,12 +55,8 @@
     display: block;
   }
   input[type=range]:focus { outline: 1px dotted #000; outline-offset: 3px; }
-  input[type=range]::-webkit-slider-runnable-track {
-    height: 58px; background: #ffffff;
-  }
-  input[type=range]::-moz-range-track {
-    height: 58px; background: #ffffff;
-  }
+  input[type=range]::-webkit-slider-runnable-track { height: 58px; background: #ffffff; }
+  input[type=range]::-moz-range-track { height: 58px; background: #ffffff; }
   input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -101,17 +74,36 @@
     border-radius: 0;
   }
 
-  .readout {
-    font-size: 76px;
-    line-height: 1;
-    margin: 14px 0 0;
-  }
+  .readout { font-size: 76px; line-height: 1; margin: 14px 0 0; }
   .readout-label {
     font-size: 11.5px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     margin: 4px 0 0;
   }
+
+  .why-label {
+    font-size: 16px;
+    margin: 24px 0 0;
+  }
+  .why-label span {
+    font-size: 11.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  textarea {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 15px;
+    width: 100%;
+    height: 78px;
+    border: 1px solid #000000;
+    background: #ffffff;
+    color: #000000;
+    padding: 8px;
+    margin: 8px 0 0;
+    resize: vertical;
+  }
+  textarea:focus { outline: 1px dotted #000; outline-offset: 3px; }
 
   button {
     font-family: "Times New Roman", Times, serif;
@@ -127,40 +119,33 @@
   }
   button:active { background: #000000; color: #ffffff; }
 
-  /* ---- result ---- */
   .result { display: none; }
   .result.show { display: block; }
   .instrument.hide { display: none; }
 
-  .pair {
-    display: flex;
-    gap: 26px;
-    margin: 26px 0 0;
-    flex-wrap: wrap;
+  .verdict { margin: 6px 0 0; }
+  .verdict .mark { font-size: 94px; line-height: 1; }
+  .verdict .mark.ok { color: #157a3d; }
+  .verdict .mark.no { color: #cc1f1f; }
+  .verdict .word {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 2px 0 0;
   }
+
+  .pair { display: flex; gap: 26px; margin: 28px 0 0; flex-wrap: wrap; }
   .pair > div { min-width: 120px; }
-  .big {
-    font-size: 60px;
-    line-height: 1;
-  }
+  .big { font-size: 60px; line-height: 1; }
   .n {
     font-size: 13px;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     margin: 18px 0 0;
   }
-  .first-note {
-    font-size: 16px;
-    line-height: 1.45;
-    margin: 22px 0 0;
-  }
+  .first-note { font-size: 16px; line-height: 1.45; margin: 22px 0 0; }
 
-  /* ---- notice ---- */
-  .notice {
-    font-size: 12px;
-    line-height: 1.55;
-    margin: 30px 0 0;
-  }
+  .notice { font-size: 12px; line-height: 1.55; margin: 30px 0 0; }
   a { color: #1414ff; }
   a:visited { color: #6a1b9a; }
 </style>
@@ -188,10 +173,18 @@
              aria-label="Rate how white the institution is, from 0 to 100">
       <p class="readout" id="readout">50</p>
       <p class="readout-label">Your reading</p>
+
+      <p class="why-label">Why is this white? <span>Optional</span></p>
+      <textarea id="why" aria-label="Why is this white? Optional."></textarea>
+
       <button id="submitBtn">Submit reading</button>
     </section>
 
     <section class="result" id="result">
+      <div class="verdict">
+        <p class="mark" id="verdictMark">&nbsp;</p>
+        <p class="word" id="verdictWord">&nbsp;</p>
+      </div>
       <div class="pair">
         <div>
           <p class="big" id="yourBig">0</p>
@@ -224,10 +217,9 @@
 
 /* ------------------------------------------------------------------
    THE TERRITORY
-   A closed, authored list. Named corporate personas only — institutions
-   that produce, canonize, sell, house, or credential art — plus the
+   A closed, authored list. Named corporate personas only, plus the
    abstract structures of the field, plus the makers of this instrument.
-   No individual is, or can be, entered. Defining the territory is the work.
+   No individual is, or can be, entered.
 ------------------------------------------------------------------- */
 var INSTITUTIONS = [
   { id:"moma",       name:"The Museum of Modern Art",            desc:"Museum. New York. Founded 1929." },
@@ -262,12 +254,28 @@ var INSTITUTIONS = [
 ];
 
 /* ------------------------------------------------------------------
-   STORAGE — the congregation
-   The aggregate is shared across all readers. If storage is unreachable
-   the instrument still functions; the reading simply stands alone.
+   THE STANDARD
+   Each institution has one correct number. The numbers are arbitrary.
+   They are fixed, consistent, and enforced. They are never shown.
+   A reading within TOLERANCE of the standard is graded correct.
+------------------------------------------------------------------- */
+var CORRECT = {
+  moma:31, met:78, whitney:9, guggenheim:64, tate:22, pompidou:87,
+  gagosian:45, zwirner:93, hauser:16, pace:70, christies:38, sothebys:5,
+  basel:81, frieze:53, columbia:27, yale:96, risd:12, courtauld:49,
+  venice:74, whitbien:34, documenta:60, whitecube:19, walltext:88,
+  statement:41, mfa:67, canon:3, unsub:92, coca:56, selfapp:25
+};
+var TOLERANCE = 7;
+
+/* ------------------------------------------------------------------
+   STORAGE
+   The aggregate, and the written reasons, are held in common, one key
+   per institution. If storage is unreachable the instrument still runs.
 ------------------------------------------------------------------- */
 var STORE = (typeof window !== "undefined" && window.storage) ? window.storage : null;
 var META_KEY = "meta:readings";
+var MAX_REASONS = 100;
 
 function getShared(key) {
   if (!STORE) return Promise.resolve(null);
@@ -305,12 +313,15 @@ var elInstr     = document.getElementById("instrument");
 var elResult    = document.getElementById("result");
 var elSlider    = document.getElementById("slider");
 var elReadout   = document.getElementById("readout");
+var elWhy       = document.getElementById("why");
 var elSubmit    = document.getElementById("submitBtn");
 var elNext      = document.getElementById("nextBtn");
 var elYourBig   = document.getElementById("yourBig");
 var elCongBig   = document.getElementById("congBig");
 var elNLine     = document.getElementById("nLine");
 var elFirstNote = document.getElementById("firstNote");
+var elVMark     = document.getElementById("verdictMark");
+var elVWord     = document.getElementById("verdictWord");
 
 /* ------------------------------------------------------------------
    RENDER
@@ -323,6 +334,7 @@ function renderUnit() {
   elUnitDesc.textContent = u.desc;
   elSlider.value = 50;
   elReadout.textContent = "50";
+  elWhy.value = "";
   elResult.classList.remove("show");
   elInstr.classList.remove("hide");
   elSlider.disabled = false;
@@ -352,14 +364,22 @@ elSubmit.addEventListener("click", function () {
 
   var u = current();
   var reading = parseInt(elSlider.value, 10);
+  var reason = (elWhy.value || "").trim();
+  var passed = Math.abs(reading - CORRECT[u.id]) <= TOLERANCE;
   var aggKey = "ratings:" + u.id;
 
   getShared(aggKey).then(function (agg) {
-    if (!agg || typeof agg.count !== "number") agg = { sum: 0, count: 0 };
+    if (!agg || typeof agg.count !== "number") agg = { sum: 0, count: 0, reasons: [] };
+    if (!agg.reasons) agg.reasons = [];
     var wasFirst = agg.count === 0;
     agg.sum += reading;
     agg.count += 1;
-
+    if (reason) {
+      agg.reasons.push(reason);
+      if (agg.reasons.length > MAX_REASONS) {
+        agg.reasons = agg.reasons.slice(agg.reasons.length - MAX_REASONS);
+      }
+    }
     return setShared(aggKey, agg).then(function () {
       return getShared(META_KEY);
     }).then(function (meta) {
@@ -370,16 +390,27 @@ elSubmit.addEventListener("click", function () {
       });
     });
   }).then(function (r) {
-    showResult(reading, r.agg, r.wasFirst);
+    showResult(reading, r.agg, r.wasFirst, passed);
     renderCounter(STORE ? r.total : null);
   }).catch(function () {
-    showResult(reading, null, false);
+    showResult(reading, null, false, passed);
   }).then(function () {
     busy = false;
   });
 });
 
-function showResult(reading, agg, wasFirst) {
+function showResult(reading, agg, wasFirst, passed) {
+  /* the verdict: the standard, applied. it is never explained. */
+  if (passed) {
+    elVMark.textContent = "\u2713";
+    elVMark.className = "mark ok";
+    elVWord.textContent = "Correct";
+  } else {
+    elVMark.textContent = "\u2717";
+    elVMark.className = "mark no";
+    elVWord.textContent = "Incorrect";
+  }
+
   elYourBig.textContent = String(reading);
 
   if (!STORE || !agg) {
