@@ -321,12 +321,26 @@ var TOLERANCE = 7;
                     unreachable" state.
 ================================================================== */
 
-var SUPABASE_URL = "https://yrhkqlkizfjbgwozvwhm.supabase.co/rest/v1/";        /* e.g. https://abcdwxyz.supabase.co     */
-var SUPABASE_ANON_KEY = "sb_publishable_pVfsZ8JaiSw1_OIvoeqRPQ_EloRULl3";   /* the project's anon / public API key   */
+var SUPABASE_URL = "https://yrhkqlkizfjbgwozvwhm.supabase.co";
+var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlyaGtxbGtpemZqYmd3b3p2d2htIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk1NTE2ODYsImV4cCI6MjA5NTEyNzY4Nn0.81aakDtBJVuKzjkuL_nG1B-8suuaiFmDgjc4NROMjFk";
+
+/* normalize: drop whitespace, a trailing slash, and the /rest/v1 path
+   if the full REST endpoint was pasted in place of the base URL. */
+SUPABASE_URL = SUPABASE_URL.trim()
+  .replace(/\/+$/, "")
+  .replace(/\/rest\/v1$/, "")
+  .replace(/\/+$/, "");
+SUPABASE_ANON_KEY = SUPABASE_ANON_KEY.trim();
 
 var BACKEND =
   (SUPABASE_URL && SUPABASE_ANON_KEY) ? "supabase" :
   (typeof window !== "undefined" && window.storage) ? "artifact" : "local";
+
+/* visiting the page with ?debug shows the real failure reason on
+   screen. without it, the public page stays clean. */
+var DEBUG = false;
+try { DEBUG = /[?&]debug\b/i.test(window.location.search || ""); } catch (e) {}
+try { console.log("[Shades of White] backend:", BACKEND); } catch (e) {}
 
 var MAX_REASONS = 100;
 
@@ -347,13 +361,21 @@ function sbSubmit(u, reading, reason, correct) {
       reason: reason || null, correct: correct
     })
   }).then(function (res) {
-    if (!res.ok) { throw new Error("insert failed"); }
+    if (!res.ok) {
+      return res.text().then(function (t) {
+        throw new Error("Supabase insert " + res.status + ": " + t);
+      });
+    }
     return fetch(SUPABASE_URL + "/rest/v1/readings?institution=eq." +
       encodeURIComponent(u.id) +
       "&select=reading,reason&order=created_at.desc&limit=1000",
       { headers: sbHeaders({ "Prefer": "count=exact" }) });
   }).then(function (res) {
-    if (!res.ok) { throw new Error("read failed"); }
+    if (!res.ok) {
+      return res.text().then(function (t) {
+        throw new Error("Supabase read " + res.status + ": " + t);
+      });
+    }
     var range = res.headers.get("content-range") || "";
     var total = parseInt(range.split("/")[1], 10);
     return res.json().then(function (rows) {
@@ -672,12 +694,15 @@ function recordReading(u, reading, reason, correct, token) {
       totalReadings += 1;
     }
     renderCounter(totalReadings);
-  }).catch(function () {
+  }).catch(function (err) {
     if (token !== submitToken) return;
+    try { console.error("[Shades of White]", err); } catch (e) {}
     elCongBig.textContent = "\u2014";
     elCongLabel.textContent = "The congregation";
-    elFirstNote.textContent =
-      "The congregation is unreachable. Your reading stands alone.";
+    elFirstNote.textContent = DEBUG
+      ? ("DEBUG \u00b7 backend=" + BACKEND + " \u00b7 " +
+         ((err && err.message) || String(err)))
+      : "The congregation is unreachable. Your reading stands alone.";
     elSaidBlock.classList.add("hide");
   });
 }
