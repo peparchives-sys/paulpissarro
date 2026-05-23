@@ -13,141 +13,182 @@
     color: #000000;
     font-family: "Times New Roman", Times, serif;
     -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
   }
-  body { padding: 22px 18px 60px; }
-  .frame { max-width: 600px; margin: 0 auto; }
+  body { padding: 14px 16px 16px; }
+  .frame { max-width: 440px; margin: 0 auto; }
 
+  /* masthead: title and the running count share one line */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
   h1 {
-    font-size: 40px;
+    font-size: 17px;
     font-weight: normal;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.07em;
     margin: 0;
     line-height: 1;
   }
-  .sub {
-    font-size: 12.5px;
+  .counter {
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .rule { border: none; border-top: 1px solid #000; margin: 9px 0; }
+  .instruction {
+    font-size: 10.5px;
     letter-spacing: 0.13em;
     text-transform: uppercase;
-    margin: 7px 0 0;
+    margin: 0 0 10px;
   }
-  .rule { border: none; border-top: 1px solid #000; margin: 16px 0; }
-  .counter {
-    font-size: 12.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-  .instruction { font-size: 17px; margin: 16px 0 22px; line-height: 1.45; }
 
-  .unit-name { font-size: 33px; line-height: 1.12; margin: 0; }
-  .unit-desc { font-size: 14.5px; margin: 6px 0 0; }
+  .unit-name { font-size: 23px; line-height: 1.13; margin: 0; }
+  .unit-desc { font-size: 11px; margin: 4px 0 0; }
 
-  .instrument { margin: 30px 0 0; }
-
+  /* slider and reading: permanent, never move */
   input[type=range] {
     -webkit-appearance: none;
     appearance: none;
     width: 100%;
-    height: 58px;
-    margin: 0;
+    height: 46px;
+    margin: 15px 0 0;
     background: #ffffff;
     border: 1px solid #000000;
     cursor: ew-resize;
     display: block;
   }
   input[type=range]:focus { outline: 1px dotted #000; outline-offset: 3px; }
-  input[type=range]::-webkit-slider-runnable-track { height: 58px; background: #ffffff; }
-  input[type=range]::-moz-range-track { height: 58px; background: #ffffff; }
+  input[type=range]:disabled { cursor: default; }
+  input[type=range]::-webkit-slider-runnable-track { height: 46px; background: #ffffff; }
+  input[type=range]::-moz-range-track { height: 46px; background: #ffffff; }
   input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 3px;
-    height: 58px;
+    height: 46px;
     background: #000000;
     border: 0;
     border-radius: 0;
   }
   input[type=range]::-moz-range-thumb {
     width: 3px;
-    height: 58px;
+    height: 46px;
     background: #000000;
     border: 0;
     border-radius: 0;
   }
 
-  .readout { font-size: 76px; line-height: 1; margin: 14px 0 0; }
+  .readout { font-size: 54px; line-height: 1; margin: 8px 0 0; }
   .readout-label {
-    font-size: 11.5px;
+    font-size: 10px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    margin: 4px 0 0;
+    margin: 3px 0 0;
   }
 
-  .why-label {
-    font-size: 16px;
-    margin: 24px 0 0;
-  }
+  /* fixed-height swap zone: the button below it never moves */
+  .swap { height: 158px; margin: 13px 0 0; }
+  .ask { display: flex; flex-direction: column; height: 100%; }
+  .ask.hide { display: none; }
+
+  .why-label { font-size: 14px; margin: 0; }
   .why-label span {
-    font-size: 11.5px;
+    font-size: 10px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
   textarea {
     font-family: "Times New Roman", Times, serif;
-    font-size: 15px;
+    font-size: 16px;            /* 16px keeps iOS from zooming on focus */
     width: 100%;
-    height: 78px;
+    flex: 1;
+    min-height: 50px;
     border: 1px solid #000000;
     background: #ffffff;
     color: #000000;
-    padding: 8px;
-    margin: 8px 0 0;
-    resize: vertical;
+    padding: 7px;
+    margin: 6px 0 0;
+    resize: none;
   }
-  textarea:focus { outline: 1px dotted #000; outline-offset: 3px; }
+  textarea:focus { outline: 1px dotted #000; outline-offset: 2px; }
 
+  .result { display: none; margin: 0; }
+  .result.show { display: block; }
+
+  /* fixed-height line: the mark sits in a reserved slot, so a correct
+     or incorrect verdict never shifts the layout. */
+  .verdict {
+    height: 18px;
+    line-height: 18px;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .verdict .mark {
+    font-size: 15px;
+    font-weight: bold;
+    margin-right: 5px;
+    opacity: 0;
+  }
+  .verdict .mark.ok { color: #157a3d; opacity: 1; }
+  .verdict .mark.no { color: #cc1f1f; opacity: 1; }
+  .verdict .word {
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .cong-num { font-size: 44px; line-height: 1; margin: 7px 0 0; }
+  .cong-label {
+    font-size: 10px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    margin: 3px 0 0;
+  }
+  .first-note { font-size: 11.5px; line-height: 1.4; margin: 11px 0 0; }
+
+  .said { margin: 13px 0 0; }
+  .said.hide { display: none; }
+  .said-label {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .said-text {
+    font-size: 14px;
+    line-height: 1.35;
+    margin: 4px 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* full-width button: a large, fixed mobile touch target */
   button {
     font-family: "Times New Roman", Times, serif;
-    font-size: 16px;
-    letter-spacing: 0.1em;
+    font-size: 15px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     background: #ffffff;
     color: #000000;
     border: 1px solid #000000;
-    padding: 11px 26px;
-    margin: 24px 0 0;
+    width: 100%;
+    padding: 13px;
+    margin: 13px 0 0;
     cursor: pointer;
   }
   button:active { background: #000000; color: #ffffff; }
 
-  .result { display: none; }
-  .result.show { display: block; }
-  .instrument.hide { display: none; }
-
-  .verdict { margin: 6px 0 0; }
-  .verdict .mark { font-size: 94px; line-height: 1; }
-  .verdict .mark.ok { color: #157a3d; }
-  .verdict .mark.no { color: #cc1f1f; }
-  .verdict .word {
-    font-size: 13px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin: 2px 0 0;
+  .notice {
+    font-size: 9.5px;
+    line-height: 1.5;
+    margin: 10px 0 0;
   }
-
-  .pair { display: flex; gap: 26px; margin: 28px 0 0; flex-wrap: wrap; }
-  .pair > div { min-width: 120px; }
-  .big { font-size: 60px; line-height: 1; }
-  .n {
-    font-size: 13px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin: 18px 0 0;
-  }
-  .first-note { font-size: 16px; line-height: 1.45; margin: 22px 0 0; }
-
-  .notice { font-size: 12px; line-height: 1.55; margin: 30px 0 0; }
-  a { color: #1414ff; }
-  a:visited { color: #6a1b9a; }
 </style>
 </head>
 <body>
@@ -155,59 +196,53 @@
 
   <header>
     <h1>SHADES OF WHITE</h1>
-    <p class="sub">An instrument of the Church of Conceptual Art</p>
+    <p class="counter" id="counter">&mdash;&nbsp;readings</p>
   </header>
 
   <hr class="rule">
-  <p class="counter" id="counter">Readings recorded:&nbsp;&mdash;</p>
-  <hr class="rule">
-
-  <p class="instruction">Rate how white the institution is. Move the marker. Submit your reading.</p>
 
   <main>
+    <p class="instruction">Rate how white the institution is</p>
+
     <p class="unit-name" id="unitName">&nbsp;</p>
     <p class="unit-desc" id="unitDesc">&nbsp;</p>
 
-    <section class="instrument" id="instrument">
-      <input type="range" id="slider" min="0" max="100" value="50"
-             aria-label="Rate how white the institution is, from 0 to 100">
-      <p class="readout" id="readout">50</p>
-      <p class="readout-label">Your reading</p>
+    <!-- permanent: slider and reading hold their exact position -->
+    <input type="range" id="slider" min="0" max="100" value="50"
+           aria-label="Rate how white the institution is, from 0 to 100">
+    <p class="readout" id="readout">50</p>
+    <p class="readout-label">Your reading</p>
 
-      <p class="why-label">Why is this white? <span>Optional</span></p>
-      <textarea id="why" aria-label="Why is this white? Optional."></textarea>
+    <!-- fixed-height swap zone: the button below holds its position -->
+    <div class="swap" id="swap">
+      <section class="ask" id="ask">
+        <p class="why-label">Why is this white? <span>Optional</span></p>
+        <textarea id="why" aria-label="Why is this white? Optional."></textarea>
+      </section>
 
-      <button id="submitBtn">Submit reading</button>
-    </section>
-
-    <section class="result" id="result">
-      <div class="verdict">
-        <p class="mark" id="verdictMark">&nbsp;</p>
-        <p class="word" id="verdictWord">&nbsp;</p>
-      </div>
-      <div class="pair">
-        <div>
-          <p class="big" id="yourBig">0</p>
-          <p class="readout-label">Your reading</p>
+      <section class="result" id="result">
+        <p class="verdict">
+          <span class="mark" id="verdictMark"></span><span class="word" id="verdictWord"></span>
+        </p>
+        <p class="cong-num" id="congBig">0</p>
+        <p class="cong-label" id="congLabel">The congregation</p>
+        <p class="first-note" id="firstNote"></p>
+        <div class="said hide" id="saidBlock">
+          <p class="said-label">What they said</p>
+          <p class="said-text" id="saidText"></p>
         </div>
-        <div>
-          <p class="big" id="congBig">0</p>
-          <p class="readout-label">The congregation</p>
-        </div>
-      </div>
-      <p class="n" id="nLine">n&nbsp;=&nbsp;0</p>
-      <p class="first-note" id="firstNote"></p>
-      <button id="nextBtn">Next</button>
-    </section>
+      </section>
+    </div>
+
+    <button id="actionBtn">Submit reading</button>
   </main>
 
-  <hr class="rule" style="margin-top:34px;">
+  <hr class="rule">
   <p class="notice">
-    <strong>NOTICE.</strong> Shades of White is a participatory instrument of the Church
-    of Conceptual Art. The artwork is the aggregate of all readings. Readings are
-    anonymous and final. The readings are held in common and are not for sale; the
-    covenant runs with the data. Companion text: <em>On the Impossibility of Defining
-    Whiteness</em> (Unsubscribe LLC, working draft). Always CoCA.
+    An instrument of the Church of Conceptual Art. The artwork is the
+    aggregate of all readings, held in common and not for sale; the
+    covenant runs with the data. Companion text: On the Impossibility
+    of Defining Whiteness. Always CoCA.
   </p>
 
 </div>
@@ -268,26 +303,134 @@ var CORRECT = {
 };
 var TOLERANCE = 7;
 
-/* ------------------------------------------------------------------
-   STORAGE
-   The aggregate, and the written reasons, are held in common, one key
-   per institution. If storage is unreachable the instrument still runs.
-------------------------------------------------------------------- */
-var STORE = (typeof window !== "undefined" && window.storage) ? window.storage : null;
-var META_KEY = "meta:readings";
+/* ==================================================================
+   PERSISTENCE
+   The app saves to one of three places, chosen automatically:
+
+   1. SUPABASE      A real database. Fill the two constants below and
+                    run the SQL in the build notes. Use this to ship
+                    the app at a real URL where the readings must
+                    persist and be exportable. The readings ARE the
+                    artwork, so this is where the artwork is kept.
+   2. ARTIFACT      Used automatically when the app runs inside Claude.
+                    Persists and is shared, but cannot be queried or
+                    exported outside Claude. Good for the prototype.
+   3. LOCAL ONLY    When neither is available, e.g. the .html file is
+                    opened straight from disk. Nothing is saved; each
+                    reading stands alone. This is the "congregation is
+                    unreachable" state.
+================================================================== */
+
+var SUPABASE_URL = "https://yrhkqlkizfjbgwozvwhm.supabase.co/rest/v1/";        /* e.g. https://abcdwxyz.supabase.co     */
+var SUPABASE_ANON_KEY = "sb_publishable_pVfsZ8JaiSw1_OIvoeqRPQ_EloRULl3";   /* the project's anon / public API key   */
+
+var BACKEND =
+  (SUPABASE_URL && SUPABASE_ANON_KEY) ? "supabase" :
+  (typeof window !== "undefined" && window.storage) ? "artifact" : "local";
+
 var MAX_REASONS = 100;
 
-function getShared(key) {
-  if (!STORE) return Promise.resolve(null);
-  return STORE.get(key, true).then(function (r) {
-    return (r && r.value) ? JSON.parse(r.value) : null;
-  }).catch(function () { return null; });
+/* ---- backend 1: Supabase ---------------------------------------- */
+function sbHeaders(extra) {
+  var h = { "apikey": SUPABASE_ANON_KEY,
+            "Authorization": "Bearer " + SUPABASE_ANON_KEY };
+  if (extra) { for (var k in extra) { h[k] = extra[k]; } }
+  return h;
 }
-function setShared(key, val) {
-  if (!STORE) return Promise.resolve(false);
-  return STORE.set(key, JSON.stringify(val), true).then(function () {
-    return true;
-  }).catch(function () { return false; });
+function sbSubmit(u, reading, reason, correct) {
+  return fetch(SUPABASE_URL + "/rest/v1/readings", {
+    method: "POST",
+    headers: sbHeaders({ "Content-Type": "application/json",
+                         "Prefer": "return=minimal" }),
+    body: JSON.stringify({
+      institution: u.id, name: u.name, reading: reading,
+      reason: reason || null, correct: correct
+    })
+  }).then(function (res) {
+    if (!res.ok) { throw new Error("insert failed"); }
+    return fetch(SUPABASE_URL + "/rest/v1/readings?institution=eq." +
+      encodeURIComponent(u.id) +
+      "&select=reading,reason&order=created_at.desc&limit=1000",
+      { headers: sbHeaders({ "Prefer": "count=exact" }) });
+  }).then(function (res) {
+    if (!res.ok) { throw new Error("read failed"); }
+    var range = res.headers.get("content-range") || "";
+    var total = parseInt(range.split("/")[1], 10);
+    return res.json().then(function (rows) {
+      var n = isNaN(total) ? rows.length : total;
+      var sum = 0, reasons = [];
+      for (var i = 0; i < rows.length; i++) {
+        sum += rows[i].reading;
+        if (rows[i].reason) { reasons.push(rows[i].reason); }
+      }
+      var avg = rows.length ? Math.round(sum / rows.length) : reading;
+      return { n: n, avg: avg, wasFirst: n <= 1, reasons: reasons };
+    });
+  });
+}
+function sbTotal() {
+  return fetch(SUPABASE_URL + "/rest/v1/readings?select=id&limit=1",
+    { headers: sbHeaders({ "Prefer": "count=exact" }) }
+  ).then(function (res) {
+    var range = res.headers.get("content-range") || "";
+    var total = parseInt(range.split("/")[1], 10);
+    return isNaN(total) ? 0 : total;
+  });
+}
+
+/* ---- backend 2: artifact storage -------------------------------- */
+function parseStored(r) { return (r && r.value) ? JSON.parse(r.value) : null; }
+function artSubmit(u, reading, reason) {
+  var aggKey = "ratings:" + u.id;
+  var aggDone = window.storage.get(aggKey, true).then(parseStored)
+    .then(function (agg) {
+      if (!agg || typeof agg.count !== "number") {
+        agg = { sum: 0, count: 0, reasons: [] };
+      }
+      if (!agg.reasons) { agg.reasons = []; }
+      var wasFirst = agg.count === 0;
+      agg.sum += reading;
+      agg.count += 1;
+      if (reason) {
+        agg.reasons.push(reason);
+        if (agg.reasons.length > MAX_REASONS) {
+          agg.reasons = agg.reasons.slice(agg.reasons.length - MAX_REASONS);
+        }
+      }
+      return window.storage.set(aggKey, JSON.stringify(agg), true)
+        .then(function () {
+          return { n: agg.count,
+                   avg: Math.round(agg.sum / agg.count),
+                   wasFirst: wasFirst,
+                   reasons: agg.reasons.slice() };
+        });
+    });
+  var metaDone = window.storage.get("meta:readings", true).then(parseStored)
+    .then(function (m) {
+      if (!m || typeof m.count !== "number") { m = { count: 0 }; }
+      m.count += 1;
+      return window.storage.set("meta:readings", JSON.stringify(m), true)
+        .then(function () { return m.count; });
+    });
+  return Promise.all([aggDone, metaDone]).then(function (r) {
+    r[0].total = r[1];
+    return r[0];
+  });
+}
+
+/* ---- unified interface ------------------------------------------ */
+function submitReading(u, reading, reason, correct) {
+  if (BACKEND === "supabase") { return sbSubmit(u, reading, reason, correct); }
+  if (BACKEND === "artifact") { return artSubmit(u, reading, reason); }
+  return Promise.reject(new Error("local-only"));
+}
+function fetchTotal() {
+  if (BACKEND === "supabase") { return sbTotal(); }
+  if (BACKEND === "artifact") {
+    return window.storage.get("meta:readings", true).then(parseStored)
+      .then(function (m) { return (m && m.count) || 0; });
+  }
+  return Promise.reject(new Error("local-only"));
 }
 
 /* ------------------------------------------------------------------
@@ -309,19 +452,19 @@ var busy = false;
 var elCounter   = document.getElementById("counter");
 var elUnitName  = document.getElementById("unitName");
 var elUnitDesc  = document.getElementById("unitDesc");
-var elInstr     = document.getElementById("instrument");
+var elAsk       = document.getElementById("ask");
 var elResult    = document.getElementById("result");
 var elSlider    = document.getElementById("slider");
 var elReadout   = document.getElementById("readout");
 var elWhy       = document.getElementById("why");
-var elSubmit    = document.getElementById("submitBtn");
-var elNext      = document.getElementById("nextBtn");
-var elYourBig   = document.getElementById("yourBig");
+var elAction    = document.getElementById("actionBtn");
 var elCongBig   = document.getElementById("congBig");
-var elNLine     = document.getElementById("nLine");
+var elCongLabel = document.getElementById("congLabel");
 var elFirstNote = document.getElementById("firstNote");
 var elVMark     = document.getElementById("verdictMark");
 var elVWord     = document.getElementById("verdictWord");
+var elSaidBlock = document.getElementById("saidBlock");
+var elSaidText  = document.getElementById("saidText");
 
 /* ------------------------------------------------------------------
    RENDER
@@ -333,20 +476,84 @@ function renderUnit() {
   elUnitName.textContent = u.name;
   elUnitDesc.textContent = u.desc;
   elSlider.value = 50;
+  elSlider.disabled = false;
   elReadout.textContent = "50";
   elWhy.value = "";
   elResult.classList.remove("show");
-  elInstr.classList.remove("hide");
-  elSlider.disabled = false;
-  elSubmit.disabled = false;
+  elAsk.classList.remove("hide");
+  elSaidBlock.classList.add("hide");
+  mode = "input";
+  elAction.textContent = "Submit reading";
 }
 
 function renderCounter(count) {
   if (count === null || count === undefined) {
-    elCounter.innerHTML = "Readings recorded:&nbsp;&mdash;";
+    elCounter.innerHTML = "&mdash;&nbsp;readings";
   } else {
-    elCounter.textContent = "Readings recorded: " + count;
+    elCounter.textContent = count.toLocaleString() + " readings";
   }
+}
+
+/* ------------------------------------------------------------------
+   MODERATION
+   A "why" text is governed at two points: it is dropped on submit if
+   it fails the filter, and the filter is applied again before any
+   text is ever shown as "What they said". The display check is the
+   real guarantee -- even text that reaches the database by other
+   means is never put on screen.
+
+   The blocklist is identity-based slurs only, stored as [length,
+   hash] pairs so no slur appears in this file. General profanity is
+   deliberately not blocked: the app's register tolerates cursing.
+   It is a blunt instrument and may over-block; that is the safer
+   error for a displayed surface. A real launch wants a server-side
+   service in addition to this.
+------------------------------------------------------------------- */
+var BLOCKED = [[5,509988399],[5,812598103],[5,1409952746],[5,1631846163],[5,1656725544],[5,1903900479],[5,3052073563],[5,3168946342],[5,3370675128],[5,3739672974],[5,3791304153],[5,4027873459],[5,4137990222],[6,1584456691],[6,2074352683],[6,2491417249],[6,3758695880],[6,4010308924],[7,919192496],[7,1937589700],[7,2140127597],[7,2534310150],[7,3990946575],[7,4253324943],[8,1666915128],[8,1697881716],[9,394036361],[9,534086848],[9,538082108],[9,2281531819],[9,3294563383],[9,4146676842],[10,4194392369],[11,905056310],[11,1892801000]];
+
+var LEET = { "0":"o","1":"i","2":"z","3":"e","4":"a","5":"s","6":"g",
+             "7":"t","8":"b","9":"g","@":"a","$":"s","!":"i","|":"i","+":"t" };
+
+/* lowercase, fold leetspeak, drop everything but letters, collapse
+   repeated letters. spacing and punctuation evasions all collapse to
+   the same blob. */
+function normalizeText(s) {
+  s = String(s).toLowerCase();
+  var letters = "";
+  for (var i = 0; i < s.length; i++) {
+    var c = s.charAt(i);
+    if (LEET[c]) c = LEET[c];
+    if (c >= "a" && c <= "z") letters += c;
+  }
+  var col = "";
+  for (var j = 0; j < letters.length; j++) {
+    if (letters.charAt(j) !== col.charAt(col.length - 1)) {
+      col += letters.charAt(j);
+    }
+  }
+  return col;
+}
+
+function fnv1a(s) {
+  var h = 0x811c9dc5;
+  for (var i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h >>> 0;
+}
+
+/* slide a window of each blocked length across the normalized blob */
+function isClean(text) {
+  var blob = normalizeText(text);
+  for (var b = 0; b < BLOCKED.length; b++) {
+    var len = BLOCKED[b][0], hsh = BLOCKED[b][1];
+    if (blob.length < len) continue;
+    for (var j = 0; j + len <= blob.length; j++) {
+      if (fnv1a(blob.substr(j, len)) === hsh) return false;
+    }
+  }
+  return true;
 }
 
 /* ------------------------------------------------------------------
@@ -356,51 +563,35 @@ elSlider.addEventListener("input", function () {
   elReadout.textContent = elSlider.value;
 });
 
-elSubmit.addEventListener("click", function () {
+/* a token so a slow storage reply for a previous reading cannot
+   overwrite the result of a later one. */
+var submitToken = 0;
+
+/* one button, one fixed position. its label and behaviour change
+   with the mode; it does not move. */
+var mode = "input";
+
+elAction.addEventListener("click", function () {
+  if (mode === "input") { doSubmit(); }
+  else { doNext(); }
+});
+
+function doSubmit() {
   if (busy) return;
   busy = true;
-  elSubmit.disabled = true;
-  elSlider.disabled = true;
 
   var u = current();
   var reading = parseInt(elSlider.value, 10);
   var reason = (elWhy.value || "").trim();
+  /* a "why" that fails the filter is dropped silently: the reading
+     still counts, but the words are not recorded and never shown. */
+  if (reason && !isClean(reason)) reason = "";
   var passed = Math.abs(reading - CORRECT[u.id]) <= TOLERANCE;
-  var aggKey = "ratings:" + u.id;
+  var myToken = ++submitToken;
 
-  getShared(aggKey).then(function (agg) {
-    if (!agg || typeof agg.count !== "number") agg = { sum: 0, count: 0, reasons: [] };
-    if (!agg.reasons) agg.reasons = [];
-    var wasFirst = agg.count === 0;
-    agg.sum += reading;
-    agg.count += 1;
-    if (reason) {
-      agg.reasons.push(reason);
-      if (agg.reasons.length > MAX_REASONS) {
-        agg.reasons = agg.reasons.slice(agg.reasons.length - MAX_REASONS);
-      }
-    }
-    return setShared(aggKey, agg).then(function () {
-      return getShared(META_KEY);
-    }).then(function (meta) {
-      if (!meta || typeof meta.count !== "number") meta = { count: 0 };
-      meta.count += 1;
-      return setShared(META_KEY, meta).then(function () {
-        return { agg: agg, wasFirst: wasFirst, total: meta.count };
-      });
-    });
-  }).then(function (r) {
-    showResult(reading, r.agg, r.wasFirst, passed);
-    renderCounter(STORE ? r.total : null);
-  }).catch(function () {
-    showResult(reading, null, false, passed);
-  }).then(function () {
-    busy = false;
-  });
-});
-
-function showResult(reading, agg, wasFirst, passed) {
-  /* the verdict: the standard, applied. it is never explained. */
+  /* the verdict needs no storage: show it at once, so the click never
+     appears to hang. the congregation and the quote fill in a moment
+     later, inside the fixed-height zone, so nothing below moves. */
   if (passed) {
     elVMark.textContent = "\u2713";
     elVMark.className = "mark ok";
@@ -410,43 +601,96 @@ function showResult(reading, agg, wasFirst, passed) {
     elVMark.className = "mark no";
     elVWord.textContent = "Incorrect";
   }
-
-  elYourBig.textContent = String(reading);
-
-  if (!STORE || !agg) {
-    elCongBig.textContent = "\u2014";
-    elNLine.textContent = "n = \u2014";
-    elFirstNote.textContent =
-      "The congregation is unreachable. Your reading stands alone.";
-  } else if (wasFirst) {
-    elCongBig.textContent = String(reading);
-    elNLine.textContent = "n = 1";
-    elFirstNote.textContent =
-      "No one had read this institution before you. The congregation begins with your reading.";
-  } else {
-    var avg = Math.round(agg.sum / agg.count);
-    elCongBig.textContent = String(avg);
-    elNLine.textContent = "n = " + agg.count;
-    elFirstNote.textContent = "";
-  }
-
-  elInstr.classList.add("hide");
+  elSlider.disabled = true;            /* the marker is now final */
+  elCongBig.textContent = "\u00b7";
+  elCongLabel.textContent = "The congregation";
+  elFirstNote.textContent = "";
+  elSaidText.textContent = "";
+  elSaidBlock.classList.add("hide");
+  elAsk.classList.add("hide");
   elResult.classList.add("show");
+  mode = "result";
+  elAction.textContent = "Next";
+  busy = false;
+
+  recordReading(u, reading, reason, passed, myToken);
 }
 
-elNext.addEventListener("click", function () {
+function doNext() {
+  submitToken++;   /* invalidate any storage reply still in flight */
   idx += 1;
   if (idx % order.length === 0) order = shuffle(INSTITUTIONS);
   renderUnit();
   window.scrollTo(0, 0);
-});
+}
+
+var totalReadings = 0;
+
+/* pick one reason at random, excluding the reader's own and anything
+   that fails the filter, and show it as "What they said". the filter
+   here is the real guarantee: nothing unclean reaches the screen,
+   whatever is in the data. hide the block if nothing qualifies. */
+function showWhatTheySaid(reasons, ownReason) {
+  var pool = (reasons || []).slice();
+  if (ownReason) {
+    var ix = pool.indexOf(ownReason);
+    if (ix !== -1) pool.splice(ix, 1);
+  }
+  pool = shuffle(pool);
+  var pick = null;
+  var tries = Math.min(pool.length, 60);
+  for (var i = 0; i < tries; i++) {
+    if (isClean(pool[i])) { pick = pool[i]; break; }
+  }
+  if (pick) {
+    elSaidText.textContent = "\u201c" + pick + "\u201d";
+    elSaidBlock.classList.remove("hide");
+  } else {
+    elSaidBlock.classList.add("hide");
+  }
+}
+
+function recordReading(u, reading, reason, correct, token) {
+  submitReading(u, reading, reason, correct).then(function (r) {
+    if (token !== submitToken) return;   /* a later reading is showing */
+    if (r.wasFirst) {
+      /* the congregation is not yet a congregation: show no average,
+         rather than a number identical to the reading above it. */
+      elCongBig.textContent = "\u2014";
+      elCongLabel.textContent = "The congregation \u00b7 n = 1";
+      elFirstNote.textContent =
+        "You are the first reading. The congregation has no average yet.";
+    } else {
+      elCongBig.textContent = String(r.avg);
+      elCongLabel.textContent = "The congregation \u00b7 n = " + r.n;
+      elFirstNote.textContent = "";
+    }
+    showWhatTheySaid(r.reasons, reason);
+    if (typeof r.total === "number") {
+      totalReadings = r.total;
+    } else {
+      totalReadings += 1;
+    }
+    renderCounter(totalReadings);
+  }).catch(function () {
+    if (token !== submitToken) return;
+    elCongBig.textContent = "\u2014";
+    elCongLabel.textContent = "The congregation";
+    elFirstNote.textContent =
+      "The congregation is unreachable. Your reading stands alone.";
+    elSaidBlock.classList.add("hide");
+  });
+}
 
 /* ------------------------------------------------------------------
    INIT
 ------------------------------------------------------------------- */
 renderUnit();
-getShared(META_KEY).then(function (meta) {
-  renderCounter(STORE ? (meta && meta.count ? meta.count : 0) : null);
+fetchTotal().then(function (t) {
+  totalReadings = t;
+  renderCounter(t);
+}).catch(function () {
+  renderCounter(null);   /* local-only: no shared count to show */
 });
 </script>
 </body>
