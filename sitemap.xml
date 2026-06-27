@@ -4,7 +4,7 @@
 
   <url>
     <loc>https://unsubscribe.llc/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://unsubscribe.llc/"/>
@@ -13,40 +13,56 @@
     <xhtml:link rel="alternate" hreflang="es" href="https://unsubscribe.llc/es/"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://unsubscribe.llc/pt/"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://unsubscribe.llc/it/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://unsubscribe.llc/zh/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://unsubscribe.llc/ko/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://unsubscribe.llc/"/>
   </url>
 
   <url>
     <loc>https://unsubscribe.llc/fr/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://unsubscribe.llc/de/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://unsubscribe.llc/es/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://unsubscribe.llc/pt/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://unsubscribe.llc/it/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://unsubscribe.llc/zh/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://unsubscribe.llc/ko/</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
