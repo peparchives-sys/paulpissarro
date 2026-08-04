@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>The Credential and the Contribution — Pissarro, Paul-Alexander Arthur</title>
+<meta name="description" content="A thesis on the doctorate as guild inheritance: the credential decoupled from contribution. Working draft, apparatus under verification.">
+
+<!-- ============================================================
+     GOOGLE SCHOLAR INDEXING
+     Three mandatory fields: title, first author full name, year.
+     citation_pdf_url is DELIBERATELY COMMENTED OUT. Do not enable
+     it until the PDF exists, has searchable text, and the Runbook
+     two-key gate has been cleared. Scholar will not index without
+     it, which is the correct behaviour while this is a draft.
+     ============================================================ -->
+<meta name="citation_title" content="The Credential and the Contribution">
+<meta name="citation_author" content="Pissarro, Paul-Alexander Arthur">
+<meta name="citation_publication_date" content="2026">
+<!-- <meta name="citation_pdf_url" content="https://paulpissarro.com/thesis/credential-contribution-v1.pdf"> -->
+<meta name="robots" content="noindex, follow">
+<!-- Remove noindex above when the draft goes live. -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --stock:#E7E5DC;
+  --stock-deep:#DCD9CD;
+  --rule:#BDB9A9;
+  --ink:#16181A;
+  --ink-soft:#5A5D60;
+  --ink-faint:#8A8C8B;
+  --stamp:#2F4B7C;
+  --seal:#7A2E2E;
+
+  --serif:"EB Garamond",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+
+  --measure:63ch;
+  --pad:clamp(1.5rem,5vw,4rem);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--stock);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:clamp(1.02rem,0.98rem + 0.25vw,1.16rem);
+  line-height:1.62;
+  font-feature-settings:"onum" 1,"kern" 1;
+}
+
+.wrap{max-width:74rem;margin:0 auto;padding:0 var(--pad)}
+.col{max-width:var(--measure)}
+
+/* ---------- shared apparatus type ---------- */
+.mono{
+  font-family:var(--mono);
+  font-size:.66rem;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  color:var(--ink-soft);
+}
+
+/* ---------- masthead ---------- */
+header{
+  padding:clamp(3rem,9vh,6.5rem) 0 clamp(2rem,5vh,3.5rem);
+  border-bottom:1px solid var(--ink);
+}
+.eyebrow{
+  display:flex;flex-wrap:wrap;gap:.9rem;align-items:baseline;
+  margin-bottom:clamp(2.5rem,7vh,4.5rem);
+}
+.eyebrow .sep{color:var(--rule)}
+
+h1{
+  font-weight:400;
+  font-size:clamp(2.6rem,1.4rem + 5.4vw,5.6rem);
+  line-height:1.02;
+  letter-spacing:-.018em;
+  margin:0 0 .5rem;
+  max-width:16ch;
+}
+h1 em{font-style:italic;color:var(--ink)}
+
+.deck{
+  font-size:clamp(1.15rem,1rem + .55vw,1.55rem);
+  line-height:1.38;
+  color:var(--ink-soft);
+  font-style:italic;
+  margin:0 0 clamp(2.2rem,6vh,3.4rem);
+  max-width:44ch;
+}
+
+.byline{
+  font-family:var(--mono);
+  font-size:.84rem;
+  letter-spacing:.04em;
+  text-transform:none;
+  color:var(--ink);
+  padding-top:1.1rem;
+  border-top:1px solid var(--rule);
+}
+
+/* ---------- record strip ---------- */
+.record{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1px;
+  background:var(--rule);
+  border-block:1px solid var(--rule);
+  margin-top:clamp(2rem,5vh,3rem);
+}
+@media (min-width:56rem){
+  .record{grid-template-columns:repeat(5,1fr)}
+}
+.record div{background:var(--stock);padding:.85rem 1rem}
+.record dt{margin:0 0 .35rem}
+.record dd{
+  margin:0;
+  font-family:var(--mono);
+  font-size:.82rem;
+  letter-spacing:.01em;
+  color:var(--ink);
+}
+.record dd.pending{color:var(--ink-faint)}
+
+/* ---------- sections ---------- */
+section{padding:clamp(3.2rem,8vh,5.5rem) 0}
+section + section{border-top:1px solid var(--rule)}
+
+.tag{
+  display:block;
+  margin-bottom:1.6rem;
+  color:var(--stamp);
+}
+h2{
+  font-weight:400;
+  font-size:clamp(1.5rem,1.2rem + 1.2vw,2.3rem);
+  line-height:1.16;
+  letter-spacing:-.01em;
+  margin:0 0 1.4rem;
+  max-width:24ch;
+}
+p{margin:0 0 1.15rem}
+p:last-child{margin-bottom:0}
+
+/* ---------- notice ---------- */
+.notice{
+  border-left:3px solid var(--seal);
+  padding:.15rem 0 .15rem 1.4rem;
+  max-width:var(--measure);
+}
+.notice p{font-size:.96rem;color:var(--ink-soft)}
+.notice strong{color:var(--ink);font-weight:600}
+
+/* ---------- pillars ---------- */
+.pillars{border-top:1px solid var(--rule);margin-top:2.4rem}
+.pillar{
+  display:grid;
+  grid-template-columns:4.5rem 1fr;
+  gap:0 1.6rem;
+  padding:1.5rem 0;
+  border-bottom:1px solid var(--rule);
+  align-items:start;
+}
+.pillar .roman{
+  font-family:var(--mono);
+  font-size:.94rem;
+  letter-spacing:.06em;
+  color:var(--stamp);
+  padding-top:.28rem;
+}
+.pillar h3{
+  font-weight:500;
+  font-size:1.16rem;
+  margin:0 0 .3rem;
+  letter-spacing:.002em;
+}
+.pillar p{
+  font-size:.98rem;
+  color:var(--ink-soft);
+  margin:0;
+  max-width:56ch;
+}
+.pillar .nodes{
+  display:block;
+  margin-top:.6rem;
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.1em;
+  color:var(--ink-faint);
+}
+
+/* ---------- SIGNATURE: the sealed proposition ---------- */
+.specimen{
+  background:var(--stock-deep);
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  padding-inline:var(--pad);
+}
+.specimen > *{max-width:74rem;margin-inline:auto}
+.spec-frame{
+  border:1px solid var(--ink);
+  padding:clamp(1.6rem,4vw,2.8rem);
+  max-width:56rem;
+  position:relative;
+  background:var(--stock);
+}
+.spec-head{
+  display:flex;justify-content:space-between;gap:1rem;
+  padding-bottom:1.2rem;margin-bottom:1.6rem;
+  border-bottom:1px solid var(--rule);
+}
+.prop{
+  display:grid;
+  grid-template-columns:3.2rem 1fr;
+  gap:0 1.2rem;
+  padding:1.1rem 0;
+  border-bottom:1px dotted var(--rule);
+}
+.prop:last-of-type{border-bottom:0;padding-bottom:0}
+.prop .num{
+  font-family:var(--mono);
+  font-size:.8rem;
+  color:var(--ink-faint);
+  padding-top:.3rem;
+}
+.prop .claim{
+  font-size:1.06rem;
+  line-height:1.5;
+  margin:0 0 .55rem;
+  max-width:58ch;
+}
+.prop .claim em{font-style:italic}
+.prop .srcs{
+  font-family:var(--mono);
+  font-size:.68rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--stamp);
+}
+.spec-note{
+  margin-top:1.8rem;padding-top:1.2rem;
+  border-top:1px solid var(--rule);
+  font-size:.9rem;color:var(--ink-soft);max-width:58ch;
+}
+
+/* ---------- ledger ---------- */
+table{
+  width:100%;border-collapse:collapse;margin-top:2rem;
+  font-size:.95rem;
+}
+th{
+  text-align:left;font-weight:400;
+  font-family:var(--mono);font-size:.64rem;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);
+  padding:0 1.2rem .7rem 0;border-bottom:1px solid var(--ink);
+}
+td{
+  padding:.9rem 1.2rem .9rem 0;
+  border-bottom:1px solid var(--rule);
+  vertical-align:top;
+}
+td:last-child,th:last-child{padding-right:0}
+.state{
+  font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.09em;text-transform:uppercase;white-space:nowrap;
+}
+.state.open{color:var(--seal)}
+.state.done{color:var(--stamp)}
+.state.wait{color:var(--ink-faint)}
+
+/* ---------- colophon ---------- */
+footer{
+  border-top:1px solid var(--ink);
+  padding:clamp(2.5rem,6vh,4rem) 0 clamp(3rem,8vh,5rem);
+}
+.colophon{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));
+  gap:2rem;
+}
+.colophon p{font-size:.9rem;color:var(--ink-soft);max-width:34ch}
+.seal-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:3.1rem;height:3.1rem;border:1.5px solid var(--seal);
+  border-radius:50%;color:var(--seal);
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;
+  margin-bottom:1rem;
+}
+a{color:var(--stamp);text-underline-offset:.18em;text-decoration-thickness:.5px}
+a:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
+
+/* ---------- motion ---------- */
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.anim{animation:rise .7s cubic-bezier(.2,.7,.3,1) both}
+.d1{animation-delay:.05s}.d2{animation-delay:.18s}
+.d3{animation-delay:.31s}.d4{animation-delay:.44s}
+@media (prefers-reduced-motion:reduce){
+  .anim{animation:none}
+  *{transition:none!important}
+}
+
+@media (max-width:34rem){
+  .pillar{grid-template-columns:1fr;gap:.4rem}
+  .pillar .roman{padding-top:0}
+  .prop{grid-template-columns:1fr;gap:.35rem}
+  .spec-head{flex-direction:column;gap:.4rem}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow mono anim d1">
+    <span>Working draft</span><span class="sep">/</span>
+    <span>Version 0.1</span><span class="sep">/</span>
+    <span>Apparatus under verification</span>
+  </div>
+
+  <h1 class="anim d2">The Credential and the <em>Contribution</em></h1>
+
+  <p class="deck anim d3">On the doctorate as a guild inheritance, and the seven centuries between a licence to teach and a claim to new knowledge.</p>
+
+  <p class="byline anim d4">Pissarro, Paul-Alexander Arthur</p>
+
+  <dl class="record anim d4">
+    <div><dt class="mono">Status</dt><dd>Draft, in verification</dd></div>
+    <div><dt class="mono">Version</dt><dd>0.1</dd></div>
+    <div><dt class="mono">Canonical deposit</dt><dd class="pending">Not yet deposited</dd></div>
+    <div><dt class="mono">DOI</dt><dd class="pending">Pending deposit</dd></div>
+    <div><dt class="mono">Licence</dt><dd class="pending">To be set</dd></div>
+  </dl>
+</header>
+
+<section>
+  <span class="tag mono">The argument</span>
+  <div class="col">
+    <p>The European degree ladder is a craft-guild structure transposed onto knowledge. Bachelor, master and doctor correspond to apprentice, journeyman and master, and doctoral training was formally an apprenticeship, with a customary seven-year term matching the apprenticeship of other medieval trades.</p>
+
+    <p>Master and doctor were originally synonymous. Both named one thing: the <em>licentia docendi</em>, the licence to teach. Neither certified an original contribution to knowledge. Both certified admission to the body licensed to instruct, and that licence was an ecclesiastical instrument, centralising authority over who might teach and therefore over what could be taught.</p>
+
+    <p>The definition of the doctorate as certifying new knowledge is a modern retrofit. When the institution says a doctorate proves a contribution, it is dressing a guild-entry rite in Enlightenment language. This thesis argues that the credential was never bound to the contribution, that the two can be separated without loss, and that separating them is itself demonstrable rather than merely arguable.</p>
+  </div>
+</section>
+
+<section>
+  <span class="tag mono">Notice</span>
+  <div class="notice">
+    <p><strong>This is a working draft and its apparatus has not been verified.</strong> Sources are named against every proposition, but the propositions have not yet been checked page by page against the texts themselves. Until that pass is complete, no claim on this page should be cited as settled. The verification ledger below is public for the same reason the thesis exists: an institution that asks to be checked has to show what has not yet been checked.</p>
+  </div>
+</section>
+
+<section>
+  <span class="tag mono">Structure — four pillars</span>
+  <h2>The mechanism, the proof it has been beaten, the licence, and the demonstration.</h2>
+
+  <div class="pillars">
+    <div class="pillar">
+      <span class="roman">I</span>
+      <div>
+        <h3>The Institutional Critique</h3>
+        <p>The credential is decoupled from contribution. Opens with the guild inheritance, then status-closure and credentialism as its modern sociology.</p>
+        <span class="nodes">rashdall-1936 · verger-1973 · weber-1978 · collins-1979</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="roman">II</span>
+      <div>
+        <h3>Precedents in Praxis</h3>
+        <p>Not scholarship about the credential, but figures whose work is the argument. Precedent rather than commentary, and treated honestly as such.</p>
+        <span class="nodes">Schlingensief — Graw</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="roman">III</span>
+      <div>
+        <h3>Rigour as Praxis</h3>
+        <p>The philosophical licence for the method: that rigour is not the university's property, and that its exercise outside the institution is not a lesser form of it.</p>
+        <span class="nodes">Adorno</span>
+      </div>
+    </div>
+    <div class="pillar">
+      <span class="roman">IV</span>
+      <div>
+        <h3>The Performative Culmination</h3>
+        <p>The thesis completes its own argument by being deposited, indexed and cited without the institution that would ordinarily authorise it.</p>
+        <span class="nodes">This document</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="specimen">
+  <span class="tag mono">Specimen — Band A, historical findings on the degree</span>
+
+  <div class="spec-frame">
+    <div class="spec-head">
+      <span class="mono">Propositions 01–04</span>
+      <span class="mono">Usable without reference to this thesis</span>
+    </div>
+
+    <div class="prop">
+      <span class="num">01</span>
+      <div>
+        <p class="claim">The European degree ladder is a craft-guild structure transposed onto knowledge: the bachelor, master and doctor correspond to the apprentice, journeyman and master of the medieval trades.</p>
+        <span class="srcs">rashdall-1936 · verger-1973</span>
+      </div>
+    </div>
+
+    <div class="prop">
+      <span class="num">02</span>
+      <div>
+        <p class="claim">Doctoral training was formally an apprenticeship to a guild, and the customary term of study before admission to the guild of Master of Arts was seven years, matching the apprenticeship term of other medieval occupations.</p>
+        <span class="srcs">rashdall-1936</span>
+      </div>
+    </div>
+
+    <div class="prop">
+      <span class="num">03</span>
+      <div>
+        <p class="claim">“Master” and “doctor” were originally synonymous. Both named a single thing, the <em>licentia docendi</em>, the licence to teach.</p>
+        <span class="srcs">rashdall-1936 · verger-1973</span>
+      </div>
+    </div>
+
+    <div class="prop">
+      <span class="num">04</span>
+      <div>
+        <p class="claim">The definition of the doctorate as certifying the production of new knowledge is a modern retrofit onto a medieval licence to teach.</p>
+        <span class="srcs">rashdall-1936 · verger-1973</span>
+      </div>
+    </div>
+
+    <p class="spec-note">Every proposition carries the sources it rests on. Where a proposition states a finding from a single study, that study is named. Where it states a synthesis, all are named. No proposition rests on a source absent from the bibliography.</p>
+  </div>
+</section>
+
+<section>
+  <span class="tag mono">Verification ledger</span>
+  <h2>What has been checked, and what has not.</h2>
+  <div class="col"><p>Updated as the apparatus is worked through. A stage is only marked complete when a second reader has confirmed it.</p></div>
+
+  <table>
+    <thead>
+      <tr><th scope="col">Stage</th><th scope="col">Scope</th><th scope="col">State</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Claim register</td><td>Every assertion in the manuscript extracted with its attached citation</td><td class="state open">In progress</td></tr>
+      <tr><td>Source acquisition</td><td>The cited texts obtained in citable editions</td><td class="state open">In progress</td></tr>
+      <tr><td>Page-level verification</td><td>Each proposition checked against the text it names</td><td class="state wait">Not started</td></tr>
+      <tr><td>Plate and permissions log</td><td>Every figure with source, credit line and permission</td><td class="state wait">Not started</td></tr>
+      <tr><td>Deposit</td><td>Canonical deposit, mirrors, and DOI</td><td class="state wait">Not started</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <span class="tag mono">Deposit and indexing</span>
+  <h2>Where this will live when the apparatus holds.</h2>
+  <div class="col">
+    <p>One canonical deposit with a DOI, mirrored to secondary repositories whose records point back to the canonical identifier rather than competing with it. Indexing follows deposit; it is not sought before the work can survive being checked.</p>
+    <p>Publishing outside the university is not a workaround here. It is the fourth pillar carried out rather than described.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="colophon">
+    <div>
+      <span class="seal-mark">CoCA</span>
+      <p class="mono" style="text-transform:none;letter-spacing:.02em">Published by the Church of Conceptual Art</p>
+    </div>
+    <div>
+      <p><strong>Correspondence</strong><br>Enquiries about the apparatus, the sources, or the deposit are welcome, including from readers who intend to disprove something here.</p>
+    </div>
+    <div>
+      <p><strong>Citing this page</strong><br>This is a draft landing page without a persistent identifier. Do not cite it. Cite the deposited record once it exists.</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
