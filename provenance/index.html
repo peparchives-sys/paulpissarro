@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F7F6F2">
+<title>Pissarro: A Provenance</title>
+<meta name="description" content="Five generations of Pissarro artists, 1830 to the present: Camille, Paul-Emile, Hugues-Claude, Joachim, Paul-Alexander. The line of descent, recorded in the manner of a catalogue entry.">
+<meta name="author" content="Paul-Alexander Pissarro">
+<link rel="canonical" href="https://unsubscribe.llc/provenance/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pissarro: A Provenance">
+<meta property="og:description" content="Five generations of Pissarro artists, 1830 to the present. The line of descent, recorded in the manner of a catalogue entry.">
+<meta property="og:url" content="https://unsubscribe.llc/provenance/">
+<meta property="og:site_name" content="Paul-Alexander Pissarro">
+<meta property="og:image" content="https://unsubscribe.llc/portrait.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+  :root{
+    color-scheme:light dark;
+    --paper:#F7F6F2;
+    --ink:#181816;
+    --meta:#48453E;
+    --line:#B5B0A4;
+    --prussian:#1F3A5F;
+    --prussian-deep:#16293F;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#141412;
+      --ink:#EDEAE2;
+      --meta:#A8A297;
+      --line:#3E3B35;
+      --prussian:#7FA3D1;
+      --prussian-deep:#A9C4E8;
+    }
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;background:var(--paper)}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Baskerville,'Baskervville',Georgia,serif;
+    font-size:17px;
+    line-height:1.55;
+    padding:0 20px 80px;
+  }
+  .sheet{max-width:640px;margin:0 auto}
+
+  /* Header as wall label */
+  header{padding:64px 0 40px;border-bottom:1px solid var(--ink)}
+  .crumb{margin-bottom:34px}
+  .crumb a{
+    font-family:Avenir,'Avenir Next','Helvetica Neue',sans-serif;
+    font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--meta);text-decoration:none;border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+  }
+  .crumb a:hover{color:var(--prussian);border-color:var(--prussian)}
+  .eyebrow{
+    font-family:Avenir,'Avenir Next','Helvetica Neue',sans-serif;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--meta);margin-bottom:18px;
+  }
+  h1{
+    font-family:Didot,'Bodoni MT','Playfair Display',Georgia,serif;
+    font-weight:400;font-size:clamp(38px,9vw,58px);
+    line-height:1.04;letter-spacing:.005em;
+  }
+  h1 em{font-style:italic}
+  .headnote{margin-top:16px;font-size:15px;color:var(--meta);font-style:italic}
+
+  /* Provenance spine */
+  .spine{position:relative;padding-top:8px}
+  .gen{position:relative;padding:34px 0 30px 56px}
+  .gen::before{ /* vertical rule */
+    content:"";position:absolute;left:17px;top:0;bottom:0;
+    width:1px;background:var(--line);
+  }
+  .gen:first-of-type::before{top:34px}
+  .gen:last-of-type::before{bottom:auto;height:52px}
+  .gen-mark{
+    position:absolute;left:0;top:38px;
+    width:35px;height:35px;border-radius:50%;
+    background:var(--paper);border:1px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:Didot,'Bodoni MT',Georgia,serif;
+    font-size:15px;
+  }
+  .gen.direct-end .gen-mark{background:var(--prussian);border-color:var(--prussian);color:var(--paper)}
+
+  .descent{
+    position:absolute;left:56px;top:-9px;
+    font-family:Avenir,'Avenir Next','Helvetica Neue',sans-serif;
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--prussian);
+  }
+
+  .name{
+    font-family:Didot,'Bodoni MT','Playfair Display',Georgia,serif;
+    font-size:clamp(24px,5.6vw,30px);line-height:1.12;font-weight:400;
+  }
+  .dates{
+    font-family:Avenir,'Avenir Next','Helvetica Neue',sans-serif;
+    font-size:13.5px;letter-spacing:.06em;color:var(--meta);margin-top:3px;
+  }
+  .role{margin-top:10px;font-size:16.5px}
+  .note{margin-top:8px;font-size:15px;color:var(--meta)}
+  .union{
+    margin-top:12px;font-size:14px;color:var(--meta);
+    font-style:italic;
+  }
+  .union b{font-style:normal;font-weight:600;color:var(--ink)}
+
+  /* Sibling registers */
+  .register{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}
+  .register-label{
+    font-family:Avenir,'Avenir Next','Helvetica Neue',sans-serif;
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--meta);margin-bottom:8px;
+  }
+  .register ul{list-style:none}
+  .register li{
+    font-size:14.5px;padding:3.5px 0;color:var(--ink);
+    display:flex;gap:8px;align-items:baseline;
+  }
+  .register li .d{color:var(--meta);font-size:13px;font-family:Avenir,'Avenir Next',sans-serif;letter-spacing:.04em}
+  .register li.line-carrier{color:var(--prussian);font-weight:600}
+  .brush{ /* painter mark */
+    display:inline-block;width:9px;height:9px;border-radius:50%;
+    background:var(--prussian);flex:none;position:relative;top:-1px;
+  }
+  .nb{width:9px;height:9px;flex:none} /* non-painter spacer */
+
+  /* Terminal entry */
+  .terminal .name{color:var(--prussian-deep)}
+  .terminal .role{font-size:17px}
+
+  /* Maternal panel + colophon */
+  .panel{
+    margin-top:46px;border:1px solid var(--ink);padding:22px 22px 18px;
+  }
+  .panel h2{
+    font-family:Avenir,'Avenir Next','Helvetica Neue',sans-serif;
+    font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+    font-weight:600;margin-bottom:12px;
+  }
+  .panel p{font-size:15px;margin-bottom:8px}
+  .panel p:last-child{margin-bottom:0}
+  .panel .who{color:var(--meta);font-size:13.5px}
+
+  .colophon{
+    margin-top:40px;padding-top:16px;border-top:1px solid var(--ink);
+    font-family:Avenir,'Avenir Next','Helvetica Neue',sans-serif;
+    font-size:12px;letter-spacing:.05em;color:var(--meta);line-height:1.7;
+  }
+  .colophon .key{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+
+  @media (prefers-reduced-motion:no-preference){
+    .gen{opacity:0;transform:translateY(10px);animation:rise .6s ease forwards}
+    .gen:nth-of-type(1){animation-delay:.05s}
+    .gen:nth-of-type(2){animation-delay:.15s}
+    .gen:nth-of-type(3){animation-delay:.25s}
+    .gen:nth-of-type(4){animation-delay:.35s}
+    .gen:nth-of-type(5){animation-delay:.45s}
+    @keyframes rise{to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<header>
+  <nav class="crumb"><a href="/">&larr; Paul-Alexander Pissarro</a></nav>
+  <div class="eyebrow">Pissarro · Five Generations · 1830 to the Present</div>
+  <h1>A <em>Provenance</em></h1>
+  <p class="headnote">The line of descent, recorded in the manner of a catalogue entry. Blue marks a painter; the ruled line carries the name.</p>
+</header>
+
+<div class="spine">
+
+  <!-- I -->
+  <section class="gen">
+    <div class="gen-mark">I</div>
+    <h2 class="name">Camille Pissarro</h2>
+    <div class="dates">1830–1903 · Charlotte Amalie, St. Thomas → Paris → Éragny</div>
+    <p class="role">Painter. The only artist to exhibit in all eight Impressionist exhibitions, 1874 to 1886. Teacher of Cézanne and Gauguin.</p>
+    <div class="union">m. <b>Julie Vellay</b> (1838–1926)</div>
+    <div class="register">
+      <div class="register-label">Their children</div>
+      <ul>
+        <li><span class="brush"></span>Lucien <span class="d">1863–1944 · painter, printer, Eragny Press, London</span></li>
+        <li><span class="nb"></span>Jeanne-Rachel, "Minette" <span class="d">1865–1874</span></li>
+        <li><span class="brush"></span>Georges Henri, "Manzana" <span class="d">1871–1961 · painter, decorative artist</span></li>
+        <li><span class="brush"></span>Félix, "Titi" <span class="d">1874–1897 · painter</span></li>
+        <li><span class="brush"></span>Ludovic-Rodo <span class="d">1878–1952 · painter, co-author of the catalogue raisonné</span></li>
+        <li><span class="nb"></span>Jeanne, "Cocotte" <span class="d">1881–1948</span></li>
+        <li class="line-carrier"><span class="brush"></span>Paul-Émile <span class="d">1884–1972 · the youngest</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- II -->
+  <section class="gen">
+    <div class="descent">By descent to</div>
+    <div class="gen-mark">II</div>
+    <h2 class="name">Paul-Émile Pissarro</h2>
+    <div class="dates">1884–1972 · Éragny → Clécy, Normandy</div>
+    <p class="role">Painter. Godson of Claude Monet, who took him under his wing after Camille's death.</p>
+    <div class="union">m. <b>Yvonne</b>, at whose farmhouse in Clécy the next two generations learned to paint</div>
+    <div class="register">
+      <div class="register-label">Their children</div>
+      <ul>
+        <li class="line-carrier"><span class="brush"></span>Hugues-Claude <span class="d">b. 1935 · the eldest</span></li>
+        <li><span class="nb"></span>Yvon <span class="d">m. Elizabeth</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- III -->
+  <section class="gen">
+    <div class="descent">By descent to</div>
+    <div class="gen-mark">III</div>
+    <h2 class="name">Hugues-Claude Pissarro</h2>
+    <div class="dates">b. 1935 · Neuilly-sur-Seine</div>
+    <p class="role">Painter, signing at various times H. Claude Pissarro, Isaac Pomié, and Hugues Pissarro dit Pomié. Commissioned by the White House at 24 to paint President Eisenhower. École Normale Supérieure.</p>
+    <div class="union">m. <b>Katia</b>, art dealer; later m. <b>Corinne</b></div>
+    <div class="register">
+      <div class="register-label">Children with Katia</div>
+      <ul>
+        <li class="line-carrier"><span class="nb"></span>Joachim <span class="d">b. 1959 · the eldest</span></li>
+        <li><span class="nb"></span>Lionel <span class="d">art dealer</span></li>
+        <li><span class="brush"></span>Lélia <span class="d">b. 1963 · painter; raised by Paul-Émile at Clécy; m. David Stern, 1988; Stern Pissarro Gallery, London</span></li>
+      </ul>
+    </div>
+    <div class="register">
+      <div class="register-label">Children with Corinne</div>
+      <ul>
+        <li><span class="nb"></span>Isaac</li>
+        <li><span class="nb"></span>Rachel</li>
+      </ul>
+    </div>
+    <div class="register">
+      <div class="register-label">Lélia's children · Stern Pissarro line</div>
+      <ul>
+        <li><span class="brush"></span>Kalia <span class="d">painter</span></li>
+        <li><span class="brush"></span>Lyora <span class="d">b. 1991 · painter</span></li>
+        <li><span class="nb"></span>Dotahn</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- IV -->
+  <section class="gen">
+    <div class="descent">By descent to</div>
+    <div class="gen-mark">IV</div>
+    <h2 class="name">Joachim Pissarro</h2>
+    <div class="dates">b. 1959 · Paris → New York</div>
+    <p class="role">Art historian. Curator of Painting and Sculpture, The Museum of Modern Art, where he organized <em>Pioneering Modern Painting: Cézanne and Pissarro</em> (2005). Professor, Hunter College.</p>
+    <div class="union">with <b>Annabel Daou</b>, conceptual artist; later m. <b>Nataliya</b></div>
+    <div class="register">
+      <div class="register-label">The household</div>
+      <ul>
+        <li class="line-carrier"><span class="nb"></span>Paul-Alexander <span class="d">b. 1990 · son, with Annabel Daou</span></li>
+        <li><span class="nb"></span>George Chorny <span class="d">stepbrother, through Joachim's marriage to Nataliya · filmmaker, Tisch School of the Arts</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- V -->
+  <section class="gen direct-end terminal">
+    <div class="descent">By descent to</div>
+    <div class="gen-mark">V</div>
+    <h2 class="name">Paul-Alexander Pissarro</h2>
+    <div class="dates">b. 1990 · London → Hamburg</div>
+    <p class="role">Filmmaker and conceptual artist. Founder, Unsubscribe LLC and the Church of Conceptual Art. The first of the line to make the family name itself the medium.</p>
+  </section>
+
+</div>
+
+<div class="panel">
+  <h2>The Maternal Line · Daou</h2>
+  <p>Annabel Daou <span class="who">· mother · conceptual artist, New York</span></p>
+  <p>Peter Daou <span class="who">· uncle · political journalist</span></p>
+  <p>Vanessa Daou <span class="who">· aunt by marriage · musician</span></p>
+  <p>Eena Daou <span class="who">· aunt</span></p>
+  <p>Erica Jong <span class="who">· great-aunt · writer</span></p>
+  <p>Molly Jong-Fast <span class="who">· her daughter, first cousin once removed · writer and political commentator</span></p>
+</div>
+
+<div class="colophon">
+  <div class="key"><span class="brush"></span> Denotes a painter. Five of Camille's seven surviving children painted; the mark has not skipped a generation since 1830.</div>
+  Compiled from family records, museum and gallery literature, and the catalogue raisonné tradition begun by Ludovic-Rodo Pissarro. Continuously revised, as provenance always is.
+</div>
+
+</div>
+</body>
+</html>
