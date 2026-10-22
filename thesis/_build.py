@@ -28,6 +28,7 @@ R = {
     "orcid":      None,          # set once registered
     "doi":        None,          # set on deposit. irreversible.
     "doi_mirror": None,
+    "version":    "v0.1",       # public edition line. v1.0 is the first deposit.
     "licence":    None,          # CC BY, exact version to confirm
     "pdf":        None,          # must end in .pdf, text build only
     "indexable":  False,         # flip to True only at deposit
@@ -251,6 +252,7 @@ def build_landing():
   <li><span class="k">ORCID</span><span class="v">{pending(R["orcid"],"not yet registered")}</span></li>
   <li><span class="k">Publisher</span><span class="v">{R["publisher"]}</span></li>
   <li><span class="k">Year</span><span class="v">{R["year"]}</span></li>
+  <li><span class="k">Version</span><span class="v">{R["version"]} &middot; pre-deposit, not indexed</span></li>
   <li><span class="k">Canonical DOI</span><span class="v">{pending(R["doi"],"not yet minted")}</span></li>
   <li><span class="k">Mirror DOI</span><span class="v">{pending(R["doi_mirror"],"not yet minted")}</span></li>
   <li><span class="k">Licence</span><span class="v">{pending(R["licence"],"CC BY, version to be confirmed")}</span></li>
