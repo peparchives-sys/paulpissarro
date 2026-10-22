@@ -11,9 +11,10 @@ file, run `python3 thesis/_build.py` from the repo root, commit the result.
 
 Never hand-edit the generated .html files. They are overwritten.
 """
-import json, pathlib, datetime
+import datetime, html, json, pathlib, subprocess, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent
+SITE = ROOT.parent
 
 # ---------------------------------------------------------------- THE RECORD
 # One source of truth. Everything downstream reads from here.
@@ -30,18 +31,28 @@ R = {
     "licence":    None,          # CC BY, exact version to confirm
     "pdf":        None,          # must end in .pdf, text build only
     "indexable":  False,         # flip to True only at deposit
-    "ledger_opened": None,       # set once,永 permanent. ISO date.
+    "institution": None,         # citation_dissertation_institution. Scholar asks for it
+                                 # on dissertations. Whether CoCA goes here is Paul's call.
+    "ledger_opened": None,       # set once, permanent. ISO date.
 }
 R["title_full"] = f'{R["title_main"]}: {R["title_sub"]}'
 
 def pending(v, fallback):
     return v if v else f'<span class="pending">{fallback}</span>'
 
+def esc(v):
+    """For attribute values. The title has changed three times already."""
+    return html.escape(str(v), quote=True)
+
+def url_for(slug):
+    # Pages serves /thesis/ and 301s /thesis to it. Canonical and citation
+    # URLs must be the address that answers 200, not the redirect.
+    return f'{R["base"]}/thesis/' + (f'{slug}/' if slug else '')
+
 # ------------------------------------------------------------------ TEMPLATE
 def page(slug, heading, standfirst, body, desc, is_root=False):
     """slug: '' for the landing page, else 'propositions', 'ledger'."""
-    url  = f'{R["base"]}/thesis' + (f'/{slug}' if slug else '')
-    up   = '../' if slug else ''
+    url  = url_for(slug)
     # Highwire tags go on the landing page only. Sub-pages are parts of the
     # same work, and tagging them separately would split one record into three.
     tags = ""
@@ -52,34 +63,38 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
      three mandatory: if any one is missing or empty, Scholar treats the page
      as having no tags at all. Raw HTML only, never script-injected.
      These appear on THIS page only. Sub-pages are parts of the same record. -->
-<meta name="citation_title" content="{R["title_full"]}">
-<meta name="citation_author" content="{R["author"]}">
-<meta name="citation_publication_date" content="{R["year"]}">
-<meta name="citation_publisher" content="{R["publisher"]}">
-<meta name="citation_abstract_html_url" content="{R["base"]}/thesis">'''
-        if R["doi"]: tags += f'\n<meta name="citation_doi" content="{R["doi"]}">'
-        if R["pdf"]: tags += f'\n<meta name="citation_pdf_url" content="{R["pdf"]}">'
+<meta name="citation_title" content="{esc(R["title_full"])}">
+<meta name="citation_author" content="{esc(R["author"])}">
+<meta name="citation_publication_date" content="{esc(R["year"])}">
+<meta name="citation_publisher" content="{esc(R["publisher"])}">
+<meta name="citation_abstract_html_url" content="{url_for("")}">'''
+        if R["institution"]: tags += f'\n<meta name="citation_dissertation_institution" content="{esc(R["institution"])}">'
+        if R["doi"]: tags += f'\n<meta name="citation_doi" content="{esc(R["doi"])}">'
+        if R["pdf"]: tags += f'\n<meta name="citation_pdf_url" content="{esc(R["pdf"])}">'
     robots = "" if R["indexable"] else \
         '\n<!-- Pre-deposit. The work is not ready to be indexed, so it asks not to be.\n     Remove at deposit, not before. -->\n<meta name="robots" content="noindex, follow">'
+    # Kept outside the f-string: a backslash inside an f-string expression is
+    # a SyntaxError before Python 3.12, and macOS still ships 3.9.
+    cur = ' aria-current="page"'
     nav = "".join(
-        f'<a href="{R["base"]}/thesis{p}"{" aria-current=\"page\"" if p==("/"+slug if slug else "") else ""}>{n}</a>'
-        for p, n in [("", "Abstract"), ("/propositions", "Propositions"), ("/ledger", "Ledger")])
+        f'<a href="/thesis/{p}"{cur if p == (slug + "/" if slug else "") else ""}>{n}</a>'
+        for p, n in [("", "Abstract"), ("propositions/", "Propositions"), ("ledger/", "Ledger")])
     return f'''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{heading} &middot; {R["publisher"]}</title>
-<meta name="description" content="{desc}">
+<meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{url}">{robots}{tags}
 <meta property="og:type" content="article">
-<meta property="og:title" content="{R["title_full"]}">
-<meta property="og:site_name" content="{R["publisher"]}">
+<meta property="og:title" content="{esc(R["title_full"])}">
+<meta property="og:site_name" content="{esc(R["publisher"])}">
 <meta property="og:url" content="{url}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{R["base"]}/thesis/thesis.css">
+<link rel="stylesheet" href="/thesis/thesis.css">
 </head>
 <body>
 
@@ -266,7 +281,7 @@ def build_ledger():
 </ul>
 
 <h2>Schema</h2>
-<p class="note-block">Each entry is one object in <a href="{R["base"]}/thesis/ledger/ledger.json">ledger.json</a>, keyed on the citing DOI so the same citation found in several sources is recorded once.</p>
+<p class="note-block">Each entry is one object in <a href="/thesis/ledger/ledger.json">ledger.json</a>, keyed on the citing DOI so the same citation found in several sources is recorded once.</p>
 <pre class="schema">{{
   "edge":          "cited-by",
   "citing_author": "",
@@ -386,7 +401,77 @@ footer{border-top:1px solid var(--rule);margin-top:3.5rem;padding:1.75rem 0 3rem
 }
 '''
 
+# ---------------------------------------------------------------- CHECKS
+REQUIRED = ("citation_title", "citation_author", "citation_publication_date")
+
+def fail(msg):
+    sys.exit(f"BUILD REFUSED: {msg}")
+
+def audit(out):
+    """Refuse to write pages that break the record. Cheaper than remembering the rules."""
+    root = out["index.html"]
+    for tag in REQUIRED:
+        if f'<meta name="{tag}" content="' not in root or f'<meta name="{tag}" content="">' in root:
+            fail(f"{tag} missing or empty on /thesis. Scholar would ignore every tag.")
+    for rel, doc in out.items():
+        if not rel.endswith(".html"):
+            continue
+        if rel != "index.html" and 'name="citation_' in doc:
+            fail(f"Highwire tags on thesis/{rel}. Sub-pages carry none.")
+        if esc(R["author"]) not in doc:
+            fail(f"author string missing from thesis/{rel}")
+        if not R["indexable"] and 'content="noindex, follow"' not in doc:
+            fail(f"thesis/{rel} lost its noindex before deposit")
+    labels = [p[0] for p in PROPS]
+    dupes = sorted({l for l in labels if labels.count(l) > 1})
+    if dupes:
+        fail(f"duplicate labels: {dupes}")
+    # Written once by --lock, the day the propositions go public. From then on
+    # a label can be added but never dropped.
+    lock = ROOT / "labels.lock"
+    if lock.exists():
+        gone = [l for l in lock.read_text(encoding="utf-8").split() if l not in labels]
+        if gone:
+            fail(f"labels removed: {gone}. Keep the number and mark it withdrawn.")
+
+# ----------------------------------------------------------------- SITEMAP
+def lastmod(f):
+    """Date the file last changed in git, not the date of the build."""
+    try:
+        d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", str(f)],
+                           cwd=SITE, capture_output=True, text=True).stdout.strip()
+    except OSError:
+        d = ""
+    return d or datetime.date.fromtimestamp(f.stat().st_mtime).isoformat()
+
+def build_sitemap():
+    # Found rather than listed, so a page added on main is never dropped (the
+    # hardcoded list lost all eleven language pages). /thesis stays out while
+    # it is noindex: listing a page that asks not to be indexed is a
+    # contradiction Search Console reports.
+    urls = []
+    for f in sorted(SITE.glob("**/index.html")):
+        rel = f.parent.relative_to(SITE).as_posix()
+        top = rel.split("/")[0]
+        if rel != "." and top.startswith((".", "_")) or (top == "thesis" and not R["indexable"]):
+            continue
+        loc = f'{R["base"]}/' + ("" if rel == "." else f"{rel}/")
+        urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod(f)}</lastmod>\n  </url>")
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            + "\n".join(urls) + "\n</urlset>\n")
+
 # ----------------------------------------------------------------- EMIT
+def outputs():
+    return {
+        "thesis.css": CSS,
+        "index.html": build_landing(),
+        "propositions/index.html": build_propositions(),
+        "ledger/index.html": build_ledger(),
+        "ledger/ledger.json": json.dumps(
+            {"opened": R["ledger_opened"], "entries": []}, indent=2) + "\n",
+    }
+
 def write(rel, content):
     p = ROOT / rel
     p.parent.mkdir(parents=True, exist_ok=True)
@@ -394,26 +479,21 @@ def write(rel, content):
     print(f"  wrote thesis/{rel}  ({len(content):,} bytes)")
 
 if __name__ == "__main__":
+    out = outputs()
+    audit(out)
+    if "--check" in sys.argv:
+        stale = [rel for rel, c in out.items()
+                 if not (ROOT / rel).exists() or (ROOT / rel).read_text(encoding="utf-8") != c]
+        if stale:
+            sys.exit("Out of date (hand-edited or not rebuilt): "
+                     + ", ".join(f"thesis/{s}" for s in stale))
+        print("thesis/ matches _build.py.")
+        sys.exit(0)
+    if "--lock" in sys.argv:
+        write("labels.lock", "\n".join(p[0] for p in PROPS) + "\n")
     print("Building /thesis ...")
-    write("thesis.css", CSS)
-    write("index.html", build_landing())
-    write("propositions/index.html", build_propositions())
-    write("ledger/index.html", build_ledger())
-    write("ledger/ledger.json", json.dumps(
-        {"opened": R["ledger_opened"], "entries": []}, indent=2) + "\n")
-
-    # Sitemap for the whole domain, regenerated so /thesis is always listed.
-    today = datetime.date.today().isoformat()
-    pages = [("/","1.0"),("/thesis","0.9"),("/thesis/propositions","0.8"),
-             ("/thesis/ledger","0.8"),("/glossary/","0.6"),("/provenance/","0.6"),
-             ("/coaching/","0.5"),("/white/","0.5"),("/latamreport/","0.5")]
-    urls = "\n".join(
-        f"  <url>\n    <loc>{R['base']}{p}</loc>\n    <lastmod>{today}</lastmod>\n"
-        f"    <changefreq>monthly</changefreq>\n    <priority>{pr}</priority>\n  </url>"
-        for p, pr in pages)
-    (ROOT.parent / "sitemap.xml").write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        f'{urls}\n</urlset>\n', encoding="utf-8")
+    for rel, content in out.items():
+        write(rel, content)
+    (SITE / "sitemap.xml").write_text(build_sitemap(), encoding="utf-8")
     print("  wrote sitemap.xml")
     print("Done. Do not hand-edit the generated files.")
