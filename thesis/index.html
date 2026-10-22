@@ -3,255 +3,109 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- ===================================================================
-     HIGHWIRE PRESS TAGS. Google Scholar reads these instead of the PDF.
-     The three mandatory fields are citation_title, citation_author
-     (first author, full name) and citation_publication_date. If any one
-     is missing or empty, Scholar treats the page as having NO tags.
-     These must render in raw HTML. Never inject them with script.
-     =================================================================== -->
-
+<title>The Dissertation as an Exemplar of Orthopraxy &middot; Church of Conceptual Art</title>
+<meta name="description" content="A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.">
+<link rel="canonical" href="https://paulpissarro.com/thesis">
+<!-- Pre-deposit. The work is not ready to be indexed, so it asks not to be.
+     Remove at deposit, not before. -->
+<meta name="robots" content="noindex, follow">
+<!-- Highwire Press tags. Google Scholar reads these instead of the PDF.
+     citation_title, citation_author and citation_publication_date are all
+     three mandatory: if any one is missing or empty, Scholar treats the page
+     as having no tags at all. Raw HTML only, never script-injected.
+     These appear on THIS page only. Sub-pages are parts of the same record. -->
 <meta name="citation_title" content="The Dissertation as an Exemplar of Orthopraxy: Examination, Citation, and the Legal Form of Access">
 <meta name="citation_author" content="Pissarro, Paul-Alexander Arthur">
 <meta name="citation_publication_date" content="2026">
 <meta name="citation_publisher" content="Church of Conceptual Art">
 <meta name="citation_abstract_html_url" content="https://paulpissarro.com/thesis">
-<!-- Add on deposit, not before. citation_pdf_url MUST end in .pdf and
-     MUST serve the text build, never the image build.
-<meta name="citation_pdf_url" content="https://paulpissarro.com/thesis/NAME.pdf">
-<meta name="citation_doi" content="10.xxxx/xxxxx">
--->
-
-<title>The Dissertation as an Exemplar of Orthopraxy &middot; Church of Conceptual Art</title>
-<meta name="description" content="A study of what the doctoral degree certifies, set against the history of the credential, the experimental literature on ceremony, and the present mechanics of scholarly indexing.">
-<link rel="canonical" href="https://paulpissarro.com/thesis">
-
-<!-- Pre-deposit posture, carried over from the previous draft of this page.
-     The work is not ready to be indexed, so it asks not to be. Remove this
-     line at deposit, not before: Phase 2 of the manual is a dry run. -->
-<meta name="robots" content="noindex, follow">
-
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Dissertation as an Exemplar of Orthopraxy: Examination, Citation, and the Legal Form of Access">
 <meta property="og:site_name" content="Church of Conceptual Art">
 <meta property="og:url" content="https://paulpissarro.com/thesis">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --cream:#f5f2eb; --ink:#16130f; --gold:#c9a24b;
-  --rust:#b0662f; --violet:#7d5bbe; --green:#4a7a3a;
-  --muted:#6b6358; --rule:#ddd6c8;
-  --serif:'Fraunces',Georgia,'Times New Roman',serif;
-  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0; background:var(--cream); color:var(--ink);
-  font-family:var(--sans); font-size:17px; line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:46rem; margin:0 auto; padding:0 16px}
-
-header.masthead{border-bottom:1px solid var(--rule); padding:2.5rem 0 1.75rem}
-.kicker{
-  font-family:var(--mono); font-size:.68rem; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--muted); margin:0 0 1.25rem;
-}
-h1{
-  font-family:var(--serif); font-weight:600; font-size:clamp(1.9rem,5.5vw,2.9rem);
-  line-height:1.15; letter-spacing:-.015em; margin:0 0 .6rem;
-}
-h1 .sub{
-  display:block; font-size:.46em; font-weight:400; font-style:italic;
-  color:var(--muted); letter-spacing:0; margin-top:.5rem;
-}
-.routes a[aria-disabled="true"]{
-  color:var(--muted); border-bottom-style:dotted; cursor:default;
-}
-.routes a[aria-disabled="true"]:hover{background:transparent}
-code{font-family:var(--mono); font-size:.88em}
-.byline{font-size:1rem; margin:0 0 .35rem}
-.byline a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--gold)}
-.affil{font-size:.92rem; color:var(--muted); margin:0}
-.status{
-  margin-top:1.5rem; padding:.7rem .9rem; border-left:3px solid var(--rust);
-  background:rgba(176,102,47,.06); font-size:.88rem; color:var(--muted);
-}
-.status strong{color:var(--rust); font-weight:600}
-
-main{padding:2.5rem 0 1rem}
-h2{
-  font-family:var(--mono); font-size:.7rem; font-weight:500; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--muted);
-  margin:3rem 0 1rem; padding-bottom:.5rem; border-bottom:1px solid var(--rule);
-}
-h2:first-of-type{margin-top:0}
-#abstract p{margin:0 0 1.15rem}
-#abstract p:first-of-type{font-size:1.06rem}
-.lede-rule{width:3rem; height:2px; background:var(--gold); border:0; margin:0 0 1.6rem}
-em,i{font-style:italic}
-
-.meta{
-  list-style:none; margin:0; padding:0;
-  font-family:var(--mono); font-size:.82rem;
-}
-.meta li{
-  display:flex; gap:1rem; padding:.55rem 0; border-bottom:1px solid var(--rule);
-}
-.meta li:last-child{border-bottom:0}
-.meta .k{flex:0 0 9rem; color:var(--muted); text-transform:uppercase; font-size:.68rem; letter-spacing:.1em; padding-top:.15rem}
-.meta .v{flex:1; word-break:break-word}
-.meta .v a{color:var(--ink)}
-.pending{color:var(--rust)}
-
-.keywords{font-family:var(--mono); font-size:.82rem; color:var(--muted); line-height:2}
-.keywords span{
-  display:inline-block; padding:.12rem .5rem; margin:0 .3rem .4rem 0;
-  border:1px solid var(--rule); border-radius:2px; background:rgba(255,255,255,.5);
-}
-
-.routes{list-style:none; margin:0; padding:0}
-.routes li{padding:.9rem 0; border-bottom:1px solid var(--rule)}
-.routes li:last-child{border-bottom:0}
-.routes a{
-  font-family:var(--serif); font-size:1.08rem; color:var(--ink);
-  text-decoration:none; border-bottom:1px solid var(--gold);
-}
-.routes a:hover{background:rgba(201,162,75,.12)}
-.routes .note{display:block; font-size:.86rem; color:var(--muted); margin-top:.25rem}
-
-#references ol{padding-left:1.3rem; margin:0; font-size:.9rem}
-#references li{margin:0 0 .85rem; line-height:1.55}
-#references a{color:var(--muted)}
-
-footer{
-  border-top:1px solid var(--rule); margin-top:3.5rem; padding:1.75rem 0 3rem;
-  font-family:var(--mono); font-size:.72rem; color:var(--muted); line-height:1.9;
-}
-
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --cream:#16130f; --ink:#f0ece3; --muted:#9a9184; --rule:#302a22;
-    --gold:#d4b163; --rust:#cf7f44;
-  }
-  :root:not([data-theme="light"]) .keywords span{background:rgba(255,255,255,.04)}
-  :root:not([data-theme="light"]) .status{background:rgba(207,127,68,.08)}
-}
-:root[data-theme="dark"]{
-  --cream:#16130f; --ink:#f0ece3; --muted:#9a9184; --rule:#302a22;
-  --gold:#d4b163; --rust:#cf7f44;
-}
-</style>
+<link rel="stylesheet" href="https://paulpissarro.com/thesis/thesis.css">
 </head>
 <body>
 
 <header class="masthead">
   <div class="wrap">
     <p class="kicker">Church of Conceptual Art &middot; Dissertation</p>
-
-    <!-- h1 must be the title, author immediately beneath. This is the
-         parser's fallback if the tags above are ever missed. -->
     <h1>The Dissertation as an Exemplar of Orthopraxy<span class="sub">Examination, Citation, and the Legal Form of Access</span></h1>
     <p class="byline">Pissarro, Paul-Alexander Arthur</p>
     <p class="affil">Church of Conceptual Art &middot; 2026</p>
-
+    <nav class="routes-nav"><a href="https://paulpissarro.com/thesis" aria-current="page">Abstract</a><a href="https://paulpissarro.com/thesis/propositions">Propositions</a><a href="https://paulpissarro.com/thesis/ledger">Ledger</a></nav>
     <div class="status">
-      <strong>Pre-deposit.</strong> This page is published before any identifier is minted. No DOI exists yet, the abstract below is not final, and the citation ledger has not yet been opened. Nothing on this page is a claim about work already done.
+      <strong>Pre-deposit.</strong> No identifier has been minted. The abstract is not final and the ledger is not yet open. Nothing on this page is a claim about work already done.
     </div>
   </div>
 </header>
 
 <main class="wrap">
+<h2>Abstract</h2>
+<div id="abstract">
+<hr class="lede-rule">
+<p>Scholarship registers contribution by citation. A dissertation is examined before it can be cited. What is certified at examination is therefore a forecast of contribution rather than contribution itself. This study sets that proposition against three bodies of evidence, historical, experimental and procedural, and then acts on the result.</p>
+<p>The first is historical. The European degree ladder is a transposed craft-guild structure in which master and doctor were originally synonymous, both naming the <em>licentia docendi</em>, the licence to teach, neither certifying an original contribution to knowledge. The definition of the doctorate as certifying new knowledge is a modern retrofit, as the historiography of the German university has established: Humboldt's memorandum of 1810, the document usually credited with the research ideal, was left a fragment, went unpublished in his lifetime, and first appeared in print in 1903, and the attribution of the ideal to Humboldt is itself a twentieth-century invention. What has not been drawn from that record is its general form: a legitimating origin can be composed long after the fact, and the institution it explains runs unchanged either way.</p>
+<p>The second is experimental. A hypnotic induction is the ritual preamble, ordinarily relaxation and fixed attention, held to produce the state in which suggestion works. When identical suggestions are administered with and without one, the resulting effects are closely comparable, though subjects report having been hypnotised only where the induction was performed. A rite that can be removed without changing an outcome is not the cause of that outcome. It is the label attached to it.</p>
+<p>The third is procedural. Entry to the principal scholarly indexes is conditioned on the legal form of the depositor rather than on the assessed quality of the work. The index of record for dissertations accepts them only from institutions it recognises as accredited. The principal humanities archive states that it does not publish what it hosts. The registry through which citations are counted admits organisations and not individuals, and an unaffiliated author reaches them only from inside a repository that supplies the standing they lack. The exclusion of unaffiliated scholars is well documented; what follows from it is not. A gate set on legal form rather than merit is satisfied by incorporation rather than by better work, and a gate that cheap screens for nothing it claims to screen for.</p>
+<p>The argument is not that examination is worthless. Pre-circulation scrutiny catches error before it propagates, which no citation count can do. Rather, two functions, quality assurance and the registration of contribution, have been fused in one instrument and can be separated. Drawing on the history of the university, on artistic precedents for the self-constituted institution, on Adorno on theory as praxis, and on the performative utterance, it asks what it would mean to register a contribution without certifying it in advance. What emerges is an account of the doctorate as a forecast, and a demonstration of the alternative: a work constituted rather than petitioned, deposited under a persistent identifier, and submitted to a citation record published openly and dated before the first deposit.</p>
+</div>
 
-  <h2>Abstract</h2>
-  <div id="abstract">
-    <hr class="lede-rule">
-    <p>Scholarship registers contribution by citation. A dissertation is examined before it can be cited. What is certified at examination is therefore a forecast of contribution rather than contribution itself. This study sets that proposition against three bodies of evidence, historical, experimental and procedural, and then acts on the result.</p>
+<h2>Keywords</h2>
+<p class="keywords"><span>orthopraxy</span><span>credentialism</span><span>doctoral education</span><span>history of universities</span><span>Humboldt myth</span><span>suggestion and response expectancy</span><span>scholarly indexing</span><span>independent scholars</span><span>institutional repositories</span><span>open access</span><span>artistic research</span></p>
 
-    <p>The first is historical. The European degree ladder is a transposed craft-guild structure in which master and doctor were originally synonymous, both naming the <em>licentia docendi</em>, the licence to teach, neither certifying an original contribution to knowledge. The definition of the doctorate as certifying new knowledge is a modern retrofit, as the historiography of the German university has established: Humboldt's memorandum of 1810, the document usually credited with the research ideal, was left a fragment, went unpublished in his lifetime, and first appeared in print in 1903, and the attribution of the ideal to Humboldt is itself a twentieth-century invention. What has not been drawn from that record is its general form: a legitimating origin can be composed long after the fact, and the institution it explains runs unchanged either way.</p>
+<h2>Record</h2>
+<ul class="meta">
+  <li><span class="k">Title</span><span class="v">The Dissertation as an Exemplar of Orthopraxy: Examination, Citation, and the Legal Form of Access</span></li>
+  <li><span class="k">Author</span><span class="v">Pissarro, Paul-Alexander Arthur</span></li>
+  <li><span class="k">ORCID</span><span class="v"><span class="pending">not yet registered</span></span></li>
+  <li><span class="k">Publisher</span><span class="v">Church of Conceptual Art</span></li>
+  <li><span class="k">Year</span><span class="v">2026</span></li>
+  <li><span class="k">Canonical DOI</span><span class="v"><span class="pending">not yet minted</span></span></li>
+  <li><span class="k">Mirror DOI</span><span class="v"><span class="pending">not yet minted</span></span></li>
+  <li><span class="k">Licence</span><span class="v"><span class="pending">CC BY, version to be confirmed</span></span></li>
+</ul>
 
-    <p>The second is experimental. A hypnotic induction is the ritual preamble, ordinarily relaxation and fixed attention, held to produce the state in which suggestion works. When identical suggestions are administered with and without one, the resulting effects are closely comparable, though subjects report having been hypnotised only where the induction was performed. A rite that can be removed without changing an outcome is not the cause of that outcome. It is the label attached to it.</p>
+<h2>Verification</h2>
+<p class="note-block">A stage is marked complete only when a second reader has confirmed it.</p>
+<ul class="meta">
+  <li><span class="k">Platform claims</span><span class="v">ProQuest, JSTOR and Crossref checked against their own documentation &middot; complete, October 2026</span></li>
+  <li><span class="k">Humboldt record</span><span class="v">Publication date confirmed against catalogue records; the attribution credited to Ash, Paletschek and vom Bruch &middot; complete, October 2026</span></li>
+  <li><span class="k">Claim register</span><span class="v">Every assertion extracted with its attached citation &middot; in progress</span></li>
+  <li><span class="k">Source acquisition</span><span class="v">The cited texts obtained in citable editions &middot; in progress</span></li>
+  <li><span class="k">Experimental record</span><span class="v"><span class="pending">Hull and Kirsch not yet checked &middot; not started</span></span></li>
+  <li><span class="k">Page-level check</span><span class="v"><span class="pending">Each proposition checked against the text it names &middot; not started</span></span></li>
+  <li><span class="k">Deposit</span><span class="v"><span class="pending">Canonical deposit, mirrors and DOI &middot; not started</span></span></li>
+</ul>
 
-    <p>The third is procedural. Entry to the principal scholarly indexes is conditioned on the legal form of the depositor rather than on the assessed quality of the work. The index of record for dissertations accepts them only from institutions it recognises as accredited. The principal humanities archive states that it does not publish what it hosts. The registry through which citations are counted admits organisations and not individuals, and an unaffiliated author reaches them only from inside a repository that supplies the standing they lack. The exclusion of unaffiliated scholars is well documented; what follows from it is not. A gate set on legal form rather than merit is satisfied by incorporation rather than by better work, and a gate that cheap screens for nothing it claims to screen for.</p>
-
-    <p>The argument is not that examination is worthless. Pre-circulation scrutiny catches error before it propagates, which no citation count can do. Rather, two functions, quality assurance and the registration of contribution, have been fused in one instrument and can be separated. Drawing on the history of the university, on artistic precedents for the self-constituted institution, on Adorno on theory as praxis, and on the performative utterance, it asks what it would mean to register a contribution without certifying it in advance. What emerges is an account of the doctorate as a forecast, and a demonstration of the alternative: a work constituted rather than petitioned, deposited under a persistent identifier, and submitted to a citation record published openly and dated before the first deposit.</p>
-  </div>
-
-  <h2>Keywords</h2>
-  <p class="keywords">
-    <span>orthopraxy</span><span>credentialism</span><span>doctoral education</span><span>history of universities</span><span>Humboldt myth</span><span>suggestion and response expectancy</span><span>scholarly indexing</span><span>independent scholars</span><span>institutional repositories</span><span>open access</span><span>artistic research</span>
-  </p>
-
-  <h2>Record</h2>
-  <ul class="meta">
-    <li><span class="k">Author</span><span class="v">Pissarro, Paul-Alexander Arthur</span></li>
-    <li><span class="k">ORCID</span><span class="v pending">not yet registered</span></li>
-    <li><span class="k">Publisher</span><span class="v">Church of Conceptual Art</span></li>
-    <li><span class="k">Year</span><span class="v">2026</span></li>
-    <li><span class="k">Version</span><span class="v">pre-deposit</span></li>
-    <li><span class="k">Canonical DOI</span><span class="v pending">not yet minted</span></li>
-    <li><span class="k">Mirror DOI</span><span class="v pending">not yet minted</span></li>
-    <li><span class="k">Licence</span><span class="v pending">CC BY, version to be confirmed</span></li>
-  </ul>
-
-  <h2>Routes</h2>
-  <ul class="routes">
-    <li>
-      <a href="/thesis/propositions" aria-disabled="true">Propositions</a> <span class="note" style="display:inline">(not yet published)</span>
-      <span class="note">Every load-bearing claim, labelled permanently, each saying whether to cite the source or to cite this work. Anchored by label, for example <code>/thesis/propositions#C2</code>.</span>
-    </li>
-    <li>
-      <a href="/thesis/ledger" aria-disabled="true">Citation ledger</a> <span class="note" style="display:inline">(not yet opened)</span>
-      <span class="note">A public record of every citation this work receives, opened and dated before the first deposit. An empty ledger published in advance shows the wager was made before the outcome was known.</span>
-    </li>
-  </ul>
-
-  <h2>Verification</h2>
-  <p style="font-size:.95rem">Updated as the apparatus is worked through. A stage is marked complete only when a second reader has confirmed it.</p>
-  <ul class="meta">
-    <li><span class="k">Claim register</span><span class="v">Every assertion extracted with its attached citation &middot; in progress</span></li>
-    <li><span class="k">Source acquisition</span><span class="v">The cited texts obtained in citable editions &middot; in progress</span></li>
-    <li><span class="k">Page-level check</span><span class="v">Each proposition checked against the text it names &middot; in progress</span></li>
-    <li><span class="k">Platform claims</span><span class="v">ProQuest, JSTOR and Crossref checked against their own documentation &middot; complete, October 2026</span></li>
-    <li><span class="k">Humboldt record</span><span class="v">Publication date confirmed against catalogue records; the attribution credited to Ash, Paletschek and vom Bruch &middot; complete, October 2026</span></li>
-    <li><span class="k">Experimental record</span><span class="v pending">Hull and Kirsch not yet checked &middot; not started</span></li>
-    <li><span class="k">Deposit</span><span class="v pending">Canonical deposit, mirrors and DOI &middot; not started</span></li>
-  </ul>
-
-  <!-- Scholar looks for this exact word above a reference list. -->
-  <h2>References</h2>
-  <div id="references">
-    <ol>
-      <li>Ash, Mitchell G. "Bachelor of What, Master of Whom? The Humboldt Myth and Historical Transformations of Higher Education in German-Speaking Europe and the US." <em>European Journal of Education</em> 41, no. 2 (2006): 245&ndash;267.</li>
-      <li>Collins, Randall. <em>The Credential Society: An Historical Sociology of Education and Stratification</em>. New York: Academic Press, 1979. Reissued, New York: Columbia University Press, 2019. ISBN 9780231192347.</li>
-      <li>ElSabry, ElHassan. "Unaffiliated Researchers: A Preliminary Study." <em>Challenges</em> 8, no. 2 (2017): article 20. <a href="https://doi.org/10.3390/challe8020020">https://doi.org/10.3390/challe8020020</a></li>
-      <li>Hull, Clark L. <em>Hypnosis and Suggestibility: An Experimental Approach</em>. New York: D. Appleton-Century, 1933.</li>
-      <li>Humboldt, Wilhelm von. "&Uuml;ber die innere und &auml;u&szlig;ere Organisation der h&ouml;heren wissenschaftlichen Anstalten zu Berlin." Written 1810; first published in <em>Wilhelm von Humboldts gesammelte Schriften</em>, vol. 10, edited by Bruno Gebhardt. Berlin: B. Behr, 1903.</li>
-      <li>Khanna, Saurabh, Jon Ball, Juan Pablo Alperin, and John Willinsky. "Recalibrating the Scope of Scholarly Publishing: A Modest Step in a Vast Decolonization Process." <em>Quantitative Science Studies</em> 3, no. 4 (2022). <a href="https://doi.org/10.1162/qss_a_00228">https://doi.org/10.1162/qss_a_00228</a></li>
-      <li>Kirsch, Irving, and Steven Jay Lynn. "The Altered State of Hypnosis: Changes in the Theoretical Landscape." <em>American Psychologist</em> 50, no. 10 (1995): 846&ndash;858.</li>
-      <li>Rashdall, Hastings. <em>The Universities of Europe in the Middle Ages</em>. New edition, 3 vols. Edited by F. M. Powicke and A. B. Emden. Oxford: Clarendon Press, 1936. ISBN 9780198229810.</li>
-      <li>Tennant, Jonathan P. "Web of Science and Scopus Are Not Global Databases of Knowledge." <em>European Science Editing</em> 46 (2020): e51987. <a href="https://doi.org/10.3897/ese.2020.e51987">https://doi.org/10.3897/ese.2020.e51987</a></li>
-      <li>Verger, Jacques. <em>Les universit&eacute;s au Moyen &Acirc;ge</em>. Paris: Presses Universitaires de France, 1973. R&eacute;&eacute;dition Quadrige, 1999. ISBN 9782130621294.</li>
-      <li>Weber, Max. <em>Economy and Society: An Outline of Interpretive Sociology</em>. Edited by Guenther Roth and Claus Wittich. 2 vols. Berkeley: University of California Press, 1978. ISBN 9780520035003.</li>
-    </ol>
-  </div>
+<h2>References</h2>
+<div id="references"><ol>
+  <li>Ash, Mitchell G. "Bachelor of What, Master of Whom? The Humboldt Myth and Historical Transformations of Higher Education in German-Speaking Europe and the US." <em>European Journal of Education</em> 41, no. 2 (2006): 245&ndash;267.</li>
+  <li>Collins, Randall. <em>The Credential Society: An Historical Sociology of Education and Stratification</em>. New York: Academic Press, 1979. Reissued, New York: Columbia University Press, 2019. ISBN 9780231192347.</li>
+  <li>ElSabry, ElHassan. "Unaffiliated Researchers: A Preliminary Study." <em>Challenges</em> 8, no. 2 (2017): article 20. <a href="https://doi.org/10.3390/challe8020020">https://doi.org/10.3390/challe8020020</a></li>
+  <li>Hull, Clark L. <em>Hypnosis and Suggestibility: An Experimental Approach</em>. New York: D. Appleton-Century, 1933.</li>
+  <li>Humboldt, Wilhelm von. "&Uuml;ber die innere und &auml;u&szlig;ere Organisation der h&ouml;heren wissenschaftlichen Anstalten zu Berlin." Written 1810; first published in <em>Wilhelm von Humboldts gesammelte Schriften</em>, vol. 10, edited by Bruno Gebhardt. Berlin: B. Behr, 1903.</li>
+  <li>Khanna, Saurabh, Jon Ball, Juan Pablo Alperin, and John Willinsky. "Recalibrating the Scope of Scholarly Publishing: A Modest Step in a Vast Decolonization Process." <em>Quantitative Science Studies</em> 3, no. 4 (2022). <a href="https://doi.org/10.1162/qss_a_00228">https://doi.org/10.1162/qss_a_00228</a></li>
+  <li>Kirsch, Irving, and Steven Jay Lynn. "The Altered State of Hypnosis: Changes in the Theoretical Landscape." <em>American Psychologist</em> 50, no. 10 (1995): 846&ndash;858.</li>
+  <li>Rashdall, Hastings. <em>The Universities of Europe in the Middle Ages</em>. New edition, 3 vols. Edited by F. M. Powicke and A. B. Emden. Oxford: Clarendon Press, 1936. ISBN 9780198229810.</li>
+  <li>Rasmussen, Lisa M., Alex Pearlman, Rachel Choi, and Anna Wexler. "Research Infrastructure Challenges in Non-Establishment Research During the COVID-19 Pandemic." <em>Citizen Science: Theory and Practice</em> 10, no. 1 (2025): article 26. <a href="https://doi.org/10.5334/cstp.805">https://doi.org/10.5334/cstp.805</a></li>
+  <li>Smith, Kevin L. "Examining Publishing Practices: Moving beyond the Idea of Predatory Open Access." <em>Insights</em> 30, no. 3 (2017): 4&ndash;10. <a href="https://doi.org/10.1629/uksg.388">https://doi.org/10.1629/uksg.388</a></li>
+  <li>Tennant, Jonathan P. "Web of Science and Scopus Are Not Global Databases of Knowledge." <em>European Science Editing</em> 46 (2020): e51987. <a href="https://doi.org/10.3897/ese.2020.e51987">https://doi.org/10.3897/ese.2020.e51987</a></li>
+  <li>Verger, Jacques. <em>Les universit&eacute;s au Moyen &Acirc;ge</em>. Paris: Presses Universitaires de France, 1973. R&eacute;&eacute;dition Quadrige, 1999. ISBN 9782130621294.</li>
+  <li>Weber, Max. <em>Economy and Society: An Outline of Interpretive Sociology</em>. Edited by Guenther Roth and Claus Wittich. 2 vols. Berkeley: University of California Press, 1978. ISBN 9780520035003.</li>
+</ol></div>
 
 </main>
 
 <footer>
   <div class="wrap">
-    <strong>Citing this page.</strong> This is a draft landing page without a persistent identifier. Do not cite it. Cite the deposited record once it exists.<br><br>
+    <strong>Citing this page.</strong> A draft landing page without a persistent identifier. Do not cite it. Cite the deposited record once it exists.<br><br>
     Correspondence about the apparatus, the sources or the deposit is welcome, including from readers who intend to disprove something here.<br><br>
     Church of Conceptual Art &middot; Montana<br>
-    Pissarro, Paul-Alexander Arthur &middot; 2026<br>
-    Page published before first deposit.
+    Pissarro, Paul-Alexander Arthur &middot; 2026
   </div>
 </footer>
 
