@@ -1,11 +1,13 @@
 # /thesis
 
-Landing page and sub-pages for the dissertation. Served at `paulpissarro.com/thesis`.
+Landing page and sub-pages for the dissertation. Served at `paulpissarro.com/thesis/`.
 
 ## Build
 
 ```
-python3 thesis/_build.py        # from the repo root
+python3 thesis/_build.py           # from the repo root. Python 3.8 or later.
+python3 thesis/_build.py --check   # exits non-zero if a page was hand-edited or not rebuilt
+python3 thesis/_build.py --lock    # once, the day the propositions go public
 ```
 
 Writes `thesis/index.html`, `thesis/propositions/index.html`, `thesis/ledger/index.html`,
@@ -13,25 +15,38 @@ Writes `thesis/index.html`, `thesis/propositions/index.html`, `thesis/ledger/ind
 
 Stdlib only, no dependencies, no build step. Run it, commit the output.
 
+The build refuses to write anything if a required Highwire tag is missing or
+empty, if a tag lands on a sub-page, if the author string is missing from a
+page, if `noindex` drops off before deposit, or if two propositions share a
+label. To have `--check` run before every commit:
+
+```
+echo 'python3 thesis/_build.py --check' > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+```
+
 **Do not hand-edit the generated `.html`. It gets overwritten.** Edit the `R` dict
 at the top of `_build.py`, which holds the title, author string, year, DOI,
 licence and ledger date.
 
 Reason it is generated rather than written: the author string has to be
 byte-identical on every page forever. A divergent string splits the citation
-count across records that never merge, and it cannot be fixed after the first
-DOI is minted. Four hand-maintained files is four chances to get that wrong.
+count across records that never merge. DOI metadata can be corrected after
+minting (DataCite and Zenodo both allow it; only the DOI string is fixed), but
+Scholar records that already split stay split. Four hand-maintained files is four chances to get that wrong.
 
 ## Layout
 
 ```
-/thesis                     landing. abstract, record, verification, references
-/thesis/propositions        31 claims, anchored by permanent label
-/thesis/ledger              citation ledger
-/thesis/ledger/ledger.json  ledger data
+/thesis/                     landing. abstract, record, verification, references
+/thesis/propositions/        31 claims, anchored by permanent label
+/thesis/ledger/              citation ledger
+/thesis/ledger/ledger.json   ledger data
 ```
 
-Directory-index serving. Everything branches off `/thesis`; nothing sits beside it.
+Directory-index serving. Everything branches off `/thesis/`; nothing sits beside it.
+GitHub Pages 301s `/thesis` to `/thesis/`, so every canonical and citation URL
+carries the trailing slash and points at the address that answers 200. Links
+without the slash still work, and the redirect keeps any `#anchor`.
 
 ## Things that break if changed
 
@@ -54,9 +69,12 @@ them.
 **Author string is `Pissarro, Paul-Alexander Arthur`.** Exactly that, in the tags
 and in visible text. Not the short form, not first-name-first.
 
-**Proposition anchors are permanent.** `/thesis/propositions#C2` is already a
-citable address. Labels append, never insert, never renumber, because
-renumbering breaks citations already made.
+**Proposition anchors are permanent once public.** `/thesis/propositions/#C2`
+becomes a citable address the day the page goes live. From then on, labels
+append, never insert, never renumber, because renumbering breaks citations
+already made. Run `--lock` that day: it writes `thesis/labels.lock`, and after
+that the build refuses to drop any label in it. Until then (noindex, not on
+`main`), pruning or renumbering is still free.
 
 **`citation_pdf_url`, when added, must end in `.pdf`** and point at the
 searchable-text build, never a rasterised one. A scanned PDF contributes nothing
@@ -64,17 +82,26 @@ to the citation graph.
 
 ## Still empty, and why
 
-`orcid`, `doi`, `doi_mirror`, `licence`, `pdf` and `ledger_opened` are all `None`
+`orcid`, `doi`, `doi_mirror`, `licence`, `pdf`, `institution` and `ledger_opened` are all `None`
 in `_build.py` and render as "not yet" on the page. They fill in as they exist.
 
 `ledger_opened` is the one with a deadline: the ledger has to be published,
 empty and dated, **before** the first deposit. Published after, it proves
-nothing.
+nothing. Give the opening date an outside witness too (a Wayback Machine
+snapshot, or deposit the empty ledger on Zenodo), since a date on this site or
+in git is one the author sets.
+
+`institution` emits `citation_dissertation_institution`, which Scholar asks for
+on dissertations. Nothing renders while it is `None`.
 
 ## Known issue this fixed
 
 `robots.txt` and `sitemap.xml` on `main` both described unsubscribe.llc. The
 sitemap served from paulpissarro.com listed 13 unsubscribe.llc URLs and no entry
-for this domain, including none for `/thesis`. Both are corrected here, but the
-fix is just a corrected file, so if deploy config generates them it will come
-back.
+for this domain, including none for `/thesis`. Both are corrected here.
+
+`sitemap.xml` is now generated by `_build.py` from every `index.html` in the
+repo, so a page added on `main` is picked up on the next build. `lastmod` is
+the file's last git commit date. `/thesis/` is left out while `indexable` is
+`False` (a noindex page in a sitemap is a contradiction Search Console reports)
+and joins automatically at deposit.
