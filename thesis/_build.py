@@ -11,7 +11,7 @@ file, run `python3 thesis/_build.py` from the repo root, commit the result.
 
 Never hand-edit the generated .html files. They are overwritten.
 """
-import datetime, html, json, pathlib, subprocess, sys
+import datetime, html, json, pathlib, subprocess, sys, re
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SITE = ROOT.parent
@@ -141,25 +141,52 @@ KEYWORDS = ["orthopraxy","credentialism","doctoral education","history of univer
             "Humboldt myth","suggestion and response expectancy","scholarly indexing",
             "independent scholars","institutional repositories","open access","artistic research"]
 
-REFS = [
- 'Ash, Mitchell G. "Bachelor of What, Master of Whom? The Humboldt Myth and Historical Transformations of Higher Education in German-Speaking Europe and the US." <em>European Journal of Education</em> 41, no. 2 (2006): 245&ndash;267.',
- 'Collins, Randall. <em>The Credential Society: An Historical Sociology of Education and Stratification</em>. New York: Academic Press, 1979. Reissued, New York: Columbia University Press, 2019. ISBN 9780231192347.',
- 'ElSabry, ElHassan. "Unaffiliated Researchers: A Preliminary Study." <em>Challenges</em> 8, no. 2 (2017): article 20. <a href="https://doi.org/10.3390/challe8020020">https://doi.org/10.3390/challe8020020</a>',
- 'Hobsbawm, Eric, and Terence Ranger, eds. <em>The Invention of Tradition</em>. Cambridge: Cambridge University Press, 1983.',
- 'Hull, Clark L. <em>Hypnosis and Suggestibility: An Experimental Approach</em>. New York: D. Appleton-Century, 1933.',
- 'Humboldt, Wilhelm von. "&Uuml;ber die innere und &auml;u&szlig;ere Organisation der h&ouml;heren wissenschaftlichen Anstalten zu Berlin." Written 1810; first published in <em>Wilhelm von Humboldts gesammelte Schriften</em>, vol. 10, edited by Bruno Gebhardt. Berlin: B. Behr, 1903.',
- 'Khanna, Saurabh, Jon Ball, Juan Pablo Alperin, and John Willinsky. "Recalibrating the Scope of Scholarly Publishing: A Modest Step in a Vast Decolonization Process." <em>Quantitative Science Studies</em> 3, no. 4 (2022). <a href="https://doi.org/10.1162/qss_a_00228">https://doi.org/10.1162/qss_a_00228</a>',
- 'Kirsch, Irving, and Steven Jay Lynn. "The Altered State of Hypnosis: Changes in the Theoretical Landscape." <em>American Psychologist</em> 50, no. 10 (1995): 846&ndash;858.',
- 'Rashdall, Hastings. <em>The Universities of Europe in the Middle Ages</em>. New edition, 3 vols. Edited by F. M. Powicke and A. B. Emden. Oxford: Clarendon Press, 1936. ISBN 9780198229810.',
- 'Rasmussen, Lisa M., Alex Pearlman, Rachel Choi, and Anna Wexler. "Research Infrastructure Challenges in Non-Establishment Research During the COVID-19 Pandemic." <em>Citizen Science: Theory and Practice</em> 10, no. 1 (2025): article 26. <a href="https://doi.org/10.5334/cstp.805">https://doi.org/10.5334/cstp.805</a>',
- 'Smith, Kevin L. "Examining Publishing Practices: Moving beyond the Idea of Predatory Open Access." <em>Insights</em> 30, no. 3 (2017): 4&ndash;10. <a href="https://doi.org/10.1629/uksg.388">https://doi.org/10.1629/uksg.388</a>',
- 'Tennant, Jonathan P. "Web of Science and Scopus Are Not Global Databases of Knowledge." <em>European Science Editing</em> 46 (2020): e51987. <a href="https://doi.org/10.3897/ese.2020.e51987">https://doi.org/10.3897/ese.2020.e51987</a>',
- 'Verger, Jacques. <em>Les universit&eacute;s au Moyen &Acirc;ge</em>. Paris: Presses Universitaires de France, 1973. R&eacute;&eacute;dition Quadrige, 1999. ISBN 9782130621294.',
- 'Weber, Max. <em>Economy and Society: An Outline of Interpretive Sociology</em>. Edited by Guenther Roth and Claus Wittich. 2 vols. Berkeley: University of California Press, 1978. ISBN 9780520035003.',
-]
+def cited_keys():
+    """Every source key the propositions actually cite, in order of first use."""
+    seen, out = set(), []
+    for item in PROPS:
+        if len(item) != 4:
+            continue
+        for part in re.split(r"[;,]", item[2]):
+            k = part.strip()
+            if k in SOURCES and k not in seen:
+                seen.add(k); out.append(k)
+    return out
+
 
 # Propositions. Labels are permanent: append, never insert, never renumber.
 # cite: "source" = somebody else's finding. "work" = claimed here.
+# Every source a proposition cites, keyed. The reference list on the landing
+# page is GENERATED from the keys the propositions actually use, so it cannot
+# drift from the argument: a source nobody cites does not appear, and a key
+# with no entry here stops the build.
+#
+# Scope rule: this list is the sources the propositions rest on. It is not a
+# reading list. When the prose exists and cites something further, that source
+# earns an entry then.
+SOURCES = {
+ "ash-1999": 'Ash, Mitchell G., ed. <em>Mythos Humboldt: Vergangenheit und Zukunft der deutschen Universit&auml;ten</em>. Vienna: B&ouml;hlau, 1999.',
+ "ash-2006": 'Ash, Mitchell G. "Bachelor of What, Master of Whom? The Humboldt Myth and Historical Transformations of Higher Education in German-Speaking Europe and the US." <em>European Journal of Education</em> 41, no. 2 (2006): 245&ndash;267.',
+ "austin-1962": 'Austin, J. L. <em>How to Do Things with Words</em>. Oxford: Clarendon Press, 1962. The William James Lectures, 1955.',
+ "barber-1969": 'Barber, Theodore X. <em>Hypnosis: A Scientific Approach</em>. New York: Van Nostrand Reinhold, 1969.',
+ "constructed-emotion": 'Barrett, Lisa Feldman. <em>How Emotions Are Made: The Secret Life of the Brain</em>. Boston: Houghton Mifflin Harcourt, 2017. With Antonio Damasio, <em>Descartes\' Error</em>. New York: Putnam, 1994.',
+ "dmn-aesthetics": 'Vessel, Edward A., G. Gabrielle Starr, and Nava Rubin. "The Brain on Art: Intense Aesthetic Experience Activates the Default Mode Network." <em>Frontiers in Human Neuroscience</em> 6 (2012): article 66. <a href="https://doi.org/10.3389/fnhum.2012.00066">https://doi.org/10.3389/fnhum.2012.00066</a>',
+ "embodied-cognition": 'Lakoff, George, and Mark Johnson. <em>Metaphors We Live By</em>. Chicago: University of Chicago Press, 1980. And <em>Philosophy in the Flesh: The Embodied Mind and Its Challenge to Western Thought</em>. New York: Basic Books, 1999.',
+ "hobsbawm-ranger-1983": 'Hobsbawm, Eric, and Terence Ranger, eds. <em>The Invention of Tradition</em>. Cambridge: Cambridge University Press, 1983.',
+ "hull-1933": 'Hull, Clark L. <em>Hypnosis and Suggestibility: An Experimental Approach</em>. New York: D. Appleton-Century, 1933.',
+ "humboldt-1810": 'Humboldt, Wilhelm von. "&Uuml;ber die innere und &auml;u&szlig;ere Organisation der h&ouml;heren wissenschaftlichen Anstalten zu Berlin." Written 1810; first published in <em>Wilhelm von Humboldts gesammelte Schriften</em>, vol. 10, edited by Bruno Gebhardt. Berlin: B. Behr, 1903.',
+ "khanna-2022": 'Khanna, Saurabh, Jon Ball, Juan Pablo Alperin, and John Willinsky. "Recalibrating the Scope of Scholarly Publishing: A Modest Step in a Vast Decolonization Process." <em>Quantitative Science Studies</em> 3, no. 4 (2022). <a href="https://doi.org/10.1162/qss_a_00228">https://doi.org/10.1162/qss_a_00228</a>',
+ "kirsch": 'Kirsch, Irving. On non-deceptive placebo. <span class="pending">Exact source not yet pinned; B5 is not deposited until it is.</span>',
+ "kirsch-lynn-1995": 'Kirsch, Irving, and Steven Jay Lynn. "The Altered State of Hypnosis: Changes in the Theoretical Landscape." <em>American Psychologist</em> 50, no. 10 (1995): 846&ndash;858.',
+ "paletschek-2001": 'Paletschek, Sylvia. "The Invention of Humboldt and the Impact of National Socialism: The German University Idea in the First Half of the Twentieth Century." 2001. <span class="pending">Volume and pages not yet verified against a catalogue record.</span>',
+ "predictive-processing": 'Clark, Andy. <em>Surfing Uncertainty: Prediction, Action, and the Embodied Mind</em>. Oxford: Oxford University Press, 2016. And Karl Friston, "The Free-Energy Principle: A Unified Brain Theory?" <em>Nature Reviews Neuroscience</em> 11 (2010): 127&ndash;138. <a href="https://doi.org/10.1038/nrn2787">https://doi.org/10.1038/nrn2787</a>',
+ "rashdall-1936": 'Rashdall, Hastings. <em>The Universities of Europe in the Middle Ages</em>. New edition, 3 vols. Edited by F. M. Powicke and A. B. Emden. Oxford: Clarendon Press, 1936.',
+ "reward-prediction-error": 'Schultz, Wolfram, Peter Dayan, and P. Read Montague. "A Neural Substrate of Prediction and Reward." <em>Science</em> 275 (1997): 1593&ndash;1599. <a href="https://doi.org/10.1126/science.275.5306.1593">https://doi.org/10.1126/science.275.5306.1593</a>',
+ "tennant-2020": 'Tennant, Jonathan P. "Web of Science and Scopus Are Not Global Databases of Knowledge." <em>European Science Editing</em> 46 (2020): e51987. <a href="https://doi.org/10.3897/ese.2020.e51987">https://doi.org/10.3897/ese.2020.e51987</a>',
+ "verger-1973": 'Verger, Jacques. <em>Les universit&eacute;s au Moyen &Acirc;ge</em>. Paris: Presses Universitaires de France, 1973. R&eacute;&eacute;dition Quadrige, 1999.',
+ "vom-bruch-1997": 'vom Bruch, R&uuml;diger. On the Humboldt tradition as an invention of around 1900. 1997. <span class="pending">Full record not yet verified; cited here because Ash (2006) credits it.</span>',
+}
+
 PROPS = [
  ("A","The historical record","Findings established by others, restated for navigation."),
  ("A1","The European degree ladder is a craft-guild structure transposed onto knowledge: bachelor, master and doctor correspond to the apprentice, journeyman and master of the medieval trades.","rashdall-1936, verger-1973","source"),
@@ -242,8 +269,9 @@ def build_landing():
 </ul>
 
 <h2>References</h2>
+<p class="note-block">The sources the propositions rest on, generated from the labels that cite them. Not a reading list: a work earns an entry here by being cited above.</p>
 <div id="references"><ol>
-''' + "\n".join(f"  <li>{r}</li>" for r in REFS) + "\n</ol></div>\n"
+''' + "\n".join(f"  <li>{SOURCES[k]}</li>" for k in sorted(cited_keys(), key=lambda k: SOURCES[k])) + "\n</ol></div>\n"
     return page("", R["title_main"],
         "No identifier has been minted. The abstract is not final and the ledger is not yet open. Nothing on this page is a claim about work already done.",
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
@@ -498,6 +526,15 @@ def write(rel, content):
     p.write_text(content, encoding="utf-8")
     print(f"  wrote thesis/{rel}  ({len(content):,} bytes)")
 
+def check_sources():
+    missing = sorted({k for item in PROPS if len(item) == 4
+                      for k in (p.strip() for p in re.split(r"[;,]", item[2]))
+                      if re.fullmatch(r"[a-z][a-z0-9\-]*", k or "x")
+                      and not k.startswith(("derived", "generalised", "structural"))
+                      and k not in SOURCES})
+    if missing:
+        raise SystemExit("BUILD REFUSED: propositions cite sources with no reference entry: " + ", ".join(missing))
+
 def check_serves():
     missing = [l for l, *_ in (x for x in PROPS if len(x) == 4) if l.startswith("C") and l not in SERVES]
     if missing:
@@ -505,6 +542,7 @@ def check_serves():
 
 if __name__ == "__main__":
     check_serves()
+    check_sources()
     out = outputs()
     audit(out)
     if "--check" in sys.argv:
