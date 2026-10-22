@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://unsubscribe.llc/sitemap.xml
+# Google Scholar must be able to reach the thesis landing pages and the PDFs.
+# A Disallow here makes the whole citation apparatus invisible.
+Allow: /thesis
+Allow: /thesis/
+
+Sitemap: https://paulpissarro.com/sitemap.xml
