@@ -145,6 +145,7 @@ REFS = [
  'Ash, Mitchell G. "Bachelor of What, Master of Whom? The Humboldt Myth and Historical Transformations of Higher Education in German-Speaking Europe and the US." <em>European Journal of Education</em> 41, no. 2 (2006): 245&ndash;267.',
  'Collins, Randall. <em>The Credential Society: An Historical Sociology of Education and Stratification</em>. New York: Academic Press, 1979. Reissued, New York: Columbia University Press, 2019. ISBN 9780231192347.',
  'ElSabry, ElHassan. "Unaffiliated Researchers: A Preliminary Study." <em>Challenges</em> 8, no. 2 (2017): article 20. <a href="https://doi.org/10.3390/challe8020020">https://doi.org/10.3390/challe8020020</a>',
+ 'Hobsbawm, Eric, and Terence Ranger, eds. <em>The Invention of Tradition</em>. Cambridge: Cambridge University Press, 1983.',
  'Hull, Clark L. <em>Hypnosis and Suggestibility: An Experimental Approach</em>. New York: D. Appleton-Century, 1933.',
  'Humboldt, Wilhelm von. "&Uuml;ber die innere und &auml;u&szlig;ere Organisation der h&ouml;heren wissenschaftlichen Anstalten zu Berlin." Written 1810; first published in <em>Wilhelm von Humboldts gesammelte Schriften</em>, vol. 10, edited by Bruno Gebhardt. Berlin: B. Behr, 1903.',
  'Khanna, Saurabh, Jon Ball, Juan Pablo Alperin, and John Willinsky. "Recalibrating the Scope of Scholarly Publishing: A Modest Step in a Vast Decolonization Process." <em>Quantitative Science Studies</em> 3, no. 4 (2022). <a href="https://doi.org/10.1162/qss_a_00228">https://doi.org/10.1162/qss_a_00228</a>',
@@ -167,11 +168,12 @@ PROPS = [
  ("A4","Neither degree originally certified an original contribution to knowledge. Both certified admission to the body licensed to teach.","rashdall-1936, verger-1973","source"),
  ("A5","The licentia docendi was an ecclesiastical instrument. Papal intervention in 1179 requiring that the licence be granted to the qualified centralised authority over who might teach and, by extension, over what could be taught.","rashdall-1936","source"),
  ("A6","The medieval university secured a near-monopoly over a particular kind of teaching and culture. Closure was a social function of the institution, not a later corruption of it.","verger-1973","source"),
- ("A7","The definition of the doctorate as certifying the production of new knowledge is a modern retrofit onto a medieval licence to teach. It is not inherited from the institution's founding structure.","rashdall-1936, verger-1973, humboldt-1810","work"),
+ ("A7","The definition of the doctorate as certifying the production of new knowledge is a modern retrofit onto a medieval licence to teach. It is not inherited from the institution's founding structure.","derived from A1 to A6; rashdall-1936, verger-1973, humboldt-1810","work"),
  ("A8","Humboldt's memorandum on the organisation of the higher scientific institutions in Berlin, written in 1810 and the source usually credited with the research-university ideal, was left unfinished and was not published in his lifetime.","humboldt-1810","source"),
  ("A9","The memorandum was first published in 1903, in the volume of Humboldt's political writings edited by Bruno Gebhardt for the Prussian Academy of Sciences, ninety-three years after it was written. Amended October 2026: the earlier wording gave 1900 as a date of recovery, which no source supports. The claim now anchors on publication, which is documented.","humboldt-1810, verified against catalogue records","source"),
  ("A10","The founding document of the research-university ideal became publicly available approximately a century after the institution it is credited with founding, and therefore cannot have exerted the influence attributed to it during that period. Reclassified October 2026: this inference is already established in the historiography and is no longer claimed here.","ash-2006, paletschek-2001, vom-bruch-1997","source"),
  ("A11","The retrospective attribution of the research-university ideal to Humboldt is itself a recognised object of scholarship, treated in the literature as the Humboldt myth.","ash-1999, ash-2006","source"),
+ ("A12","The attribution of a legitimating origin to an institution is a general and recognised phenomenon. Traditions presented as ancient are frequently of recent origin and deliberately composed.","hobsbawm-ranger-1983","source"),
  ("B","The experimental record","Findings established by others, at the precision their sources support."),
  ("B1","When identical suggestions are administered with and without a hypnotic induction, the contribution of the induction to the resulting effect is small.","hull-1933","source"),
  ("B2","Hypnotic and non-hypnotic suggestibility are very highly correlated, indicating that they are not distinct capacities.","hull-1933","source"),
@@ -185,17 +187,30 @@ PROPS = [
  ("B10","Dopaminergic signalling encodes the difference between received and predicted reward. Salience is therefore a function of the gap between expectation and event rather than of magnitude alone.","reward-prediction-error","source"),
  ("B11","Emotion is constructed, predicted from interoceptive signals and learned conceptual categories, rather than triggered as a fixed reaction.","constructed-emotion","source"),
  ("B12","Aesthetic experiences rated most moving are accompanied by activation in medial prefrontal regions of the default mode network, the system associated with self-referential processing.","dmn-aesthetics","source"),
- ("B13","The interstitium is a fluid-filled connective-tissue space distributed throughout the body and continuous with the fascia. Injected tattoo pigment has been imaged migrating through interstitial spaces of the dermis into the subcutaneous fascia. Stated as continuity with fascia; the popular new-organ framing is contested and is not asserted here.","interstitium-2018","source"),
- ("C","Distinctions","Inferences drawn in this work from the two records above."),
- ("C1","A ceremony that can be removed without materially changing an outcome is not the cause of that outcome. Where a ritual is claimed to produce an effect, the test is subtraction.","generalised from B1, B2, B3, B6","work"),
+ ("C","Distinctions","Inferences drawn in this work from the two records above. Each states what it serves. Seven of them support the claim in Band D; the others support the historical argument, the method, or Pillar IV. A distinction that served nothing would be a defect, not a spare part."),
+ ("C1","A ceremony that can be removed without materially changing an outcome is not the cause of that outcome. Where a ritual is claimed to produce an effect, the test is subtraction.","generalised from B1, B2, B3, B4, B6","work"),
  ("C2","Certification is issued in advance of the use it purports to warrant. It is therefore a forecast of use rather than an instance of it, and stands in the same relation to use as a promise stands to performance.","austin-1962, structural","work"),
  ("C3","A promise is a performative that can fail. Certification, being a promise about future use, inherits that liability: it can be issued correctly and still not come true.","austin-1962, derived from B7 and C2","work"),
  ("C4","Attention and citation are distinct quantities. Attention produces an audience and leaves no durable record; citation requires a persistently addressable artifact and produces a countable one. Reach is therefore not evidence of contribution under the discipline's own accounting.","structural","work"),
  ("C5","Entry to the principal scholarly indexes is conditioned on the legal form of the depositor, an accredited institution, a selected publisher, or a dues-paying member organisation, rather than on the assessed quality of the work. Access is a property of legal form. The exclusion of unaffiliated scholars is not claimed here and is credited to the authors who established it.","verified against platform documentation October 2026; exclusion per elsabry-2017, tennant-2020, khanna-2022","work"),
  ("C6","A gate set on the legal form of the depositor rather than on the merit of the work is satisfied by incorporation rather than by better work. It therefore screens for the capacity to constitute an organisation, not for the quality it is held to protect, and the cost of satisfying it is a measure of what it actually selects for.","derived from C5, structural","work"),
- ("D","The claim","One proposition. It requires the two records and the six distinctions, and nothing else."),
- ("D1","Scholarship registers contribution by citation; a dissertation is examined before it has been cited; the doctorate therefore certifies a prediction rather than a contribution.","the thesis, derived from C1 to C6","work"),
+ ("C7","The doctorate's certifying function was added to an instrument designed to license teaching. Certification of contribution is a historical accretion rather than the credential's founding purpose, and cannot therefore be defended by appeal to that purpose.","derived from A1 to A7","work"),
+ ("C8","A legitimating origin can be composed after the institution it explains, and the institution's operation is unchanged by its absence. An origin story is therefore subject to the same subtraction test as any other ceremony.","derived from A8 to A12 and C1","work"),
+ ("C9","A procedure that works when disclosed can be used without deception. Where an effect survives full disclosure of its mechanism, concealment adds nothing to the effect and removes only the subject's ability to refuse, so informing the subject is a sufficient safeguard rather than a weakened one.","derived from B5","work"),
+ ("C10","A performative utterance's effect is realised as a change in bodily state, not only as a change in belief. If concepts are structured by sensorimotor experience, perception is the resolution of prediction error, and feeling is predicted from interoceptive signal, then an utterance that alters expectation alters the body that holds it. Stated as this work's synthesis: no source named below makes this inference.","derived from B7, B8, B9, B11","work"),
+ ("C11","Attention is allocated by prediction error, and material processed as self-relevant recruits the self-referential network. A work that breaks an expected pattern is therefore both more noticeable and more likely to be processed as being about its reader.","derived from B10, B12","work"),
+ ("D","The claim","One proposition. It requires the two records and the seven distinctions that serve it, and nothing else."),
+ ("D1","Scholarship registers contribution by citation; a dissertation is examined before it has been cited; the doctorate therefore certifies a prediction rather than a contribution.","the thesis, derived from C1 to C7","work"),
 ]
+
+# What each distinction supports. A distinction that serves nothing is a defect:
+# the registry exists so a reader can trace every claim to the one it bears on.
+SERVES = {
+ "C1": "D1", "C2": "D1", "C3": "D1", "C4": "D1", "C5": "D1", "C6": "D1", "C7": "D1",
+ "C8": "the historical argument, Band A",
+ "C9": "the method, and the register the work is written in",
+ "C10": "Pillar IV", "C11": "Pillar IV",
+}
 
 # ------------------------------------------------------------- PAGE BUILDERS
 def build_landing():
@@ -245,10 +260,13 @@ def build_propositions():
             lab, text, src, cite = item
             cls = "cite-work" if cite == "work" else "cite-source"
             word = "cite this work" if cite == "work" else "cite source"
+            serves = SERVES.get(lab)
+            serves_html = f'<p class="prop-serves">serves {serves}</p>' if serves else ""
             body += f'''<div class="prop" id="{lab}">
   <a class="prop-label" href="#{lab}">{lab}</a>
   <p class="prop-text">{text}</p>
   <p class="prop-src">{src} <span class="{cls}">{word}</span></p>
+  {serves_html}
 </div>
 '''
     return page("propositions", "Propositions",
@@ -367,6 +385,8 @@ code{font-family:var(--mono);font-size:.88em}
 .prop-label:hover{color:var(--rust)}
 .prop-text{margin:0 0 .5rem;font-size:.98rem}
 .prop-src{margin:0;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.prop-serves{margin:.35rem 0 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--gold)}
 .cite-source,.cite-work{display:inline-block;padding:.05rem .4rem;margin-left:.4rem;
   border-radius:2px;font-size:.92em;white-space:nowrap}
 .cite-source{color:var(--green);border:1px solid var(--green)}
@@ -478,7 +498,13 @@ def write(rel, content):
     p.write_text(content, encoding="utf-8")
     print(f"  wrote thesis/{rel}  ({len(content):,} bytes)")
 
+def check_serves():
+    missing = [l for l, *_ in (x for x in PROPS if len(x) == 4) if l.startswith("C") and l not in SERVES]
+    if missing:
+        raise SystemExit("BUILD REFUSED: distinctions with nothing to serve: " + ", ".join(missing))
+
 if __name__ == "__main__":
+    check_serves()
     out = outputs()
     audit(out)
     if "--check" in sys.argv:
