@@ -7,7 +7,7 @@
 <meta name="description" content="Personal coaching with Paul-Alexander Pissarro for creatives in transition, people in recovery, young adults and anyone at a turning point. The first 30-minute call is free.">
 <meta property="og:title" content="Coaching | Paul-Alexander Pissarro">
 <meta property="og:description" content="Something in you is ready to change for good. The first conversation is always free.">
-<meta property="og:image" content="https://paulpissarro.com/coaching/paul-night.jpg">
+<meta property="og:image" content="https://paulpissarro.com/coaching/paul-portrait.jpg">
 <link rel="canonical" href="https://paulpissarro.com/coaching/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>
@@ -83,20 +83,25 @@
     background: linear-gradient(90deg, var(--navy), var(--navy2));
     color: #FFF;
     font-family: Tahoma, Verdana, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
-    padding: 3px 4px 3px 6px;
+    padding: 2px 3px 2px 5px;
+    min-height: 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
   }
-  .bar .x { display: flex; gap: 2px; }
-  .bar .x b {
-    width: 16px; height: 14px; background: var(--face); color: #000;
-    border: 1px solid; border-color: var(--hi) var(--dark) var(--dark) var(--hi);
-    font-size: 10px; line-height: 12px; text-align: center; font-weight: bold;
+  .bar .x { display: flex; align-items: center; flex: none; }
+  .tb {
+    display: block; width: 16px; height: 14px;
+    background-color: var(--face);
+    background-repeat: no-repeat;
+    box-shadow: inset -1px -1px #0A0A0A, inset 1px 1px #FFFFFF, inset -2px -2px #808080, inset 2px 2px #DFDFDF;
   }
+  .tb.min { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='2' shape-rendering='crispEdges'%3E%3Crect width='6' height='2'/%3E%3C/svg%3E"); background-position: 4px 9px; }
+  .tb.max { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h9v2H0zM0 2h1v7H0zM8 2h1v7H8zM0 8h9v1H0z'/%3E%3C/svg%3E"); background-position: 3px 2px; }
+  .tb.cls { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='7' shape-rendering='crispEdges'%3E%3Cpath d='M0 0h2v1H0zM6 0h2v1H6zM1 1h2v1H1zM5 1h2v1H5zM2 2h4v1H2zM3 3h2v1H3zM2 4h4v1H2zM1 5h2v1H1zM5 5h2v1H5zM0 6h2v1H0zM6 6h2v1H6z'/%3E%3C/svg%3E"); background-position: 4px 3px; margin-left: 2px; }
   .body {
     background: var(--paper);
     border: 2px solid;
@@ -110,7 +115,8 @@
   h3 { font-size: 19px; margin: 0 0 6px; }
 
   /* HERO */
-  .hero { display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start; }
+  .hero-in { max-width: 640px; margin: 0 auto; }
+  .hero-in .hero-photo { margin: 0 0 22px; }
   .lede { font-size: 21px; }
   blockquote {
     margin: 18px 0 20px;
@@ -218,7 +224,6 @@
     .closing h2 { font-size: 26px; }
     .voice { margin-top: 28px !important; font-size: 26px; }
     .hero .btn, .closing .btn { display: block; text-align: center; padding: 13px 12px; font-size: 15px; }
-    .hero .photo { max-width: 280px; margin-top: 8px; }
     .guest .btn { flex: 1 1 100%; padding: 12px; }
     .guest input[type=email] { font-size: 16px; padding: 10px; }
     .taskbar {
@@ -235,8 +240,6 @@
       border: 1px solid; border-color: var(--lo) var(--hi) var(--hi) var(--lo);
     }
     .body { padding: 18px 16px; }
-    .hero { grid-template-columns: 1fr; }
-    .hero .photo { max-width: 320px; margin: 0 auto; }
     .who { grid-template-columns: 1fr; }
     .about-photo { float: none; width: 100%; max-width: 300px; margin: 0 auto 16px; }
     table.creds th, table.creds td { display: block; width: 100%; }
@@ -258,24 +261,21 @@
 
   <!-- HERO -->
   <div class="win">
-    <div class="bar"><span>welcome.html</span><span class="x" aria-hidden="true"><b>_</b><b>&#9633;</b><b>&times;</b></span></div>
-    <div class="body hero">
-      <div>
-        <p class="lede">I work with people who are tired of circling the same patterns, people ready (even if "ready" feels like the wrong word) to step into somewhere new.</p>
-        <blockquote>"The work isn't about fixing you. The work is about helping you hear yourself clearly."<cite>Paul-Alexander Pissarro</cite></blockquote>
-        <a class="btn" href="https://tidycal.com/pissarropaul">Book a Free 30-Minute Call</a>
-        <p class="voice">Your voice is there, waiting for you to find it.</p>
-      </div>
-      <figure class="photo">
-        <img src="paul-night.jpg" width="900" height="1346" alt="Paul-Alexander Pissarro at night, dressed in white, wearing a cap and tinted aviators">
-        <figcaption>24.9.25</figcaption>
+    <div class="bar"><span>welcome.html</span><span class="x" aria-hidden="true"><i class="tb min"></i><i class="tb max"></i><i class="tb cls"></i></span></div>
+    <div class="body hero"><div class="hero-in">
+      <figure class="photo hero-photo">
+        <img src="paul-portrait.jpg" width="1000" height="800" alt="Paul-Alexander Pissarro, bearded, looking into the camera from a red cinema seat">
       </figure>
-    </div>
+      <p class="lede">I work with people who are tired of circling the same patterns, people ready (even if "ready" feels like the wrong word) to step into somewhere new.</p>
+      <blockquote>"The work isn't about fixing you. The work is about helping you hear yourself clearly."<cite>Paul-Alexander Pissarro</cite></blockquote>
+      <a class="btn" href="https://tidycal.com/pissarropaul">Book a Free 30-Minute Call</a>
+      <p class="voice">Your voice is there, waiting for you to find it.</p>
+    </div></div>
   </div>
 
   <!-- WHO -->
   <div class="win" id="who">
-    <div class="bar"><span>who_this_is_for.txt</span><span class="x" aria-hidden="true"><b>_</b><b>&#9633;</b><b>&times;</b></span></div>
+    <div class="bar"><span>who_this_is_for.txt</span><span class="x" aria-hidden="true"><i class="tb min"></i><i class="tb max"></i><i class="tb cls"></i></span></div>
     <div class="body">
       <h2>You don't need to have it figured out. You only need to be honest.</h2>
       <div class="who">
@@ -301,7 +301,7 @@
 
   <!-- ABOUT -->
   <div class="win" id="about">
-    <div class="bar"><span>about_paul-alexander.html</span><span class="x" aria-hidden="true"><b>_</b><b>&#9633;</b><b>&times;</b></span></div>
+    <div class="bar"><span>about_paul-alexander.html</span><span class="x" aria-hidden="true"><i class="tb min"></i><i class="tb max"></i><i class="tb cls"></i></span></div>
     <div class="body">
       <h2>A winding path is still a path.</h2>
       <figure class="photo about-photo">
@@ -324,7 +324,7 @@
 
   <!-- WHAT THIS IS -->
   <div class="win" id="what">
-    <div class="bar"><span>readme.txt</span><span class="x" aria-hidden="true"><b>_</b><b>&#9633;</b><b>&times;</b></span></div>
+    <div class="bar"><span>readme.txt</span><span class="x" aria-hidden="true"><i class="tb min"></i><i class="tb max"></i><i class="tb cls"></i></span></div>
     <div class="body">
       <h2>What this is (and what it isn't)</h2>
       <ul class="isnt">
@@ -338,7 +338,7 @@
 
   <!-- WORKING TOGETHER -->
   <div class="win" id="work">
-    <div class="bar"><span>working_together.html</span><span class="x" aria-hidden="true"><b>_</b><b>&#9633;</b><b>&times;</b></span></div>
+    <div class="bar"><span>working_together.html</span><span class="x" aria-hidden="true"><i class="tb min"></i><i class="tb max"></i><i class="tb cls"></i></span></div>
     <div class="body">
       <h2>One session at a time.</h2>
       <p>We begin with a complimentary 30-minute consultation. If we align, we choose the format that fits.</p>
@@ -364,7 +364,7 @@
 
   <!-- CLOSING -->
   <div class="win">
-    <div class="bar"><span>book_a_call.exe</span><span class="x" aria-hidden="true"><b>_</b><b>&#9633;</b><b>&times;</b></span></div>
+    <div class="bar"><span>book_a_call.exe</span><span class="x" aria-hidden="true"><i class="tb min"></i><i class="tb max"></i><i class="tb cls"></i></span></div>
     <div class="body closing">
       <h2>The first conversation is always free.</h2>
       <p>Thirty minutes to talk through where you are and evaluate if this partnership makes sense. If it isn't the right fit, I will tell you directly.</p>
@@ -375,7 +375,7 @@
 
   <!-- GUESTBOOK -->
   <div class="win" id="guestbook">
-    <div class="bar"><span>guestbook.cgi</span><span class="x" aria-hidden="true"><b>_</b><b>&#9633;</b><b>&times;</b></span></div>
+    <div class="bar"><span>guestbook.cgi</span><span class="x" aria-hidden="true"><i class="tb min"></i><i class="tb max"></i><i class="tb cls"></i></span></div>
     <div class="body">
       <h3>Sign the guestbook</h3>
       <p class="small">Not ready for a call? Leave your email and I will write to you myself. There is no newsletter.</p>
