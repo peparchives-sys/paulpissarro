@@ -18,7 +18,7 @@ ROOT = pathlib.Path(__file__).resolve().parent
 # ---------------------------------------------------------------- THE RECORD
 # One source of truth. Everything downstream reads from here.
 R = {
-    "title_main": "The Dissertation as an Exemplar of Orthopraxy",
+    "title_main": "The Dissertation as Orthopraxy",
     "title_sub":  "Examination, Citation, and the Legal Form of Access",
     "author":     "Pissarro, Paul-Alexander Arthur",   # canonical. never vary.
     "year":       "2026",
