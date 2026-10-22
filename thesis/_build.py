@@ -25,7 +25,7 @@ R = {
     "year":       "2026",
     "publisher":  "Church of Conceptual Art",
     "base":       "https://paulpissarro.com",
-    "orcid":      None,          # set once registered
+    "orcid":      "0009-0000-0830-8438",
     "doi":        None,          # set on deposit. irreversible.
     "doi_mirror": None,
     "version":    "v0.1",       # public edition line. v1.0 is the first deposit.
@@ -37,6 +37,11 @@ R = {
     "ledger_opened": None,       # set once, permanent. ISO date.
 }
 R["title_full"] = f'{R["title_main"]}: {R["title_sub"]}'
+
+def orcid_html():
+    if not R["orcid"]:
+        return pending(None, "not yet registered")
+    return f'<a href="https://orcid.org/{R["orcid"]}">{R["orcid"]}</a>'
 
 def pending(v, fallback):
     return v if v else f'<span class="pending">{fallback}</span>'
@@ -249,7 +254,7 @@ def build_landing():
 <ul class="meta">
   <li><span class="k">Title</span><span class="v">{R["title_full"]}</span></li>
   <li><span class="k">Author</span><span class="v">{R["author"]}</span></li>
-  <li><span class="k">ORCID</span><span class="v">{pending(R["orcid"],"not yet registered")}</span></li>
+  <li><span class="k">ORCID</span><span class="v">{orcid_html()}</span></li>
   <li><span class="k">Publisher</span><span class="v">{R["publisher"]}</span></li>
   <li><span class="k">Year</span><span class="v">{R["year"]}</span></li>
   <li><span class="k">Version</span><span class="v">{R["version"]} &middot; pre-deposit, not indexed</span></li>
