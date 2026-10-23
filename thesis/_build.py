@@ -35,6 +35,14 @@ R = {
     "institution": None,         # citation_dissertation_institution. Scholar asks for it
                                  # on dissertations. Whether CoCA goes here is Paul's call.
     "ledger_opened": "2026-10-23",  # set once, permanent. ISO date.
+    # Independent timestamps for the opening date. A date on this site and a git
+    # commit date are both set by the author, so they evidence nothing on their own.
+    # Taken 2026-10-23, 23 minutes after the commit that opened the ledger.
+    "witness": [
+        ("Ledger, opened and empty", "https://web.archive.org/web/20261023102815/https://paulpissarro.com/thesis/ledger/", "10:28:15 UTC"),
+        ("Landing page and abstract",  "https://web.archive.org/web/20261023103037/https://paulpissarro.com/thesis/", "10:30:37 UTC"),
+        ("Propositions, labels locked", "https://web.archive.org/web/20261023103126/https://paulpissarro.com/thesis/propositions/", "10:31:26 UTC"),
+    ],
 }
 R["title_full"] = f'{R["title_main"]}: {R["title_sub"]}'
 
@@ -358,6 +366,13 @@ def build_ledger():
 <h2>Entries</h2>
 <p class="note-block">None yet. Nothing has been deposited, so nothing can have cited it.</p>
 
+<h2>Independent witness</h2>
+<p class="note-block">The opening date above is published on this site, and a date published on one's own site is set by its author. So is a commit date. Neither evidences the order of events on its own. The Internet Archive holds dated captures of these pages, taken on the day the ledger was opened and before any deposit existed. The timestamps are the Archive's and cannot be altered here.</p>
+<ul class="meta">
+{chr(10).join(f'  <li><span class="k">{label}</span><span class="v"><a href="{url}">{t}</a></span></li>' for label, url, t in R["witness"])}
+</ul>
+<p class="note-block">A second timestamp will be taken at deposit, when the empty ledger is placed in a repository that issues its own persistent identifier. Two witnesses in two systems, both outside this one.</p>
+
 <h2>Cadence</h2>
 <p class="note-block">Sources are checked monthly by hand until volume justifies automation, so a gap reads as schedule rather than concealment. Citations that fall outside the indexes, in catalogues, syllabi and reviews, are recorded here too: those are the ones the machines miss.</p>
 
@@ -561,7 +576,10 @@ def outputs():
         "propositions/index.html": build_propositions(),
         "ledger/index.html": build_ledger(),
         "ledger/ledger.json": json.dumps(
-            {"opened": R["ledger_opened"], "entries": []}, indent=2) + "\n",
+            {"opened": R["ledger_opened"],
+             "witness": [{"of": l, "url": u, "taken": f"{R['ledger_opened']} {t}"}
+                         for l, u, t in R["witness"]],
+             "entries": []}, indent=2) + "\n",
     }
 
 def write(rel, content):

@@ -1,4 +1,21 @@
 {
   "opened": "2026-10-23",
+  "witness": [
+    {
+      "of": "Ledger, opened and empty",
+      "url": "https://web.archive.org/web/20261023102815/https://paulpissarro.com/thesis/ledger/",
+      "taken": "2026-10-23 10:28:15 UTC"
+    },
+    {
+      "of": "Landing page and abstract",
+      "url": "https://web.archive.org/web/20261023103037/https://paulpissarro.com/thesis/",
+      "taken": "2026-10-23 10:30:37 UTC"
+    },
+    {
+      "of": "Propositions, labels locked",
+      "url": "https://web.archive.org/web/20261023103126/https://paulpissarro.com/thesis/propositions/",
+      "taken": "2026-10-23 10:31:26 UTC"
+    }
+  ],
   "entries": []
 }
