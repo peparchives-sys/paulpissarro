@@ -29,8 +29,11 @@ R = {
     "doi":        None,          # set on deposit. irreversible.
     "doi_mirror": None,
     "version":    "v0.1",       # public edition line. v1.0 is the first deposit.
-    "licence":    None,          # CC BY, exact version to confirm
-    "pdf":        None,          # must end in .pdf, text build only
+    "licence":    "CC BY 4.0 International",   # texts only. never the paintings, never the covenant
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    # Built by _build_pdf.py from this same record, so the deposited document and
+    # the live pages cannot disagree. Rebuild it whenever the record changes.
+    "pdf":        "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-v0.1.pdf",
     "indexable":  False,         # flip to True only at deposit
     "institution": None,         # citation_dissertation_institution. Scholar asks for it
                                  # on dissertations. Whether CoCA goes here is Paul's call.
@@ -146,7 +149,7 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
 ABSTRACT = [
  "Scholarship registers contribution by citation. A dissertation is examined before it can be cited. What is certified at examination is therefore a forecast of contribution rather than contribution itself. This study sets that proposition against three bodies of evidence, historical, experimental and procedural, and then acts on the result.",
  'The first is historical. The European degree ladder is a transposed craft-guild structure in which master and doctor were originally synonymous, both naming the <em>licentia docendi</em>, the licence to teach, neither certifying an original contribution to knowledge. The definition of the doctorate as certifying new knowledge is a modern retrofit, as the historiography of the German university has established: Humboldt\'s memorandum of 1810, the document usually credited with the research ideal, was left a fragment, went unpublished in his lifetime, and first appeared in print in 1903, and the attribution of the ideal to Humboldt is itself a twentieth-century invention. What has not been drawn from that record is its general form: a legitimating origin can be composed long after the fact, and the institution it explains runs unchanged either way.',
- "The second is experimental. A hypnotic induction is the ritual preamble, ordinarily relaxation and fixed attention, held to produce the state in which suggestion works. When identical suggestions are administered with and without one, the resulting effects are closely comparable, though subjects report having been hypnotised only where the induction was performed. A rite that can be removed without changing an outcome is not the cause of that outcome. It is the label attached to it.",
+ "The second is experimental. A hypnotic induction is the ritual preamble, ordinarily relaxation and fixed attention, held to produce the state in which suggestion works. When identical suggestions are administered with and without one, the induction contributes little to measured response, on the order of one and a half suggestions in ten, and nothing reliable on most measures. What it does change is the account the subject gives: only where an induction is performed do subjects report having been hypnotised, and only there does the response register as involuntary. The ceremony does not produce the capacity. It relocates its authorship.",
  "The third is procedural. Entry to the principal scholarly indexes is conditioned on the legal form of the depositor rather than on the assessed quality of the work. The index of record for dissertations accepts them only from institutions it recognises as accredited. The principal humanities archive states that it does not publish what it hosts. The registry through which citations are counted admits organisations and not individuals, and an unaffiliated author reaches them only from inside a repository that supplies the standing they lack. The exclusion of unaffiliated scholars is well documented; what follows from it is not. A gate set on legal form rather than merit is satisfied by incorporation rather than by better work, and a gate that cheap screens for nothing it claims to screen for.",
  "The argument is not that examination is worthless. Pre-circulation scrutiny catches error before it propagates, which no citation count can do. Rather, two functions, quality assurance and the registration of contribution, have been fused in one instrument and can be separated. Drawing on the history of the university, on artistic precedents for the self-constituted institution, on Adorno on theory as praxis, and on the performative utterance, it asks what it would mean to register a contribution without certifying it in advance. What emerges is an account of the doctorate as a forecast, and a demonstration of the alternative: a work constituted rather than petitioned, deposited under a persistent identifier, and submitted to a citation record published openly and dated before the first deposit.",
 ]
@@ -305,7 +308,7 @@ def build_landing():
   <li><span class="k">Version</span><span class="v">{R["version"]} &middot; pre-deposit, not indexed</span></li>
   <li><span class="k">Canonical DOI</span><span class="v">{pending(R["doi"],"not yet minted")}</span></li>
   <li><span class="k">Mirror DOI</span><span class="v">{pending(R["doi_mirror"],"not yet minted")}</span></li>
-  <li><span class="k">Licence</span><span class="v">{pending(R["licence"],"CC BY, version to be confirmed")}</span></li>
+  <li><span class="k">Licence</span><span class="v"><a href="{R["licence_url"]}">{R["licence"]}</a>. Applies to the text of this work only.</span></li>
 </ul>
 
 <h2>Verification</h2>

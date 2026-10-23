@@ -105,3 +105,24 @@ repo, so a page added on `main` is picked up on the next build. `lastmod` is
 the file's last git commit date. `/thesis/` is left out while `indexable` is
 `False` (a noindex page in a sitemap is a contradiction Search Console reports)
 and joins automatically at deposit.
+
+## Rebuilding the deposit PDF
+
+`_build_pdf.py` makes the file that gets deposited at CORE. It imports the record
+from `_build.py` rather than restating it, so the PDF and the live pages cannot
+drift apart. If they ever disagree, that script is the bug.
+
+    python3 thesis/_build.py        # the pages
+    python3 thesis/_build_pdf.py    # the deposit PDF
+
+Rebuild the PDF whenever the record, the abstract, the propositions or the
+sources change, and commit it: it is the deposited artifact, not a by-product.
+
+Two things that break if changed carelessly:
+
+- The filename is in `R["pdf"]` and is served as `citation_pdf_url`. Rename the
+  file and that tag points at nothing, which Google Scholar treats as a broken
+  record. Change both together, and only before the DOI is minted.
+- `_build_pdf.py` starts with an underscore, so Jekyll does not serve it. The
+  PDF does not, so it is served. Keep it that way.
+
