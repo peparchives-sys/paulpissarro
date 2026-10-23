@@ -34,7 +34,7 @@ R = {
     "indexable":  False,         # flip to True only at deposit
     "institution": None,         # citation_dissertation_institution. Scholar asks for it
                                  # on dissertations. Whether CoCA goes here is Paul's call.
-    "ledger_opened": None,       # set once, permanent. ISO date.
+    "ledger_opened": "2026-10-23",  # set once, permanent. ISO date.
 }
 R["title_full"] = f'{R["title_main"]}: {R["title_sub"]}'
 
@@ -254,7 +254,7 @@ PROPS = [
  ("B20","Against B15: highly responsive subjects alter perception with or without an induction, with a small additional benefit from hypnosis, while subjects low in suggestibility succeed in neither condition. Suggestion without ceremony does not produce the phenomena in most people, and trait differences are not abolished by removing the ritual.","mcgeown-et-al-2012, braffman-kirsch-1999","source"),
  ("B21","Against the account of involuntariness in B14: an alternative theory explains the experience of nonvolition through inaccurate higher-order thoughts about intending, without expectancy carrying the explanatory load. No current theory of hypnosis commands assent, and the most recent systematic review calls for new accounts rather than ratifying an existing one.","dienes-perner-2007, zahedi-lynn-sommer-2024","source"),
  ("B22","Against the subtraction inferences generally: the absence of specific neural correlates is held not in itself to argue against classifying hypnosis as an altered state of consciousness.","kihlstrom-2018","source"),
- ("C","Distinctions","Inferences drawn in this work from the two records above. Each states what it serves. Seven of them support the claim in Band D; the others support the historical argument, the method, or Pillar IV. A distinction that served nothing would be a defect, not a spare part."),
+ ("C","Distinctions","Inferences drawn in this work from the two records above. Each states what it serves. Nine of them support the claim in Band D; the others support the historical argument, the method, or Pillar IV. A distinction that served nothing would be a defect, not a spare part."),
  ("C1","A ceremony that can be removed without changing the capacity it is said to produce is not the cause of that capacity, whatever else its removal changes. Where a ritual is claimed to produce an effect, the test is subtraction, and the test requires naming which effect. Amended October 2026: the earlier wording said &ldquo;without materially changing an outcome,&rdquo; which B6 and B14 falsify. Removing the induction leaves the responding intact and removes the reported trance and part of the reported involuntariness. The ceremony does change an outcome. It does not change the capacity.","generalised from B1, B2, B3, B4, B6, B14, B15, B17, B18; contested by B19, B20, B21, B22","work"),
  ("C2","Certification is issued in advance of the use it purports to warrant. It is therefore a forecast of use rather than an instance of it, and stands in the same relation to use as a promise stands to performance.","austin-1962, structural","work"),
  ("C3","A promise is a performative that can fail. Certification, being a promise about future use, inherits that liability: it can be issued correctly and still not come true.","austin-1962, derived from B7 and C2","work"),
@@ -266,8 +266,10 @@ PROPS = [
  ("C9","Even where concealment adds to an effect, what it adds is purchased with the subject's ability to refuse, and that is not a permissible purchase. Disclosure is therefore required whether or not it is costless, and whatever cost it carries is the price of consent rather than a defect in the method. Amended October 2026: the earlier wording asserted that concealment adds nothing to the effect, which the evidence does not support. The argument is now ethical rather than empirical and does not depend on B5 going either way.","structural; B5 and B16 bear on the cost, not on the requirement","work"),
  ("C10","A performative utterance's effect is realised as a change in bodily state, not only as a change in belief. If concepts are structured by sensorimotor experience, perception is the resolution of prediction error, and feeling is predicted from interoceptive signal, then an utterance that alters expectation alters the body that holds it. Stated as this work's synthesis: no source named below makes this inference.","derived from B7, B8, B9, B11","work"),
  ("C11","Attention is allocated by prediction error, and material processed as self-relevant recruits the self-referential network. A work that breaks an expected pattern is therefore both more noticeable and more likely to be processed as being about its reader.","derived from B10, B12","work"),
+ ("C12","The function of a legitimating ceremony is not to produce a capacity but to relocate the attribution of that capacity from the claimant to the institution. Where the ceremony is performed, the response is referred to a state the subject underwent or a warrant the institution issued; where it is absent, the same response is the claimant's own. This accounts for the position of an unaffiliated author whose work is cited, used and counted and who nonetheless holds no doctorate: the capacity is demonstrated and the attribution has nowhere to go. Stated as this work's synthesis: no source named below makes this inference. The compliance account at B19 explains the same evidence more economically and is answered in the text, not here.","derived from B6, B14, B18; contested by B19","work"),
+ ("C13","A name that is constitutive of a practice is nonetheless constituted by the instances that bear it. Where the content of such a name has demonstrably been composed after the fact, an instance that satisfies the name's stated criterion participates in constituting it. The name is therefore not a gate held by an institution but an account that instances pay into. Note that B19 is a premise here and an objection at C1: that the designation is constitutive is granted, and what follows is that its content is contingent rather than that it is unassailable.","derived from A7, A12, B16, B19","work"),
  ("D","The claim","One proposition. It requires the two records and the seven distinctions that serve it, and nothing else."),
- ("D1","Scholarship registers contribution by citation; a dissertation is examined before it has been cited; the doctorate therefore certifies a prediction rather than a contribution.","the thesis, derived from C1 to C7","work"),
+ ("D1","Scholarship registers contribution by citation; a dissertation is examined before it has been cited; the doctorate therefore certifies a prediction rather than a contribution.","the thesis, derived from C1 to C7, C12 and C13","work"),
 ]
 
 # What each distinction supports. A distinction that serves nothing is a defect:
@@ -277,6 +279,7 @@ SERVES = {
  "C8": "the historical argument, Band A",
  "C9": "the method, and the register the work is written in",
  "C10": "Pillar IV", "C11": "Pillar IV",
+ "C12": "D1", "C13": "D1",
 }
 
 # ------------------------------------------------------------- PAGE BUILDERS
@@ -314,7 +317,7 @@ def build_landing():
 <div id="references"><ol>
 ''' + "\n".join(f"  <li>{SOURCES[k]}</li>" for k in sorted(cited_keys(), key=lambda k: SOURCES[k])) + "\n</ol></div>\n"
     return page("", R["title_main"],
-        "No identifier has been minted. The abstract is not final and the ledger is not yet open. Nothing on this page is a claim about work already done.",
+        "No identifier has been minted and the abstract is not final. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
 
 def build_propositions():
