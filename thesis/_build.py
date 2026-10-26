@@ -334,7 +334,7 @@ def build_landing():
 <div id="references"><ol>
 ''' + "\n".join(f"  <li>{SOURCES[k]}</li>" for k in sorted(cited_keys(), key=lambda k: SOURCES[k])) + "\n</ol></div>\n"
     return page("", R["title_main"],
-        "No identifier has been minted and the abstract is not final. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
+        "No identifier has been minted. The abstract was read and cleared by two readers on 26 October 2026 and is final; the proposition registry is a separate deposit and has not been. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
 
 def build_propositions():
