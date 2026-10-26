@@ -314,6 +314,7 @@ def build_landing():
   <li><span class="k">Canonical DOI</span><span class="v">{pending(R["doi"],"not yet minted")}</span></li>
   <li><span class="k">Mirror DOI</span><span class="v">{pending(R["doi_mirror"],"not yet minted")}</span></li>
   <li><span class="k">Licence</span><span class="v"><a href="{R["licence_url"]}">{R["licence"]}</a>. Applies to the text of this work only.</span></li>
+  <li><span class="k">Document</span><span class="v"><a href="{R["pdf"]}">Download the PDF</a> &middot; the text of this page as deposited</span></li>
 </ul>
 
 <h2>Verification</h2>
