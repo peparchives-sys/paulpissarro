@@ -33,7 +33,12 @@ R = {
     "licence_url": "https://creativecommons.org/licenses/by/4.0/",
     # Built by _build_pdf.py from this same record, so the deposited document and
     # the live pages cannot disagree. Rebuild it whenever the record changes.
-    "pdf":        "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-v0.1.pdf",
+    # This page is the landing page for the ABSTRACT, which is the first deposit, and
+    # citation_pdf_url must name the document this page is the landing page for. The
+    # registry is a separate deposit and needs its own landing page before it is tagged:
+    # Scholar matches one landing page to one work, and pointing two works at this page
+    # merges them into one record. Repointed 26 Oct 2026 after the deposit was split.
+    "pdf":        "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-abstract-v0.1.pdf",
     "indexable":  False,         # flip to True only at deposit
     "institution": None,         # citation_dissertation_institution. Scholar asks for it
                                  # on dissertations. Whether CoCA goes here is Paul's call.
