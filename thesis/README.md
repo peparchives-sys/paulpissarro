@@ -126,3 +126,22 @@ Two things that break if changed carelessly:
 - `_build_pdf.py` starts with an underscore, so Jekyll does not serve it. The
   PDF does not, so it is served. Keep it that way.
 
+
+## Three deposits, three documents
+
+The work deposits as three separate records rather than one, each with its own DOI.
+
+    python3 thesis/_build_pdf.py --abstract   # the abstract, 2 pages
+    python3 thesis/_build_pdf.py              # the proposition registry, 11 pages
+
+Both are generated from `_build.py`, so neither can drift from the live pages or from
+each other. The infrastructure record is a third document and is not built here.
+
+Why three and not one: each has been read by a different person and cleared at a
+different time. Depositing them together would extend one reader's approval to material
+they had not seen. They are also three records naming the publisher rather than one.
+
+`R["pdf"]` feeds `citation_pdf_url` on the landing page and must name whichever file the
+landing page is the abstract for. Change the filename and that tag points at nothing,
+which Google Scholar reads as a broken record.
+

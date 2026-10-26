@@ -91,15 +91,18 @@ def footer(canvas, doc, R):
     canvas.restoreState()
 
 
-def build():
+def build(parts="full"):
+    """parts="abstract" builds the standalone abstract; "full" adds the registry."""
     m = record()
     R, out = m.R, []
     P = lambda t, s: Paragraph(t, S[s])
+    short = parts == "abstract"
 
     # ---------------------------------------------------------- title page
     out += [Spacer(1, 16 * mm),
             P(clean(R["title_main"]), "title"),
-            P(clean(R["title_sub"]), "sub"),
+            P(clean(R["title_sub"]) + ("<br/><br/>Abstract and statement of method"
+                                       if short else ""), "sub"),
             P(f'<b>{clean(R["author"])}</b>', "author"),
             P(f'ORCID iD <a href="https://orcid.org/{R["orcid"]}">'
               f'{R["orcid"]}</a>', "meta"),
@@ -134,6 +137,23 @@ def build():
     out.append(P("Keywords", "h2"))
     out.append(P(clean("; ".join(m.KEYWORDS)), "note"))
 
+    if short:
+        out.append(P("Scope of this deposit", "h2"))
+        out.append(P(
+            "This deposit is the abstract and nothing further. The argument it "
+            "summarises rests on a registry of labelled propositions, each stating "
+            "the source it rests on and the claim it serves, which is published "
+            f'openly at {R["base"]}/thesis/propositions/ and is deposited separately. '
+            "Where a reader wants the evidence behind a sentence here, that registry "
+            "is where it is held. A record of the infrastructure through which this "
+            "work was deposited, including the applications made and refused, is also "
+            "deposited separately.", "note"))
+        out.append(P(
+            "Depositing the abstract alone is deliberate rather than provisional. The "
+            "abstract has been read and cleared; the registry had not been at the time "
+            "of this deposit. Publishing the two together would have extended one "
+            "reader's approval to material they had not seen.", "note"))
+
     # ---------------------------------------------------------- how to cite
     out.append(P("How to cite this work", "h2"))
     out.append(P(
@@ -146,8 +166,9 @@ def build():
         f'withdrawn with the reason given; it is never renumbered or reused.', "note"))
 
     # ---------------------------------------------------------- propositions
-    out.append(P("Propositions", "h1"))
-    out.append(P(
+    if not short:
+      out.append(P("Propositions", "h1"))
+      out.append(P(
         "Every load-bearing claim in the work, stated once and labelled permanently. "
         "A proposition marked <i>cite source</i> is somebody else's finding, restated "
         "here only so that it can be found; cite the source named beneath it. A "
@@ -155,7 +176,7 @@ def build():
         "sources beneath it are what it rests on rather than where it came from.",
         "note"))
 
-    for item in m.PROPS:
+      for item in m.PROPS:
         if len(item) == 3:
             band, name, blurb = item
             out.append(P(f"Band {band} &nbsp;·&nbsp; {clean(name)}", "h2"))
@@ -171,23 +192,25 @@ def build():
                                      P(clean(text), "prop"),
                                      P(tail, "src")]))
 
-    # ---------------------------------------------------------- references
-    out.append(P("References", "h1"))
-    out.append(P(
+      # ---------------------------------------------------------- references
+      out.append(P("References", "h1"))
+      out.append(P(
         "Generated from the propositions that cite them, in order of first use. This "
         "is not a reading list: a work earns an entry here by being cited above. A "
         "bracketed note records what about a record remains unverified.", "note"))
-    for key in m.cited_keys():
+      for key in m.cited_keys():
         out.append(P(clean(m.SOURCES[key]), "ref"))
 
     # ---------------------------------------------------------- render
-    name = f'pissarro-{R["year"]}-orthopraxy-{R["version"]}.pdf'
+    stem = "orthopraxy-abstract" if short else "orthopraxy-registry"
+    name = f'pissarro-{R["year"]}-{stem}-{R["version"]}.pdf'
     path = HERE / name
     doc = BaseDocTemplate(
         str(path), pagesize=A4,
         leftMargin=22 * mm, rightMargin=22 * mm,
         topMargin=20 * mm, bottomMargin=22 * mm,
-        title=R["title_full"], author=R["author"],
+        title=R["title_full"] + (" (abstract)" if short else ""),
+        author=R["author"],
         subject=f'{R["publisher"]}, {R["year"]}, {R["version"]}',
         keywords=", ".join(m.KEYWORDS), creator=R["publisher"],
     )
@@ -202,6 +225,7 @@ def build():
 
 
 if __name__ == "__main__":
-    print("Building the deposit PDF from _build.py ...")
-    build()
+    mode = "abstract" if "--abstract" in sys.argv else "full"
+    print(f"Building the {mode} deposit PDF from _build.py ...")
+    build(mode)
     print("Done. Do not hand-edit it: rebuild from _build.py so it cannot drift.")
