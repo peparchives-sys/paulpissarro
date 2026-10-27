@@ -145,3 +145,17 @@ they had not seen. They are also three records naming the publisher rather than 
 landing page is the abstract for. Change the filename and that tag points at nothing,
 which Google Scholar reads as a broken record.
 
+
+## WARNING: the registry PDF currently states the abstract's DOI
+
+`R["doi"]` is a single field and both builds read it, so
+`pissarro-2026-orthopraxy-registry-v0.1.pdf` now carries 10.17613/433nb-8gb18,
+which belongs to the abstract. That file must NOT be deposited as it stands.
+
+The registry is a separate work and will get its own DOI. Before it deposits,
+the record needs a per-document identifier rather than one shared field, the
+same way it needs its own landing page and its own title. All three are the
+same underlying change: the build still assumes one work, and there are now two.
+
+The abstract PDF is correct and unaffected.
+
