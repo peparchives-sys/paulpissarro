@@ -159,3 +159,25 @@ same underlying change: the build still assumes one work, and there are now two.
 
 The abstract PDF is correct and unaffected.
 
+
+## Pending: the abstract's scope note, at version 2
+
+Not a cosmetic fix. The scope note in the deposited abstract describes a state that
+stops being true once the other deposits exist, so it is rewritten as part of that work
+rather than on its own.
+
+Three changes, all in `_build_pdf.py` under `if short:`
+
+1. "is deposited separately" is future tense and becomes a DOI once the registry and
+   the infrastructure record are live. Name them.
+2. Cut the sentence beginning "Publishing the two together would have extended one
+   reader's approval". It reveals review process rather than scope, makes the review
+   sound thinner than it was, and volunteers that the registry was unreviewed. Keep
+   "Depositing the abstract alone is deliberate rather than provisional," which is the
+   part that stops a reader treating it as a stub.
+3. Check the whole note still reads as a statement of scope rather than an explanation
+   of a decision. Scope belongs in a deposit. Process does not.
+
+Publishing version 2 keeps the same concept DOI (10.17613/2apwd-an524) and mints a new
+version DOI. Version 1 stays in the history, which is normal.
+
