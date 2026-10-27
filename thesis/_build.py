@@ -26,7 +26,7 @@ R = {
     "publisher":  "Church of Conceptual Art",
     "base":       "https://paulpissarro.com",
     "orcid":      "0009-0000-0830-8438",
-    "doi":        None,          # set on deposit. irreversible.
+    "doi":        "10.17613/433nb-8gb18",   # reserved 27 Oct 2026, not yet registered          # set on deposit. irreversible.
     "doi_mirror": None,
     "version":    "v0.1",       # public edition line. v1.0 is the first deposit.
     "licence":    "CC BY 4.0 International",   # texts only. never the paintings, never the covenant
@@ -334,7 +334,7 @@ def build_landing():
 <div id="references"><ol>
 ''' + "\n".join(f"  <li>{SOURCES[k]}</li>" for k in sorted(cited_keys(), key=lambda k: SOURCES[k])) + "\n</ol></div>\n"
     return page("", R["title_main"],
-        "No identifier has been minted. The abstract was read and cleared by two readers on 26 October 2026 and is final; the proposition registry is a separate deposit and has not been. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
+        "The DOI above is reserved and becomes live when the deposit is published; until then it does not resolve. The abstract was read and cleared by two readers on 26 October 2026 and is final; the proposition registry is a separate deposit and has not been. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
 
 def build_propositions():

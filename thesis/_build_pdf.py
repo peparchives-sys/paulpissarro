@@ -124,10 +124,12 @@ def build(parts="full"):
 
     out += [HRFlowable(width="100%", thickness=0.5, color="#999999",
                        spaceBefore=9, spaceAfter=0),
-            P("Pre-deposit. No identifier has been minted and the abstract is not "
-              "final. The citation ledger was opened empty and dated before any "
-              "deposit, and independently timestamped the same day by the Internet "
-              "Archive. Nothing in this document is a claim about work already done.",
+            P("The identifier above was reserved before this document was built, so "
+              "that the deposited file could state its own DOI rather than point at "
+              "nothing. It resolves from the moment the deposit is published. The "
+              "citation ledger was opened empty and dated before any deposit existed, "
+              "and independently timestamped the same day by the Internet Archive. "
+              "Nothing in this document is a claim about work already done.",
               "status")]
 
     # ---------------------------------------------------------- abstract
