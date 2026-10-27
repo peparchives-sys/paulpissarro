@@ -39,7 +39,7 @@ R = {
     # Scholar matches one landing page to one work, and pointing two works at this page
     # merges them into one record. Repointed 26 Oct 2026 after the deposit was split.
     "pdf":        "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-abstract-v0.1.pdf",
-    "indexable":  False,         # flip to True only at deposit
+    "indexable":  True,          # deposited and published 27 Oct 2026
     "institution": None,         # citation_dissertation_institution. Scholar asks for it
                                  # on dissertations. Whether CoCA goes here is Paul's call.
     "ledger_opened": "2026-10-23",  # set once, permanent. ISO date.
@@ -334,7 +334,7 @@ def build_landing():
 <div id="references"><ol>
 ''' + "\n".join(f"  <li>{SOURCES[k]}</li>" for k in sorted(cited_keys(), key=lambda k: SOURCES[k])) + "\n</ol></div>\n"
     return page("", R["title_main"],
-        "The DOI above is reserved and becomes live when the deposit is published; until then it does not resolve. The abstract was read and cleared by two readers on 26 October 2026 and is final; the proposition registry is a separate deposit and has not been. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
+        "Deposited 27 October 2026 and the DOI resolves. The abstract was read and cleared by two readers on 26 October 2026; the proposition registry is a separate deposit and has not been. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
 
 def build_propositions():
