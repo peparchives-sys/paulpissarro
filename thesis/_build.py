@@ -116,6 +116,10 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="/thesis/thesis.css">
 </head>
 <body>
@@ -145,6 +149,11 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
     {R["author"]} &middot; {R["year"]}
   </div>
 </footer>
+
+<nav class="sitebar" aria-label="Site navigation">
+<a href="/">&larr; paulpissarro.com</a>
+<a href="https://churchofconceptualart.org/" target="_blank" rel="noopener">churchofconceptualart.org &rarr;</a>
+</nav>
 
 </body>
 </html>
@@ -515,6 +524,11 @@ footer{border-top:1px solid var(--rule);margin-top:3.5rem;padding:1.75rem 0 3rem
   --cream:#16130f;--ink:#f0ece3;--muted:#9a9184;--rule:#302a22;
   --gold:#d4b163;--rust:#cf7f44;--green:#7aa468;
 }
+
+.sitebar{position:fixed;bottom:0;left:0;right:0;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:13px 20px calc(13px + env(safe-area-inset-bottom));background:var(--cream);border-top:1px solid var(--rule);font-family:var(--sans);font-size:min(13.5px, 3vw);white-space:nowrap;}
+.sitebar a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;opacity:0.85;}
+.sitebar a:hover{opacity:1;}
+body{padding-bottom:110px;}
 '''
 
 # ---------------------------------------------------------------- CHECKS
@@ -569,7 +583,7 @@ def build_sitemap():
     for f in sorted(SITE.glob("**/index.html")):
         rel = f.parent.relative_to(SITE).as_posix()
         top = rel.split("/")[0]
-        if rel != "." and top.startswith((".", "_")) or (top == "thesis" and not R["indexable"]):
+        if rel != "." and top.startswith((".", "_")) or top in ("white", "glossary") or (top == "thesis" and not R["indexable"]):
             continue
         loc = f'{R["base"]}/' + ("" if rel == "." else f"{rel}/")
         urls.append(f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{lastmod(f)}</lastmod>\n  </url>")
