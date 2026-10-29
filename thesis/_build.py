@@ -120,7 +120,7 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/thesis/thesis.css">
+<link rel="stylesheet" href="/thesis/thesis.css?v=2">
 </head>
 <body>
 
@@ -529,6 +529,7 @@ footer{border-top:1px solid var(--rule);margin-top:3.5rem;padding:1.75rem 0 3rem
 .sitebar a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;opacity:0.85;}
 .sitebar a:hover{opacity:1;}
 body{padding-bottom:110px;}
+main li a{overflow-wrap:anywhere;}
 '''
 
 # ---------------------------------------------------------------- CHECKS

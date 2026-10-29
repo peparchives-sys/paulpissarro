@@ -105,3 +105,4 @@ footer{border-top:1px solid var(--rule);margin-top:3.5rem;padding:1.75rem 0 3rem
 .sitebar a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;opacity:0.85;}
 .sitebar a:hover{opacity:1;}
 body{padding-bottom:110px;}
+main li a{overflow-wrap:anywhere;}
