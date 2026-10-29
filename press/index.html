@@ -21,52 +21,62 @@
 html{color-scheme:light;}
 body{
   margin:0; background:#ffffff; color:#000000;
-  font-family:Georgia, 'Times New Roman', serif; font-size:16px; line-height:1.6;
-  text-align:center; padding:0 16px 150px;
+  font-family:Arial, Helvetica, sans-serif; font-size:13px;
+  padding:0 16px 150px;
 }
-h1{
+.logo{
+  text-align:center; margin:56px 0 10px;
   font-family:'Bodoni Moda', 'Bodoni MT', Didot, 'Times New Roman', serif;
-  font-weight:800; font-size:min(88px, 17vw); letter-spacing:0.06em;
-  margin:70px 0 8px; transform:scaleY(1.12);
+  font-weight:800; font-size:min(78px, 16vw); letter-spacing:0.06em;
+  transform:scaleY(1.1); color:#000;
 }
-.contact{margin:0 0 64px; font-size:14px; color:#444;}
-.story{margin:0 auto 44px; max-width:560px;}
-.story h2{font-size:21px; font-weight:400; margin:0 0 6px; line-height:1.4;}
-.story h2 a{color:#0000EE; text-decoration:underline;}
-.story h2 a:visited{color:#551A8B;}
-.story p{margin:0; font-size:13.5px; color:#444;}
-a{color:#0000EE;}
-.foot{margin-top:70px; font-size:13px; color:#444;}
+.count{max-width:600px; margin:0 auto 26px; color:#808080; font-size:13px;}
+.results{max-width:600px; margin:0 auto;}
+.r{margin:0 0 28px;}
+.r h2{margin:0; font-size:18px; font-weight:400; line-height:1.3;}
+.r h2 a{color:#0000EE; text-decoration:underline;}
+.r h2 a:visited{color:#551A8B;}
+.r .url{color:#006621; font-size:13px; margin:2px 0 1px;}
+.r .snip{color:#222; font-size:13px; line-height:1.45; margin:0; max-width:60ch;}
+.foot{max-width:600px; margin:48px auto 0; color:#808080; font-size:13px;}
+.foot a{color:#0000EE;}
 .sitebar{position:fixed; bottom:0; left:0; right:0; z-index:60; display:flex;
   justify-content:space-between; align-items:center; gap:16px;
   padding:13px 20px calc(13px + env(safe-area-inset-bottom));
   background:#ffffff; border-top:1px solid #ccc;
-  font-size:min(13.5px, 3vw); white-space:nowrap; font-family:Georgia, serif;}
+  font-size:min(13.5px, 3vw); white-space:nowrap;}
 .sitebar a{color:#000; text-decoration:underline; text-underline-offset:3px; opacity:0.85;}
 .sitebar a:hover{opacity:1;}
 </style>
 </head>
 <body>
 
-<h1>PRESS</h1>
-<p class="contact">Three stories, ready to report. Images, interviews and press kits: <a href="mailto:paul@paulpissarro.com">paul@paulpissarro.com</a></p>
+<div class="logo">PRESS</div>
+<p class="count">About 3 results &middot; images, interviews and press kits on request</p>
 
-<div class="story" id="obituary">
+<div class="results">
+
+<div class="r" id="obituary">
   <h2><a href="mailto:paul@paulpissarro.com?subject=The%20artist%20who%20published%20his%20own%20obituary">The artist who published his own obituary, 52 years early</a></h2>
-  <p>A complete Wikipedia article in twelve languages, with 47 references, a five-generation family tree, and a date of death in 2078.</p>
+  <p class="url">paulpissarro.com &rsaquo; press &rsaquo; obituary</p>
+  <p class="snip">A complete Wikipedia article in twelve languages, with 47 references, a five-generation family tree, and a date of death in 2078. It reads as an encyclopedia entry and functions as autobiography, advertisement, and will.</p>
 </div>
 
-<div class="story" id="sunsets">
+<div class="r" id="sunsets">
   <h2><a href="mailto:paul@paulpissarro.com?subject=New%20Pissarro%20sunsets%2C%20composed%20with%20AI%2C%20painted%20by%20hand">Camille Pissarro's great-great-grandson is making new Pissarros, with AI and by hand</a></h2>
-  <p>One hundred sunsets composed in the late style of Camille Pissarro and painted in oil by Kim Van Do, sold under a perpetual covenant.</p>
+  <p class="url">paulpissarro.com &rsaquo; press &rsaquo; sunsets</p>
+  <p class="snip">One hundred sunsets composed in the late style of Camille Pissarro and painted in oil by Kim Van Do, sold under a perpetual covenant that returns half of any resale value above $30,000 to the artist.</p>
 </div>
 
-<div class="story" id="death-of-ip">
+<div class="r" id="death-of-ip">
   <h2><a href="mailto:paul@paulpissarro.com?subject=The%20church%20counting%20down%20to%20the%20death%20of%20intellectual%20property">The church counting down to the death of intellectual property</a></h2>
-  <p>The Church of Conceptual Art, a religious nonprofit founded by artists, has set a date for the end of intellectual property law and is counting down to it in public.</p>
+  <p class="url">paulpissarro.com &rsaquo; press &rsaquo; death-of-ip</p>
+  <p class="snip">The Church of Conceptual Art, a religious nonprofit founded by artists, has set a date for the end of intellectual property law and is counting down to it in public.</p>
 </div>
 
-<p class="foot">Each headline reaches the subject directly. Paul-Alexander Pissarro, London. <a href="/">paulpissarro.com</a></p>
+</div>
+
+<p class="foot">Each headline reaches the subject directly: <a href="mailto:paul@paulpissarro.com">paul@paulpissarro.com</a> &middot; Paul-Alexander Pissarro, London &middot; <a href="/">paulpissarro.com</a></p>
 
 <nav class="sitebar" aria-label="Site navigation">
 <a href="/">&larr; paulpissarro.com</a>
