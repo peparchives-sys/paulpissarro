@@ -1562,6 +1562,24 @@
         }
       });
     });
+    // Language search filter
+    var langSearch = document.querySelector('.lang-search');
+    if (langSearch) {
+      var langNames = {en:'english anglais',fr:'french francais',de:'german allemand',es:'spanish espagnol castellano',pt:'portuguese portugues brazil',it:'italian italien',zh:'chinese mandarin zhongwen',ko:'korean hangul',ja:'japanese nihongo',ru:'russian russkiy',uk:'ukrainian ukrainska',el:'greek ellinika',ar:'arabic arabe arabi',he:'hebrew ivrit',tr:'turkish turkce'};
+      var langItems = Array.prototype.slice.call(langSearch.parentElement.querySelectorAll('ul li'));
+      langSearch.addEventListener('input', function() {
+        var q = langSearch.value.trim().toLowerCase();
+        langItems.forEach(function(li) {
+          var a = li.querySelector('a');
+          var code = a ? (a.getAttribute('hreflang') || '') : '';
+          var hay = (li.textContent + ' ' + code + ' ' + (langNames[code] || '')).toLowerCase();
+          li.style.display = (!q || hay.indexOf(q) !== -1) ? '' : 'none';
+        });
+      });
+      langSearch.addEventListener('keydown', function(e) { e.stopPropagation(); });
+      langSearch.addEventListener('click', function(e) { e.stopPropagation(); });
+    }
+
     // Keyboard: Escape closes
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
