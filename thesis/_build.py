@@ -49,6 +49,12 @@ R = {
     # deposits. The technical appendix IS a separate work and does need its own page.
     "pdf":        "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-abstract-v0.1.pdf",
     "indexable":  True,          # deposited and published 27 Oct 2026
+    # The deposit date, or None before the first deposit. Added 2 Nov 2026 because the
+    # status line, the citing note, the propositions standfirst and the ledger were all
+    # hardcoded "pre-deposit" and stayed that way for six days after the deposit. The
+    # landing page the DOI resolves to was telling arriving readers not to cite it.
+    # Every one of those strings now branches on this, so it cannot drift again.
+    "deposited":  "2026-10-27",
     "institution": None,         # citation_dissertation_institution. Scholar asks for it
                                  # on dissertations. Whether CoCA goes here is Paul's call.
     "ledger_opened": "2026-10-23",  # set once, permanent. ISO date.
@@ -141,7 +147,7 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
     <p class="affil">{R["publisher"]} &middot; {R["year"]}</p>
     <nav class="routes-nav">{nav}</nav>
     <div class="status">
-      <strong>Pre-deposit.</strong> {standfirst}
+      <strong>{"Deposited." if R["deposited"] else "Pre-deposit."}</strong> {standfirst}
     </div>
   </div>
 </header>
@@ -152,7 +158,7 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
 
 <footer>
   <div class="wrap">
-    <strong>Citing this page.</strong> A draft landing page without a persistent identifier. Do not cite it. Cite the deposited record once it exists.<br><br>
+    <strong>Citing this work.</strong> {f'Cite the persistent identifier, not this page: <code>{R["doi_concept"]}</code>, which stands for the work across every version and always resolves to the most recent one. Pages move; the identifier does not.' if R["deposited"] else "A draft landing page without a persistent identifier. Do not cite it. Cite the deposited record once it exists."}<br><br>
     Correspondence about the apparatus, the sources or the deposit is welcome, including from readers who intend to disprove something here.<br><br>
     {R["publisher"]} &middot; Montana<br>
     {R["author"]} &middot; {R["year"]}
@@ -352,7 +358,7 @@ def build_landing():
 <div id="references"><ol>
 ''' + "\n".join(f"  <li>{SOURCES[k]}</li>" for k in sorted(cited_keys(), key=lambda k: SOURCES[k])) + "\n</ol></div>\n"
     return page("", R["title_main"],
-        "Deposited 27 October 2026 and the DOI resolves. The abstract was read and cleared by two readers on 26 October 2026; the proposition registry is a separate deposit and has not been. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
+        "Deposited 27 October 2026 and the DOI resolves. The abstract was read and cleared by two readers on 26 October 2026. The proposition registry is not a separate work: it is what version 2 adds, and version 2 has not been deposited. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
 
 def build_propositions():
@@ -377,7 +383,9 @@ def build_propositions():
 </div>
 '''
     return page("propositions", "Propositions",
-        "Labels are permanent and already citable by label. The propositions themselves are not final until the work is deposited.",
+        f'Labels are permanent and already citable by label. These propositions are '
+        f'published here but not yet deposited: they are what version {R["version_full"][1:]} '
+        f'adds to the deposited record, which currently holds the abstract alone.',
         body, "The load-bearing claims of the work, labelled permanently, each saying whether to cite the source or to cite this work.")
 
 def build_ledger():
@@ -391,14 +399,14 @@ def build_ledger():
 <p class="note-block">A public record of every citation this work receives. It is opened and dated <em>before</em> the first deposit, because an empty ledger published in advance demonstrates that the wager was made before the outcome was known, and one produced afterwards demonstrates nothing. An accruing record supports the claim; an empty one would be equally visible. That is the point of publishing it.</p>
 
 <h2>Entries</h2>
-<p class="note-block">None yet. Nothing has been deposited, so nothing can have cited it.</p>
+<p class="note-block">{f'None yet. The work was deposited on {R["deposited"]} and became citable that day. An empty ledger is the honest state of a work that has been published and not yet cited, and it stays visible here rather than being quietly withheld until it fills.' if R["deposited"] else "None yet. Nothing has been deposited, so nothing can have cited it."}</p>
 
 <h2>Independent witness</h2>
 <p class="note-block">The opening date above is published on this site, and a date published on one's own site is set by its author. So is a commit date. Neither evidences the order of events on its own. The Internet Archive holds dated captures of these pages, taken on the day the ledger was opened and before any deposit existed. The timestamps are the Archive's and cannot be altered here.</p>
 <ul class="meta">
 {chr(10).join(f'  <li><span class="k">{label}</span><span class="v"><a href="{url}">{t}</a></span></li>' for label, url, t in R["witness"])}
 </ul>
-<p class="note-block">A second timestamp will be taken at deposit, when the empty ledger is placed in a repository that issues its own persistent identifier. Two witnesses in two systems, both outside this one.</p>
+<p class="note-block">{'The deposit itself is the second witness: the work now carries a persistent identifier issued by a repository outside this system, and the identifier resolves. Two witnesses in two systems, neither of them this one. A further capture of this ledger, taken after the deposit and showing it still empty, is outstanding and is recorded here when it exists.' if R["deposited"] else "A second timestamp will be taken at deposit, when the empty ledger is placed in a repository that issues its own persistent identifier. Two witnesses in two systems, both outside this one."}</p>
 
 <h2>Cadence</h2>
 <p class="note-block">Sources are checked monthly by hand until volume justifies automation, so a gap reads as schedule rather than concealment. Citations that fall outside the indexes, in catalogues, syllabi and reviews, are recorded here too: those are the ones the machines miss.</p>
@@ -428,7 +436,11 @@ def build_ledger():
 }}</pre>
 '''
     return page("ledger", "Citation ledger",
-        "The ledger is published before the first deposit, empty and dated, rather than after.",
+        ("The ledger was published before the first deposit, empty and dated, rather "
+         f'than after. The deposit was made on {R["deposited"]}; the ledger has stood '
+         "open and empty since before it."
+         if R["deposited"] else
+         "The ledger is published before the first deposit, empty and dated, rather than after."),
         body, "A public record of every citation this work receives, opened and dated before the first deposit.")
 
 CSS = '''/* paulpissarro.com/thesis - shared across every page under /thesis.
