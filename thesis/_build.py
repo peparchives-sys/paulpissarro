@@ -26,18 +26,27 @@ R = {
     "publisher":  "Church of Conceptual Art",
     "base":       "https://paulpissarro.com",
     "orcid":      "0009-0000-0830-8438",
-    "doi":        "10.17613/433nb-8gb18",   # reserved 27 Oct 2026, not yet registered          # set on deposit. irreversible.
-    "doi_mirror": None,
-    "version":    "v0.1",       # public edition line. v1.0 is the first deposit.
+    # v0.1's version DOI. Registered and resolving since 27 Oct 2026.
+    "doi":        "10.17613/433nb-8gb18",
+    # The identifier that stands for the work across every version and always resolves
+    # to the newest one. This is what accumulates citations, so it is what the ledger
+    # counts and what a reader should cite. Assigned by Knowledge Commons at the first
+    # deposit; every later version inherits it. Added 2 Nov 2026: it had been recorded
+    # nowhere, which meant the build did not know the work's own permanent identifier.
+    "doi_concept": "10.17613/2apwd-an524",
+    "doi_mirror": None,         # Zenodo, once the mirror exists
+    "version":    "v0.1",       # the deposited abstract
+    "version_full": "v0.2",     # abstract plus the proposition registry. not deposited
     "licence":    "CC BY 4.0 International",   # texts only. never the paintings, never the covenant
     "licence_url": "https://creativecommons.org/licenses/by/4.0/",
     # Built by _build_pdf.py from this same record, so the deposited document and
     # the live pages cannot disagree. Rebuild it whenever the record changes.
-    # This page is the landing page for the ABSTRACT, which is the first deposit, and
-    # citation_pdf_url must name the document this page is the landing page for. The
-    # registry is a separate deposit and needs its own landing page before it is tagged:
-    # Scholar matches one landing page to one work, and pointing two works at this page
-    # merges them into one record. Repointed 26 Oct 2026 after the deposit was split.
+    # This page is the landing page for the deposited ABSTRACT, and citation_pdf_url
+    # must name the document this page is the landing page for.
+    # CORRECTED 2 Nov 2026: the proposition registry is NOT a separate work. It is what
+    # v0.2 of this same work adds, so it shares this landing page and this concept DOI
+    # rather than needing one of its own. Repoint this at the v0.2 PDF when v0.2
+    # deposits. The technical appendix IS a separate work and does need its own page.
     "pdf":        "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-abstract-v0.1.pdf",
     "indexable":  True,          # deposited and published 27 Oct 2026
     "institution": None,         # citation_dissertation_institution. Scholar asks for it

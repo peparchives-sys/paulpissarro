@@ -97,6 +97,15 @@ def build(parts="full"):
     R, out = m.R, []
     P = lambda t, s: Paragraph(t, S[s])
     short = parts == "abstract"
+    # v0.1 is the deposited abstract. The full build is v0.2, which adds the registry to
+    # it. Rebinding R here is the whole fix: the footer, the filename and the PDF
+    # metadata all read this name, so the version and the identifier cannot disagree
+    # between the title page and the running head the way they did before 2 Nov 2026.
+    # A version prints the concept DOI, not a version DOI: v0.2's own version DOI does
+    # not exist until the deposit is published, and the concept DOI is what to cite.
+    R = dict(R,
+             version=R["version"] if short else R["version_full"],
+             doi=R["doi"] if short else R["doi_concept"])
 
     # ---------------------------------------------------------- title page
     out += [Spacer(1, 16 * mm),
@@ -124,12 +133,18 @@ def build(parts="full"):
 
     out += [HRFlowable(width="100%", thickness=0.5, color="#999999",
                        spaceBefore=9, spaceAfter=0),
-            P("The identifier above was reserved before this document was built, so "
-              "that the deposited file could state its own DOI rather than point at "
-              "nothing. It resolves from the moment the deposit is published. The "
-              "citation ledger was opened empty and dated before any deposit existed, "
-              "and independently timestamped the same day by the Internet Archive. "
-              "Nothing in this document is a claim about work already done.",
+            P(("The identifier above was reserved before this document was built, so "
+               "that the deposited file could state its own DOI rather than point at "
+               "nothing. It resolves from the moment the deposit is published. "
+               if short else
+               "The identifier above stands for this work across every version and "
+               "always resolves to the most recent one, so until this version is "
+               "published it resolves to the version before it. That identifier, not a "
+               "version-specific one, is what to cite. The version-specific identifier "
+               "for this edition is assigned when it is deposited. ") +
+              "The citation ledger was opened empty and dated before any deposit "
+              "existed, and independently timestamped the same day by the Internet "
+              "Archive. Nothing in this document is a claim about work already done.",
               "status")]
 
     # ---------------------------------------------------------- abstract
@@ -155,6 +170,17 @@ def build(parts="full"):
             "abstract has been read and cleared; the registry had not been at the time "
             "of this deposit. Publishing the two together would have extended one "
             "reader's approval to material they had not seen.", "note"))
+    else:
+        out.append(P("Scope of this version", "h2"))
+        out.append(P(
+            "Version 1 of this work was the abstract alone, deposited while the "
+            "registry was still unread. This version adds that registry in full: every "
+            "proposition labelled, stating the source it rests on and the claim it "
+            "serves. Labels are permanent and are never reused, so a withdrawn "
+            "proposition leaves a gap in the sequence rather than being renumbered, and "
+            "one such gap exists. A record of the infrastructure through which this "
+            f'work was deposited, including the applications made and refused, is '
+            f'deposited separately as a work of its own.', "note"))
 
     # ---------------------------------------------------------- how to cite
     out.append(P("How to cite this work", "h2"))
@@ -204,7 +230,7 @@ def build(parts="full"):
         out.append(P(clean(m.SOURCES[key]), "ref"))
 
     # ---------------------------------------------------------- render
-    stem = "orthopraxy-abstract" if short else "orthopraxy-registry"
+    stem = "orthopraxy-abstract" if short else "orthopraxy"
     name = f'pissarro-{R["year"]}-{stem}-{R["version"]}.pdf'
     path = HERE / name
     doc = BaseDocTemplate(
