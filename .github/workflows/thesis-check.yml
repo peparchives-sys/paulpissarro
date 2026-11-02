@@ -1,0 +1,53 @@
+name: Thesis integrity
+
+# Why this exists.
+#
+# The pages under /thesis are generated from thesis/_build.py so that the author
+# string, the title and the identifiers are byte-identical on every page forever.
+# A divergent author string splits the citation count across records that never
+# merge, and the deposited records cannot be merged back afterwards.
+#
+# The README documents this check as a local git hook, which means it only runs in
+# clones where somebody installed it. In November 2026 the landing page's favicon
+# block was hand-edited and the builder was not updated, so the next build would
+# have silently reverted it, and nothing caught that for several weeks.
+#
+# Running it here instead means it cannot be bypassed by a fresh clone, a different
+# machine, or a collaborator who has never read the README.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Generated pages match the generator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: thesis/_build.py --check
+        run: python3 thesis/_build.py --check
+
+      - name: Explain a failure
+        if: failure()
+        run: |
+          echo "::error::A file under /thesis was hand-edited, or the build was not re-run after _build.py changed."
+          echo ""
+          echo "The generated pages no longer match thesis/_build.py."
+          echo ""
+          echo "If you edited a built .html by hand: put the change into _build.py"
+          echo "instead, run 'python3 thesis/_build.py', and commit both."
+          echo ""
+          echo "If you changed _build.py: run 'python3 thesis/_build.py' and commit"
+          echo "the regenerated pages alongside it."
+          echo ""
+          echo "Do not resolve this by editing the generated file to match. The"
+          echo "generator is the source of truth; that is the whole point of it."
+          exit 1

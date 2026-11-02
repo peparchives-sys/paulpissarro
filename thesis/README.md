@@ -18,7 +18,20 @@ Stdlib only, no dependencies, no build step. Run it, commit the output.
 The build refuses to write anything if a required Highwire tag is missing or
 empty, if a tag lands on a sub-page, if the author string is missing from a
 page, if `noindex` drops off before deposit, or if two propositions share a
-label. To have `--check` run before every commit:
+label.
+
+**`--check` runs in CI on every push**, in `.github/workflows/thesis-check.yml`. That is
+the real defence and it cannot be bypassed by a fresh clone or another machine. Until
+2 Nov 2026 this README documented only the local hook below, which meant the check
+existed solely where someone had installed it: the landing page's favicon block was
+hand-edited, the builder was never updated, and nothing caught it for weeks.
+
+**Site-wide changes are the hazard.** Favicons, nav bars, analytics, anything applied
+across every page, must go into `_build.py` and not into the built `.html` under
+`/thesis`. Edit a generated file and the next build reverts it. CI now fails the push
+instead of letting the two drift apart quietly.
+
+You can still install the hook for a faster local signal:
 
 ```
 echo 'python3 thesis/_build.py --check' > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
@@ -38,7 +51,8 @@ Scholar records that already split stay split. Four hand-maintained files is fou
 
 ```
 /thesis/                     landing. abstract, record, verification, references
-/thesis/propositions/        31 claims, anchored by permanent label
+/thesis/record.json          canonical strings, machine-readable, for mirrors to read
+/thesis/propositions/        48 claims, anchored by permanent label
 /thesis/ledger/              citation ledger
 /thesis/ledger/ledger.json   ledger data
 ```
