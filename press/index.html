@@ -32,7 +32,23 @@ body{
   font-weight:800; font-size:min(78px, 16vw); letter-spacing:0.06em;
   transform:scaleY(1.1); color:#000;
 }
+.searchwrap{max-width:600px; margin:0 auto 22px;}
+.searchbox{display:flex; align-items:center; gap:10px; border:1px solid #dfe1e5; border-radius:24px; padding:9px 18px; background:#fff;}
+.searchbox:focus-within{box-shadow:0 1px 6px rgba(32,33,36,.28); border-color:rgba(223,225,229,0);}
+.searchbox svg{flex:none; opacity:0.55;}
+.searchbox input{border:0; outline:0; width:100%; font-size:15px; font-family:Arial, Helvetica, sans-serif; background:transparent; color:#000;}
 .count{max-width:600px; margin:0 auto 26px; text-align:left; color:#808080; font-size:13px;}
+.paa{max-width:600px; margin:0 auto 28px; text-align:left;}
+.paa h3{font-size:16px; font-weight:400; margin:0 0 8px;}
+.paa details{border-top:1px solid #dfe1e5;}
+.paa details:last-of-type{border-bottom:1px solid #dfe1e5;}
+.paa summary{list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:12px; padding:11px 2px; font-size:14px;}
+.paa summary::-webkit-details-marker{display:none;}
+.paa summary::after{content:''; flex:none; width:8px; height:8px; border-right:1.6px solid #747775; border-bottom:1.6px solid #747775; transform:rotate(45deg); transition:transform .15s; margin-right:4px;}
+.paa details[open] summary::after{transform:rotate(225deg);}
+.paa .a{padding:0 2px 14px; font-size:13px; line-height:1.5; color:#222; max-width:58ch;}
+.paa .a a{color:#0000EE;}
+.nores{max-width:600px; margin:0 auto 28px; text-align:left; font-size:13px; display:none;}
 .results{max-width:600px; margin:0 auto; text-align:left;}
 .r{margin:0 0 28px;}
 .r h2{margin:0; font-size:18px; font-weight:400; line-height:1.3;}
@@ -54,14 +70,30 @@ body{
 <body>
 
 <div class="logo">PRESS</div>
-<p class="count">About 8 results &middot; images, interviews and press kits on request</p>
+
+<div class="searchwrap"><div class="searchbox" role="search">
+<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="#9aa0a6" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+<input id="press-search" type="text" autocomplete="off" aria-label="Search press stories" placeholder="Search press stories">
+</div></div>
+
+<p class="count" id="press-count">About 8 results &middot; images, interviews and press kits on request</p>
+
+<div class="paa" id="paa">
+<h3>People also ask</h3>
+<details><summary>Is Paul-Alexander Pissarro dead?</summary><div class="a">Not until 27 April 2078, according to his own obituary: a complete Wikipedia-style article published 52 years early, in fifteen languages, with 47 references and a five-generation family tree. <a href="/press/obituary/">The artist who published his own obituary</a></div></details>
+<details><summary>Does this art pass the Howey test?</summary><div class="a">Every work the Church of Conceptual Art issues carries a perpetual covenant returning half of any resale above a stated threshold to the artists, enforced through authentication rather than litigation. Whether that is a security is the question the work stages. <a href="/press/covenant/">Does this art pass the Howey test?</a></div></details>
+<details><summary>Why hasn't Coca-Cola sued this church yet?</summary><div class="a">The church's 148-page Bible publishes its own litigation strategy as scripture, waives the defense of irony, and states its goal: to lose at the Supreme Court. <a href="/press/coca-cola/">Why hasn't Coca-Cola sued this church yet?</a></div></details>
+<details><summary>How much does Heaven cost?</summary><div class="a">$777, framed and engraved with the holder's name. Hell costs $666. Every sale is recorded in a public ledger, and payment is the only qualification. <a href="/press/afterlife/">Heaven costs $777. Hell costs $666.</a></div></details>
+</div>
+
+<p class="nores" id="press-nores">Your search did not match any press stories. Interviews and materials: <a href="mailto:paul@paulpissarro.com">paul@paulpissarro.com</a></p>
 
 <div class="results">
 
 <div class="r" id="obituary">
   <h2><a href="/press/obituary/">The artist who published his own obituary, 52 years early</a></h2>
   <p class="url">paulpissarro.com &rsaquo; press &rsaquo; obituary</p>
-  <p class="snip">A complete Wikipedia article in twelve languages, with 47 references, a five-generation family tree, and a date of death in 2078. It reads as a conceptual Wikipedia entry and functions as autobiography, advertisement, and will.</p>
+  <p class="snip">A complete Wikipedia article in fifteen languages, with 47 references, a five-generation family tree, and a date of death in 2078. It reads as a conceptual Wikipedia entry and functions as autobiography, advertisement, and will.</p>
 </div>
 
 <div class="r" id="sunsets">
@@ -114,6 +146,33 @@ body{
 <a href="/">&larr; paulpissarro.com</a>
 <a href="https://churchofconceptualart.org/" target="_blank" rel="noopener">churchofconceptualart.org &rarr;</a>
 </nav>
+
+<script>
+(function(){
+  var input = document.getElementById('press-search');
+  if (!input) return;
+  var results = Array.prototype.slice.call(document.querySelectorAll('.results .r'));
+  var count = document.getElementById('press-count');
+  var paa = document.getElementById('paa');
+  var nores = document.getElementById('press-nores');
+  var idle = 'About ' + results.length + ' results \u00b7 images, interviews and press kits on request';
+  input.addEventListener('input', function(){
+    var t0 = performance.now();
+    var q = input.value.trim().toLowerCase();
+    var n = 0;
+    results.forEach(function(r){
+      var hit = !q || r.textContent.toLowerCase().indexOf(q) !== -1;
+      r.style.display = hit ? '' : 'none';
+      if (hit) n++;
+    });
+    paa.style.display = q ? 'none' : '';
+    nores.style.display = (q && n === 0) ? 'block' : 'none';
+    if (!q) { count.textContent = idle; return; }
+    var dt = Math.max(performance.now() - t0, 10) / 1000;
+    count.textContent = 'About ' + n + ' result' + (n === 1 ? '' : 's') + ' (' + dt.toFixed(2) + ' seconds)';
+  });
+})();
+</script>
 
 </body>
 </html>
