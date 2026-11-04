@@ -30,6 +30,7 @@
 <link rel="alternate" hreflang="he" href="https://paulpissarro.com/he/">
 <link rel="alternate" hreflang="tr" href="https://paulpissarro.com/tr/">
 <link rel="alternate" hreflang="pl" href="https://paulpissarro.com/pl/">
+<link rel="alternate" hreflang="ka" href="https://paulpissarro.com/ka/">
 <link rel="alternate" hreflang="x-default" href="https://paulpissarro.com/">
 
 <!-- Favicons -->
@@ -61,6 +62,7 @@
 <meta property="og:locale:alternate" content="he_IL">
 <meta property="og:locale:alternate" content="tr_TR">
 <meta property="og:locale:alternate" content="pl_PL">
+<meta property="og:locale:alternate" content="ka_GE">
 <meta property="og:image" content="https://paulpissarro.com/portrait.jpg">
 <meta property="og:image:alt" content="Retrato de Paul-Alexander Pissarro, cineasta e artista conceitual franco-americano, tetraneto do pintor impressionista Camille Pissarro">
 <meta property="og:image:width" content="1200">
@@ -1028,7 +1030,7 @@
   <h1>Paul-Alexander Pissarro</h1>
   <div class="title-actions">
     <details class="lang-switcher" id="lang-switcher">
-      <summary><span class="globe" aria-hidden="true">文<sub>A</sub></span> 15 idiomas <span aria-hidden="true">&#9662;</span></summary>
+      <summary><span class="globe" aria-hidden="true">文<sub>A</sub></span> 16 idiomas <span aria-hidden="true">&#9662;</span></summary>
       <div class="dropdown-panel" role="menu" aria-label="Traduções">
         <input type="text" class="lang-search" placeholder="Pesquisar um idioma" aria-label="Pesquisar um idioma">
         <div class="panel-section-label">Idiomas sugeridos</div>
@@ -1048,6 +1050,7 @@
           <li><a href="/he/" hreflang="he" lang="he">עברית</a></li>
           <li><a href="/tr/" hreflang="tr" lang="tr">Türkçe</a></li>
           <li><a href="/pl/" hreflang="pl" lang="pl">Polski</a></li>
+          <li><a href="/ka/" hreflang="ka" lang="ka">ქართული</a></li>
         </ul>
       </div>
     </details>
@@ -1569,7 +1572,7 @@
     // Language search filter
     var langSearch = document.querySelector('.lang-search');
     if (langSearch) {
-      var langNames = {en:'english anglais',fr:'french francais',de:'german allemand',es:'spanish espagnol castellano',pt:'portuguese portugues brazil',it:'italian italien',zh:'chinese mandarin zhongwen',ko:'korean hangul',ja:'japanese nihongo',ru:'russian russkiy',uk:'ukrainian ukrainska',el:'greek ellinika',ar:'arabic arabe arabi',he:'hebrew ivrit',tr:'turkish turkce',pl:'polish polski polnisch polonais'};
+      var langNames = {en:'english anglais',fr:'french francais',de:'german allemand',es:'spanish espagnol castellano',pt:'portuguese portugues brazil',it:'italian italien',zh:'chinese mandarin zhongwen',ko:'korean hangul',ja:'japanese nihongo',ru:'russian russkiy',uk:'ukrainian ukrainska',el:'greek ellinika',ar:'arabic arabe arabi',he:'hebrew ivrit',tr:'turkish turkce',pl:'polish polski polnisch polonais',ka:'georgian kartuli qartuli sakartvelo'};
       var langItems = Array.prototype.slice.call(langSearch.parentElement.querySelectorAll('ul li'));
       langSearch.addEventListener('input', function() {
         var q = langSearch.value.trim().toLowerCase();
