@@ -175,6 +175,25 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
 '''
 
 # ------------------------------------------------------------------ CONTENT
+
+# Prose that appears in both the web pages and the PDF.
+#
+# Almost everything shared already lives in ABSTRACT, PROPS and SOURCES below, which
+# both builders read, so it cannot drift. Prose written into a builder's own template
+# can: on 16 Nov 2026 the two paragraphs here were added to the propositions page and
+# not to the PDF, and for one build the page and the deposited file disagreed about
+# what the registry is.
+#
+# Plain text, no markup. Each builder supplies its own tags, which is why the text was
+# duplicated in the first place: the page needs HTML and the PDF needs reportlab's own
+# subset. Anything that has to read the same in both belongs here rather than in a
+# template.
+TEXT = {
+ "props_lead": "The structure of the argument, stated before the argument is written.",
+ "props_what": "Every load-bearing claim appears here once, with what it rests on and what it serves. This is the dependency graph rather than the argument itself: a reader can check whether an inference follows from the premises it names, because those premises are stated rather than gestured at. Remove the records and every inference below rests on claims nobody can inspect.",
+ "props_why":  "It is published before the prose deliberately. A premise set published afterwards is a reconstruction, and nobody can tell whether the premises were fitted to the conclusion they were meant to support. Published first, it is a commitment the finished work can be checked against.",
+}
+
 ABSTRACT = [
  "Scholarship registers contribution by citation. A dissertation is examined before it can be cited. What is certified at examination is therefore a forecast of contribution rather than contribution itself. This study sets that proposition against three bodies of evidence, historical, experimental and procedural, and then acts on the result.",
  'The first is historical. The European degree ladder is a transposed craft-guild structure in which master and doctor were originally synonymous, both naming the <em>licentia docendi</em>, the licence to teach, neither certifying an original contribution to knowledge. The definition of the doctorate as certifying new knowledge is a modern retrofit, as the historiography of the German university has established: Humboldt\'s memorandum of 1810, the document usually credited with the research ideal, was left a fragment, went unpublished in his lifetime, and first appeared in print in 1903, and the attribution of the ideal to Humboldt is itself a twentieth-century invention. What has not been drawn from that record is its general form: a legitimating origin can be composed long after the fact, and the institution it explains runs unchanged either way.',
@@ -362,9 +381,9 @@ def build_landing():
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
 
 def build_propositions():
-    body = '''<p class="note-block"><strong>The structure of the argument, stated before the argument is written.</strong> Every load-bearing claim appears here once, with what it rests on and what it serves. This is the dependency graph rather than the argument itself: a reader can check whether an inference follows from the premises it names, because those premises are stated rather than gestured at. Remove the records and every inference below rests on claims nobody can inspect.</p>
-<p class="note-block">It is published before the prose deliberately. A premise set published afterwards is a reconstruction, and nobody can tell whether the premises were fitted to the conclusion they were meant to support. Published first, it is a commitment the finished work can be checked against.</p>
-<p class="note-block">Every load-bearing claim in the work, stated once and labelled permanently. Labels are assigned once and never reused: new propositions append, they do not insert, because insertion would renumber everything after it and break citations already made. A proposition later found to be wrong keeps its number and is marked withdrawn, with the reason given.</p>
+    body = f'''<p class="note-block"><strong>{TEXT["props_lead"]}</strong> {TEXT["props_what"]}</p>
+<p class="note-block">{TEXT["props_why"]}</p>
+''' + '''<p class="note-block">Every load-bearing claim in the work, stated once and labelled permanently. Labels are assigned once and never reused: new propositions append, they do not insert, because insertion would renumber everything after it and break citations already made. A proposition later found to be wrong keeps its number and is marked withdrawn, with the reason given.</p>
 <p class="note-block">A proposition marked <strong>cite source</strong> is somebody else's finding, restated here only so it can be found. Cite the source named beneath it. A proposition marked <strong>cite this work</strong> is an inference made here, and the sources beneath it are what it rests on rather than where it came from. The form is the work's identifier and the label, for example <code>Pissarro 2026, C2</code>. Cite the label rather than the page: labels are permanent, pages are not.</p>
 '''
     for item in PROPS:
