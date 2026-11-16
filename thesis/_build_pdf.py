@@ -196,6 +196,24 @@ def build(parts="full"):
     # ---------------------------------------------------------- propositions
     if not short:
       out.append(P("Propositions", "h1"))
+      # Kept in step with build_propositions() in _build.py by hand. On 16 Nov 2026 the
+      # web page gained the two paragraphs below and this did not, so for one build the
+      # PDF and the page disagreed about what the registry is. If this text changes,
+      # change it in both places, or the deposited file and the landing page diverge.
+      out.append(P(
+        "<b>The structure of the argument, stated before the argument is written.</b> "
+        "Every load-bearing claim appears here once, with what it rests on and what it "
+        "serves. This is the dependency graph rather than the argument itself: a reader "
+        "can check whether an inference follows from the premises it names, because "
+        "those premises are stated rather than gestured at. Remove the records and "
+        "every inference below rests on claims nobody can inspect.",
+        "note"))
+      out.append(P(
+        "It is published before the prose deliberately. A premise set published "
+        "afterwards is a reconstruction, and nobody can tell whether the premises were "
+        "fitted to the conclusion they were meant to support. Published first, it is a "
+        "commitment the finished work can be checked against.",
+        "note"))
       out.append(P(
         "Every load-bearing claim in the work, stated once and labelled permanently. "
         "A proposition marked <i>cite source</i> is somebody else's finding, restated "
