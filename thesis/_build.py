@@ -393,7 +393,7 @@ def build_landing():
 <div id="references"><ol>
 ''' + "\n".join(f"  <li>{SOURCES[k]}</li>" for k in sorted(cited_keys(), key=lambda k: SOURCES[k])) + "\n</ol></div>\n"
     return page("", R["title_main"],
-        "First deposited 27 October 2026; version 2, adding the proposition registry, deposited 19 November 2026. Both DOIs resolve. The abstract was read and cleared by two readers on 26 October 2026. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
+        "First deposited 27 October 2026; version 2, adding the proposition registry, deposited 19 November 2026. Both DOIs resolve. The abstract was read and cleared by two readers on 26 October 2026, and the registry by the same two readers before version 2 was deposited. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
 
 def build_propositions():
