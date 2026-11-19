@@ -104,8 +104,8 @@ def build(parts="full"):
     # A version prints the concept DOI, not a version DOI: v0.2's own version DOI does
     # not exist until the deposit is published, and the concept DOI is what to cite.
     R = dict(R,
-             version=R["version"] if short else R["version_full"],
-             doi=R["doi"] if short else R["doi_concept"])
+             version=R["version_abstract"] if short else R["version"],
+             doi=R["doi_abstract"] if short else R["doi_concept"])
 
     # ---------------------------------------------------------- title page
     out += [Spacer(1, 16 * mm),

@@ -13,13 +13,17 @@
   "identifiers": {
     "doi_concept": "10.17613/2apwd-an524",
     "doi_concept_note": "Stands for the work across every version and always resolves to the newest one. Cite this one.",
-    "doi_version": "10.17613/433nb-8gb18",
-    "doi_version_note": "Specific to v0.1.",
+    "doi_version": "10.17613/wd1f3-gv657",
+    "doi_version_note": "Specific to v0.2. Superseded when a later version publishes.",
+    "doi_abstract": "10.17613/433nb-8gb18",
+    "doi_abstract_note": "Specific to v0.1, the two-page abstract deposited 2026-10-27.",
     "doi_mirror": null
   },
   "version": {
-    "deposited": "v0.1",
-    "in_preparation": "v0.2"
+    "current": "v0.2",
+    "current_deposited": "2026-11-19",
+    "first": "v0.1",
+    "first_deposited": "2026-10-27"
   },
   "licence": {
     "name": "CC BY 4.0 International",
@@ -30,7 +34,7 @@
     "landing": "https://paulpissarro.com/thesis/",
     "propositions": "https://paulpissarro.com/thesis/propositions/",
     "ledger": "https://paulpissarro.com/thesis/ledger/",
-    "pdf": "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-abstract-v0.1.pdf"
+    "pdf": "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-v0.2.pdf"
   },
   "ledger_opened": "2026-10-23"
 }

@@ -26,8 +26,17 @@ R = {
     "publisher":  "Church of Conceptual Art",
     "base":       "https://paulpissarro.com",
     "orcid":      "0009-0000-0830-8438",
-    # v0.1's version DOI. Registered and resolving since 27 Oct 2026.
-    "doi":        "10.17613/433nb-8gb18",
+    # The CURRENT version's DOI. v0.2, published 19 Nov 2026.
+    #
+    # SPLIT 19 Nov 2026. This field used to mean two things at once: the identifier of
+    # the abstract PDF, and the identifier of whatever version the site is currently
+    # showing. Those were the same thing until v0.2 published and then they were not.
+    # The same applies to "version" below. Anything frozen to the abstract now carries
+    # an _abstract suffix; anything that moves with the work does not.
+    "doi":          "10.17613/wd1f3-gv657",
+    # v0.1's version DOI. Frozen: it identifies the deposited two-page abstract and
+    # that document does not change. Used only by the abstract PDF.
+    "doi_abstract": "10.17613/433nb-8gb18",
     # The identifier that stands for the work across every version and always resolves
     # to the newest one. This is what accumulates citations, so it is what the ledger
     # counts and what a reader should cite. Assigned by Knowledge Commons at the first
@@ -35,8 +44,8 @@ R = {
     # nowhere, which meant the build did not know the work's own permanent identifier.
     "doi_concept": "10.17613/2apwd-an524",
     "doi_mirror": None,         # Zenodo, once the mirror exists
-    "version":    "v0.1",       # the deposited abstract
-    "version_full": "v0.2",     # abstract plus the proposition registry. not deposited
+    "version":    "v0.2",       # the current version of the work. abstract + registry
+    "version_abstract": "v0.1", # frozen: the two-page abstract's own version
     "licence":    "CC BY 4.0 International",   # texts only. never the paintings, never the covenant
     "licence_url": "https://creativecommons.org/licenses/by/4.0/",
     # Built by _build_pdf.py from this same record, so the deposited document and
@@ -47,7 +56,7 @@ R = {
     # v0.2 of this same work adds, so it shares this landing page and this concept DOI
     # rather than needing one of its own. Repoint this at the v0.2 PDF when v0.2
     # deposits. The technical appendix IS a separate work and does need its own page.
-    "pdf":        "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-abstract-v0.1.pdf",
+    "pdf":        "https://paulpissarro.com/thesis/pissarro-2026-orthopraxy-v0.2.pdf",
     "indexable":  True,          # deposited and published 27 Oct 2026
     # The deposit date, or None before the first deposit. Added 2 Nov 2026 because the
     # status line, the citing note, the propositions standfirst and the ledger were all
@@ -55,6 +64,10 @@ R = {
     # landing page the DOI resolves to was telling arriving readers not to cite it.
     # Every one of those strings now branches on this, so it cannot drift again.
     "deposited":  "2026-10-27",
+    # When the CURRENT version was deposited. "deposited" above stays at the first
+    # deposit, because that is the date the ledger's ordering argument turns on: the
+    # ledger was opened empty on 23 Oct, before anything was published.
+    "deposited_current": "2026-11-19",
     "institution": None,         # citation_dissertation_institution. Scholar asks for it
                                  # on dissertations. Whether CoCA goes here is Paul's call.
     "ledger_opened": "2026-10-23",  # set once, permanent. ISO date.
@@ -106,7 +119,9 @@ def page(slug, heading, standfirst, body, desc, is_root=False):
 <meta name="citation_publisher" content="{esc(R["publisher"])}">
 <meta name="citation_abstract_html_url" content="{url_for("")}">'''
         if R["institution"]: tags += f'\n<meta name="citation_dissertation_institution" content="{esc(R["institution"])}">'
-        if R["doi"]: tags += f'\n<meta name="citation_doi" content="{esc(R["doi"])}">'
+        # The concept DOI, not the version DOI: it is the identifier that accumulates
+        # citations across versions, so it is the one a crawler should record.
+        if R["doi_concept"]: tags += f'\n<meta name="citation_doi" content="{esc(R["doi_concept"])}">'
         if R["pdf"]: tags += f'\n<meta name="citation_pdf_url" content="{esc(R["pdf"])}">'
     robots = "" if R["indexable"] else \
         '\n<!-- Pre-deposit. The work is not ready to be indexed, so it asks not to be.\n     Remove at deposit, not before. -->\n<meta name="robots" content="noindex, follow">'
@@ -353,8 +368,9 @@ def build_landing():
   <li><span class="k">ORCID</span><span class="v">{orcid_html()}</span></li>
   <li><span class="k">Publisher</span><span class="v">{R["publisher"]}</span></li>
   <li><span class="k">Year</span><span class="v">{R["year"]}</span></li>
-  <li><span class="k">Version</span><span class="v">{R["version"]} &middot; pre-deposit, not indexed</span></li>
-  <li><span class="k">Canonical DOI</span><span class="v">{pending(R["doi"],"not yet minted")}</span></li>
+  <li><span class="k">Version</span><span class="v">{R["version"]}{f' &middot; deposited {R["deposited_current"]}' if R["deposited"] else " &middot; pre-deposit, not indexed"}</span></li>
+  <li><span class="k">Canonical DOI</span><span class="v">{pending(R["doi_concept"],"not yet minted")}</span></li>
+  <li><span class="k">This version</span><span class="v">{pending(R["doi"],"not yet minted")}</span></li>
   <li><span class="k">Mirror DOI</span><span class="v">{pending(R["doi_mirror"],"not yet minted")}</span></li>
   <li><span class="k">Licence</span><span class="v"><a href="{R["licence_url"]}">{R["licence"]}</a>. Applies to the text of this work only.</span></li>
   <li><span class="k">Document</span><span class="v"><a href="{R["pdf"]}">Download the PDF</a> &middot; the text of this page as deposited</span></li>
@@ -377,7 +393,7 @@ def build_landing():
 <div id="references"><ol>
 ''' + "\n".join(f"  <li>{SOURCES[k]}</li>" for k in sorted(cited_keys(), key=lambda k: SOURCES[k])) + "\n</ol></div>\n"
     return page("", R["title_main"],
-        "Deposited 27 October 2026 and the DOI resolves. The abstract was read and cleared by two readers on 26 October 2026. The proposition registry is not a separate work: it is what version 2 adds, and version 2 has not been deposited. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
+        "First deposited 27 October 2026; version 2, adding the proposition registry, deposited 19 November 2026. Both DOIs resolve. The abstract was read and cleared by two readers on 26 October 2026. The ledger was opened empty on 23 October 2026, before any deposit. Nothing on this page is a claim about work already done.",
         body, "A study of what the doctoral degree certifies, set against the history of the credential, the experimental record on ceremony, and the mechanics of scholarly indexing.", is_root=True)
 
 def build_propositions():
@@ -405,8 +421,8 @@ def build_propositions():
 '''
     return page("propositions", "Propositions",
         f'Labels are permanent and already citable by label. These propositions are '
-        f'published here but not yet deposited: they are what version {R["version_full"][1:]} '
-        f'adds to the deposited record, which currently holds the abstract alone.',
+        f'deposited as part of version {R["version"][1:]} on {R["deposited_current"]}: they are what that version '
+        f'added to the deposited record, alongside the abstract that version 1 held alone.',
         body, "The load-bearing claims of the work, labelled permanently, each saying whether to cite the source or to cite this work.")
 
 def build_ledger():
@@ -661,12 +677,16 @@ def build_record():
             "doi_concept_note": "Stands for the work across every version and always "
                                 "resolves to the newest one. Cite this one.",
             "doi_version": R["doi"],
-            "doi_version_note": f'Specific to {R["version"]}.',
+            "doi_version_note": f'Specific to {R["version"]}. Superseded when a later version publishes.',
+            "doi_abstract": R["doi_abstract"],
+            "doi_abstract_note": f'Specific to {R["version_abstract"]}, the two-page abstract deposited {R["deposited"]}.',
             "doi_mirror": R["doi_mirror"],
         },
         "version": {
-            "deposited": R["version"],
-            "in_preparation": R["version_full"],
+            "current": R["version"],
+            "current_deposited": R["deposited_current"],
+            "first": R["version_abstract"],
+            "first_deposited": R["deposited"],
         },
         "licence": {"name": R["licence"], "url": R["licence_url"],
                     "applies_to": "the text of this work only"},
